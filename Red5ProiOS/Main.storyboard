@@ -794,17 +794,17 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="52" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="CB4-Qi-B2f">
-                                <rect key="frame" x="0.0" y="109" width="320" height="387"/>
+                                <rect key="frame" x="0.0" y="109" width="320" height="459"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YCi-8U-EYt" userLabel="Control Scheme View">
-                                <rect key="frame" x="0.0" y="109" width="320" height="387"/>
+                                <rect key="frame" x="0.0" y="109" width="320" height="459"/>
                                 <subviews>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MfQ-Jf-qWY">
                                         <rect key="frame" x="85" y="190" width="150" height="2"/>
                                     </progressView>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uu3-gT-Q5D" userLabel="R5 Second Screen View" customClass="R5SecondScreenView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="387"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="459"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="progressDelegate" destination="MfQ-Jf-qWY" id="wzA-ug-2cI"/>
@@ -813,7 +813,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="uu3-gT-Q5D" secondAttribute="bottom" id="ISy-fm-5di"/>
+                                    <constraint firstAttribute="bottom" secondItem="uu3-gT-Q5D" secondAttribute="bottom" id="dmS-MZ-QEL"/>
                                     <constraint firstItem="uu3-gT-Q5D" firstAttribute="top" secondItem="YCi-8U-EYt" secondAttribute="top" id="kQm-rN-LMU"/>
                                 </constraints>
                             </view>
@@ -869,10 +869,10 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="gjX-rp-BVb" firstAttribute="top" secondItem="NLP-yV-GNW" secondAttribute="bottom" id="Lmx-h4-xlW"/>
+                            <constraint firstItem="kLK-ea-LDU" firstAttribute="top" secondItem="CB4-Qi-B2f" secondAttribute="bottom" id="Olf-lJ-Sie"/>
                             <constraint firstItem="YCi-8U-EYt" firstAttribute="top" secondItem="NLP-yV-GNW" secondAttribute="bottom" id="Zxv-WU-heJ"/>
-                            <constraint firstItem="kLK-ea-LDU" firstAttribute="top" secondItem="CB4-Qi-B2f" secondAttribute="bottom" constant="72" id="ceP-bJ-yFC"/>
+                            <constraint firstItem="kLK-ea-LDU" firstAttribute="top" secondItem="YCi-8U-EYt" secondAttribute="bottom" id="c1I-na-X6R"/>
                             <constraint firstItem="CB4-Qi-B2f" firstAttribute="top" secondItem="NLP-yV-GNW" secondAttribute="bottom" id="kqX-83-z3N"/>
-                            <constraint firstItem="kLK-ea-LDU" firstAttribute="top" secondItem="YCi-8U-EYt" secondAttribute="bottom" constant="72" id="wFS-CB-w7X"/>
                         </constraints>
                     </view>
                     <connections>
