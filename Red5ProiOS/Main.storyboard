@@ -803,7 +803,7 @@
                                     <navigationItem title="SecondScreen" id="ji4-dk-Xek"/>
                                 </items>
                             </navigationBar>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gjX-rp-BVb" userLabel="Hosts View">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gjX-rp-BVb" userLabel="Hosts View">
                                 <rect key="frame" x="0.0" y="109" width="320" height="459"/>
                                 <subviews>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hwz-Ya-eCN">
