@@ -24,3 +24,4 @@
 + (instancetype)deviceWithId:(NSString *)deviceId type:(R5DeviceType)type name:(NSString*)name;
 
 @end
+

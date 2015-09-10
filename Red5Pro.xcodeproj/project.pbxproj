@@ -21,10 +21,10 @@
 		48350B931A0C29360053A6FD /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = 48350B921A0C29360053A6FD /* help.html */; };
 		48350B981A11188E0053A6FD /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 48350B971A11188E0053A6FD /* Reachability.m */; };
 		48350B9C1A1131CF0053A6FD /* ALToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 48350B9B1A1131CF0053A6FD /* ALToastView.m */; };
-		48369C931B90ED54008D5152 /* SecondScreen.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 48369C911B90ED54008D5152 /* SecondScreen.bundle */; };
-		48369C941B90ED54008D5152 /* SecondScreen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48369C921B90ED54008D5152 /* SecondScreen.framework */; };
 		48369C961B90EE15008D5152 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48369C951B90EE15008D5152 /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4836DC2B19E47C7200DEC2B8 /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4836DC2A19E47C7200DEC2B8 /* PublishViewController.m */; };
+		4847C6A51BA2280A00EABC6B /* SecondScreen.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4847C6A31BA2280A00EABC6B /* SecondScreen.bundle */; };
+		4847C6A61BA2280A00EABC6B /* SecondScreen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4847C6A41BA2280A00EABC6B /* SecondScreen.framework */; };
 		484BF38D19F0039D00F693A1 /* HomeScreenSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 484BF38C19F0039D00F693A1 /* HomeScreenSegue.m */; };
 		4876D6F619E4856F00D72DDD /* SecondScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4876D6F519E4856F00D72DDD /* SecondScreenViewController.m */; };
 		4876D6FB19E485FA00D72DDD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4876D6FA19E485FA00D72DDD /* AudioToolbox.framework */; };
@@ -104,11 +104,11 @@
 		48350B971A11188E0053A6FD /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		48350B9A1A1131CF0053A6FD /* ALToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALToastView.h; sourceTree = "<group>"; };
 		48350B9B1A1131CF0053A6FD /* ALToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALToastView.m; sourceTree = "<group>"; };
-		48369C911B90ED54008D5152 /* SecondScreen.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SecondScreen.bundle; sourceTree = "<group>"; };
-		48369C921B90ED54008D5152 /* SecondScreen.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SecondScreen.framework; sourceTree = "<group>"; };
 		48369C951B90EE15008D5152 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		4836DC2919E47C7200DEC2B8 /* PublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishViewController.h; sourceTree = "<group>"; };
 		4836DC2A19E47C7200DEC2B8 /* PublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishViewController.m; sourceTree = "<group>"; };
+		4847C6A31BA2280A00EABC6B /* SecondScreen.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SecondScreen.bundle; sourceTree = "<group>"; };
+		4847C6A41BA2280A00EABC6B /* SecondScreen.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SecondScreen.framework; sourceTree = "<group>"; };
 		484BF38B19F0039D00F693A1 /* HomeScreenSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeScreenSegue.h; sourceTree = "<group>"; };
 		484BF38C19F0039D00F693A1 /* HomeScreenSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeScreenSegue.m; sourceTree = "<group>"; };
 		4876D6F419E4856F00D72DDD /* SecondScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondScreenViewController.h; sourceTree = "<group>"; };
@@ -182,7 +182,6 @@
 				4876D6FF19E4860900D72DDD /* CoreMotion.framework in Frameworks */,
 				4876D6FD19E4860100D72DDD /* CFNetwork.framework in Frameworks */,
 				4876D6FB19E485FA00D72DDD /* AudioToolbox.framework in Frameworks */,
-				48369C941B90ED54008D5152 /* SecondScreen.framework in Frameworks */,
 				48160A7C19D4BDAF001A0EE2 /* OpenAL.framework in Frameworks */,
 				48160A7819D4ADCC001A0EE2 /* libiconv.dylib in Frameworks */,
 				48160A7619D4ADBD001A0EE2 /* libz.dylib in Frameworks */,
@@ -190,6 +189,7 @@
 				92E1DC6619A78C0000F6131D /* CoreGraphics.framework in Frameworks */,
 				92E1DC6819A78C0000F6131D /* UIKit.framework in Frameworks */,
 				92E1DC6419A78C0000F6131D /* Foundation.framework in Frameworks */,
+				4847C6A61BA2280A00EABC6B /* SecondScreen.framework in Frameworks */,
 				48160A7019D4AAD9001A0EE2 /* R5Streaming.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,8 +275,8 @@
 		92E1DC5719A78C0000F6131D = {
 			isa = PBXGroup;
 			children = (
-				48369C911B90ED54008D5152 /* SecondScreen.bundle */,
-				48369C921B90ED54008D5152 /* SecondScreen.framework */,
+				4847C6A31BA2280A00EABC6B /* SecondScreen.bundle */,
+				4847C6A41BA2280A00EABC6B /* SecondScreen.framework */,
 				48160A6F19D4AAD9001A0EE2 /* R5Streaming.framework */,
 				92E1DC6919A78C0000F6131D /* Red5ProiOS */,
 				92E1DC8219A78C0000F6131D /* Red5ProiOSTests */,
@@ -486,7 +486,7 @@
 				92C6BF5219AD1C2E00244A2F /* camera_grey.png in Resources */,
 				481A679119F1A5F80090ABCD /* secondGrey.png in Resources */,
 				92E1DC7619A78C0000F6131D /* Images.xcassets in Resources */,
-				48369C931B90ED54008D5152 /* SecondScreen.bundle in Resources */,
+				4847C6A51BA2280A00EABC6B /* SecondScreen.bundle in Resources */,
 				92101F9819ABB7D400879D55 /* second.png in Resources */,
 				48DD8D5419CB5396004A3652 /* r5p_done.png in Resources */,
 			);
