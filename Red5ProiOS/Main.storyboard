@@ -797,26 +797,6 @@
                                 <rect key="frame" x="0.0" y="109" width="320" height="459"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YCi-8U-EYt" userLabel="Control Scheme View">
-                                <rect key="frame" x="0.0" y="109" width="320" height="459"/>
-                                <subviews>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MfQ-Jf-qWY">
-                                        <rect key="frame" x="85" y="190" width="150" height="2"/>
-                                    </progressView>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uu3-gT-Q5D" userLabel="R5 Second Screen View" customClass="R5SecondScreenView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="459"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <outlet property="progressDelegate" destination="MfQ-Jf-qWY" id="wzA-ug-2cI"/>
-                                        </connections>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="uu3-gT-Q5D" secondAttribute="bottom" id="dmS-MZ-QEL"/>
-                                    <constraint firstItem="uu3-gT-Q5D" firstAttribute="top" secondItem="YCi-8U-EYt" secondAttribute="top" id="kQm-rN-LMU"/>
-                                </constraints>
-                            </view>
                             <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NLP-yV-GNW">
                                 <rect key="frame" x="0.0" y="65" width="320" height="44"/>
                                 <items>
@@ -853,7 +833,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Make sure you have a Red5 Pro Second Screen enabled application running on your network in order to connect." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="3nx-zc-ZZx">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Make sure you have a Red5 Pro Second Screen enabled application running on your network in order to connect." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="3nx-zc-ZZx">
                                         <rect key="frame" x="20" y="136" width="280" height="67"/>
                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -865,6 +845,26 @@
                                     <constraint firstItem="3nx-zc-ZZx" firstAttribute="leading" secondItem="gjX-rp-BVb" secondAttribute="leading" constant="20" id="eSX-Wy-AaN"/>
                                     <constraint firstItem="3nx-zc-ZZx" firstAttribute="top" secondItem="n9T-WH-VwL" secondAttribute="bottom" constant="22" id="mNd-u1-EOH"/>
                                     <constraint firstAttribute="trailing" secondItem="3nx-zc-ZZx" secondAttribute="trailing" constant="20" id="xdv-tg-BAo"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YCi-8U-EYt" userLabel="Control Scheme View">
+                                <rect key="frame" x="0.0" y="109" width="320" height="459"/>
+                                <subviews>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MfQ-Jf-qWY">
+                                        <rect key="frame" x="85" y="190" width="150" height="2"/>
+                                    </progressView>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uu3-gT-Q5D" userLabel="R5 Second Screen View" customClass="R5SecondScreenView">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="459"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="progressDelegate" destination="MfQ-Jf-qWY" id="wzA-ug-2cI"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="uu3-gT-Q5D" secondAttribute="bottom" id="dmS-MZ-QEL"/>
+                                    <constraint firstItem="uu3-gT-Q5D" firstAttribute="top" secondItem="YCi-8U-EYt" secondAttribute="top" id="kQm-rN-LMU"/>
                                 </constraints>
                             </view>
                         </subviews>
