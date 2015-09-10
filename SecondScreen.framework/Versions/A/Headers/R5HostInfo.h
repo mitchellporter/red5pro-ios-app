@@ -18,6 +18,11 @@
 @property (nonatomic, readonly) NSString* name;
 
 /**
+ * The deviceId of the host
+ */
+@property (nonatomic, readonly) NSString* deviceId;
+
+/**
  * The slot id for of the host
  *
  * The slot id is a non-negative integer from 0 to 64 that is assigned to the 

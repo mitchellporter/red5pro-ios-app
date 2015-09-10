@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A388b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="1pY-b2-Ywk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="1pY-b2-Ywk">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -794,29 +794,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="52" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="CB4-Qi-B2f">
-                                <rect key="frame" x="0.0" y="109" width="320" height="387"/>
+                                <rect key="frame" x="0.0" y="109" width="320" height="459"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YCi-8U-EYt" userLabel="Control Scheme View">
-                                <rect key="frame" x="0.0" y="109" width="320" height="387"/>
-                                <subviews>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MfQ-Jf-qWY">
-                                        <rect key="frame" x="85" y="190" width="150" height="2"/>
-                                    </progressView>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uu3-gT-Q5D" userLabel="R5 Second Screen View" customClass="R5SecondScreenView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="387"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <outlet property="progressDelegate" destination="MfQ-Jf-qWY" id="wzA-ug-2cI"/>
-                                        </connections>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="uu3-gT-Q5D" secondAttribute="bottom" id="ISy-fm-5di"/>
-                                    <constraint firstItem="uu3-gT-Q5D" firstAttribute="top" secondItem="YCi-8U-EYt" secondAttribute="top" id="kQm-rN-LMU"/>
-                                </constraints>
-                            </view>
                             <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NLP-yV-GNW">
                                 <rect key="frame" x="0.0" y="65" width="320" height="44"/>
                                 <items>
@@ -848,7 +828,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Host(s) Available" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9T-WH-VwL">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Host(s) Available" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9T-WH-VwL">
                                         <rect key="frame" x="70" y="93" width="134" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
@@ -863,16 +843,37 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="3nx-zc-ZZx" firstAttribute="leading" secondItem="gjX-rp-BVb" secondAttribute="leading" constant="20" id="eSX-Wy-AaN"/>
+                                    <constraint firstItem="3nx-zc-ZZx" firstAttribute="top" secondItem="n9T-WH-VwL" secondAttribute="bottom" constant="22" id="mNd-u1-EOH"/>
                                     <constraint firstAttribute="trailing" secondItem="3nx-zc-ZZx" secondAttribute="trailing" constant="20" id="xdv-tg-BAo"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YCi-8U-EYt" userLabel="Control Scheme View">
+                                <rect key="frame" x="0.0" y="109" width="320" height="459"/>
+                                <subviews>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MfQ-Jf-qWY">
+                                        <rect key="frame" x="85" y="190" width="150" height="2"/>
+                                    </progressView>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uu3-gT-Q5D" userLabel="R5 Second Screen View" customClass="R5SecondScreenView">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="459"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="progressDelegate" destination="MfQ-Jf-qWY" id="wzA-ug-2cI"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="uu3-gT-Q5D" secondAttribute="bottom" id="dmS-MZ-QEL"/>
+                                    <constraint firstItem="uu3-gT-Q5D" firstAttribute="top" secondItem="YCi-8U-EYt" secondAttribute="top" id="kQm-rN-LMU"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <constraints>
                             <constraint firstItem="gjX-rp-BVb" firstAttribute="top" secondItem="NLP-yV-GNW" secondAttribute="bottom" id="Lmx-h4-xlW"/>
+                            <constraint firstItem="kLK-ea-LDU" firstAttribute="top" secondItem="CB4-Qi-B2f" secondAttribute="bottom" id="Olf-lJ-Sie"/>
                             <constraint firstItem="YCi-8U-EYt" firstAttribute="top" secondItem="NLP-yV-GNW" secondAttribute="bottom" id="Zxv-WU-heJ"/>
-                            <constraint firstItem="kLK-ea-LDU" firstAttribute="top" secondItem="CB4-Qi-B2f" secondAttribute="bottom" constant="72" id="ceP-bJ-yFC"/>
+                            <constraint firstItem="kLK-ea-LDU" firstAttribute="top" secondItem="YCi-8U-EYt" secondAttribute="bottom" id="c1I-na-X6R"/>
                             <constraint firstItem="CB4-Qi-B2f" firstAttribute="top" secondItem="NLP-yV-GNW" secondAttribute="bottom" id="kqX-83-z3N"/>
-                            <constraint firstItem="kLK-ea-LDU" firstAttribute="top" secondItem="YCi-8U-EYt" secondAttribute="bottom" constant="72" id="wFS-CB-w7X"/>
                         </constraints>
                     </view>
                     <connections>
