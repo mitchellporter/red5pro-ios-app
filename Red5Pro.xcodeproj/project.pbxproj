@@ -21,7 +21,10 @@
 		48350B931A0C29360053A6FD /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = 48350B921A0C29360053A6FD /* help.html */; };
 		48350B981A11188E0053A6FD /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 48350B971A11188E0053A6FD /* Reachability.m */; };
 		48350B9C1A1131CF0053A6FD /* ALToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 48350B9B1A1131CF0053A6FD /* ALToastView.m */; };
+		48369C961B90EE15008D5152 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48369C951B90EE15008D5152 /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4836DC2B19E47C7200DEC2B8 /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4836DC2A19E47C7200DEC2B8 /* PublishViewController.m */; };
+		4847C6A51BA2280A00EABC6B /* SecondScreen.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4847C6A31BA2280A00EABC6B /* SecondScreen.bundle */; };
+		4847C6A61BA2280A00EABC6B /* SecondScreen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4847C6A41BA2280A00EABC6B /* SecondScreen.framework */; };
 		484BF38D19F0039D00F693A1 /* HomeScreenSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 484BF38C19F0039D00F693A1 /* HomeScreenSegue.m */; };
 		4876D6F619E4856F00D72DDD /* SecondScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4876D6F519E4856F00D72DDD /* SecondScreenViewController.m */; };
 		4876D6FB19E485FA00D72DDD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4876D6FA19E485FA00D72DDD /* AudioToolbox.framework */; };
@@ -32,8 +35,6 @@
 		4876D70519E4862100D72DDD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4876D70419E4862100D72DDD /* Security.framework */; };
 		4876D70D19E586E000D72DDD /* SecondScreenHostListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4876D70C19E586E000D72DDD /* SecondScreenHostListTableViewController.m */; };
 		4876D71019E5B79500D72DDD /* SecondScreenHostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4876D70F19E5B79500D72DDD /* SecondScreenHostViewController.m */; };
-		4876D71B19E84C9600D72DDD /* SecondScreen.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4876D71919E84C9600D72DDD /* SecondScreen.bundle */; };
-		4876D71C19E84C9600D72DDD /* SecondScreen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4876D71A19E84C9600D72DDD /* SecondScreen.framework */; };
 		487B8B1C19E700C200A47A7E /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 487B8B1B19E700C200A47A7E /* HomeViewController.m */; };
 		48DD8D5219CB4EDF004A3652 /* StreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DD8D5119CB4EDF004A3652 /* StreamViewController.m */; };
 		48DD8D5419CB5396004A3652 /* r5p_done.png in Resources */ = {isa = PBXBuildFile; fileRef = 48DD8D5319CB5396004A3652 /* r5p_done.png */; };
@@ -103,8 +104,11 @@
 		48350B971A11188E0053A6FD /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		48350B9A1A1131CF0053A6FD /* ALToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALToastView.h; sourceTree = "<group>"; };
 		48350B9B1A1131CF0053A6FD /* ALToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALToastView.m; sourceTree = "<group>"; };
+		48369C951B90EE15008D5152 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		4836DC2919E47C7200DEC2B8 /* PublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishViewController.h; sourceTree = "<group>"; };
 		4836DC2A19E47C7200DEC2B8 /* PublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishViewController.m; sourceTree = "<group>"; };
+		4847C6A31BA2280A00EABC6B /* SecondScreen.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SecondScreen.bundle; sourceTree = "<group>"; };
+		4847C6A41BA2280A00EABC6B /* SecondScreen.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SecondScreen.framework; sourceTree = "<group>"; };
 		484BF38B19F0039D00F693A1 /* HomeScreenSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeScreenSegue.h; sourceTree = "<group>"; };
 		484BF38C19F0039D00F693A1 /* HomeScreenSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeScreenSegue.m; sourceTree = "<group>"; };
 		4876D6F419E4856F00D72DDD /* SecondScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondScreenViewController.h; sourceTree = "<group>"; };
@@ -119,8 +123,6 @@
 		4876D70C19E586E000D72DDD /* SecondScreenHostListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondScreenHostListTableViewController.m; sourceTree = "<group>"; };
 		4876D70E19E5B79500D72DDD /* SecondScreenHostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondScreenHostViewController.h; sourceTree = "<group>"; };
 		4876D70F19E5B79500D72DDD /* SecondScreenHostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondScreenHostViewController.m; sourceTree = "<group>"; };
-		4876D71919E84C9600D72DDD /* SecondScreen.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SecondScreen.bundle; sourceTree = "<group>"; };
-		4876D71A19E84C9600D72DDD /* SecondScreen.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SecondScreen.framework; sourceTree = "<group>"; };
 		487B8B1A19E700C200A47A7E /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		487B8B1B19E700C200A47A7E /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		48DD8D5019CB4EDF004A3652 /* StreamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamViewController.h; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48369C961B90EE15008D5152 /* WebKit.framework in Frameworks */,
 				4876D70519E4862100D72DDD /* Security.framework in Frameworks */,
 				4876D70319E4861B00D72DDD /* QuartzCore.framework in Frameworks */,
 				4876D70119E4861400D72DDD /* CoreText.framework in Frameworks */,
@@ -186,7 +189,7 @@
 				92E1DC6619A78C0000F6131D /* CoreGraphics.framework in Frameworks */,
 				92E1DC6819A78C0000F6131D /* UIKit.framework in Frameworks */,
 				92E1DC6419A78C0000F6131D /* Foundation.framework in Frameworks */,
-				4876D71C19E84C9600D72DDD /* SecondScreen.framework in Frameworks */,
+				4847C6A61BA2280A00EABC6B /* SecondScreen.framework in Frameworks */,
 				48160A7019D4AAD9001A0EE2 /* R5Streaming.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,8 +275,8 @@
 		92E1DC5719A78C0000F6131D = {
 			isa = PBXGroup;
 			children = (
-				4876D71919E84C9600D72DDD /* SecondScreen.bundle */,
-				4876D71A19E84C9600D72DDD /* SecondScreen.framework */,
+				4847C6A31BA2280A00EABC6B /* SecondScreen.bundle */,
+				4847C6A41BA2280A00EABC6B /* SecondScreen.framework */,
 				48160A6F19D4AAD9001A0EE2 /* R5Streaming.framework */,
 				92E1DC6919A78C0000F6131D /* Red5ProiOS */,
 				92E1DC8219A78C0000F6131D /* Red5ProiOSTests */,
@@ -294,6 +297,7 @@
 		92E1DC6219A78C0000F6131D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				48369C951B90EE15008D5152 /* WebKit.framework */,
 				4876D70419E4862100D72DDD /* Security.framework */,
 				4876D70219E4861B00D72DDD /* QuartzCore.framework */,
 				4876D70019E4861400D72DDD /* CoreText.framework */,
@@ -471,7 +475,6 @@
 				92101F9719ABB7D400879D55 /* publish.png in Resources */,
 				92101F9919ABB7D400879D55 /* subscribe.png in Resources */,
 				92C187D119ABE50200007336 /* help.png in Resources */,
-				4876D71B19E84C9600D72DDD /* SecondScreen.bundle in Resources */,
 				92C187CC19ABE50200007336 /* box.png in Resources */,
 				92E1DC9719A79C8200F6131D /* Main.storyboard in Resources */,
 				481A679219F1A5F80090ABCD /* subscribeGrey.png in Resources */,
@@ -483,6 +486,7 @@
 				92C6BF5219AD1C2E00244A2F /* camera_grey.png in Resources */,
 				481A679119F1A5F80090ABCD /* secondGrey.png in Resources */,
 				92E1DC7619A78C0000F6131D /* Images.xcassets in Resources */,
+				4847C6A51BA2280A00EABC6B /* SecondScreen.bundle in Resources */,
 				92101F9819ABB7D400879D55 /* second.png in Resources */,
 				48DD8D5419CB5396004A3652 /* r5p_done.png in Resources */,
 			);
