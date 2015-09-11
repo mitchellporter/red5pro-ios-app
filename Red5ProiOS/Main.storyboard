@@ -122,36 +122,31 @@
                                             <constraint firstAttribute="height" constant="21" id="uCU-tL-aUr"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1o-q1-WoE" userLabel="Home Help">
-                                        <rect key="frame" x="270" y="26" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="uuO-Nd-bR2"/>
-                                            <constraint firstAttribute="height" constant="30" id="zNA-WG-jsh"/>
-                                        </constraints>
-                                        <state key="normal" image="help.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="x2H-PF-QbZ" kind="custom" identifier="" customClass="HelpDialogSegue" id="use-TN-22a"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="W1o-q1-WoE" secondAttribute="trailing" id="4qX-wX-Ubq"/>
                                     <constraint firstItem="Lcb-CB-u8E" firstAttribute="leading" secondItem="04O-LH-tw4" secondAttribute="leading" constant="15" id="9WU-9M-4uo"/>
                                     <constraint firstAttribute="height" constant="75" id="F10-8x-vr2"/>
-                                    <constraint firstAttribute="bottom" secondItem="W1o-q1-WoE" secondAttribute="bottom" constant="19" id="S1w-MG-E4j"/>
                                     <constraint firstItem="Lcb-CB-u8E" firstAttribute="top" secondItem="04O-LH-tw4" secondAttribute="top" constant="30" id="w8w-iZ-7Qu"/>
                                     <constraint firstAttribute="bottom" secondItem="Lcb-CB-u8E" secondAttribute="bottom" constant="24" id="x9g-8Y-bb9"/>
-                                    <constraint firstItem="W1o-q1-WoE" firstAttribute="top" secondItem="04O-LH-tw4" secondAttribute="top" constant="26" id="y2B-PE-VfY"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1o-q1-WoE" userLabel="Home Help">
+                                <rect key="frame" x="260" y="24" width="30" height="30"/>
+                                <state key="normal" image="help.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="x2H-PF-QbZ" kind="custom" identifier="" customClass="HelpDialogSegue" id="use-TN-22a"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.84836906934306566" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="W1o-q1-WoE" secondAttribute="trailing" id="2VP-8R-Zb5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="04O-LH-tw4" secondAttribute="trailing" constant="-16" id="7ks-qr-FVX"/>
                             <constraint firstAttribute="centerX" secondItem="JFB-ui-tbX" secondAttribute="centerX" id="STA-i7-IVc"/>
                             <constraint firstItem="04O-LH-tw4" firstAttribute="leading" secondItem="wgU-23-Uts" secondAttribute="leadingMargin" constant="-16" id="V8H-cM-Cih"/>
+                            <constraint firstItem="W1o-q1-WoE" firstAttribute="top" secondItem="gjB-K6-zCZ" secondAttribute="bottom" constant="4" id="WCY-dV-58Q"/>
                             <constraint firstItem="04O-LH-tw4" firstAttribute="top" secondItem="wgU-23-Uts" secondAttribute="topMargin" id="YbD-Tr-GSP"/>
                             <constraint firstAttribute="centerY" secondItem="JFB-ui-tbX" secondAttribute="centerY" id="raZ-VR-cCC"/>
                         </constraints>
@@ -456,15 +451,25 @@
                                         <color key="textColor" red="0.45497685185185183" green="0.46979166666666666" blue="0.47010995370370373" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Most likely you are a developer and know what you have downloaded. Here are a few things to know in case you are confused." lineBreakMode="headTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="240" translatesAutoresizingMaskIntoConstraints="NO" id="piN-iW-Py6">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Most likely you are a developer and know what you have downloaded. Here are a few things to know in case you are confused." lineBreakMode="headTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="240" translatesAutoresizingMaskIntoConstraints="NO" id="piN-iW-Py6">
                                         <rect key="frame" x="20" y="70" width="240" height="75"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cYj-8I-y5z">
+                                        <rect key="frame" x="20" y="153" width="240" height="316"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="cYj-8I-y5z" firstAttribute="top" secondItem="piN-iW-Py6" secondAttribute="bottom" constant="8" id="2eS-Ny-fk9"/>
                                     <constraint firstAttribute="bottom" secondItem="mRn-tn-Nha" secondAttribute="bottom" id="BxX-dn-uQT"/>
+                                    <constraint firstItem="mRn-tn-Nha" firstAttribute="top" secondItem="cYj-8I-y5z" secondAttribute="bottom" constant="8" id="Mig-Cx-4x5"/>
+                                    <constraint firstItem="cYj-8I-y5z" firstAttribute="leading" secondItem="K2A-l8-Jrx" secondAttribute="leading" constant="20" id="Q6q-aV-dPo"/>
+                                    <constraint firstAttribute="trailing" secondItem="cYj-8I-y5z" secondAttribute="trailing" constant="20" id="eq6-hh-T59"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -480,6 +485,7 @@
                     </view>
                     <connections>
                         <outlet property="helpTextView" destination="K2A-l8-Jrx" id="rNo-Am-KaA"/>
+                        <outlet property="textView" destination="cYj-8I-y5z" id="ErA-Bq-h7g"/>
                         <outlet property="versionLabel" destination="pyV-3q-yQ4" id="bBP-2h-K7T"/>
                     </connections>
                 </viewController>
@@ -1008,6 +1014,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="xd4-U6-Se4"/>
         <segue reference="IEf-a7-nyF"/>
-        <segue reference="cx3-hF-LdY"/>
+        <segue reference="use-TN-22a"/>
     </inferredMetricsTieBreakers>
 </document>
