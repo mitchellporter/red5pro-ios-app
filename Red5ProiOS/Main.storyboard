@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="1pY-b2-Ywk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="1pY-b2-Ywk">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -178,10 +178,10 @@
                         <viewControllerLayoutGuide type="bottom" id="MxR-wR-dWf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cdE-RX-o7G">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZY3-LB-e7R" userLabel="View Header Bar">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZY3-LB-e7R" userLabel="View Header Bar">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="75"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZH6-c6-N1u">
@@ -1007,8 +1007,8 @@
         <image name="subscribeGrey.png" width="142" height="142"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cx3-hF-LdY"/>
         <segue reference="p1m-C6-oBN"/>
         <segue reference="3sl-ad-aZi"/>
+        <segue reference="use-TN-22a"/>
     </inferredMetricsTieBreakers>
 </document>

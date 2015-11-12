@@ -16,8 +16,6 @@
 		481A679119F1A5F80090ABCD /* secondGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 481A678E19F1A5F80090ABCD /* secondGrey.png */; };
 		481A679219F1A5F80090ABCD /* subscribeGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 481A678F19F1A5F80090ABCD /* subscribeGrey.png */; };
 		481A679519F55A2E0090ABCD /* ResolutionsPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 481A679419F55A2E0090ABCD /* ResolutionsPickerViewController.m */; };
-		481B06441BA8B12700FF925B /* SecondScreen.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 481B06421BA8B12700FF925B /* SecondScreen.bundle */; };
-		481B06451BA8B12700FF925B /* SecondScreen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481B06431BA8B12700FF925B /* SecondScreen.framework */; };
 		48350B8E1A0BFB8F0053A6FD /* HelpDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48350B8D1A0BFB8F0053A6FD /* HelpDialogViewController.m */; };
 		48350B911A0BFC900053A6FD /* HelpDialogSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 48350B901A0BFC900053A6FD /* HelpDialogSegue.m */; };
 		48350B931A0C29360053A6FD /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = 48350B921A0C29360053A6FD /* help.html */; };
@@ -36,6 +34,8 @@
 		4876D70D19E586E000D72DDD /* SecondScreenHostListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4876D70C19E586E000D72DDD /* SecondScreenHostListTableViewController.m */; };
 		4876D71019E5B79500D72DDD /* SecondScreenHostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4876D70F19E5B79500D72DDD /* SecondScreenHostViewController.m */; };
 		487B8B1C19E700C200A47A7E /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 487B8B1B19E700C200A47A7E /* HomeViewController.m */; };
+		48C32B6B1BF4EED700BD8105 /* SecondScreen.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 48C32B691BF4EED700BD8105 /* SecondScreen.bundle */; };
+		48C32B6C1BF4EED700BD8105 /* SecondScreen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C32B6A1BF4EED700BD8105 /* SecondScreen.framework */; };
 		48DD8D5219CB4EDF004A3652 /* StreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DD8D5119CB4EDF004A3652 /* StreamViewController.m */; };
 		48DD8D5419CB5396004A3652 /* r5p_done.png in Resources */ = {isa = PBXBuildFile; fileRef = 48DD8D5319CB5396004A3652 /* r5p_done.png */; };
 		48DD8D5B19CB5652004A3652 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DD8D5A19CB5652004A3652 /* VideoViewController.m */; };
@@ -95,8 +95,6 @@
 		481A678F19F1A5F80090ABCD /* subscribeGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subscribeGrey.png; sourceTree = "<group>"; };
 		481A679319F55A2E0090ABCD /* ResolutionsPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResolutionsPickerViewController.h; sourceTree = "<group>"; };
 		481A679419F55A2E0090ABCD /* ResolutionsPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResolutionsPickerViewController.m; sourceTree = "<group>"; };
-		481B06421BA8B12700FF925B /* SecondScreen.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SecondScreen.bundle; sourceTree = "<group>"; };
-		481B06431BA8B12700FF925B /* SecondScreen.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SecondScreen.framework; sourceTree = "<group>"; };
 		48350B8C1A0BFB8F0053A6FD /* HelpDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpDialogViewController.h; sourceTree = "<group>"; };
 		48350B8D1A0BFB8F0053A6FD /* HelpDialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpDialogViewController.m; sourceTree = "<group>"; };
 		48350B8F1A0BFC900053A6FD /* HelpDialogSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpDialogSegue.h; sourceTree = "<group>"; };
@@ -125,6 +123,8 @@
 		4876D70F19E5B79500D72DDD /* SecondScreenHostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondScreenHostViewController.m; sourceTree = "<group>"; };
 		487B8B1A19E700C200A47A7E /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		487B8B1B19E700C200A47A7E /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		48C32B691BF4EED700BD8105 /* SecondScreen.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SecondScreen.bundle; sourceTree = "<group>"; };
+		48C32B6A1BF4EED700BD8105 /* SecondScreen.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SecondScreen.framework; sourceTree = "<group>"; };
 		48DD8D5019CB4EDF004A3652 /* StreamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamViewController.h; sourceTree = "<group>"; };
 		48DD8D5119CB4EDF004A3652 /* StreamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamViewController.m; sourceTree = "<group>"; };
 		48DD8D5319CB5396004A3652 /* r5p_done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = r5p_done.png; path = ../images/r5p_done.png; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 				92E1DC6619A78C0000F6131D /* CoreGraphics.framework in Frameworks */,
 				92E1DC6819A78C0000F6131D /* UIKit.framework in Frameworks */,
 				92E1DC6419A78C0000F6131D /* Foundation.framework in Frameworks */,
-				481B06451BA8B12700FF925B /* SecondScreen.framework in Frameworks */,
+				48C32B6C1BF4EED700BD8105 /* SecondScreen.framework in Frameworks */,
 				48160A7019D4AAD9001A0EE2 /* R5Streaming.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,8 +275,8 @@
 		92E1DC5719A78C0000F6131D = {
 			isa = PBXGroup;
 			children = (
-				481B06421BA8B12700FF925B /* SecondScreen.bundle */,
-				481B06431BA8B12700FF925B /* SecondScreen.framework */,
+				48C32B691BF4EED700BD8105 /* SecondScreen.bundle */,
+				48C32B6A1BF4EED700BD8105 /* SecondScreen.framework */,
 				48160A6F19D4AAD9001A0EE2 /* R5Streaming.framework */,
 				92E1DC6919A78C0000F6131D /* Red5ProiOS */,
 				92E1DC8219A78C0000F6131D /* Red5ProiOSTests */,
@@ -429,7 +429,7 @@
 		92E1DC5819A78C0000F6131D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = Infrared5;
 				TargetAttributes = {
 					92E1DC5F19A78C0000F6131D = {
@@ -486,7 +486,7 @@
 				92C6BF5219AD1C2E00244A2F /* camera_grey.png in Resources */,
 				481A679119F1A5F80090ABCD /* secondGrey.png in Resources */,
 				92E1DC7619A78C0000F6131D /* Images.xcassets in Resources */,
-				481B06441BA8B12700FF925B /* SecondScreen.bundle in Resources */,
+				48C32B6B1BF4EED700BD8105 /* SecondScreen.bundle in Resources */,
 				92101F9819ABB7D400879D55 /* second.png in Resources */,
 				48DD8D5419CB5396004A3652 /* r5p_done.png in Resources */,
 			);
@@ -583,6 +583,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -644,6 +645,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -661,6 +663,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-lstdc++";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.infrared5.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -677,6 +680,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -694,6 +698,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-lstdc++";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.infrared5.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -720,6 +725,7 @@
 				);
 				INFOPLIST_FILE = "Red5ProiOSTests/Red5ProiOSTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.infrared5.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -739,6 +745,7 @@
 				GCC_PREFIX_HEADER = "Red5ProiOS/Red5ProiOS-Prefix.pch";
 				INFOPLIST_FILE = "Red5ProiOSTests/Red5ProiOSTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.infrared5.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
