@@ -18,6 +18,8 @@
 
 - (NSString*) getUserSetting:(NSString *)key withDefault:(NSString *)defaultValue {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
     if([defaults objectForKey:key]) {
         return [defaults stringForKey:key];
     }
@@ -66,7 +68,6 @@
     
     self.domain.text = [self getUserSetting:@"domain" withDefault:@"0.0.0.0"];
     self.port.text = [self getUserSetting:@"port" withDefault:self.port.text];
-    self.app.text = [self getUserSetting:@"app" withDefault:self.app.text];
     self.stream.text = [self getUserSetting:@"stream" withDefault:self.stream.text];
     self.protocol.text = [self getUserSetting:@"protocol" withDefault:self.protocol.text];
     self.bitrate.text = [self getUserSetting:@"bitrate" withDefault:@"128"];
@@ -79,16 +80,19 @@
             [self.streamSettingsForm setHidden:NO];
             [self.publishSettingsForm setHidden:NO];
             self.port.text = [self getUserSetting:@"port" withDefault:@"8554"];
+            self.app.text = [self getUserSetting:@"app" withDefault:@"live"];
             break;
         case r5_example_stream:
             [self.streamSettingsForm setHidden:NO];
             [self.publishSettingsForm setHidden:YES];
             self.port.text = [self getUserSetting:@"port" withDefault:@"8554"];
+            self.app.text = [self getUserSetting:@"app" withDefault:@"live"];
             break;
         case r5_example_secondscreen:
             [self.streamSettingsForm setHidden:YES];
             [self.publishSettingsForm setHidden:YES];
             self.port.text = [self getUserSetting:@"secondscreen_port" withDefault:@"8088"];
+            self.app.text = [self getUserSetting:@"app" withDefault:@"secondscreen"];
             break;
     }
 
