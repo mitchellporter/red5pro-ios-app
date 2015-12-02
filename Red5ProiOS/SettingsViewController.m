@@ -18,8 +18,6 @@
 
 - (NSString*) getUserSetting:(NSString *)key withDefault:(NSString *)defaultValue {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
-    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
     if([defaults objectForKey:key]) {
         return [defaults stringForKey:key];
     }
