@@ -108,7 +108,7 @@
 
     
     isTogglable = NO;
-    [stream publish:streamName type:R5RecordTypeRecord];
+    [stream publish:streamName type:R5RecordTypeLive];
 }
 
 -(void)close{

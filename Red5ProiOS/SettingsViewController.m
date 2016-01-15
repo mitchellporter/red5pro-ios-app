@@ -66,7 +66,6 @@
     
     self.domain.text = [self getUserSetting:@"domain" withDefault:@"0.0.0.0"];
     self.port.text = [self getUserSetting:@"port" withDefault:self.port.text];
-    self.app.text = [self getUserSetting:@"app" withDefault:self.app.text];
     self.stream.text = [self getUserSetting:@"stream" withDefault:self.stream.text];
     self.protocol.text = [self getUserSetting:@"protocol" withDefault:self.protocol.text];
     self.bitrate.text = [self getUserSetting:@"bitrate" withDefault:@"128"];
@@ -79,16 +78,19 @@
             [self.streamSettingsForm setHidden:NO];
             [self.publishSettingsForm setHidden:NO];
             self.port.text = [self getUserSetting:@"port" withDefault:@"8554"];
+            self.app.text = [self getUserSetting:@"app" withDefault:@"live"];
             break;
         case r5_example_stream:
             [self.streamSettingsForm setHidden:NO];
             [self.publishSettingsForm setHidden:YES];
             self.port.text = [self getUserSetting:@"port" withDefault:@"8554"];
+            self.app.text = [self getUserSetting:@"app" withDefault:@"live"];
             break;
         case r5_example_secondscreen:
             [self.streamSettingsForm setHidden:YES];
             [self.publishSettingsForm setHidden:YES];
             self.port.text = [self getUserSetting:@"secondscreen_port" withDefault:@"8088"];
+            self.app.text = [self getUserSetting:@"secondscreen_app" withDefault:@"secondscreen"];
             break;
     }
 
@@ -102,7 +104,6 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:self.domain.text forKey:@"domain"];
-    [defaults setObject:self.app.text forKey:@"app"];
     [defaults setObject:self.stream.text forKey:@"stream"];
     [defaults setObject:self.protocol.text forKey:@"protocol"];
     [defaults setObject:self.bitrate.text forKey:@"bitrate"];
@@ -115,9 +116,11 @@
     switch (self.currentMode) {
         case r5_example_publish:
         case r5_example_stream:
+            [defaults setObject:self.app.text forKey:@"app"];
             [defaults setObject:self.port.text forKey:@"port"];
             break;
         case r5_example_secondscreen:
+            [defaults setObject:self.app.text forKey:@"secondscreen_app"];
             [defaults setObject:self.port.text forKey:@"secondscreen_port"];
             break;
     }
