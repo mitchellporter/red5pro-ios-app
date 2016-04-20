@@ -15,4 +15,7 @@
 @property UIViewController *currentStreamView;
 @property enum StreamMode currentMode;
 @property (weak, nonatomic) IBOutlet UIView *viewHeaderBar;
+
+- (IBAction)onCameraTouch:(id)sender;
+
 @end
