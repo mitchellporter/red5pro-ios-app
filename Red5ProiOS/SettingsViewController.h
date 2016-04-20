@@ -11,8 +11,7 @@
 
 enum StreamMode {
     r5_example_stream,
-    r5_example_publish,
-    r5_example_secondscreen
+    r5_example_publish
 };
 
 @protocol SettingsDelegate <NSObject>
