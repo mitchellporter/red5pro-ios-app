@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StreamViewController.h"
 
 @class R5SecondScreenView;
 
@@ -18,4 +19,6 @@
 @property (nonatomic, weak) IBOutlet R5SecondScreenView *r5SecondScreenView;
 @property (nonatomic, weak)IBOutlet UIActivityIndicatorView *activityView;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *backButton;
+
+@property (nonatomic, strong) StreamViewController *streamViewController;
 @end

@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <R5Streaming/R5Streaming.h>
+#import "StreamViewController.h"
 
 @interface PublishViewController : R5VideoViewController<R5StreamDelegate>
+@property (nonatomic, strong) StreamViewController *streamViewController;
+
 -(void)start;
 -(void)stop : (BOOL) reset;
 -(void)toggleCamera;

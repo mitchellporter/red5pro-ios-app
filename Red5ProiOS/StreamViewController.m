@@ -9,6 +9,7 @@
 #import "StreamViewController.h"
 #import "PublishViewController.h"
 #import "VideoViewController.h"
+#import "SecondScreenViewController.h"
 
 @interface StreamViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *settingsHeight;
@@ -162,6 +163,16 @@
     [self.view addSubview:myController.view];
     [self.view sendSubviewToBack:myController.view];
     
+    if ([myController isKindOfClass:[VideoViewController class]]) {
+        VideoViewController *videoViewController = (VideoViewController *)myController;
+        videoViewController.streamViewController = self;
+    } else if ([myController isKindOfClass:[PublishViewController class]]) {
+        PublishViewController *publishViewController = (PublishViewController *)myController;
+        publishViewController.streamViewController = self;
+    } else if ([myController isKindOfClass:[SecondScreenViewController class]]) {
+        SecondScreenViewController *secondScreenViewController = (SecondScreenViewController *)myController;
+        secondScreenViewController.streamViewController = self;
+    }
 }
 
 -(void)loadViewFromStoryboard:(NSString *)viewID {

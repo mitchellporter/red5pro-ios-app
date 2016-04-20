@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <R5Streaming/R5Streaming.h>
+#import "StreamViewController.h"
 
 @interface VideoViewController : R5VideoViewController
+@property (nonatomic, strong) StreamViewController *streamViewController;
+
 -(void)start;
 -(void)stop;
 @end
