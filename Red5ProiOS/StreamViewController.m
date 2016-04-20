@@ -9,12 +9,10 @@
 #import "StreamViewController.h"
 #import "PublishViewController.h"
 #import "VideoViewController.h"
-#import "SecondScreenViewController.h"
 
 @interface StreamViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *settingsHeight;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
-@property (weak, nonatomic) IBOutlet UIButton *secondScreenButton;
 @property (weak, nonatomic) IBOutlet UIButton *subscribeButton;
 @property (weak, nonatomic) IBOutlet UIButton *publishButton;
 @property (weak, nonatomic) IBOutlet UIButton *launchButton;
@@ -54,21 +52,13 @@
             self.launchButton.hidden = NO;
             self.publishButton.selected = true;
             self.subscribeButton.selected = false;
-            self.secondScreenButton.selected = false;
             [self loadStreamView:@"publishView"];
             break;
         case r5_example_stream:
             self.streamPlayButton.hidden = NO;
             self.publishButton.selected = false;
             self.subscribeButton.selected = true;
-            self.secondScreenButton.selected = false;
             [self loadStreamView:@"subscribeView"];
-            break;
-        case r5_example_secondscreen:
-            self.publishButton.selected = false;
-            self.subscribeButton.selected = false;
-            self.secondScreenButton.selected = true;
-            [self loadViewFromStoryboard:@"secondScreenView"];
             break;
     }
     
@@ -129,12 +119,6 @@
     }
 }
 
-- (IBAction)onSecondScreenTouch:(id)sender {
-    if([self updateMode:r5_example_secondscreen]) {
-        [self showSettings];
-    }
-}
-
 -(void)loadStreamView:(NSString *)viewID{
    
     if(self.currentStreamView){
@@ -169,9 +153,6 @@
     } else if ([myController isKindOfClass:[PublishViewController class]]) {
         PublishViewController *publishViewController = (PublishViewController *)myController;
         publishViewController.streamViewController = self;
-    } else if ([myController isKindOfClass:[SecondScreenViewController class]]) {
-        SecondScreenViewController *secondScreenViewController = (SecondScreenViewController *)myController;
-        secondScreenViewController.streamViewController = self;
     }
 }
 

@@ -22,10 +22,6 @@
     self.selectedMode = r5_example_stream;
 }
 
-- (IBAction)onSecondTouch:(id)sender {
-    self.selectedMode = r5_example_secondscreen;
-}
-
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     StreamViewController *streamController = (StreamViewController *)segue.destinationViewController;
     if(streamController != nil && [streamController respondsToSelector:@selector(setCurrentMode:)]) {
