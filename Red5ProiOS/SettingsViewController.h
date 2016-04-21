@@ -22,8 +22,6 @@ enum StreamMode {
 
 @interface SettingsViewController : UIViewController<UITextFieldDelegate, ResolutionsPickerDelegate>
 @property (weak, nonatomic) IBOutlet UIView *publishSettingsView;
-@property (weak, nonatomic) IBOutlet UITextField *domain;
-@property (weak, nonatomic) IBOutlet UITextField *port;
 @property (weak, nonatomic) IBOutlet UITextField *app;
 @property (weak, nonatomic) IBOutlet UITextField *stream;
 @property (weak, nonatomic) IBOutlet UITextField *protocol;

@@ -28,8 +28,6 @@
     [super viewDidLoad];
     self.view.hidden = YES;
 
-    self.domain.delegate = self;
-    self.port.delegate = self;
     self.app.delegate = self;
     self.stream.delegate = self;
     self.protocol.delegate = self;
@@ -64,8 +62,6 @@
     int resHeight = [[self getUserSetting:@"resolutionHeight" withDefault:@"240"] intValue];
     NSString *resolution = [NSString stringWithFormat:@"%ldx%ld", (long)resWidth, (long)resHeight];
     
-    self.domain.text = [self getUserSetting:@"domain" withDefault:@"0.0.0.0"];
-    self.port.text = [self getUserSetting:@"port" withDefault:self.port.text];
     self.stream.text = [self getUserSetting:@"stream" withDefault:self.stream.text];
     self.protocol.text = [self getUserSetting:@"protocol" withDefault:self.protocol.text];
     self.bitrate.text = [self getUserSetting:@"bitrate" withDefault:@"128"];
@@ -77,13 +73,11 @@
         case r5_example_publish:
             [self.streamSettingsForm setHidden:NO];
             [self.publishSettingsForm setHidden:NO];
-            self.port.text = [self getUserSetting:@"port" withDefault:@"8554"];
             self.app.text = [self getUserSetting:@"app" withDefault:@"live"];
             break;
         case r5_example_stream:
             [self.streamSettingsForm setHidden:NO];
             [self.publishSettingsForm setHidden:YES];
-            self.port.text = [self getUserSetting:@"port" withDefault:@"8554"];
             self.app.text = [self getUserSetting:@"app" withDefault:@"live"];
             break;
     }
@@ -97,7 +91,6 @@
     int resolutionHeight = [(NSString *)[dims objectAtIndex:1] intValue];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.domain.text forKey:@"domain"];
     [defaults setObject:self.stream.text forKey:@"stream"];
     [defaults setObject:self.protocol.text forKey:@"protocol"];
     [defaults setObject:self.bitrate.text forKey:@"bitrate"];
@@ -111,7 +104,6 @@
         case r5_example_publish:
         case r5_example_stream:
             [defaults setObject:self.app.text forKey:@"app"];
-            [defaults setObject:self.port.text forKey:@"port"];
             break;
     }
     
