@@ -73,16 +73,21 @@
     
     [[self qualityControl] setSelectedSegmentIndex:savedQuality];
     
+    CGRect doneFrame = self.doneBtn.frame;
+    CGRect publishFrame = self.publishSettingsView.frame;
+    
     switch(self.currentMode) {
         case r5_example_publish:
             [self.streamSettingsForm setHidden:NO];
             [self.publishSettingsForm setHidden:NO];
             self.app.text = [self getUserSetting:@"app" withDefault:@"live"];
+            self.doneBtn.frame = CGRectMake(doneFrame.origin.x, publishFrame.origin.y + publishFrame.size.height + 8, doneFrame.size.width, doneFrame.size.height);
             break;
         case r5_example_stream:
             [self.streamSettingsForm setHidden:NO];
             [self.publishSettingsForm setHidden:YES];
             self.app.text = [self getUserSetting:@"app" withDefault:@"live"];
+            self.doneBtn.frame = CGRectMake(doneFrame.origin.x, publishFrame.origin.y, doneFrame.size.width, doneFrame.size.height);
             break;
     }
 
