@@ -30,7 +30,6 @@
 
     self.app.delegate = self;
     self.stream.delegate = self;
-    self.protocol.delegate = self;
     self.bitrate.delegate = self;
 
     for(UIViewController *child in self.childViewControllers) {
@@ -63,7 +62,6 @@
     NSString *resolution = [NSString stringWithFormat:@"%ldx%ld", (long)resWidth, (long)resHeight];
     
     self.stream.text = [self getUserSetting:@"stream" withDefault:self.stream.text];
-    self.protocol.text = [self getUserSetting:@"protocol" withDefault:self.protocol.text];
     self.bitrate.text = [self getUserSetting:@"bitrate" withDefault:@"128"];
     self.audioCheck.selected = [[self getUserSetting:@"includeAudio" withDefault:@"1"] boolValue];
     self.videoCheck.selected = [[self getUserSetting:@"includeVideo" withDefault:@"1"] boolValue];
@@ -92,7 +90,6 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:self.stream.text forKey:@"stream"];
-    [defaults setObject:self.protocol.text forKey:@"protocol"];
     [defaults setObject:self.bitrate.text forKey:@"bitrate"];
     
     [defaults setBool:self.audioCheck.selected forKey:@"includeAudio"];
@@ -159,8 +156,7 @@
 - (BOOL)isHiddenKeyboardField:(UITextField *)field {
     return field == self.bitrate ||
             
-            field == self.stream ||
-            field == self.protocol;
+            field == self.stream;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

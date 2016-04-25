@@ -24,7 +24,6 @@ enum StreamMode {
 @property (weak, nonatomic) IBOutlet UIView *publishSettingsView;
 @property (weak, nonatomic) IBOutlet UITextField *app;
 @property (weak, nonatomic) IBOutlet UITextField *stream;
-@property (weak, nonatomic) IBOutlet UITextField *protocol;
 @property (weak, nonatomic) IBOutlet UITextField *bitrate;
 
 @property (weak, nonatomic) IBOutlet UIButton *audioCheck;
