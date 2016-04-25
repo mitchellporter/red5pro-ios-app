@@ -11,7 +11,6 @@
 @interface SettingsViewController ()
 @property enum StreamMode currentMode;
 @property UITextField *focusedField;
-@property ResolutionsPickerViewController *resolutionsPickerController;
 @end
 
 @implementation SettingsViewController
@@ -30,42 +29,49 @@
 
     self.app.delegate = self;
     self.stream.delegate = self;
-    self.bitrate.delegate = self;
-
-    for(UIViewController *child in self.childViewControllers) {
-        if([child isKindOfClass:[ResolutionsPickerViewController class]]) {
-            self.resolutionsPickerController = (ResolutionsPickerViewController*)child;
-            [self.resolutionsPickerController setDelegate:self];
-        }
-    }
-
 }
 
-- (void)setResolutionSelectText:(NSString *)label {
-    [self.resolutionSelect setTitle:label forState:UIControlStateNormal];
-    [self.resolutionSelect setTitle:label forState:UIControlStateHighlighted];
-    [self.resolutionSelect setTitle:label forState:UIControlStateDisabled];
-    [self.resolutionSelect setTitle:label forState:UIControlStateSelected];
+- (void)setQualityWithIndex:(int)index {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setInteger:index forKey:@"quality"];
+    
+    switch (index) {
+        case 0:
+            [defaults setInteger:426 forKey:@"resolutionWidth"];
+            [defaults setInteger:240 forKey:@"resolutionHeight"];
+            [defaults setObject:@"400" forKey:@"bitrate"];
+            break;
+        case 1:
+            [defaults setInteger:854 forKey:@"resolutionWidth"];
+            [defaults setInteger:480 forKey:@"resolutionHeight"];
+            [defaults setObject:@"1000" forKey:@"bitrate"];
+            break;
+        case 2:
+            [defaults setInteger:1920 forKey:@"resolutionWidth"];
+            [defaults setInteger:1080 forKey:@"resolutionHeight"];
+            [defaults setObject:@"4500" forKey:@"bitrate"];
+            break;
+        default:
+            [defaults setInteger:854 forKey:@"resolutionWidth"];
+            [defaults setInteger:480 forKey:@"resolutionHeight"];
+            [defaults setObject:@"1000" forKey:@"bitrate"];
+            break;
+    }
 }
 
 -(void)showSettingsForMode:(enum StreamMode) mode{
-    
     self.currentMode = mode;
-    self.resPickerHeight.constant = 0;
-    [self.resPickerHeight.secondItem updateConstraintsIfNeeded];
-    [self.resPickerHeight.firstItem updateConstraintsIfNeeded];
     
     self.view.hidden = NO;
     
-    int resWidth = [[self getUserSetting:@"resolutionWidth" withDefault:@"320"] intValue];
-    int resHeight = [[self getUserSetting:@"resolutionHeight" withDefault:@"240"] intValue];
-    NSString *resolution = [NSString stringWithFormat:@"%ldx%ld", (long)resWidth, (long)resHeight];
-    
     self.stream.text = [self getUserSetting:@"stream" withDefault:self.stream.text];
-    self.bitrate.text = [self getUserSetting:@"bitrate" withDefault:@"128"];
     self.audioCheck.selected = [[self getUserSetting:@"includeAudio" withDefault:@"1"] boolValue];
     self.videoCheck.selected = [[self getUserSetting:@"includeVideo" withDefault:@"1"] boolValue];
-    [self setResolutionSelectText:resolution];
+    
+    int savedQuality = [[self getUserSetting:@"quality" withDefault:@"1"] intValue];
+    
+    [[self qualityControl] setSelectedSegmentIndex:savedQuality];
     
     switch(self.currentMode) {
         case r5_example_publish:
@@ -83,19 +89,15 @@
 }
 
 - (IBAction)onDoneClicked:(id)sender {
-
-    NSArray *dims = [self.resolutionSelect.titleLabel.text componentsSeparatedByString:@"x"];
-    int resolutionWidth = [(NSString *)[dims objectAtIndex:0] intValue];
-    int resolutionHeight = [(NSString *)[dims objectAtIndex:1] intValue];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:self.stream.text forKey:@"stream"];
-    [defaults setObject:self.bitrate.text forKey:@"bitrate"];
+    
+    int selected = (int) [[self qualityControl] selectedSegmentIndex];
+    [self setQualityWithIndex:selected];
     
     [defaults setBool:self.audioCheck.selected forKey:@"includeAudio"];
     [defaults setBool:self.videoCheck.selected forKey:@"includeVideo"];
-    [defaults setInteger:resolutionWidth forKey:@"resolutionWidth"];
-    [defaults setInteger:resolutionHeight forKey:@"resolutionHeight"];
     
     switch (self.currentMode) {
         case r5_example_publish:
@@ -112,51 +114,8 @@
         [self.delegate closeSettings];
 }
 
-- (IBAction)openResolutionsPicker:(id)sender {
-    if(!self.resolutionsPickerController.isOpen) {
-        [self.resolutionsPickerController showResolutionsWithSelection:self.resolutionSelect.titleLabel.text];
-        
-        [UIView animateWithDuration:0.5 animations:^{
-        
-            [self.view layoutIfNeeded];
-            self.resPickerHeight.constant = 214;
-            [self.resPickerHeight.secondItem updateConstraintsIfNeeded];
-            [self.resPickerHeight.firstItem updateConstraintsIfNeeded];
-            //self.view.frame = CGRectOffset(self.view.frame, 0, -78);
-            [self.view layoutIfNeeded];
-        
-        } completion:^(BOOL finished) {
-            [self.resolutionsPickerController setIsOpen:YES];
-        }];
-    }
-    if(self.focusedField != nil) {
-        [self textFieldShouldReturn:self.focusedField];
-    }
-}
-
-- (void)closeResolutionsPicker {
-    if(self.resolutionsPickerController.isOpen) {
-        [self.resolutionsPickerController setIsOpen:NO];
-        [self setResolutionSelectText:[self.resolutionsPickerController getSelection]];
-        
-        [UIView animateWithDuration:0.5 animations:^{
-        
-            [self.view layoutIfNeeded];
-            self.resPickerHeight.constant = 0;
-            [self.resPickerHeight.secondItem updateConstraintsIfNeeded];
-            [self.resPickerHeight.firstItem updateConstraintsIfNeeded];
-            //self.view.frame = CGRectOffset(self.view.frame, 0, 78);
-            [self.view layoutIfNeeded];
-            
-        } completion:^(BOOL finished) {
-        }];
-    }
-}
-
 - (BOOL)isHiddenKeyboardField:(UITextField *)field {
-    return field == self.bitrate ||
-            
-            field == self.stream;
+    return field == self.stream;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -169,7 +128,6 @@
     if([self isHiddenKeyboardField:textField]) {
         [self animateTextField: textField up: YES];
     }
-    [self closeResolutionsPicker];
     self.focusedField = textField;
 }
 

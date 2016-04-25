@@ -15,7 +15,6 @@
 		481A679019F1A5F80090ABCD /* publishGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 481A678D19F1A5F80090ABCD /* publishGrey.png */; };
 		481A679119F1A5F80090ABCD /* secondGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 481A678E19F1A5F80090ABCD /* secondGrey.png */; };
 		481A679219F1A5F80090ABCD /* subscribeGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 481A678F19F1A5F80090ABCD /* subscribeGrey.png */; };
-		481A679519F55A2E0090ABCD /* ResolutionsPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 481A679419F55A2E0090ABCD /* ResolutionsPickerViewController.m */; };
 		48350B8E1A0BFB8F0053A6FD /* HelpDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48350B8D1A0BFB8F0053A6FD /* HelpDialogViewController.m */; };
 		48350B911A0BFC900053A6FD /* HelpDialogSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 48350B901A0BFC900053A6FD /* HelpDialogSegue.m */; };
 		48350B931A0C29360053A6FD /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = 48350B921A0C29360053A6FD /* help.html */; };
@@ -91,8 +90,6 @@
 		481A678D19F1A5F80090ABCD /* publishGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = publishGrey.png; sourceTree = "<group>"; };
 		481A678E19F1A5F80090ABCD /* secondGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = secondGrey.png; sourceTree = "<group>"; };
 		481A678F19F1A5F80090ABCD /* subscribeGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subscribeGrey.png; sourceTree = "<group>"; };
-		481A679319F55A2E0090ABCD /* ResolutionsPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResolutionsPickerViewController.h; sourceTree = "<group>"; };
-		481A679419F55A2E0090ABCD /* ResolutionsPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResolutionsPickerViewController.m; sourceTree = "<group>"; };
 		48350B8C1A0BFB8F0053A6FD /* HelpDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpDialogViewController.h; sourceTree = "<group>"; };
 		48350B8D1A0BFB8F0053A6FD /* HelpDialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpDialogViewController.m; sourceTree = "<group>"; };
 		48350B8F1A0BFC900053A6FD /* HelpDialogSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpDialogSegue.h; sourceTree = "<group>"; };
@@ -252,8 +249,6 @@
 				4836DC2A19E47C7200DEC2B8 /* PublishViewController.m */,
 				487B8B1A19E700C200A47A7E /* HomeViewController.h */,
 				487B8B1B19E700C200A47A7E /* HomeViewController.m */,
-				481A679319F55A2E0090ABCD /* ResolutionsPickerViewController.h */,
-				481A679419F55A2E0090ABCD /* ResolutionsPickerViewController.m */,
 				48350B8C1A0BFB8F0053A6FD /* HelpDialogViewController.h */,
 				48350B8D1A0BFB8F0053A6FD /* HelpDialogViewController.m */,
 				C3A161E81CC828E500542367 /* ServerSettingsViewController.h */,
@@ -510,7 +505,6 @@
 				48DD8D6019CB56DE004A3652 /* SettingsViewController.m in Sources */,
 				92C6BF5719AD2AAB00244A2F /* CALayer+XibConfiguration.m in Sources */,
 				48350B8E1A0BFB8F0053A6FD /* HelpDialogViewController.m in Sources */,
-				481A679519F55A2E0090ABCD /* ResolutionsPickerViewController.m in Sources */,
 				92E1DC7019A78C0000F6131D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
