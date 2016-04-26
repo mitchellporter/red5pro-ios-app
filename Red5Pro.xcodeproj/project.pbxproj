@@ -67,6 +67,9 @@
 		92E1DC8719A78C0000F6131D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92E1DC8519A78C0000F6131D /* InfoPlist.strings */; };
 		92E1DC8919A78C0000F6131D /* Red5ProiOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E1DC8819A78C0000F6131D /* Red5ProiOSTests.m */; };
 		92E1DC9719A79C8200F6131D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92E1DC9619A79C8200F6131D /* Main.storyboard */; };
+		C3904A1F1CCFDC3B00B5AC55 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = C3904A1C1CCFDC3B00B5AC55 /* home.png */; settings = {ASSET_TAGS = (); }; };
+		C3904A201CCFDC3B00B5AC55 /* homeGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = C3904A1D1CCFDC3B00B5AC55 /* homeGrey.png */; settings = {ASSET_TAGS = (); }; };
+		C3904A211CCFDC3B00B5AC55 /* homeRed.png in Resources */ = {isa = PBXBuildFile; fileRef = C3904A1E1CCFDC3B00B5AC55 /* homeRed.png */; settings = {ASSET_TAGS = (); }; };
 		C3A161EA1CC828E500542367 /* ServerSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A161E91CC828E500542367 /* ServerSettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -157,6 +160,9 @@
 		92E1DC8619A78C0000F6131D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		92E1DC8819A78C0000F6131D /* Red5ProiOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Red5ProiOSTests.m; sourceTree = "<group>"; };
 		92E1DC9619A79C8200F6131D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		C3904A1C1CCFDC3B00B5AC55 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home.png; path = images/home.png; sourceTree = SOURCE_ROOT; };
+		C3904A1D1CCFDC3B00B5AC55 /* homeGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homeGrey.png; path = images/homeGrey.png; sourceTree = SOURCE_ROOT; };
+		C3904A1E1CCFDC3B00B5AC55 /* homeRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homeRed.png; path = images/homeRed.png; sourceTree = SOURCE_ROOT; };
 		C3A161E81CC828E500542367 /* ServerSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerSettingsViewController.h; sourceTree = "<group>"; };
 		C3A161E91CC828E500542367 /* ServerSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerSettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -322,6 +328,9 @@
 		92E1DC6A19A78C0000F6131D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C3904A1C1CCFDC3B00B5AC55 /* home.png */,
+				C3904A1D1CCFDC3B00B5AC55 /* homeGrey.png */,
+				C3904A1E1CCFDC3B00B5AC55 /* homeRed.png */,
 				48350B921A0C29360053A6FD /* help.html */,
 				481A678D19F1A5F80090ABCD /* publishGrey.png */,
 				481A678E19F1A5F80090ABCD /* secondGrey.png */,
@@ -450,6 +459,7 @@
 			files = (
 				92C187D219ABE50200007336 /* helpGray.png in Resources */,
 				92C187D019ABE50200007336 /* go.png in Resources */,
+				C3904A1F1CCFDC3B00B5AC55 /* home.png in Resources */,
 				92A16D9919A7B0C900FBD3E5 /* red5pro_logo.png in Resources */,
 				92C6BF5419AD1C2E00244A2F /* settings_red.png in Resources */,
 				92C187D319ABE50200007336 /* publishRed.png in Resources */,
@@ -462,6 +472,8 @@
 				92C187D119ABE50200007336 /* help.png in Resources */,
 				92C187CC19ABE50200007336 /* box.png in Resources */,
 				92E1DC9719A79C8200F6131D /* Main.storyboard in Resources */,
+				C3904A201CCFDC3B00B5AC55 /* homeGrey.png in Resources */,
+				C3904A211CCFDC3B00B5AC55 /* homeRed.png in Resources */,
 				481A679219F1A5F80090ABCD /* subscribeGrey.png in Resources */,
 				481A679019F1A5F80090ABCD /* publishGrey.png in Resources */,
 				92C187D519ABE50200007336 /* subscribeRed.png in Resources */,
