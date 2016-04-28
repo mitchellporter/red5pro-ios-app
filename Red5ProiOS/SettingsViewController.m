@@ -68,6 +68,7 @@
     self.stream.text = [self getUserSetting:@"stream" withDefault:self.stream.text];
     self.audioCheck.selected = [[self getUserSetting:@"includeAudio" withDefault:@"1"] boolValue];
     self.videoCheck.selected = [[self getUserSetting:@"includeVideo" withDefault:@"1"] boolValue];
+    self.adaptiveBitrateCheck.selected = [[self getUserSetting:@"adaptiveBitrate" withDefault:@"1"] boolValue];
     
     int savedQuality = [[self getUserSetting:@"quality" withDefault:@"1"] intValue];
     
@@ -103,6 +104,7 @@
     
     [defaults setBool:self.audioCheck.selected forKey:@"includeAudio"];
     [defaults setBool:self.videoCheck.selected forKey:@"includeVideo"];
+    [defaults setBool:self.adaptiveBitrateCheck.selected forKey:@"adaptiveBitrate"];
     
     switch (self.currentMode) {
         case r5_example_publish:
@@ -159,4 +161,9 @@
 - (IBAction)onVideoClick:(id)sender {
     [[self videoCheck] setSelected:!self.videoCheck.selected];
 }
+
+- (IBAction)onAdaptiveBitrateClick:(id)sender {
+    [[self adaptiveBitrateCheck] setSelected:!self.adaptiveBitrateCheck.selected];
+}
+
 @end

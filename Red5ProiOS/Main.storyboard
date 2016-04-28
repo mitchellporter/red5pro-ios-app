@@ -150,13 +150,13 @@
                         <viewControllerLayoutGuide type="bottom" id="MxR-wR-dWf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cdE-RX-o7G">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZY3-LB-e7R" userLabel="View Header Bar">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZY3-LB-e7R" userLabel="View Header Bar">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="75"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZH6-c6-N1u">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZH6-c6-N1u">
                                         <rect key="frame" x="255" y="25" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="JuG-Kb-Wma"/>
@@ -235,19 +235,6 @@
                                             <action selector="onPublishTouch:" destination="KBP-IA-DBo" eventType="touchUpInside" id="x03-Cf-psG"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBo-T1-NAq">
-                                        <rect key="frame" x="116" y="12" width="44" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="44" id="9Zf-Mk-IDY"/>
-                                        </constraints>
-                                        <state key="normal" image="subscribe.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="selected" image="subscribeGrey.png"/>
-                                        <connections>
-                                            <action selector="onSubscribeTouch:" destination="KBP-IA-DBo" eventType="touchUpInside" id="Z5u-Ai-t8R"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAi-t0-3Z2">
                                         <rect key="frame" x="166" y="32" width="26" height="26"/>
                                         <state key="normal" image="settings_grey.png">
@@ -283,6 +270,19 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBo-T1-NAq">
+                                        <rect key="frame" x="114" y="12" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="9Zf-Mk-IDY"/>
+                                        </constraints>
+                                        <state key="normal" image="subscribe.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="subscribeGrey.png"/>
+                                        <connections>
+                                            <action selector="onSubscribeTouch:" destination="KBP-IA-DBo" eventType="touchUpInside" id="Z5u-Ai-t8R"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.8981808850364964" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -502,7 +502,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="500"/>
                                 <subviews>
                                     <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pUB-jn-nCH" userLabel="CenterView">
-                                        <rect key="frame" x="0.0" y="124" width="320" height="252"/>
+                                        <rect key="frame" x="0.0" y="124" width="320" height="284"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xoq-of-eo6" userLabel="AppName Field">
                                                 <rect key="frame" x="40" y="0.0" width="240" height="48"/>
@@ -553,40 +553,8 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view autoresizesSubviews="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PTA-S7-cJg" userLabel="PublishSettings">
-                                                <rect key="frame" x="40" y="112" width="240" height="89"/>
+                                                <rect key="frame" x="40" y="112" width="240" height="121"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZpH-Q1-CGX">
-                                                        <rect key="frame" x="8" y="57" width="24" height="24"/>
-                                                        <state key="normal" image="box.png">
-                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <state key="selected" image="boxChecked.png"/>
-                                                        <connections>
-                                                            <action selector="onAudioClick:" destination="7JA-FM-NvD" eventType="touchUpInside" id="t9J-lx-diL"/>
-                                                        </connections>
-                                                    </button>
-                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Audio" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOn-4d-kc0">
-                                                        <rect key="frame" x="40" y="57" width="42" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2X-5Y-Aae">
-                                                        <rect key="frame" x="108" y="57" width="24" height="24"/>
-                                                        <state key="normal" image="box.png">
-                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <state key="selected" image="boxChecked.png"/>
-                                                        <connections>
-                                                            <action selector="onVideoClick:" destination="7JA-FM-NvD" eventType="touchUpInside" id="o32-Sv-14j"/>
-                                                        </connections>
-                                                    </button>
-                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Video" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cC-m1-G5y">
-                                                        <rect key="frame" x="140" y="57" width="42" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nmm-Z9-5rU">
                                                         <rect key="frame" x="0.0" y="0.0" width="240" height="48"/>
                                                         <subviews>
@@ -614,11 +582,59 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xY-Ya-PYB" userLabel="Adaptive Bitrate Check">
+                                                        <rect key="frame" x="8" y="56" width="24" height="24"/>
+                                                        <state key="normal" image="box.png">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <state key="selected" image="boxChecked.png"/>
+                                                        <connections>
+                                                            <action selector="onAdaptiveBitrateClick:" destination="7JA-FM-NvD" eventType="touchUpInside" id="W2I-tk-wUa"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZpH-Q1-CGX">
+                                                        <rect key="frame" x="8" y="88" width="24" height="24"/>
+                                                        <state key="normal" image="box.png">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <state key="selected" image="boxChecked.png"/>
+                                                        <connections>
+                                                            <action selector="onAudioClick:" destination="7JA-FM-NvD" eventType="touchUpInside" id="t9J-lx-diL"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Audio" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOn-4d-kc0">
+                                                        <rect key="frame" x="40" y="89" width="42" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2X-5Y-Aae">
+                                                        <rect key="frame" x="108" y="88" width="24" height="24"/>
+                                                        <state key="normal" image="box.png">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <state key="selected" image="boxChecked.png"/>
+                                                        <connections>
+                                                            <action selector="onVideoClick:" destination="7JA-FM-NvD" eventType="touchUpInside" id="o32-Sv-14j"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Video" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cC-m1-G5y">
+                                                        <rect key="frame" x="140" y="89" width="42" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Adaptive Bitrate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZhA-5w-uBB">
+                                                        <rect key="frame" x="40" y="57" width="91" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="f18-Fx-2Gx">
-                                                <rect key="frame" x="206" y="202" width="74" height="36"/>
+                                                <rect key="frame" x="206" y="234" width="74" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <inset key="titleEdgeInsets" minX="-53" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <inset key="imageEdgeInsets" minX="44" minY="-1" maxX="0.0" maxY="0.0"/>
@@ -653,6 +669,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="500"/>
                     <connections>
+                        <outlet property="adaptiveBitrateCheck" destination="9xY-Ya-PYB" id="1oD-Py-q1A"/>
                         <outlet property="app" destination="dws-Fr-MBQ" id="4Mo-qk-cpT"/>
                         <outlet property="audioCheck" destination="ZpH-Q1-CGX" id="YAt-EI-cAK"/>
                         <outlet property="doneBtn" destination="f18-Fx-2Gx" id="0zE-Y9-Nxv"/>

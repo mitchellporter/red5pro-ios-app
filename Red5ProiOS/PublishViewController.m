@@ -101,6 +101,7 @@
     NSString *port = (NSString *)[defaults objectForKey:@"port"];
     BOOL includeAudio = [defaults boolForKey:@"includeAudio"];
     BOOL includeVideo = [defaults boolForKey:@"includeVideo"];
+    BOOL adaptiveBitrate = [defaults boolForKey:@"adaptiveBitrate"];
     
     R5Configuration * config = [R5Configuration new];
     
@@ -121,6 +122,14 @@
         [r5Stream attachVideo:camera];
     if(includeAudio)
         [r5Stream attachAudio:microphone];
+    
+    if (adaptiveBitrate) {
+        R5AdaptiveBitrateController *adaptiveController = [R5AdaptiveBitrateController new];
+        [adaptiveController attachToStream:r5Stream];
+        if (includeVideo) {
+            [adaptiveController setRequiresVideo:YES];
+        }
+    }
     
     return r5Stream;
 }
