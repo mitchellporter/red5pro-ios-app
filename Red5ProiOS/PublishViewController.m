@@ -152,7 +152,7 @@
     NSString *streamName = (NSString*)[defaults objectForKey:@"stream"];
 
     
-    isTogglable = NO;
+//    isTogglable = NO;
     [stream publish:streamName type:R5RecordTypeLive];
 }
 
@@ -177,9 +177,8 @@
     if(isTogglable) {
         isFrontSelected = !isFrontSelected;
         if(stream != nil){
-            R5Camera *cam = [[R5Camera new] initWithDevice:[self getSelectedDevice] andBitRate:128];
-            cam.orientation = 90;
-            [stream attachVideo:cam];
+            R5Camera *cam2 = (R5Camera *)[stream getVideoSource];
+            [cam2 setDevice:[self getSelectedDevice]];
         }
         //[self updatePreview];
     }

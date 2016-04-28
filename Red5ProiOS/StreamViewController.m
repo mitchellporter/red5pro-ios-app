@@ -86,7 +86,7 @@
     if(self.launchButton.selected){
         
         [publisher start];
-        [[self camera] setHidden:YES];
+//        [[self camera] setHidden:YES];
         self.launchButton.enabled = false;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             self.launchButton.enabled = true;
