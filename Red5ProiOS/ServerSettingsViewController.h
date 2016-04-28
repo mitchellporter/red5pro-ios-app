@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ServerSettingsViewController : UIViewController
+@interface ServerSettingsViewController : UIViewController<UITextFieldDelegate>
 
 @property (nonatomic, weak) IBOutlet UIButton *submitBtn;
 @property (nonatomic, weak) IBOutlet UITextField *serverTextField;

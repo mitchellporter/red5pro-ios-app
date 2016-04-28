@@ -24,6 +24,9 @@
         self.serverTextField.text = server;
     }
     self.portTextField.text = [self getUserSetting:@"port" withDefault:self.portTextField.text];
+    
+    [[self serverTextField] setDelegate:self];
+    [[self portTextField] setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,5 +86,16 @@
     // Pass the selected object to the new view controller.
 }
  */
+
+#pragma mark UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == [self serverTextField]) {
+        [[self portTextField] becomeFirstResponder];
+    } else if (textField == [self portTextField]) {
+        [self performSegueWithIdentifier:@"goToMain" sender:nil];
+    }
+    return YES;
+}
 
 @end
