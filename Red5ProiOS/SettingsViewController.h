@@ -27,7 +27,8 @@ enum StreamMode {
 @property (weak, nonatomic) IBOutlet UIButton *audioCheck;
 @property (weak, nonatomic) IBOutlet UIButton *videoCheck;
 @property (weak, nonatomic) IBOutlet UIButton *adaptiveBitrateCheck;
-@property (weak, nonatomic) IBOutlet UIButton *doneBtn;
+@property (weak, nonatomic) IBOutlet UIButton *publishDoneBtn;
+@property (weak, nonatomic) IBOutlet UIButton *subscribeDoneBtn;
 
 @property (weak, nonatomic) IBOutlet UIView *streamSettingsForm;
 @property (weak, nonatomic) IBOutlet UIView *publishSettingsForm;
