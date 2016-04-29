@@ -20,6 +20,7 @@
 @property SettingsViewController *settingsViewController;
 @property (weak, nonatomic) IBOutlet UIButton *streamPlayButton;
 @property (weak, nonatomic) IBOutlet UIView *streamingView;
+@property (weak, nonatomic) IBOutlet UIView *buttonBarView;
 
 @property NSMutableDictionary *viewControllerMap;
 
@@ -257,7 +258,7 @@
         CGRect frameSize = self.view.bounds;
         CGFloat h = frameSize.size.height - 10;
         [self.view layoutIfNeeded];
-        self.settingsHeight.constant = h > 550 ? 550 : h;
+        self.settingsHeight.constant = h;//h > 550 ? 550 : h;
         [self.settingsHeight.secondItem updateConstraintsIfNeeded];
         [self.settingsHeight.firstItem updateConstraintsIfNeeded];
         [self.view layoutIfNeeded];
