@@ -166,4 +166,9 @@
     [[self adaptiveBitrateCheck] setSelected:!self.adaptiveBitrateCheck.selected];
 }
 
+- (IBAction)onCloseButton:(id)sender {
+    if(self.delegate)
+        [self.delegate closeSettings];
+}
+
 @end
