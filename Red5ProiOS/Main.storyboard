@@ -120,7 +120,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="04O-LH-tw4" secondAttribute="trailing" constant="-16" id="7ks-qr-FVX"/>
                             <constraint firstAttribute="centerX" secondItem="JFB-ui-tbX" secondAttribute="centerX" id="STA-i7-IVc"/>
@@ -277,6 +277,19 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Dw-tm-PR1">
                                         <rect key="frame" x="198" y="1" width="102" height="67"/>
                                         <subviews>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pew-mw-I2Q" userLabel="Camera Switch">
+                                                <rect key="frame" x="2" y="23" width="39" height="33"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="39" id="Hcv-dz-zjL"/>
+                                                    <constraint firstAttribute="height" constant="33" id="pHG-y5-A6K"/>
+                                                </constraints>
+                                                <state key="normal" image="camera_grey.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onCameraSwitch:" destination="KBP-IA-DBo" eventType="touchUpInside" id="zpn-5z-wn1"/>
+                                                </connections>
+                                            </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NBt-ul-jM0" userLabel="Record Button">
                                                 <rect key="frame" x="49" y="11" width="45" height="45"/>
                                                 <constraints>
@@ -289,19 +302,6 @@
                                                 <state key="selected" image="empty.png"/>
                                                 <connections>
                                                     <action selector="onCameraTouch:" destination="KBP-IA-DBo" eventType="touchUpInside" id="4Il-Wj-yhZ"/>
-                                                </connections>
-                                            </button>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pew-mw-I2Q" userLabel="Camera Switch">
-                                                <rect key="frame" x="2" y="23" width="39" height="33"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="39" id="Hcv-dz-zjL"/>
-                                                    <constraint firstAttribute="height" constant="33" id="pHG-y5-A6K"/>
-                                                </constraints>
-                                                <state key="normal" image="camera_grey.png">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="onCameraSwitch:" destination="KBP-IA-DBo" eventType="touchUpInside" id="zpn-5z-wn1"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -317,7 +317,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="xvz-zO-lAw" secondAttribute="bottom" constant="15" id="8vf-St-Egs"/>
                                     <constraint firstItem="gAi-t0-3Z2" firstAttribute="top" secondItem="JfZ-oD-Kfb" secondAttribute="top" constant="32" id="B9Q-U3-dQi"/>
@@ -357,7 +357,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="JfZ-oD-Kfb" firstAttribute="top" secondItem="sUc-3V-Yq0" secondAttribute="bottom" id="8LK-aA-4lv"/>
                             <constraint firstItem="ZY3-LB-e7R" firstAttribute="top" secondItem="cdE-RX-o7G" secondAttribute="topMargin" id="Dad-h3-5qB"/>
@@ -477,7 +477,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="mRn-tn-Nha" secondAttribute="bottom" id="1Ol-9o-cwo"/>
                                     <constraint firstAttribute="trailing" secondItem="mRn-tn-Nha" secondAttribute="trailing" constant="125" id="2GG-Uo-X3m"/>
@@ -876,7 +876,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="262" id="1yB-Dz-A6b"/>
                                     <constraint firstAttribute="width" constant="320" id="yiV-oU-aEP"/>
@@ -918,7 +918,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="2ey-nr-wAk" secondAttribute="trailing" constant="-20" id="Ivq-24-nuV"/>
                             <constraint firstItem="ql9-Ps-UC8" firstAttribute="centerX" secondItem="dme-WU-dfK" secondAttribute="centerX" id="VCH-p3-XXw"/>
@@ -962,8 +962,8 @@
         <image name="subscribeGrey.png" width="142" height="142"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="n2E-ME-w5x"/>
         <segue reference="nsD-v6-RuT"/>
-        <segue reference="use-TN-22a"/>
+        <segue reference="51p-Ek-ggC"/>
+        <segue reference="cx3-hF-LdY"/>
     </inferredMetricsTieBreakers>
 </document>
