@@ -456,18 +456,8 @@
                                         <color key="textColor" red="0.45497685185185183" green="0.46979166666666666" blue="0.47010995370370373" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks for downloading the Red5 Pro App!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="233" translatesAutoresizingMaskIntoConstraints="NO" id="qtB-g8-sY4">
-                                        <rect key="frame" x="20" y="8" width="233" height="54"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="54" id="0bS-g7-CPX"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cYj-8I-y5z">
-                                        <rect key="frame" x="20" y="153" width="240" height="316"/>
-                                        <color key="backgroundColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                        <rect key="frame" x="8" y="8" width="264" height="491"/>
                                         <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -486,33 +476,18 @@
                                             <action selector="dismiss:" destination="x2H-PF-QbZ" eventType="touchUpInside" id="hYP-AF-Ls3"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most likely you are a developer and know what you have downloaded. Here are a few things to know in case you are confused." lineBreakMode="headTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="240" translatesAutoresizingMaskIntoConstraints="NO" id="piN-iW-Py6">
-                                        <rect key="frame" x="20" y="70" width="240" height="75"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="uQA-vz-YVo"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="mRn-tn-Nha" secondAttribute="bottom" id="1Ol-9o-cwo"/>
                                     <constraint firstAttribute="trailing" secondItem="mRn-tn-Nha" secondAttribute="trailing" constant="125" id="2GG-Uo-X3m"/>
-                                    <constraint firstItem="cYj-8I-y5z" firstAttribute="top" secondItem="piN-iW-Py6" secondAttribute="bottom" constant="8" id="2eS-Ny-fk9"/>
-                                    <constraint firstItem="qtB-g8-sY4" firstAttribute="leading" secondItem="K2A-l8-Jrx" secondAttribute="leading" constant="20" id="3wH-IJ-N8d"/>
-                                    <constraint firstItem="piN-iW-Py6" firstAttribute="top" secondItem="qtB-g8-sY4" secondAttribute="bottom" constant="8" id="KvQ-i3-hrU"/>
-                                    <constraint firstItem="mRn-tn-Nha" firstAttribute="top" secondItem="cYj-8I-y5z" secondAttribute="bottom" constant="8" id="Mig-Cx-4x5"/>
-                                    <constraint firstItem="cYj-8I-y5z" firstAttribute="leading" secondItem="K2A-l8-Jrx" secondAttribute="leading" constant="20" id="Q6q-aV-dPo"/>
-                                    <constraint firstItem="piN-iW-Py6" firstAttribute="leading" secondItem="K2A-l8-Jrx" secondAttribute="leading" constant="20" id="V6j-tr-2YY"/>
-                                    <constraint firstAttribute="trailing" secondItem="piN-iW-Py6" secondAttribute="trailing" constant="20" id="Zoe-9G-0Qq"/>
+                                    <constraint firstItem="cYj-8I-y5z" firstAttribute="leading" secondItem="K2A-l8-Jrx" secondAttribute="leading" constant="8" id="Q6q-aV-dPo"/>
+                                    <constraint firstItem="cYj-8I-y5z" firstAttribute="top" secondItem="K2A-l8-Jrx" secondAttribute="top" constant="8" id="ZJE-hS-XZb"/>
                                     <constraint firstItem="pyV-3q-yQ4" firstAttribute="top" secondItem="K2A-l8-Jrx" secondAttribute="top" id="aoT-yw-98w"/>
-                                    <constraint firstAttribute="trailing" secondItem="cYj-8I-y5z" secondAttribute="trailing" constant="20" id="eq6-hh-T59"/>
-                                    <constraint firstItem="qtB-g8-sY4" firstAttribute="top" secondItem="K2A-l8-Jrx" secondAttribute="top" constant="8" id="fsN-ZQ-jXS"/>
+                                    <constraint firstAttribute="trailing" secondItem="cYj-8I-y5z" secondAttribute="trailing" constant="8" id="eq6-hh-T59"/>
+                                    <constraint firstAttribute="bottom" secondItem="cYj-8I-y5z" secondAttribute="bottom" constant="8" id="guh-aX-B0e"/>
                                     <constraint firstAttribute="trailing" secondItem="pyV-3q-yQ4" secondAttribute="trailing" id="n0o-wT-aX0"/>
                                     <constraint firstItem="mRn-tn-Nha" firstAttribute="leading" secondItem="K2A-l8-Jrx" secondAttribute="leading" constant="125" id="ojq-zb-Z0t"/>
-                                    <constraint firstAttribute="trailing" secondItem="qtB-g8-sY4" secondAttribute="trailing" constant="27" id="v1o-Ok-Nfm"/>
                                 </constraints>
                             </view>
                         </subviews>
