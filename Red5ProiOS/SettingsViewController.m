@@ -11,6 +11,7 @@
 @interface SettingsViewController ()
 @property enum StreamMode currentMode;
 @property UITextField *focusedField;
+@property NSArray *qualityButtons;
 @end
 
 @implementation SettingsViewController
@@ -29,6 +30,34 @@
 
     self.app.delegate = self;
     self.stream.delegate = self;
+    
+    self.qualityButtons = [NSArray arrayWithObjects:self.lowQualityBtn, self.mediumQualityBtn, self.highQualityBtn, self.otherQualityBtn, nil];
+}
+
+- (int)getSelectedQualityIndex {
+    __block int index = -1;
+    [self.qualityButtons enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        UIButton *btn = (UIButton *) obj;
+        if (btn.selected) {
+            index = (int) idx;
+            *stop = YES;
+        }
+    }];
+    return index;
+}
+
+- (void)setSelectedQualityIndex:(int)index {
+    [self.qualityButtons enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        UIButton *btn = (UIButton *) obj;
+        int intIdx = (int)idx;
+        
+        //  TODO: Account for advanced (index 3)?
+        if (intIdx == index) {
+            [btn setSelected:YES];
+        } else {
+            [btn setSelected:NO];
+        }
+    }];
 }
 
 - (void)setQualityWithIndex:(int)index {
@@ -53,6 +82,7 @@
             [defaults setObject:@"4500" forKey:@"bitrate"];
             break;
         default:
+            //  TODO: Account for advanced (index 3)?
             [defaults setInteger:854 forKey:@"resolutionWidth"];
             [defaults setInteger:480 forKey:@"resolutionHeight"];
             [defaults setObject:@"1000" forKey:@"bitrate"];
@@ -72,7 +102,7 @@
     
     int savedQuality = [[self getUserSetting:@"quality" withDefault:@"1"] intValue];
     
-    [[self qualityControl] setSelectedSegmentIndex:savedQuality];
+    [self setSelectedQualityIndex:savedQuality];
     
     [[self publishDoneBtn] setHidden:YES];
     [[self subscribeDoneBtn] setHidden:YES];
@@ -99,7 +129,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:self.stream.text forKey:@"stream"];
     
-    int selected = (int) [[self qualityControl] selectedSegmentIndex];
+    int selected = [self getSelectedQualityIndex];
     [self setQualityWithIndex:selected];
     
     [defaults setBool:self.audioCheck.selected forKey:@"includeAudio"];
@@ -169,6 +199,19 @@
 - (IBAction)onCloseButton:(id)sender {
     if(self.delegate)
         [self.delegate closeSettings];
+}
+
+- (IBAction)onQualityTap:(id)sender {
+    UIButton *btn = (UIButton *)sender;
+    int index = (int)[self.qualityButtons indexOfObject:btn];
+    
+    [self setSelectedQualityIndex:index];
+    
+    if (index < 3) {
+        [self setQualityWithIndex:index];
+    } else {
+        // TODO: Show advanced
+    }
 }
 
 @end

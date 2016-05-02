@@ -34,6 +34,10 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -289,7 +293,6 @@
                                         <state key="normal" image="Settings.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="settings_red.png"/>
                                         <connections>
                                             <action selector="onShowSettings:" destination="KBP-IA-DBo" eventType="touchUpInside" id="pNW-UJ-bJJ"/>
                                         </connections>
@@ -520,7 +523,7 @@
                                 <rect key="frame" x="-4" y="0.0" width="328" height="500"/>
                                 <subviews>
                                     <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="pUB-jn-nCH" userLabel="CenterView">
-                                        <rect key="frame" x="-4" y="108" width="328" height="284"/>
+                                        <rect key="frame" x="-4" y="28" width="328" height="464"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xoq-of-eo6" userLabel="AppName Field">
                                                 <rect key="frame" x="40" y="0.0" width="240" height="48"/>
@@ -579,25 +582,92 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PTA-S7-cJg" userLabel="PublishSettings">
-                                                <rect key="frame" x="40" y="112" width="240" height="121"/>
+                                                <rect key="frame" x="40" y="112" width="240" height="298"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nmm-Z9-5rU">
-                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="48"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="234"/>
                                                         <subviews>
                                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Quality" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISG-Qp-SfX">
-                                                                <rect key="frame" x="8" y="8" width="57" height="34"/>
+                                                                <rect key="frame" x="8" y="0.0" width="57" height="34"/>
                                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </label>
-                                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="bar" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="pCh-V0-xoz">
-                                                                <rect key="frame" x="76" y="11" width="156" height="29"/>
-                                                                <segments>
-                                                                    <segment title="Low"/>
-                                                                    <segment title="Medium"/>
-                                                                    <segment title="High"/>
-                                                                </segments>
-                                                                <color key="tintColor" red="0.89019607840000003" green="0.098039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </segmentedControl>
+                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YMN-gP-LRL" userLabel="Low Radial View">
+                                                                <rect key="frame" x="0.0" y="34" width="240" height="44"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ad8-wx-wnn" userLabel="Low Radial Button">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
+                                                                        <state key="normal" image="radial.png"/>
+                                                                        <state key="selected" image="radialselect.png"/>
+                                                                        <connections>
+                                                                            <action selector="onQualityTap:" destination="7JA-FM-NvD" eventType="touchUpInside" id="iOr-SI-r7e"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Low" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rus-kR-ceE">
+                                                                        <rect key="frame" x="44" y="0.0" width="196" height="44"/>
+                                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZR2-zT-HXE" userLabel="Medium Radial View">
+                                                                <rect key="frame" x="0.0" y="86" width="240" height="44"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edM-JJ-RwX" userLabel="Medium Radial Button">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
+                                                                        <state key="normal" image="radial.png"/>
+                                                                        <state key="selected" image="radialselect.png"/>
+                                                                        <connections>
+                                                                            <action selector="onQualityTap:" destination="7JA-FM-NvD" eventType="touchUpInside" id="l07-IN-Mkp"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Medium" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEk-pT-4jz">
+                                                                        <rect key="frame" x="44" y="0.0" width="196" height="44"/>
+                                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HKQ-Pb-jRP" userLabel="High Radial View">
+                                                                <rect key="frame" x="0.0" y="138" width="240" height="44"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bzk-cF-jqI" userLabel="High Radial Button">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
+                                                                        <state key="normal" image="radial.png"/>
+                                                                        <state key="selected" image="radialselect.png"/>
+                                                                        <connections>
+                                                                            <action selector="onQualityTap:" destination="7JA-FM-NvD" eventType="touchUpInside" id="O8h-m6-a9b"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="High" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6w-Zr-OAq">
+                                                                        <rect key="frame" x="44" y="0.0" width="196" height="44"/>
+                                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NlF-rj-1Ge" userLabel="Other Radial View">
+                                                                <rect key="frame" x="0.0" y="190" width="240" height="44"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxM-OJ-GPf" userLabel="Other Radial Button">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
+                                                                        <state key="normal" image="radial.png"/>
+                                                                        <state key="selected" image="radialselect.png"/>
+                                                                        <connections>
+                                                                            <action selector="onQualityTap:" destination="7JA-FM-NvD" eventType="touchUpInside" id="Z7x-4y-Ks7"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Other" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgS-XJ-Anj">
+                                                                        <rect key="frame" x="44" y="0.0" width="196" height="44"/>
+                                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </view>
                                                         </subviews>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -608,18 +678,8 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xY-Ya-PYB" userLabel="Adaptive Bitrate Check">
-                                                        <rect key="frame" x="8" y="56" width="24" height="24"/>
-                                                        <state key="normal" image="box.png">
-                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <state key="selected" image="boxChecked.png"/>
-                                                        <connections>
-                                                            <action selector="onAdaptiveBitrateClick:" destination="7JA-FM-NvD" eventType="touchUpInside" id="W2I-tk-wUa"/>
-                                                        </connections>
-                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZpH-Q1-CGX">
-                                                        <rect key="frame" x="8" y="88" width="24" height="24"/>
+                                                        <rect key="frame" x="8" y="274" width="24" height="24"/>
                                                         <state key="normal" image="box.png">
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
@@ -629,13 +689,13 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Audio" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOn-4d-kc0">
-                                                        <rect key="frame" x="40" y="89" width="42" height="21"/>
+                                                        <rect key="frame" x="40" y="275" width="42" height="21"/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2X-5Y-Aae">
-                                                        <rect key="frame" x="108" y="88" width="24" height="24"/>
+                                                        <rect key="frame" x="108" y="274" width="24" height="24"/>
                                                         <state key="normal" image="box.png">
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
@@ -645,26 +705,36 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Video" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cC-m1-G5y">
-                                                        <rect key="frame" x="140" y="89" width="42" height="21"/>
+                                                        <rect key="frame" x="140" y="275" width="42" height="21"/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Adaptive Bitrate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZhA-5w-uBB">
-                                                        <rect key="frame" x="40" y="57" width="109" height="21"/>
+                                                        <rect key="frame" x="40" y="243" width="109" height="21"/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xY-Ya-PYB" userLabel="Adaptive Bitrate Check">
+                                                        <rect key="frame" x="8" y="242" width="24" height="24"/>
+                                                        <state key="normal" image="box.png">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <state key="selected" image="boxChecked.png"/>
+                                                        <connections>
+                                                            <action selector="onAdaptiveBitrateClick:" destination="7JA-FM-NvD" eventType="touchUpInside" id="W2I-tk-wUa"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="121" id="JGZ-nI-XRY"/>
+                                                    <constraint firstAttribute="height" constant="298" id="JGZ-nI-XRY"/>
                                                     <constraint firstAttribute="width" constant="240" id="vHB-9U-34A"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="f18-Fx-2Gx" userLabel="Publish Done Btn">
-                                                <rect key="frame" x="277" y="234" width="46" height="30"/>
+                                                <rect key="frame" x="277" y="420" width="46" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="46" id="UOb-Vj-O4v"/>
                                                     <constraint firstAttribute="height" constant="30" id="dCo-pO-dzG"/>
@@ -706,16 +776,16 @@
                                             <constraint firstItem="PTA-S7-cJg" firstAttribute="leading" secondItem="pUB-jn-nCH" secondAttribute="leading" constant="40" id="Q0G-LZ-qwC"/>
                                             <constraint firstAttribute="width" constant="328" id="Qqf-Eo-Ski"/>
                                             <constraint firstItem="I8k-a5-gBT" firstAttribute="top" secondItem="xoq-of-eo6" secondAttribute="bottom" constant="8" id="bKl-rF-ayv"/>
-                                            <constraint firstItem="f18-Fx-2Gx" firstAttribute="top" secondItem="PTA-S7-cJg" secondAttribute="bottom" constant="1" id="fJL-SO-eNI"/>
+                                            <constraint firstItem="f18-Fx-2Gx" firstAttribute="top" secondItem="PTA-S7-cJg" secondAttribute="bottom" constant="10" id="fJL-SO-eNI"/>
                                             <constraint firstItem="xoq-of-eo6" firstAttribute="top" secondItem="pUB-jn-nCH" secondAttribute="top" id="jRZ-Hw-wPY"/>
                                             <constraint firstItem="9fV-Bt-Otr" firstAttribute="top" secondItem="I8k-a5-gBT" secondAttribute="bottom" constant="8" id="mW2-fR-FsS"/>
                                             <constraint firstItem="PTA-S7-cJg" firstAttribute="top" secondItem="I8k-a5-gBT" secondAttribute="bottom" constant="8" id="ntY-mq-4I9"/>
-                                            <constraint firstAttribute="height" constant="284" id="oCG-zF-rUU"/>
+                                            <constraint firstAttribute="height" constant="464" id="oCG-zF-rUU"/>
                                             <constraint firstAttribute="trailing" secondItem="9fV-Bt-Otr" secondAttribute="trailing" constant="5" id="qED-oS-pwN"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SETTINGS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Rc-X0-x6I">
-                                        <rect key="frame" x="0.0" y="79" width="328" height="21"/>
+                                        <rect key="frame" x="0.0" y="4" width="328" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="TkV-z3-f2N"/>
                                         </constraints>
@@ -724,7 +794,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VI7-SL-B4X">
-                                        <rect key="frame" x="282" y="75" width="46" height="30"/>
+                                        <rect key="frame" x="282" y="0.0" width="46" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="46" id="dwe-U0-PRB"/>
                                             <constraint firstAttribute="height" constant="30" id="wPi-GS-3qt"/>
@@ -744,9 +814,9 @@
                                     <constraint firstItem="VI7-SL-B4X" firstAttribute="top" secondItem="9Rc-X0-x6I" secondAttribute="bottom" constant="-25" id="DPj-g5-ofa"/>
                                     <constraint firstItem="9Rc-X0-x6I" firstAttribute="centerX" secondItem="mKJ-9s-mdg" secondAttribute="centerX" id="c0X-2E-N5K"/>
                                     <constraint firstItem="9Rc-X0-x6I" firstAttribute="width" secondItem="pUB-jn-nCH" secondAttribute="width" id="eNY-eq-eWN"/>
-                                    <constraint firstItem="pUB-jn-nCH" firstAttribute="top" secondItem="9Rc-X0-x6I" secondAttribute="bottom" constant="8" id="gNh-FZ-w4R"/>
+                                    <constraint firstItem="pUB-jn-nCH" firstAttribute="top" secondItem="9Rc-X0-x6I" secondAttribute="bottom" constant="3" id="gNh-FZ-w4R"/>
                                     <constraint firstItem="VI7-SL-B4X" firstAttribute="leading" secondItem="9Rc-X0-x6I" secondAttribute="trailing" constant="-46" id="s4F-pe-Xo2"/>
-                                    <constraint firstItem="pUB-jn-nCH" firstAttribute="centerY" secondItem="mKJ-9s-mdg" secondAttribute="centerY" id="uZV-G8-iNr"/>
+                                    <constraint firstItem="pUB-jn-nCH" firstAttribute="centerY" secondItem="mKJ-9s-mdg" secondAttribute="centerY" constant="10" id="uZV-G8-iNr"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -764,10 +834,13 @@
                         <outlet property="adaptiveBitrateCheck" destination="9xY-Ya-PYB" id="1oD-Py-q1A"/>
                         <outlet property="app" destination="dws-Fr-MBQ" id="4Mo-qk-cpT"/>
                         <outlet property="audioCheck" destination="ZpH-Q1-CGX" id="YAt-EI-cAK"/>
+                        <outlet property="highQualityBtn" destination="Bzk-cF-jqI" id="cer-zg-fwp"/>
+                        <outlet property="lowQualityBtn" destination="ad8-wx-wnn" id="Mcu-kI-WiA"/>
+                        <outlet property="mediumQualityBtn" destination="edM-JJ-RwX" id="62T-qj-3zM"/>
+                        <outlet property="otherQualityBtn" destination="fxM-OJ-GPf" id="8d5-vt-Aha"/>
                         <outlet property="publishDoneBtn" destination="f18-Fx-2Gx" id="7Ws-X1-Dba"/>
                         <outlet property="publishSettingsForm" destination="PTA-S7-cJg" id="USJ-g3-JQf"/>
                         <outlet property="publishSettingsView" destination="PTA-S7-cJg" id="ARg-sK-w7m"/>
-                        <outlet property="qualityControl" destination="pCh-V0-xoz" id="xhk-EW-559"/>
                         <outlet property="stream" destination="OMJ-2x-9HJ" id="b8j-ZI-Vou"/>
                         <outlet property="streamSettingsForm" destination="I8k-a5-gBT" id="mLN-9V-8Lt"/>
                         <outlet property="subscribeDoneBtn" destination="9fV-Bt-Otr" id="MpU-XT-b0n"/>
@@ -938,9 +1011,10 @@
         <image name="empty.png" width="142" height="142"/>
         <image name="help.png" width="44" height="44"/>
         <image name="publish.png" width="52" height="52"/>
+        <image name="radial.png" width="44" height="44"/>
+        <image name="radialselect.png" width="44" height="44"/>
         <image name="red5pro_logo.png" width="350" height="42"/>
         <image name="second.png" width="142" height="142"/>
-        <image name="settings_red.png" width="26" height="26"/>
         <image name="subscribe.png" width="52" height="52"/>
         <image name="twoway.png" width="52" height="52"/>
     </resources>

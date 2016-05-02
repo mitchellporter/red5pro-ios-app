@@ -33,7 +33,10 @@ enum StreamMode {
 @property (weak, nonatomic) IBOutlet UIView *streamSettingsForm;
 @property (weak, nonatomic) IBOutlet UIView *publishSettingsForm;
 
-@property (weak, nonatomic) IBOutlet UISegmentedControl *qualityControl;
+@property (weak, nonatomic) IBOutlet UIButton *lowQualityBtn;
+@property (weak, nonatomic) IBOutlet UIButton *mediumQualityBtn;
+@property (weak, nonatomic) IBOutlet UIButton *highQualityBtn;
+@property (weak, nonatomic) IBOutlet UIButton *otherQualityBtn;
 
 @property NSObject<SettingsDelegate> *delegate;
 
