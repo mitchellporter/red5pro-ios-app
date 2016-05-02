@@ -13,14 +13,10 @@
 @interface StreamViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *settingsHeight;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
-@property (weak, nonatomic) IBOutlet UIButton *subscribeButton;
-@property (weak, nonatomic) IBOutlet UIButton *publishButton;
 @property (weak, nonatomic) IBOutlet UIButton *launchButton;
 @property (weak, nonatomic) IBOutlet UIButton *camera;
 @property SettingsViewController *settingsViewController;
-@property (weak, nonatomic) IBOutlet UIButton *streamPlayButton;
 @property (weak, nonatomic) IBOutlet UIView *streamingView;
-@property (weak, nonatomic) IBOutlet UIView *buttonBarView;
 
 @property NSMutableDictionary *viewControllerMap;
 
@@ -29,7 +25,7 @@
 @implementation StreamViewController
 
 - (void)displayCameraButtons:(BOOL)ok {
-    [[self launchButton] setHidden:!ok];
+//    [[self launchButton] setHidden:NO];
     [[self camera] setHidden:!ok];
 }
 
@@ -42,23 +38,12 @@
     return YES;
 }
 
--(void) launchCurrentView{
-    
-    
-    self.launchButton.hidden = YES;
-    self.streamPlayButton.hidden = YES;
-    
+-(void) launchCurrentView {
     switch(self.currentMode){
         case r5_example_publish:
-            self.launchButton.hidden = NO;
-            self.publishButton.selected = true;
-            self.subscribeButton.selected = false;
             [self loadStreamView:@"publishView"];
             break;
         case r5_example_stream:
-            self.streamPlayButton.hidden = NO;
-            self.publishButton.selected = false;
-            self.subscribeButton.selected = true;
             [self loadStreamView:@"subscribeView"];
             break;
     }
@@ -66,42 +51,47 @@
    [self displayCameraButtons: self.currentMode == r5_example_publish];
 }
 
-- (IBAction)onSubscribePlay:(id)sender {
-    self.streamPlayButton.selected = !self.streamPlayButton.selected;
-   
+- (void) startOrStartPublish {
+    PublishViewController *publisher = (PublishViewController *)[[self viewControllerMap] objectForKey:@"publishView"];
+    
+    if (self.launchButton.selected) {
+        [publisher start];
+        self.launchButton.enabled = false;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            self.launchButton.enabled = true;
+        });
+    } else {
+        [publisher stop: YES];
+        if(self.currentMode != r5_example_stream)
+            [[self camera] setHidden:NO];
+    }
+}
+
+- (void) startOrStartSubscribe {
     VideoViewController *subscriber = (VideoViewController *)[[self viewControllerMap] objectForKey:@"subscribeView"];
     
-    if(self.streamPlayButton.selected){
+    if (self.launchButton.selected) {
         [subscriber start];
-    }else{
+    } else {
         [subscriber stop];
     }
 }
 
 - (IBAction)onCameraTouch:(id)sender {
-    
-    PublishViewController *publisher = (PublishViewController *)[[self viewControllerMap] objectForKey:@"publishView"];
-    
     self.launchButton.selected = !self.launchButton.selected;
-
-    if(self.launchButton.selected){
-        
-        [publisher start];
-//        [[self camera] setHidden:YES];
-        self.launchButton.enabled = false;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-            self.launchButton.enabled = true;
-        });
-      
-    }
-    else {
-        
-        [publisher stop: YES];
-        if(self.currentMode != r5_example_stream)
-            [[self camera] setHidden:NO];
-    }
     
+    switch (self.currentMode) {
+        case r5_example_publish:
+            [self startOrStartPublish];
+            break;
+        case r5_example_stream:
+            [self startOrStartSubscribe];
+            break;
+        default:
+            break;
+    }
 }
+
 - (IBAction)onCameraSwitch:(id)sender {
     PublishViewController *publisher = (PublishViewController *)[[self viewControllerMap] objectForKey:@"publishView"];
     
@@ -121,11 +111,9 @@
 }
 
 -(void)loadStreamView:(NSString *)viewID{
-   
     if(self.currentStreamView){
         [self.currentStreamView removeFromParentViewController];
         [self.currentStreamView.view removeFromSuperview];
-
     }
     
     UIViewController *myController = (UIViewController *)[[self viewControllerMap] objectForKey:viewID];
@@ -158,7 +146,6 @@
 }
 
 -(void)loadViewFromStoryboard:(NSString *)viewID {
-    
     if(self.currentStreamView){
         [self.currentStreamView removeFromParentViewController];
         [self.currentStreamView.view removeFromSuperview];
@@ -185,8 +172,7 @@
     [myController.view layoutIfNeeded];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.viewControllerMap = [NSMutableDictionary dictionary];
@@ -206,8 +192,7 @@
     [self showSettings];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -222,8 +207,7 @@
         [self.launchButton setSelected:NO];
         [publisher stop : NO];
         [subscriber stop];
-    }
-    else {
+    } else {
         [self displayCameraButtons:self.currentMode == r5_example_publish];
 
     }
@@ -232,29 +216,26 @@
 //SettingsDelegate
 -(void) closeSettings{
     [UIView animateWithDuration:0.5 animations:^{
-        
         [self.view layoutIfNeeded];
         self.settingsHeight.constant = 0;
         [self.settingsHeight.secondItem updateConstraintsIfNeeded];
         [self.settingsHeight.firstItem updateConstraintsIfNeeded];
         [self.view layoutIfNeeded];
-        
     } completion:^(BOOL finished) {
         [self.settingsButton setSelected:NO];
         [self updateControllersOnSettings:NO];
+        [[self launchButton] setHidden:NO];
         [self launchCurrentView];
     }];
-    
 }
 
 -(void) showSettings{
-    
     [self.settingsButton setSelected:YES];
+    [[self launchButton] setHidden:YES];
     [self.settingsViewController showSettingsForMode:self.currentMode];
     
     [self updateControllersOnSettings:YES];
     [UIView animateWithDuration:0.5 animations:^{
-        
         CGRect frameSize = self.view.bounds;
         CGFloat h = frameSize.size.height - 10;
         [self.view layoutIfNeeded];
@@ -262,7 +243,6 @@
         [self.settingsHeight.secondItem updateConstraintsIfNeeded];
         [self.settingsHeight.firstItem updateConstraintsIfNeeded];
         [self.view layoutIfNeeded];
-        
     }];
 }
 

@@ -15,7 +15,6 @@
             <string>Lato-Bold</string>
             <string>Lato-Bold</string>
             <string>Lato-Bold</string>
-            <string>Lato-Bold</string>
         </mutableArray>
         <mutableArray key="Lato-Regular.ttf">
             <string>Lato-Regular</string>
@@ -297,7 +296,7 @@
                                             <action selector="onShowSettings:" destination="KBP-IA-DBo" eventType="touchUpInside" id="pNW-UJ-bJJ"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NBt-ul-jM0" userLabel="Record Button">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NBt-ul-jM0" userLabel="Record Button">
                                         <rect key="frame" x="128" y="14" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="eIr-gn-crf"/>
@@ -311,7 +310,7 @@
                                             <action selector="onCameraTouch:" destination="KBP-IA-DBo" eventType="touchUpInside" id="4Il-Wj-yhZ"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pew-mw-I2Q" userLabel="Camera Switch">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pew-mw-I2Q" userLabel="Camera Switch">
                                         <rect key="frame" x="181" y="14" width="45" height="45"/>
                                         <state key="normal" image="Flip.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -337,36 +336,18 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2G-oY-X3J">
-                                <rect key="frame" x="-8" y="422" width="316" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Start Stream">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="selected" title="Stop Stream"/>
-                                <connections>
-                                    <action selector="onCameraTouch:" destination="KBP-IA-DBo" eventType="touchUpInside" id="bMU-as-eq1"/>
-                                    <action selector="onSubscribePlay:" destination="KBP-IA-DBo" eventType="touchUpInside" id="jck-Qa-Jtr"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="JfZ-oD-Kfb" firstAttribute="top" secondItem="sUc-3V-Yq0" secondAttribute="bottom" id="8LK-aA-4lv"/>
                             <constraint firstItem="ZY3-LB-e7R" firstAttribute="top" secondItem="cdE-RX-o7G" secondAttribute="topMargin" id="Dad-h3-5qB"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="h2G-oY-X3J" secondAttribute="trailing" constant="-24" id="MmY-6L-1Bp"/>
                             <constraint firstItem="ZY3-LB-e7R" firstAttribute="leading" secondItem="cdE-RX-o7G" secondAttribute="leadingMargin" constant="-16" id="QRs-fY-7Tc"/>
                             <constraint firstItem="JfZ-oD-Kfb" firstAttribute="leading" secondItem="cdE-RX-o7G" secondAttribute="leadingMargin" constant="-16" id="TE2-O8-tN2"/>
                             <constraint firstItem="MxR-wR-dWf" firstAttribute="top" secondItem="JfZ-oD-Kfb" secondAttribute="bottom" id="YWb-5K-5BN"/>
                             <constraint firstItem="ZY3-LB-e7R" firstAttribute="trailing" secondItem="cdE-RX-o7G" secondAttribute="trailingMargin" constant="16" id="ZGZ-3o-M40"/>
-                            <constraint firstItem="JfZ-oD-Kfb" firstAttribute="top" secondItem="h2G-oY-X3J" secondAttribute="bottom" id="fXz-8k-Vh4"/>
                             <constraint firstItem="sUc-3V-Yq0" firstAttribute="leading" secondItem="cdE-RX-o7G" secondAttribute="leadingMargin" constant="-20" id="hqt-2Y-ftd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sUc-3V-Yq0" secondAttribute="trailing" constant="-20" id="oTm-Xr-gtP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JfZ-oD-Kfb" secondAttribute="trailing" constant="-16" id="p9t-FE-0mR"/>
-                            <constraint firstItem="h2G-oY-X3J" firstAttribute="leading" secondItem="cdE-RX-o7G" secondAttribute="leadingMargin" constant="-24" id="uzO-GO-ZCq"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -377,7 +358,6 @@
                         <outlet property="launchButton" destination="NBt-ul-jM0" id="W9o-i9-z3t"/>
                         <outlet property="settingsButton" destination="gAi-t0-3Z2" id="9ue-lC-Bzq"/>
                         <outlet property="settingsHeight" destination="eKF-fU-Nas" id="7Sb-Sy-p5E"/>
-                        <outlet property="streamPlayButton" destination="h2G-oY-X3J" id="E03-Ay-hwZ"/>
                         <outlet property="viewHeaderBar" destination="ZY3-LB-e7R" id="4rU-Oa-gEN"/>
                     </connections>
                 </viewController>
