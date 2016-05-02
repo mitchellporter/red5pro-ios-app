@@ -67,6 +67,10 @@
 		92E1DC8719A78C0000F6131D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92E1DC8519A78C0000F6131D /* InfoPlist.strings */; };
 		92E1DC8919A78C0000F6131D /* Red5ProiOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E1DC8819A78C0000F6131D /* Red5ProiOSTests.m */; };
 		92E1DC9719A79C8200F6131D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92E1DC9619A79C8200F6131D /* Main.storyboard */; };
+		C3335E671CD7BDAE00CA0C11 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3335E631CD7BDAE00CA0C11 /* Lato-Bold.ttf */; settings = {ASSET_TAGS = (); }; };
+		C3335E681CD7BDAE00CA0C11 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3335E641CD7BDAE00CA0C11 /* Lato-BoldItalic.ttf */; settings = {ASSET_TAGS = (); }; };
+		C3335E691CD7BDAE00CA0C11 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3335E651CD7BDAE00CA0C11 /* Lato-Italic.ttf */; settings = {ASSET_TAGS = (); }; };
+		C3335E6A1CD7BDAE00CA0C11 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3335E661CD7BDAE00CA0C11 /* Lato-Regular.ttf */; settings = {ASSET_TAGS = (); }; };
 		C3904A1F1CCFDC3B00B5AC55 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = C3904A1C1CCFDC3B00B5AC55 /* home.png */; settings = {ASSET_TAGS = (); }; };
 		C3904A201CCFDC3B00B5AC55 /* homeGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = C3904A1D1CCFDC3B00B5AC55 /* homeGrey.png */; settings = {ASSET_TAGS = (); }; };
 		C3904A211CCFDC3B00B5AC55 /* homeRed.png in Resources */ = {isa = PBXBuildFile; fileRef = C3904A1E1CCFDC3B00B5AC55 /* homeRed.png */; settings = {ASSET_TAGS = (); }; };
@@ -160,6 +164,10 @@
 		92E1DC8619A78C0000F6131D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		92E1DC8819A78C0000F6131D /* Red5ProiOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Red5ProiOSTests.m; sourceTree = "<group>"; };
 		92E1DC9619A79C8200F6131D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		C3335E631CD7BDAE00CA0C11 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		C3335E641CD7BDAE00CA0C11 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
+		C3335E651CD7BDAE00CA0C11 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
+		C3335E661CD7BDAE00CA0C11 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		C3904A1C1CCFDC3B00B5AC55 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home.png; path = images/home.png; sourceTree = SOURCE_ROOT; };
 		C3904A1D1CCFDC3B00B5AC55 /* homeGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homeGrey.png; path = images/homeGrey.png; sourceTree = SOURCE_ROOT; };
 		C3904A1E1CCFDC3B00B5AC55 /* homeRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homeRed.png; path = images/homeRed.png; sourceTree = SOURCE_ROOT; };
@@ -328,6 +336,10 @@
 		92E1DC6A19A78C0000F6131D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C3335E631CD7BDAE00CA0C11 /* Lato-Bold.ttf */,
+				C3335E641CD7BDAE00CA0C11 /* Lato-BoldItalic.ttf */,
+				C3335E651CD7BDAE00CA0C11 /* Lato-Italic.ttf */,
+				C3335E661CD7BDAE00CA0C11 /* Lato-Regular.ttf */,
 				C3904A1C1CCFDC3B00B5AC55 /* home.png */,
 				C3904A1D1CCFDC3B00B5AC55 /* homeGrey.png */,
 				C3904A1E1CCFDC3B00B5AC55 /* homeRed.png */,
@@ -458,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92C187D219ABE50200007336 /* helpGray.png in Resources */,
+				C3335E671CD7BDAE00CA0C11 /* Lato-Bold.ttf in Resources */,
 				92C187D019ABE50200007336 /* go.png in Resources */,
 				C3904A1F1CCFDC3B00B5AC55 /* home.png in Resources */,
 				92A16D9919A7B0C900FBD3E5 /* red5pro_logo.png in Resources */,
@@ -466,6 +479,7 @@
 				48350B931A0C29360053A6FD /* help.html in Resources */,
 				92C187CF19ABE50200007336 /* emptyRed.png in Resources */,
 				92C187D419ABE50200007336 /* secondRed.png in Resources */,
+				C3335E6A1CD7BDAE00CA0C11 /* Lato-Regular.ttf in Resources */,
 				92C187CE19ABE50200007336 /* empty.png in Resources */,
 				92101F9719ABB7D400879D55 /* publish.png in Resources */,
 				92101F9919ABB7D400879D55 /* subscribe.png in Resources */,
@@ -477,6 +491,7 @@
 				481A679219F1A5F80090ABCD /* subscribeGrey.png in Resources */,
 				481A679019F1A5F80090ABCD /* publishGrey.png in Resources */,
 				92C187D519ABE50200007336 /* subscribeRed.png in Resources */,
+				C3335E681CD7BDAE00CA0C11 /* Lato-BoldItalic.ttf in Resources */,
 				92E1DC6E19A78C0000F6131D /* InfoPlist.strings in Resources */,
 				92C6BF5319AD1C2E00244A2F /* settings_grey.png in Resources */,
 				92C187CD19ABE50200007336 /* boxChecked.png in Resources */,
@@ -485,6 +500,7 @@
 				92E1DC7619A78C0000F6131D /* Images.xcassets in Resources */,
 				48C32B6B1BF4EED700BD8105 /* SecondScreen.bundle in Resources */,
 				92101F9819ABB7D400879D55 /* second.png in Resources */,
+				C3335E691CD7BDAE00CA0C11 /* Lato-Italic.ttf in Resources */,
 				48DD8D5419CB5396004A3652 /* r5p_done.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
