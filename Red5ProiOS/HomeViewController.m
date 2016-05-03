@@ -7,7 +7,7 @@
 //
 
 #import "HomeViewController.h"
-#import "StreamViewController.h"
+#import "SettingsViewController.h"
 
 @interface HomeViewController()
 @property enum StreamMode selectedMode;
@@ -22,10 +22,14 @@
     self.selectedMode = r5_example_stream;
 }
 
+- (IBAction)onTwoWayTouch:(id)sender {
+    self.selectedMode = r5_example_twoway;
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    StreamViewController *streamController = (StreamViewController *)segue.destinationViewController;
-    if(streamController != nil && [streamController respondsToSelector:@selector(setCurrentMode:)]) {
-        streamController.currentMode = self.selectedMode;
+    SettingsViewController *settingsController = (SettingsViewController *)segue.destinationViewController;
+    if(settingsController != nil && [settingsController respondsToSelector:@selector(setCurrentMode:)]) {
+        settingsController.currentMode = self.selectedMode;
     }
 }
 

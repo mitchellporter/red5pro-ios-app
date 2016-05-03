@@ -102,6 +102,7 @@
 		C3904A201CCFDC3B00B5AC55 /* homeGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = C3904A1D1CCFDC3B00B5AC55 /* homeGrey.png */; settings = {ASSET_TAGS = (); }; };
 		C3904A211CCFDC3B00B5AC55 /* homeRed.png in Resources */ = {isa = PBXBuildFile; fileRef = C3904A1E1CCFDC3B00B5AC55 /* homeRed.png */; settings = {ASSET_TAGS = (); }; };
 		C3A161EA1CC828E500542367 /* ServerSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A161E91CC828E500542367 /* ServerSettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C3F1444D1CD8F72200753EC6 /* TwoWaySettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F1444C1CD8F72200753EC6 /* TwoWaySettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -227,6 +228,8 @@
 		C3904A1E1CCFDC3B00B5AC55 /* homeRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homeRed.png; path = images/homeRed.png; sourceTree = SOURCE_ROOT; };
 		C3A161E81CC828E500542367 /* ServerSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerSettingsViewController.h; sourceTree = "<group>"; };
 		C3A161E91CC828E500542367 /* ServerSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerSettingsViewController.m; sourceTree = "<group>"; };
+		C3F1444B1CD8F72200753EC6 /* TwoWaySettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoWaySettingsViewController.h; sourceTree = "<group>"; };
+		C3F1444C1CD8F72200753EC6 /* TwoWaySettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoWaySettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +324,8 @@
 				48350B8D1A0BFB8F0053A6FD /* HelpDialogViewController.m */,
 				C3A161E81CC828E500542367 /* ServerSettingsViewController.h */,
 				C3A161E91CC828E500542367 /* ServerSettingsViewController.m */,
+				C3F1444B1CD8F72200753EC6 /* TwoWaySettingsViewController.h */,
+				C3F1444C1CD8F72200753EC6 /* TwoWaySettingsViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -628,6 +633,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3F1444D1CD8F72200753EC6 /* TwoWaySettingsViewController.m in Sources */,
 				48DD8D5B19CB5652004A3652 /* VideoViewController.m in Sources */,
 				48DD8D5219CB4EDF004A3652 /* StreamViewController.m in Sources */,
 				48350B911A0BFC900053A6FD /* HelpDialogSegue.m in Sources */,
@@ -767,7 +773,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"/Users/toddanderson/Documents/workspace/red5pro/red5pro-example-apps/iOS/MainApp",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Red5ProiOS/Red5ProiOS-Prefix.pch";
@@ -802,7 +807,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"/Users/toddanderson/Documents/workspace/red5pro/red5pro-example-apps/iOS/MainApp",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Red5ProiOS/Red5ProiOS-Prefix.pch";

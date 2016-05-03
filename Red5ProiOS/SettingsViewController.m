@@ -7,11 +7,14 @@
 //
 
 #import "SettingsViewController.h"
+#import "TwoWaySettingsViewController.h"
+#import "StreamViewController.h"
 
 @interface SettingsViewController ()
-@property enum StreamMode currentMode;
+
 @property UITextField *focusedField;
 @property NSArray *qualityButtons;
+
 @end
 
 @implementation SettingsViewController
@@ -26,12 +29,56 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.hidden = YES;
 
-    self.app.delegate = self;
+//    self.app.delegate = self;
     self.stream.delegate = self;
     
     self.qualityButtons = [NSArray arrayWithObjects:self.lowQualityBtn, self.mediumQualityBtn, self.highQualityBtn, self.otherQualityBtn, nil];
+    
+    self.stream.text = [self getUserSetting:@"stream" withDefault:self.stream.text];
+    //    self.audioCheck.selected = [[self getUserSetting:@"includeAudio" withDefault:@"1"] boolValue];
+    //    self.videoCheck.selected = [[self getUserSetting:@"includeVideo" withDefault:@"1"] boolValue];
+    //    self.adaptiveBitrateCheck.selected = [[self getUserSetting:@"adaptiveBitrate" withDefault:@"1"] boolValue];
+    
+    //    self.app.text = [self getUserSetting:@"app" withDefault:@"live"];
+    
+    int savedQuality = [[self getUserSetting:@"quality" withDefault:@"1"] intValue];
+    
+    [self setSelectedQualityIndex:savedQuality];
+    
+    switch(self.currentMode) {
+        case r5_example_publish:
+            [self.streamSettingsForm setHidden:NO];
+            [self.publishSettingsForm setHidden:NO];
+            [[self doneBtn] setTitle:@"PUBLISH" forState:UIControlStateNormal];
+            break;
+        case r5_example_stream:
+            [self.streamSettingsForm setHidden:NO];
+            [self.publishSettingsForm setHidden:YES];
+            [[self doneBtn] setTitle:@"SUBSCRIBE" forState:UIControlStateNormal];
+            break;
+        case r5_example_twoway:
+            [self.streamSettingsForm setHidden:NO];
+            [self.publishSettingsForm setHidden:NO];
+            [[self doneBtn] setTitle:@"NEXT" forState:UIControlStateNormal];
+            break;
+    }
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"settingsToTwoWaySettings"]) {
+        TwoWaySettingsViewController *twoWayController = (TwoWaySettingsViewController *)segue.destinationViewController;
+        
+        if (twoWayController != nil && [twoWayController respondsToSelector:@selector(setCurrentMode:)]) {
+            twoWayController.currentMode = self.currentMode;
+        }
+    } else if ([segue.identifier isEqualToString:@"settingsToStreamView"]) {
+        StreamViewController *streamController = (StreamViewController *)segue.destinationViewController;
+        
+        if (streamController != nil && [streamController respondsToSelector:@selector(setCurrentMode:)]) {
+            streamController.currentMode = self.currentMode;
+        }
+    }
 }
 
 - (int)getSelectedQualityIndex {
@@ -90,40 +137,6 @@
     }
 }
 
--(void)showSettingsForMode:(enum StreamMode) mode{
-    self.currentMode = mode;
-    
-    self.view.hidden = NO;
-    
-    self.stream.text = [self getUserSetting:@"stream" withDefault:self.stream.text];
-    self.audioCheck.selected = [[self getUserSetting:@"includeAudio" withDefault:@"1"] boolValue];
-    self.videoCheck.selected = [[self getUserSetting:@"includeVideo" withDefault:@"1"] boolValue];
-    self.adaptiveBitrateCheck.selected = [[self getUserSetting:@"adaptiveBitrate" withDefault:@"1"] boolValue];
-    
-    int savedQuality = [[self getUserSetting:@"quality" withDefault:@"1"] intValue];
-    
-    [self setSelectedQualityIndex:savedQuality];
-    
-    [[self publishDoneBtn] setHidden:YES];
-    [[self subscribeDoneBtn] setHidden:YES];
-    
-    switch(self.currentMode) {
-        case r5_example_publish:
-            [self.streamSettingsForm setHidden:NO];
-            [self.publishSettingsForm setHidden:NO];
-            [[self publishDoneBtn] setHidden:NO];
-            self.app.text = [self getUserSetting:@"app" withDefault:@"live"];
-            break;
-        case r5_example_stream:
-            [self.streamSettingsForm setHidden:NO];
-            [self.publishSettingsForm setHidden:YES];
-            [[self subscribeDoneBtn] setHidden:NO];
-            self.app.text = [self getUserSetting:@"app" withDefault:@"live"];
-            break;
-    }
-
-}
-
 - (IBAction)onDoneClicked:(id)sender {
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -132,23 +145,24 @@
     int selected = [self getSelectedQualityIndex];
     [self setQualityWithIndex:selected];
     
-    [defaults setBool:self.audioCheck.selected forKey:@"includeAudio"];
-    [defaults setBool:self.videoCheck.selected forKey:@"includeVideo"];
-    [defaults setBool:self.adaptiveBitrateCheck.selected forKey:@"adaptiveBitrate"];
-    
-    switch (self.currentMode) {
-        case r5_example_publish:
-        case r5_example_stream:
-            [defaults setObject:self.app.text forKey:@"app"];
-            break;
-    }
+//    [defaults setBool:self.audioCheck.selected forKey:@"includeAudio"];
+//    [defaults setBool:self.videoCheck.selected forKey:@"includeVideo"];
+//    [defaults setBool:self.adaptiveBitrateCheck.selected forKey:@"adaptiveBitrate"];
+//    [defaults setObject:self.app.text forKey:@"app"];
     
     [defaults synchronize];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"userDefaultsChange" object:nil];
     
-    if(self.delegate)
-        [self.delegate closeSettings];
+    switch (self.currentMode) {
+        case r5_example_publish:
+        case r5_example_stream:
+            [self performSegueWithIdentifier:@"settingsToStreamView" sender:self];
+            break;
+        case r5_example_twoway:
+            [self performSegueWithIdentifier:@"settingsToTwoWaySettings" sender:self];
+            break;
+    }
 }
 
 - (BOOL)isHiddenKeyboardField:(UITextField *)field {
@@ -194,11 +208,6 @@
 
 - (IBAction)onAdaptiveBitrateClick:(id)sender {
     [[self adaptiveBitrateCheck] setSelected:!self.adaptiveBitrateCheck.selected];
-}
-
-- (IBAction)onCloseButton:(id)sender {
-    if(self.delegate)
-        [self.delegate closeSettings];
 }
 
 - (IBAction)onQualityTap:(id)sender {

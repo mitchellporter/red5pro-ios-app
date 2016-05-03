@@ -21,7 +21,7 @@
     
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     
-    r5_set_log_level(r5_log_level_debug);
+//    r5_set_log_level(r5_log_level_debug);
     
     return YES;
 }

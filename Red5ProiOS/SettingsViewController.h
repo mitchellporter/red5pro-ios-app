@@ -10,14 +10,9 @@
 
 enum StreamMode {
     r5_example_stream,
-    r5_example_publish
+    r5_example_publish,
+    r5_example_twoway
 };
-
-@protocol SettingsDelegate <NSObject>
-
--(void) closeSettings;
-
-@end
 
 @interface SettingsViewController : UIViewController<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIView *publishSettingsView;
@@ -27,8 +22,7 @@ enum StreamMode {
 @property (weak, nonatomic) IBOutlet UIButton *audioCheck;
 @property (weak, nonatomic) IBOutlet UIButton *videoCheck;
 @property (weak, nonatomic) IBOutlet UIButton *adaptiveBitrateCheck;
-@property (weak, nonatomic) IBOutlet UIButton *publishDoneBtn;
-@property (weak, nonatomic) IBOutlet UIButton *subscribeDoneBtn;
+@property (weak, nonatomic) IBOutlet UIButton *doneBtn;
 
 @property (weak, nonatomic) IBOutlet UIView *streamSettingsForm;
 @property (weak, nonatomic) IBOutlet UIView *publishSettingsForm;
@@ -38,8 +32,6 @@ enum StreamMode {
 @property (weak, nonatomic) IBOutlet UIButton *highQualityBtn;
 @property (weak, nonatomic) IBOutlet UIButton *otherQualityBtn;
 
-@property NSObject<SettingsDelegate> *delegate;
-
--(void)showSettingsForMode:(enum StreamMode) mode;
+@property enum StreamMode currentMode;
 
 @end

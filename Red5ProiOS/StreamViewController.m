@@ -41,6 +41,7 @@
 -(void) launchCurrentView {
     switch(self.currentMode){
         case r5_example_publish:
+        case r5_example_twoway:
             [self loadStreamView:@"publishView"];
             break;
         case r5_example_stream:
@@ -82,6 +83,7 @@
     
     switch (self.currentMode) {
         case r5_example_publish:
+        case r5_example_twoway:
             [self startOrStartPublish];
             break;
         case r5_example_stream:
@@ -96,18 +98,6 @@
     PublishViewController *publisher = (PublishViewController *)[[self viewControllerMap] objectForKey:@"publishView"];
     
     [publisher toggleCamera];
-}
-
-- (IBAction)onPublishTouch:(id)sender {
-    if([self updateMode:r5_example_publish]) {
-      [self showSettings];
-    }
-}
-
-- (IBAction)onSubscribeTouch:(id)sender {
-    if([self updateMode:r5_example_stream]) {
-        [self showSettings];
-    }
 }
 
 -(void)loadStreamView:(NSString *)viewID{
@@ -177,19 +167,11 @@
     
     self.viewControllerMap = [NSMutableDictionary dictionary];
     
-    // Do any additional setup after loading the view.
-    for(UIViewController *child in self.childViewControllers) {
-        if([child isKindOfClass:[SettingsViewController class]]) {
-            self.settingsViewController = (SettingsViewController*)child;
-            self.settingsViewController.delegate = self;
-        }
-    }
     [self launchCurrentView];
 }
 
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self showSettings];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -211,43 +193,6 @@
         [self displayCameraButtons:self.currentMode == r5_example_publish];
 
     }
-}
-
-//SettingsDelegate
--(void) closeSettings{
-    [UIView animateWithDuration:0.5 animations:^{
-        [self.view layoutIfNeeded];
-        self.settingsHeight.constant = 0;
-        [self.settingsHeight.secondItem updateConstraintsIfNeeded];
-        [self.settingsHeight.firstItem updateConstraintsIfNeeded];
-        [self.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        [self.settingsButton setSelected:NO];
-        [self updateControllersOnSettings:NO];
-        [[self launchButton] setHidden:NO];
-        [self launchCurrentView];
-    }];
-}
-
--(void) showSettings{
-    [self.settingsButton setSelected:YES];
-    [[self launchButton] setHidden:YES];
-    [self.settingsViewController showSettingsForMode:self.currentMode];
-    
-    [self updateControllersOnSettings:YES];
-    [UIView animateWithDuration:0.5 animations:^{
-        CGRect frameSize = self.view.bounds;
-        CGFloat h = frameSize.size.height - 10;
-        [self.view layoutIfNeeded];
-        self.settingsHeight.constant = h;//h > 550 ? 550 : h;
-        [self.settingsHeight.secondItem updateConstraintsIfNeeded];
-        [self.settingsHeight.firstItem updateConstraintsIfNeeded];
-        [self.view layoutIfNeeded];
-    }];
-}
-
-- (IBAction)onShowSettings:(id)sender {
-    [self showSettings];
 }
 
 @end
