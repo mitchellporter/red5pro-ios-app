@@ -67,6 +67,7 @@
 		92E1DC8719A78C0000F6131D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92E1DC8519A78C0000F6131D /* InfoPlist.strings */; };
 		92E1DC8919A78C0000F6131D /* Red5ProiOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E1DC8819A78C0000F6131D /* Red5ProiOSTests.m */; };
 		92E1DC9719A79C8200F6131D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92E1DC9619A79C8200F6131D /* Main.storyboard */; };
+		92E753A51CD7C0C10044A9FA /* StreamListUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E753A41CD7C0C10044A9FA /* StreamListUtility.m */; };
 		C3335E671CD7BDAE00CA0C11 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3335E631CD7BDAE00CA0C11 /* Lato-Bold.ttf */; settings = {ASSET_TAGS = (); }; };
 		C3335E681CD7BDAE00CA0C11 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3335E641CD7BDAE00CA0C11 /* Lato-BoldItalic.ttf */; settings = {ASSET_TAGS = (); }; };
 		C3335E691CD7BDAE00CA0C11 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3335E651CD7BDAE00CA0C11 /* Lato-Italic.ttf */; settings = {ASSET_TAGS = (); }; };
@@ -192,6 +193,8 @@
 		92E1DC8619A78C0000F6131D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		92E1DC8819A78C0000F6131D /* Red5ProiOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Red5ProiOSTests.m; sourceTree = "<group>"; };
 		92E1DC9619A79C8200F6131D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		92E753A41CD7C0C10044A9FA /* StreamListUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamListUtility.m; sourceTree = "<group>"; };
+		92E753A61CD7C0E30044A9FA /* StreamListUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StreamListUtility.h; sourceTree = "<group>"; };
 		C3335E631CD7BDAE00CA0C11 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		C3335E641CD7BDAE00CA0C11 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
 		C3335E651CD7BDAE00CA0C11 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
@@ -378,6 +381,7 @@
 		92E1DC6919A78C0000F6131D /* Red5ProiOS */ = {
 			isa = PBXGroup;
 			children = (
+				92E753A01CD7BCF20044A9FA /* Utilities */,
 				48350B941A11188E0053A6FD /* ThirdParty */,
 				484BF38A19F0036F00F693A1 /* Segues */,
 				48DD8D5519CB55CD004A3652 /* ViewControllers */,
@@ -475,6 +479,15 @@
 				92E1DC8519A78C0000F6131D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		92E753A01CD7BCF20044A9FA /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				92E753A61CD7C0E30044A9FA /* StreamListUtility.h */,
+				92E753A41CD7C0C10044A9FA /* StreamListUtility.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -646,6 +659,7 @@
 				C3A161EA1CC828E500542367 /* ServerSettingsViewController.m in Sources */,
 				48DD8D6019CB56DE004A3652 /* SettingsViewController.m in Sources */,
 				92C6BF5719AD2AAB00244A2F /* CALayer+XibConfiguration.m in Sources */,
+				92E753A51CD7C0C10044A9FA /* StreamListUtility.m in Sources */,
 				48350B8E1A0BFB8F0053A6FD /* HelpDialogViewController.m in Sources */,
 				92E1DC7019A78C0000F6131D /* main.m in Sources */,
 			);
