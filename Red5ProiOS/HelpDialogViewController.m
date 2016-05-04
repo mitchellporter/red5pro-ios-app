@@ -16,6 +16,12 @@
 
 @implementation HelpDialogViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.webView.delegate = self;
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -27,14 +33,7 @@
     // Create URL from HTML file in application bundle
     NSURL *html = [[NSBundle mainBundle] URLForResource: @"help" withExtension:@"html"];
     
-    // Create attributed string from HTML
-    NSAttributedString *attrStr = [[NSAttributedString alloc]
-                                   initWithFileURL:html
-                                   options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}
-                                   documentAttributes:nil error:nil];
-    
-    // Create textview, add attributed str
-    [self.textView setAttributedText:attrStr];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:html]];
 }
 
 - (IBAction)dismiss:(id)sender {
@@ -45,14 +44,14 @@
         [self removeFromParentViewController];
     }];
 }
-- (IBAction)goToRed5ProServer:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://red5pro.com"]];
-}
-- (IBAction)goToGithub:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/infrared5/red5pro-example-apps"]];
-}
-- (IBAction)goToSite:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://red5pro.com/docs"]];
+
+- (BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    if ([request.URL isFileURL]) {
+        return YES;
+    }
+    
+    [[UIApplication sharedApplication] openURL:request.URL];
+    return NO;
 }
 
 @end
