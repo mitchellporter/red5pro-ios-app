@@ -26,8 +26,13 @@
 @implementation StreamViewController
 
 - (void)displayCameraButtons:(BOOL)ok {
-//    [[self launchButton] setHidden:NO];
-    [[self camera] setHidden:!ok];
+    if (ok) {
+        self.camera.alpha = 1.0f;
+        self.camera.enabled = YES;
+    } else {
+        self.camera.alpha = 0.5f;
+        self.camera.enabled = NO;
+    }
 }
 
 -(BOOL) updateMode:(enum StreamMode) mode {
@@ -58,14 +63,20 @@
     
     if (self.launchButton.selected) {
         [publisher start];
-        self.launchButton.enabled = false;
+        self.launchButton.enabled = NO;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             self.launchButton.enabled = true;
         });
+        
+        self.settingsButton.enabled = NO;
+        self.settingsButton.alpha = 0.5f;
     } else {
         [publisher stop: YES];
         if(self.currentMode != r5_example_stream)
             [[self camera] setHidden:NO];
+        
+        self.settingsButton.enabled = YES;
+        self.settingsButton.alpha = 1.0f;
         
         [self performSegueWithIdentifier:@"streamingViewToHomeView" sender:self];
     }
@@ -76,8 +87,15 @@
     
     if (self.launchButton.selected) {
         [subscriber start];
+        
+        self.settingsButton.enabled = NO;
+        self.settingsButton.alpha = 0.5f;
     } else {
         [subscriber stop];
+        
+        self.settingsButton.enabled = YES;
+        self.settingsButton.alpha = 1.0f;
+        
         [self performSegueWithIdentifier:@"streamingViewToHomeView" sender:self];
     }
 }
