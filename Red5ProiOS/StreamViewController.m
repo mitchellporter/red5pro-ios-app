@@ -9,6 +9,7 @@
 #import "StreamViewController.h"
 #import "PublishViewController.h"
 #import "VideoViewController.h"
+#import "SettingsViewController.h"
 
 @interface StreamViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *settingsHeight;
@@ -25,8 +26,13 @@
 @implementation StreamViewController
 
 - (void)displayCameraButtons:(BOOL)ok {
-//    [[self launchButton] setHidden:NO];
-    [[self camera] setHidden:!ok];
+    if (ok) {
+        self.camera.alpha = 1.0f;
+        self.camera.enabled = YES;
+    } else {
+        self.camera.alpha = 0.5f;
+        self.camera.enabled = NO;
+    }
 }
 
 -(BOOL) updateMode:(enum StreamMode) mode {
@@ -57,14 +63,22 @@
     
     if (self.launchButton.selected) {
         [publisher start];
-        self.launchButton.enabled = false;
+        self.launchButton.enabled = NO;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             self.launchButton.enabled = true;
         });
+        
+        self.settingsButton.enabled = NO;
+        self.settingsButton.alpha = 0.5f;
     } else {
         [publisher stop: YES];
         if(self.currentMode != r5_example_stream)
             [[self camera] setHidden:NO];
+        
+        self.settingsButton.enabled = YES;
+        self.settingsButton.alpha = 1.0f;
+        
+        [self performSegueWithIdentifier:@"streamingViewToHomeView" sender:self];
     }
 }
 
@@ -73,8 +87,16 @@
     
     if (self.launchButton.selected) {
         [subscriber start];
+        
+        self.settingsButton.enabled = NO;
+        self.settingsButton.alpha = 0.5f;
     } else {
         [subscriber stop];
+        
+        self.settingsButton.enabled = YES;
+        self.settingsButton.alpha = 1.0f;
+        
+        [self performSegueWithIdentifier:@"streamingViewToHomeView" sender:self];
     }
 }
 
@@ -98,6 +120,30 @@
     PublishViewController *publisher = (PublishViewController *)[[self viewControllerMap] objectForKey:@"publishView"];
     
     [publisher toggleCamera];
+}
+
+- (IBAction)onShowSettings:(id)sender {
+    if (self.launchButton.selected) {
+        switch (self.currentMode) {
+            case r5_example_publish:
+            case r5_example_twoway: {
+                PublishViewController *publisher = (PublishViewController *)[[self viewControllerMap] objectForKey:@"publishView"];
+                [publisher stop:YES];
+                break;
+            }
+            
+            case r5_example_stream: {
+                VideoViewController *subscriber = (VideoViewController *)[[self viewControllerMap] objectForKey:@"subscribeView"];
+                [subscriber stop];
+                break;
+            }
+                
+            default:
+                break;
+        }
+    }
+    
+    [self performSegueWithIdentifier:@"streamingViewToSettingsView" sender:self];
 }
 
 -(void)loadStreamView:(NSString *)viewID{
@@ -166,17 +212,27 @@
     [super viewDidLoad];
     
     self.viewControllerMap = [NSMutableDictionary dictionary];
-    
-    [self launchCurrentView];
 }
 
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    [self launchCurrentView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"streamingViewToSettingsView"]) {
+        SettingsViewController *settingsView = (SettingsViewController *)segue.destinationViewController;
+        
+        if (settingsView != nil) {
+            settingsView.currentMode = self.currentMode;
+        }
+    }
 }
 
 -(void)updateControllersOnSettings:(BOOL)shown {

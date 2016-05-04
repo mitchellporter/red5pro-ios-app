@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HelpDialogViewController : UIViewController
+@interface HelpDialogViewController : UIViewController<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *helpTextView;
-@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 @end
