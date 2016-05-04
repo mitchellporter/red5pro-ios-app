@@ -46,6 +46,7 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -549,6 +550,24 @@
                                                     <constraint firstAttribute="height" constant="80" id="SdQ-dz-owE"/>
                                                 </constraints>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hH3-Hz-mxo" userLabel="Advanced Button (Subscribe)">
+                                                <rect key="frame" x="8" y="88" width="44" height="44"/>
+                                                <state key="normal" image="more.png"/>
+                                                <connections>
+                                                    <action selector="onAdvancedSettingsTouch:" destination="7JA-FM-NvD" eventType="touchUpInside" id="tXV-tS-7yi"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADVANCED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1t6-Rk-ziK" userLabel="ADVANCED (Subscribe)">
+                                                <rect key="frame" x="60" y="99" width="260" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="260" id="Y5D-YS-TkE"/>
+                                                    <constraint firstAttribute="height" constant="21" id="pRe-kQ-JAz"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="wXc-sz-W2L"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                                <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PTA-S7-cJg" userLabel="PublishSettings">
                                                 <rect key="frame" x="8" y="88" width="312" height="234"/>
                                                 <subviews>
@@ -645,14 +664,14 @@
                                                     <constraint firstAttribute="width" constant="312" id="vHB-9U-34A"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9I-Qg-ZPZ" userLabel="Advanced Button">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9I-Qg-ZPZ" userLabel="Advanced Button (Publish &amp; Two Way)">
                                                 <rect key="frame" x="8" y="330" width="44" height="44"/>
                                                 <state key="normal" image="more.png"/>
                                                 <connections>
                                                     <action selector="onAdvancedSettingsTouch:" destination="7JA-FM-NvD" eventType="touchUpInside" id="Syh-Oq-W6y"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADVANCED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xon-WJ-Dhw">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADVANCED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xon-WJ-Dhw" userLabel="ADVANCED (Publish &amp; Two Way)">
                                                 <rect key="frame" x="60" y="341" width="260" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="iCx-9u-0fv"/>
@@ -668,13 +687,17 @@
                                             <constraint firstItem="x9I-Qg-ZPZ" firstAttribute="top" secondItem="PTA-S7-cJg" secondAttribute="bottom" constant="8" id="AZf-DO-3ac"/>
                                             <constraint firstItem="xon-WJ-Dhw" firstAttribute="leading" secondItem="x9I-Qg-ZPZ" secondAttribute="trailing" constant="8" id="Eoy-UC-1I6"/>
                                             <constraint firstItem="I8k-a5-gBT" firstAttribute="leading" secondItem="pUB-jn-nCH" secondAttribute="leading" constant="8" id="FW2-5W-p9z"/>
+                                            <constraint firstItem="hH3-Hz-mxo" firstAttribute="leading" secondItem="I8k-a5-gBT" secondAttribute="leading" id="Fvq-qE-IOW"/>
+                                            <constraint firstItem="1t6-Rk-ziK" firstAttribute="centerY" secondItem="hH3-Hz-mxo" secondAttribute="centerY" id="Ogf-ZT-mnk"/>
                                             <constraint firstItem="PTA-S7-cJg" firstAttribute="leading" secondItem="pUB-jn-nCH" secondAttribute="leading" constant="8" id="Q0G-LZ-qwC"/>
                                             <constraint firstAttribute="width" constant="328" id="Qqf-Eo-Ski"/>
                                             <constraint firstItem="I8k-a5-gBT" firstAttribute="top" secondItem="pUB-jn-nCH" secondAttribute="top" id="eeM-4Z-QnK"/>
                                             <constraint firstItem="x9I-Qg-ZPZ" firstAttribute="leading" secondItem="PTA-S7-cJg" secondAttribute="leading" id="lkT-xk-VzO"/>
+                                            <constraint firstItem="1t6-Rk-ziK" firstAttribute="leading" secondItem="hH3-Hz-mxo" secondAttribute="trailing" constant="8" id="mRt-Rn-Bhe"/>
                                             <constraint firstItem="PTA-S7-cJg" firstAttribute="top" secondItem="I8k-a5-gBT" secondAttribute="bottom" constant="8" id="ntY-mq-4I9"/>
                                             <constraint firstAttribute="height" constant="394" id="oCG-zF-rUU"/>
                                             <constraint firstItem="xon-WJ-Dhw" firstAttribute="centerY" secondItem="x9I-Qg-ZPZ" secondAttribute="centerY" id="szi-oq-bi0"/>
+                                            <constraint firstItem="hH3-Hz-mxo" firstAttribute="top" secondItem="I8k-a5-gBT" secondAttribute="bottom" constant="8" id="tdt-Zl-FbU"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -945,12 +968,18 @@
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
                         <outlet property="adaptiveBitrateCheck" destination="x16-5v-NJE" id="63U-4B-XOT"/>
+                        <outlet property="adaptiveBitrateCheckLbl" destination="6dD-Ol-8Ju" id="pyY-3x-aAN"/>
                         <outlet property="advancedSettingsBtn" destination="x9I-Qg-ZPZ" id="HXl-nh-Nvv"/>
+                        <outlet property="advancedSettingsLbl" destination="xon-WJ-Dhw" id="kQT-fd-bk0"/>
+                        <outlet property="advancedSettingsSubscribeBtn" destination="hH3-Hz-mxo" id="CTu-Bi-zrN"/>
+                        <outlet property="advancedSettingsSubscribeLbl" destination="1t6-Rk-ziK" id="Dyi-yC-RCc"/>
                         <outlet property="advancedSettingsView" destination="1Y8-Pk-Cmo" id="K50-6v-cEW"/>
                         <outlet property="advancedStream" destination="IiF-Xw-jsI" id="lXE-vm-PVl"/>
                         <outlet property="app" destination="AHc-Tg-cgE" id="dg6-Ua-X8k"/>
                         <outlet property="audioCheck" destination="jqn-RC-A0W" id="MI6-nK-OED"/>
+                        <outlet property="audioCheckLbl" destination="5gn-2E-PNh" id="pcc-Jq-uE6"/>
                         <outlet property="bitrate" destination="qTe-Yg-nYj" id="97U-Ic-0MT"/>
+                        <outlet property="bitrateLbl" destination="tLq-A5-zGe" id="PUy-bb-ppf"/>
                         <outlet property="doneBtn" destination="f18-Fx-2Gx" id="T7t-LK-J3r"/>
                         <outlet property="highQualityBtn" destination="Bzk-cF-jqI" id="cer-zg-fwp"/>
                         <outlet property="lowQualityBtn" destination="ad8-wx-wnn" id="Mcu-kI-WiA"/>
@@ -960,11 +989,13 @@
                         <outlet property="publishSettingsForm" destination="PTA-S7-cJg" id="USJ-g3-JQf"/>
                         <outlet property="publishSettingsView" destination="PTA-S7-cJg" id="ARg-sK-w7m"/>
                         <outlet property="resolution" destination="nwg-A7-1qJ" id="al6-DD-XWe"/>
+                        <outlet property="resolutionLbl" destination="yyD-1D-PiL" id="tjo-m2-HdI"/>
                         <outlet property="server" destination="5TM-E8-hf5" id="0Fy-8y-PzQ"/>
                         <outlet property="simpleSettingsView" destination="mKJ-9s-mdg" id="Jet-SX-qSE"/>
                         <outlet property="stream" destination="OMJ-2x-9HJ" id="b8j-ZI-Vou"/>
                         <outlet property="streamSettingsForm" destination="I8k-a5-gBT" id="mLN-9V-8Lt"/>
                         <outlet property="videoCheck" destination="4E0-ul-Uis" id="aWa-YW-bfB"/>
+                        <outlet property="videoCheckLbl" destination="WJM-Da-xkZ" id="4c3-Re-7qU"/>
                         <segue destination="9lB-ll-WrN" kind="push" identifier="settingsToTwoWaySettings" id="bc6-QL-ujr"/>
                         <segue destination="KBP-IA-DBo" kind="push" identifier="settingsToStreamView" id="2Mm-yP-xyJ"/>
                         <segue destination="9Sy-1C-W0P" kind="push" identifier="settingsToHomeView" id="BLH-Pi-tfX"/>

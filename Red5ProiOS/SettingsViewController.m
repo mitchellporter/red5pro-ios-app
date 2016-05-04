@@ -68,16 +68,22 @@
         case r5_example_publish:
             [self.streamSettingsForm setHidden:NO];
             [self.publishSettingsForm setHidden:NO];
+            [self.advancedSettingsSubscribeBtn setHidden:YES];
+            [self.advancedSettingsSubscribeLbl setHidden:YES];
             [[self doneBtn] setTitle:@"PUBLISH" forState:UIControlStateNormal];
             break;
         case r5_example_stream:
             [self.streamSettingsForm setHidden:NO];
+            [self.advancedSettingsBtn setHidden:YES];
+            [self.advancedSettingsLbl setHidden:YES];
             [self.publishSettingsForm setHidden:YES];
             [[self doneBtn] setTitle:@"SUBSCRIBE" forState:UIControlStateNormal];
             break;
         case r5_example_twoway:
             [self.streamSettingsForm setHidden:NO];
             [self.publishSettingsForm setHidden:NO];
+            [self.advancedSettingsSubscribeBtn setHidden:YES];
+            [self.advancedSettingsSubscribeLbl setHidden:YES];
             [[self doneBtn] setTitle:@"NEXT" forState:UIControlStateNormal];
             break;
     }
@@ -237,6 +243,19 @@
     [self.advancedSettingsView setAlpha:0.0f];
     [self.advancedSettingsView setHidden:NO];
     
+    if (self.currentMode == r5_example_stream) {
+        [self.bitrate setHidden:YES];
+        [self.bitrateLbl setHidden:YES];
+        [self.resolution setHidden:YES];
+        [self.resolutionLbl setHidden:YES];
+        [self.audioCheck setHidden:YES];
+        [self.audioCheckLbl setHidden:YES];
+        [self.videoCheck setHidden:YES];
+        [self.videoCheckLbl setHidden:YES];
+        [self.adaptiveBitrateCheck setHidden:YES];
+        [self.adaptiveBitrateCheckLbl setHidden:YES];
+    }
+    
     [UIView animateWithDuration:0.16f animations:^{
         [self.advancedSettingsView setAlpha:1.0f];
     }];
@@ -247,6 +266,17 @@
         [self.advancedSettingsView setAlpha:0.0f];
     } completion:^(BOOL finished) {
         [self.advancedSettingsView setHidden:YES];
+        
+        [self.bitrate setHidden:NO];
+        [self.bitrateLbl setHidden:NO];
+        [self.resolution setHidden:NO];
+        [self.resolutionLbl setHidden:NO];
+        [self.audioCheck setHidden:NO];
+        [self.audioCheckLbl setHidden:NO];
+        [self.videoCheck setHidden:NO];
+        [self.videoCheckLbl setHidden:NO];
+        [self.adaptiveBitrateCheck setHidden:NO];
+        [self.adaptiveBitrateCheckLbl setHidden:NO];
     }];
 }
 
