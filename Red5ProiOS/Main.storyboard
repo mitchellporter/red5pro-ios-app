@@ -266,7 +266,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="9Sy-1C-W0P" kind="push" id="3sl-ad-aZi"/>
+                                            <segue destination="9Sy-1C-W0P" kind="push" identifier="streamingViewToHomeView" id="3sl-ad-aZi"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -283,13 +283,6 @@
                                     <constraint firstItem="ZH6-c6-N1u" firstAttribute="top" secondItem="ZY3-LB-e7R" secondAttribute="top" constant="25" id="xEc-md-gAE"/>
                                 </constraints>
                             </view>
-                            <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sUc-3V-Yq0" userLabel="Container View - Settings">
-                                <rect key="frame" x="-4" y="476" width="328" height="20"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="eKF-fU-Nas"/>
-                                </constraints>
-                            </containerView>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfZ-oD-Kfb">
                                 <rect key="frame" x="0.0" y="496" width="320" height="72"/>
                                 <subviews>
@@ -345,14 +338,11 @@
                         </subviews>
                         <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="JfZ-oD-Kfb" firstAttribute="top" secondItem="sUc-3V-Yq0" secondAttribute="bottom" id="8LK-aA-4lv"/>
                             <constraint firstItem="ZY3-LB-e7R" firstAttribute="top" secondItem="cdE-RX-o7G" secondAttribute="topMargin" id="Dad-h3-5qB"/>
                             <constraint firstItem="ZY3-LB-e7R" firstAttribute="leading" secondItem="cdE-RX-o7G" secondAttribute="leadingMargin" constant="-16" id="QRs-fY-7Tc"/>
                             <constraint firstItem="JfZ-oD-Kfb" firstAttribute="leading" secondItem="cdE-RX-o7G" secondAttribute="leadingMargin" constant="-16" id="TE2-O8-tN2"/>
                             <constraint firstItem="MxR-wR-dWf" firstAttribute="top" secondItem="JfZ-oD-Kfb" secondAttribute="bottom" id="YWb-5K-5BN"/>
                             <constraint firstItem="ZY3-LB-e7R" firstAttribute="trailing" secondItem="cdE-RX-o7G" secondAttribute="trailingMargin" constant="16" id="ZGZ-3o-M40"/>
-                            <constraint firstItem="sUc-3V-Yq0" firstAttribute="leading" secondItem="cdE-RX-o7G" secondAttribute="leadingMargin" constant="-20" id="hqt-2Y-ftd"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="sUc-3V-Yq0" secondAttribute="trailing" constant="-20" id="oTm-Xr-gtP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JfZ-oD-Kfb" secondAttribute="trailing" constant="-16" id="p9t-FE-0mR"/>
                         </constraints>
                     </view>
@@ -362,7 +352,6 @@
                         <outlet property="camera" destination="Pew-mw-I2Q" id="HGv-Bq-pTX"/>
                         <outlet property="launchButton" destination="NBt-ul-jM0" id="W9o-i9-z3t"/>
                         <outlet property="settingsButton" destination="gAi-t0-3Z2" id="9ue-lC-Bzq"/>
-                        <outlet property="settingsHeight" destination="eKF-fU-Nas" id="7Sb-Sy-p5E"/>
                         <outlet property="viewHeaderBar" destination="ZY3-LB-e7R" id="4rU-Oa-gEN"/>
                     </connections>
                 </viewController>
@@ -381,7 +370,7 @@
                     <view key="view" contentMode="scaleToFill" id="7CP-Ph-8aQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sPx-1S-4Fe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -399,7 +388,7 @@
                     <view key="view" contentMode="scaleToFill" id="9aj-q8-FYz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U3f-cl-MZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1300,9 +1289,9 @@
         <image name="twoway.png" width="52" height="52"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2Mm-yP-xyJ"/>
         <segue reference="W12-Sh-Lol"/>
-        <segue reference="BLH-Pi-tfX"/>
+        <segue reference="2Mm-yP-xyJ"/>
+        <segue reference="3sl-ad-aZi"/>
         <segue reference="cx3-hF-LdY"/>
     </inferredMetricsTieBreakers>
 </document>

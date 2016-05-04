@@ -65,6 +65,8 @@
         [publisher stop: YES];
         if(self.currentMode != r5_example_stream)
             [[self camera] setHidden:NO];
+        
+        [self performSegueWithIdentifier:@"streamingViewToHomeView" sender:self];
     }
 }
 
@@ -75,6 +77,7 @@
         [subscriber start];
     } else {
         [subscriber stop];
+        [self performSegueWithIdentifier:@"streamingViewToHomeView" sender:self];
     }
 }
 
@@ -166,12 +169,12 @@
     [super viewDidLoad];
     
     self.viewControllerMap = [NSMutableDictionary dictionary];
-    
-    [self launchCurrentView];
 }
 
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    [self launchCurrentView];
 }
 
 - (void)didReceiveMemoryWarning {
