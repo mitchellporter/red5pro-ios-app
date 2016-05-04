@@ -292,7 +292,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="onShowSettings:" destination="KBP-IA-DBo" eventType="touchUpInside" id="pNW-UJ-bJJ"/>
+                                            <action selector="onShowSettings:" destination="KBP-IA-DBo" eventType="touchUpInside" id="chR-fd-UiY"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NBt-ul-jM0" userLabel="Record Button">
@@ -353,6 +353,7 @@
                         <outlet property="launchButton" destination="NBt-ul-jM0" id="W9o-i9-z3t"/>
                         <outlet property="settingsButton" destination="gAi-t0-3Z2" id="9ue-lC-Bzq"/>
                         <outlet property="viewHeaderBar" destination="ZY3-LB-e7R" id="4rU-Oa-gEN"/>
+                        <segue destination="7JA-FM-NvD" kind="push" identifier="streamingViewToSettingsView" id="aaR-46-oN9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ex-eJ-YTX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1044,7 +1045,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="304" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="01w-PM-hx1" id="LQx-u5-xkn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Example Stream" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6U9-VD-x7L">
@@ -1289,9 +1290,9 @@
         <image name="twoway.png" width="52" height="52"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="W12-Sh-Lol"/>
+        <segue reference="aaR-46-oN9"/>
         <segue reference="2Mm-yP-xyJ"/>
-        <segue reference="3sl-ad-aZi"/>
         <segue reference="cx3-hF-LdY"/>
+        <segue reference="3sl-ad-aZi"/>
     </inferredMetricsTieBreakers>
 </document>

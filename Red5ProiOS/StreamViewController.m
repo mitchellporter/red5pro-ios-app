@@ -9,6 +9,7 @@
 #import "StreamViewController.h"
 #import "PublishViewController.h"
 #import "VideoViewController.h"
+#import "SettingsViewController.h"
 
 @interface StreamViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *settingsHeight;
@@ -103,6 +104,30 @@
     [publisher toggleCamera];
 }
 
+- (IBAction)onShowSettings:(id)sender {
+    if (self.launchButton.selected) {
+        switch (self.currentMode) {
+            case r5_example_publish:
+            case r5_example_twoway: {
+                PublishViewController *publisher = (PublishViewController *)[[self viewControllerMap] objectForKey:@"publishView"];
+                [publisher stop:YES];
+                break;
+            }
+            
+            case r5_example_stream: {
+                VideoViewController *subscriber = (VideoViewController *)[[self viewControllerMap] objectForKey:@"subscribeView"];
+                [subscriber stop];
+                break;
+            }
+                
+            default:
+                break;
+        }
+    }
+    
+    [self performSegueWithIdentifier:@"streamingViewToSettingsView" sender:self];
+}
+
 -(void)loadStreamView:(NSString *)viewID{
     if(self.currentStreamView){
         [self.currentStreamView removeFromParentViewController];
@@ -180,6 +205,16 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"streamingViewToSettingsView"]) {
+        SettingsViewController *settingsView = (SettingsViewController *)segue.destinationViewController;
+        
+        if (settingsView != nil) {
+            settingsView.currentMode = self.currentMode;
+        }
+    }
 }
 
 -(void)updateControllersOnSettings:(BOOL)shown {
