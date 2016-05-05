@@ -48,6 +48,12 @@
     [stream play:streamName];
 }
 
+- (void)startWithStreamName:(NSString *)streamName {
+    stream = [self setUpNewStream];
+    [self attachStream:stream];
+    [stream play:streamName];
+}
+
 -(void)stop {
     @try {
         [stream stop];

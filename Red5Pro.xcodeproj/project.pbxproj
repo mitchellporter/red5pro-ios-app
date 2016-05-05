@@ -103,6 +103,7 @@
 		C3904A201CCFDC3B00B5AC55 /* homeGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = C3904A1D1CCFDC3B00B5AC55 /* homeGrey.png */; settings = {ASSET_TAGS = (); }; };
 		C3904A211CCFDC3B00B5AC55 /* homeRed.png in Resources */ = {isa = PBXBuildFile; fileRef = C3904A1E1CCFDC3B00B5AC55 /* homeRed.png */; settings = {ASSET_TAGS = (); }; };
 		C3A161EA1CC828E500542367 /* ServerSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A161E91CC828E500542367 /* ServerSettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C3CA6DEB1CDB813E00FE7C5A /* StreamTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CA6DEA1CDB813E00FE7C5A /* StreamTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		C3F1444D1CD8F72200753EC6 /* TwoWaySettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F1444C1CD8F72200753EC6 /* TwoWaySettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -231,6 +232,8 @@
 		C3904A1E1CCFDC3B00B5AC55 /* homeRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homeRed.png; path = images/homeRed.png; sourceTree = SOURCE_ROOT; };
 		C3A161E81CC828E500542367 /* ServerSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerSettingsViewController.h; sourceTree = "<group>"; };
 		C3A161E91CC828E500542367 /* ServerSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerSettingsViewController.m; sourceTree = "<group>"; };
+		C3CA6DE91CDB813E00FE7C5A /* StreamTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamTableViewCell.h; sourceTree = "<group>"; };
+		C3CA6DEA1CDB813E00FE7C5A /* StreamTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamTableViewCell.m; sourceTree = "<group>"; };
 		C3F1444B1CD8F72200753EC6 /* TwoWaySettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoWaySettingsViewController.h; sourceTree = "<group>"; };
 		C3F1444C1CD8F72200753EC6 /* TwoWaySettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoWaySettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -329,6 +332,8 @@
 				C3A161E91CC828E500542367 /* ServerSettingsViewController.m */,
 				C3F1444B1CD8F72200753EC6 /* TwoWaySettingsViewController.h */,
 				C3F1444C1CD8F72200753EC6 /* TwoWaySettingsViewController.m */,
+				C3CA6DE91CDB813E00FE7C5A /* StreamTableViewCell.h */,
+				C3CA6DEA1CDB813E00FE7C5A /* StreamTableViewCell.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -654,6 +659,7 @@
 				4836DC2B19E47C7200DEC2B8 /* PublishViewController.m in Sources */,
 				484BF38D19F0039D00F693A1 /* HomeScreenSegue.m in Sources */,
 				48350B9C1A1131CF0053A6FD /* ALToastView.m in Sources */,
+				C3CA6DEB1CDB813E00FE7C5A /* StreamTableViewCell.m in Sources */,
 				487B8B1C19E700C200A47A7E /* HomeViewController.m in Sources */,
 				48350B981A11188E0053A6FD /* Reachability.m in Sources */,
 				C3A161EA1CC828E500542367 /* ServerSettingsViewController.m in Sources */,

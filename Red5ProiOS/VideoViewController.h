@@ -14,5 +14,6 @@
 @property (nonatomic, strong) StreamViewController *streamViewController;
 
 -(void)start;
+- (void)startWithStreamName:(NSString *)streamName;
 -(void)stop;
 @end
