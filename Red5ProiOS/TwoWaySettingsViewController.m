@@ -123,6 +123,7 @@
 - (void) connectTo:(NSString *)connectionStreamName withStreamName:(NSString *)streamName {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:streamName forKey:@"stream"];
+    [defaults setObject:connectionStreamName forKey:@"connectToStream"];
     [defaults synchronize];
     
     NSLog(@"Selected %@ and publishing %@", connectionStreamName, streamName);

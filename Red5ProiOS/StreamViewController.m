@@ -12,7 +12,7 @@
 #import "SettingsViewController.h"
 
 @interface StreamViewController ()
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *settingsHeight;
+
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 @property (weak, nonatomic) IBOutlet UIButton *launchButton;
 @property (weak, nonatomic) IBOutlet UIButton *camera;
@@ -46,16 +46,26 @@
 
 -(void) launchCurrentView {
     switch(self.currentMode){
-        case r5_example_publish:
-        case r5_example_twoway:
+        case r5_example_publish: {
             [self loadStreamView:@"publishView"];
+            PublishViewController *publisher = (PublishViewController *)[[self viewControllerMap] objectForKey:@"publishView"];
+            
+            [publisher updatePreview];
             break;
+        }
+        case r5_example_twoway: {
+            [self loadTwoWayViews];
+            PublishViewController *publisher = (PublishViewController *)[[self viewControllerMap] objectForKey:@"publishView"];
+            
+            [publisher updatePreview];
+            break;
+        }
         case r5_example_stream:
             [self loadStreamView:@"subscribeView"];
             break;
     }
     
-   [self displayCameraButtons: self.currentMode == r5_example_publish];
+   [self displayCameraButtons: self.currentMode != r5_example_stream];
 }
 
 - (void) startOrStartPublish {
@@ -100,13 +110,44 @@
     }
 }
 
+- (void) startOrStopTwoWay {
+    VideoViewController *subscriber = (VideoViewController *)[[self viewControllerMap] objectForKey:@"subscribeView"];
+    PublishViewController *publisher = (PublishViewController *)[[self viewControllerMap] objectForKey:@"publishView"];
+    
+    if (self.launchButton.selected) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *connectToStream = (NSString *)[defaults objectForKey:@"connectToStream"];
+        
+        [subscriber startWithStreamName:connectToStream];
+        
+        self.launchButton.enabled = NO;
+        
+        self.settingsButton.enabled = NO;
+        self.settingsButton.alpha = 0.5f;
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            self.launchButton.enabled = true;
+        });
+    } else {
+        [publisher stop: YES];
+        [subscriber stop];
+        
+        self.settingsButton.enabled = YES;
+        self.settingsButton.alpha = 1.0f;
+        
+        [self performSegueWithIdentifier:@"streamingViewToHomeView" sender:self];
+    }
+}
+
 - (IBAction)onCameraTouch:(id)sender {
     self.launchButton.selected = !self.launchButton.selected;
     
     switch (self.currentMode) {
         case r5_example_publish:
-        case r5_example_twoway:
             [self startOrStartPublish];
+            break;
+        case r5_example_twoway:
+            [self startOrStopTwoWay];
             break;
         case r5_example_stream:
             [self startOrStartSubscribe];
@@ -125,10 +166,18 @@
 - (IBAction)onShowSettings:(id)sender {
     if (self.launchButton.selected) {
         switch (self.currentMode) {
-            case r5_example_publish:
+            case r5_example_publish: {
+                PublishViewController *publisher = (PublishViewController *)[[self viewControllerMap] objectForKey:@"publishView"];
+                [publisher stop:YES];
+                break;
+            }
+            
             case r5_example_twoway: {
                 PublishViewController *publisher = (PublishViewController *)[[self viewControllerMap] objectForKey:@"publishView"];
                 [publisher stop:YES];
+                
+                VideoViewController *subscriber = (VideoViewController *)[[self viewControllerMap] objectForKey:@"subscribeView"];
+                [subscriber stop];
                 break;
             }
             
@@ -146,18 +195,74 @@
     [self performSegueWithIdentifier:@"streamingViewToSettingsView" sender:self];
 }
 
+- (UIViewController *)viewControllerForIdentifier:(NSString *)identifier {
+    UIViewController *vc = (UIViewController *)[self.viewControllerMap objectForKey:identifier];
+    if (vc == nil) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        vc = [storyboard instantiateViewControllerWithIdentifier:identifier];
+        [self.viewControllerMap setObject:vc forKey:identifier];
+    }
+    return vc;
+}
+
+- (void)loadTwoWayViews {
+    if (self.currentStreamView) {
+        [self.currentStreamView removeFromParentViewController];
+        [self.currentStreamView.view removeFromSuperview];
+    }
+    
+    if (self.altStreamView) {
+        [self.altStreamView removeFromParentViewController];
+        [self.altStreamView.view removeFromSuperview];
+    }
+    
+    VideoViewController *subscribe = (VideoViewController *)[self viewControllerForIdentifier:@"subscribeView"];
+    PublishViewController *publish = (PublishViewController *)[self viewControllerForIdentifier:@"publishView"];
+    
+    subscribe.streamViewController = self;
+    publish.streamViewController = self;
+    
+    self.currentStreamView = subscribe;
+    self.altStreamView = publish;
+    
+    //  Add Publish
+    CGRect smallFrame = self.view.bounds;
+    float plannedWidth = smallFrame.size.width * 0.333f;
+    float plannedHeight = smallFrame.size.height * 0.333f;
+    smallFrame.origin.x = smallFrame.size.width - 16.0f /*padding*/ - plannedWidth;
+    smallFrame.origin.y = smallFrame.size.height - 72.0f /*bottom pad*/ - 16.0f /*padding*/ - plannedHeight;
+    smallFrame.size.width = plannedWidth;
+    smallFrame.size.height = plannedHeight;
+    
+    publish.view.layer.frame = smallFrame;
+    publish.view.frame = smallFrame;
+    
+    [self.view addSubview:publish.view];
+    [self.view sendSubviewToBack:publish.view];
+    
+    //  Add Subscribe last
+    CGRect largeFrame = self.view.bounds;
+    largeFrame.size.height -= 72;
+    
+    subscribe.view.layer.frame = largeFrame;
+    subscribe.view.frame = largeFrame;
+    
+    [self.view addSubview:subscribe.view];
+    [self.view sendSubviewToBack:subscribe.view];
+}
+
 -(void)loadStreamView:(NSString *)viewID{
     if(self.currentStreamView){
         [self.currentStreamView removeFromParentViewController];
         [self.currentStreamView.view removeFromSuperview];
     }
     
-    UIViewController *myController = (UIViewController *)[[self viewControllerMap] objectForKey:viewID];
-    if(myController == nil) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        myController = [storyboard instantiateViewControllerWithIdentifier:viewID];
-        [[self viewControllerMap] setObject:myController forKey:viewID];
+    if (self.altStreamView) {
+        [self.altStreamView removeFromParentViewController];
+        [self.altStreamView.view removeFromSuperview];
     }
+    
+    UIViewController *myController = [self viewControllerForIdentifier:viewID];
     
     self.currentStreamView = myController;
     
@@ -179,33 +284,6 @@
         PublishViewController *publishViewController = (PublishViewController *)myController;
         publishViewController.streamViewController = self;
     }
-}
-
--(void)loadViewFromStoryboard:(NSString *)viewID {
-    if(self.currentStreamView){
-        [self.currentStreamView removeFromParentViewController];
-        [self.currentStreamView.view removeFromSuperview];
-    }
-    
-    UIViewController *myController = [[self viewControllerMap] objectForKey:viewID];
-    if(myController == nil) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        myController = [storyboard instantiateViewControllerWithIdentifier:viewID];
-        [[self viewControllerMap] setObject:myController forKey:viewID];
-    }
-    
-    self.currentStreamView = myController;
-    
-    CGRect frameSize = self.view.bounds;
-    frameSize.size.height -= 72;
-    
-    myController.view.layer.frame = frameSize;
-    myController.view.frame = frameSize;
-    
-    [self.view addSubview:myController.view];
-    [self.view sendSubviewToBack:myController.view];
-    [myController.view updateConstraintsIfNeeded];
-    [myController.view layoutIfNeeded];
 }
 
 - (void)viewDidLoad {

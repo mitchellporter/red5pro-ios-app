@@ -13,6 +13,7 @@
 
 @interface StreamViewController : UIViewController
 @property UIViewController *currentStreamView;
+@property UIViewController *altStreamView;
 @property enum StreamMode currentMode;
 @property (weak, nonatomic) IBOutlet UIView *viewHeaderBar;
 

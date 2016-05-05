@@ -16,4 +16,5 @@
 -(void)start;
 -(void)stop : (BOOL) reset;
 -(void)toggleCamera;
+-(void)updatePreview;
 @end
