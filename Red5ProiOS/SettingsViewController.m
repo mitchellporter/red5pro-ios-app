@@ -9,6 +9,7 @@
 #import "SettingsViewController.h"
 #import "TwoWaySettingsViewController.h"
 #import "StreamViewController.h"
+#import "PublishStreamUtility.h"
 
 @interface SettingsViewController ()
 
@@ -195,6 +196,9 @@
             [self performSegueWithIdentifier:@"settingsToStreamView" sender:self];
             break;
         case r5_example_twoway:
+            
+            [[PublishStreamUtility getInstance] createNewStream];
+            
             [self performSegueWithIdentifier:@"settingsToTwoWaySettings" sender:self];
             break;
     }
