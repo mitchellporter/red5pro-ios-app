@@ -72,31 +72,34 @@
         [self showAdvancedSettings];
     }
     
+    [self.doneBtn setAlpha:1.0f];
+    [self.doneBtn setEnabled:YES];
+    
     [self.simpleStream setHidden:NO];
     [self.stream setHidden:YES];
     
+    [self.streamSettingsForm setHidden:NO];
+    [self.publishSettingsForm setHidden:NO];
+    
+    [self.advancedSettingsSubscribeBtn setHidden:YES];
+    [self.advancedSettingsSubscribeLbl setHidden:YES];
+    
     switch(self.currentMode) {
         case r5_example_publish:
-            [self.streamSettingsForm setHidden:NO];
-            [self.publishSettingsForm setHidden:NO];
-            [self.advancedSettingsSubscribeBtn setHidden:YES];
-            [self.advancedSettingsSubscribeLbl setHidden:YES];
             [[self doneBtn] setTitle:@"PUBLISH" forState:UIControlStateNormal];
             break;
         case r5_example_stream:
-            [self.streamSettingsForm setHidden:NO];
             [self.simpleStream setHidden:YES];
             [self.stream setHidden:NO];
             [self.advancedSettingsBtn setHidden:YES];
             [self.advancedSettingsLbl setHidden:YES];
             [self.publishSettingsForm setHidden:YES];
             [[self doneBtn] setTitle:@"SUBSCRIBE" forState:UIControlStateNormal];
+            
+            [self.doneBtn setAlpha:0.5f];
+            [self.doneBtn setEnabled:NO];
             break;
         case r5_example_twoway:
-            [self.streamSettingsForm setHidden:NO];
-            [self.publishSettingsForm setHidden:NO];
-            [self.advancedSettingsSubscribeBtn setHidden:YES];
-            [self.advancedSettingsSubscribeLbl setHidden:YES];
             [[self doneBtn] setTitle:@"NEXT" forState:UIControlStateNormal];
             break;
     }
@@ -225,6 +228,9 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     StreamTableViewCell *cell = (StreamTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     NSString *connectToStreamName = [cell.streamNameLbl text];
+    
+    [self.doneBtn setAlpha:1.0f];
+    [self.doneBtn setEnabled:YES];
     
     [self connectTo:connectToStreamName];
     [self setSubscribeBtnEnabled:YES];
