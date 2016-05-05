@@ -14,7 +14,7 @@ enum StreamMode {
     r5_example_twoway
 };
 
-@interface SettingsViewController : UIViewController<UITextFieldDelegate>
+@interface SettingsViewController : UIViewController<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIView *simpleSettingsView;
 @property (weak, nonatomic) IBOutlet UIView *advancedSettingsView;
@@ -24,7 +24,7 @@ enum StreamMode {
 @property (weak, nonatomic) IBOutlet UIView *streamSettingsForm;
 @property (weak, nonatomic) IBOutlet UIView *publishSettingsForm;
 
-@property (weak, nonatomic) IBOutlet UITextField *stream;
+@property (weak, nonatomic) IBOutlet UITableView *stream;
 @property (weak, nonatomic) IBOutlet UITextField *app;
 @property (weak, nonatomic) IBOutlet UITextField *advancedStream;
 @property (weak, nonatomic) IBOutlet UITextField *server;

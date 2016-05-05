@@ -10,11 +10,14 @@
 #import "TwoWaySettingsViewController.h"
 #import "StreamViewController.h"
 #import "PublishStreamUtility.h"
+#import "StreamListUtility.h"
+#import "StreamTableViewCell.h"
 
 @interface SettingsViewController ()
 
 @property UITextField *focusedField;
 @property NSArray *qualityButtons;
+@property NSArray *liveStreams;
 
 @end
 
@@ -32,7 +35,11 @@
     [super viewDidLoad];
 
     self.app.delegate = self;
+    
     self.stream.delegate = self;
+    self.stream.dataSource = self;
+    self.liveStreams = @[];
+    
     self.advancedStream.delegate = self;
     self.port.delegate = self;
     self.server.delegate = self;
@@ -41,8 +48,7 @@
     
     self.qualityButtons = [NSArray arrayWithObjects:self.lowQualityBtn, self.mediumQualityBtn, self.highQualityBtn, self.otherQualityBtn, nil];
     
-    self.stream.text = [self getUserSetting:@"stream" withDefault:self.stream.text];
-    self.advancedStream.text = self.stream.text;
+    self.advancedStream.text = [self getUserSetting:@"stream" withDefault:self.advancedStream.text];
     
     self.audioCheck.selected = [[self getUserSetting:@"includeAudio" withDefault:@"1"] boolValue];
     self.videoCheck.selected = [[self getUserSetting:@"includeVideo" withDefault:@"1"] boolValue];
@@ -87,6 +93,24 @@
             [self.advancedSettingsSubscribeLbl setHidden:YES];
             [[self doneBtn] setTitle:@"NEXT" forState:UIControlStateNormal];
             break;
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if( self.currentMode == r5_example_stream ){
+        self.liveStreams = [[StreamListUtility getInstance] callWithBlock:^(NSArray *streams) {
+            self.liveStreams = streams;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.stream reloadData];
+            });
+        }];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.stream reloadData];
+        });
     }
 }
 
@@ -170,6 +194,52 @@
     }
 }
 
+#pragma mark - Helpers
+
+- (void) setSubscribeBtnEnabled:(BOOL)isEnabled {
+    [self.doneBtn setEnabled:isEnabled];
+    [self.doneBtn setAlpha:isEnabled ? 1.0f : 0.5f];
+}
+
+#pragma mark - Table
+
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    StreamTableViewCell *cell = (StreamTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"streamCell"];
+    
+    cell.streamNameLbl.text = [[self liveStreams] objectAtIndex:indexPath.row];
+    
+    return cell;
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.liveStreams.count;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    StreamTableViewCell *cell = (StreamTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    NSString *connectToStreamName = [cell.streamNameLbl text];
+    
+    [self connectTo:connectToStreamName];
+    [self setSubscribeBtnEnabled:YES];
+}
+
+- (void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self setSubscribeBtnEnabled:NO];
+}
+
+#pragma mark - Connections
+
+- (void) connectTo:(NSString *)connectionStreamName {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:connectionStreamName forKey:@"stream"];
+    [defaults synchronize];
+    
+    NSLog(@"Selected %@", connectionStreamName);
+    //  TODO: Connect to connectionStreamName
+}
+
+#pragma mark - Navigation
+
 - (IBAction)onDoneClicked:(id)sender {
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -180,8 +250,6 @@
     [defaults setBool:self.audioCheck.selected forKey:@"includeAudio"];
     [defaults setBool:self.videoCheck.selected forKey:@"includeVideo"];
     [defaults setBool:self.adaptiveBitrateCheck.selected forKey:@"adaptiveBitrate"];
-    
-    [defaults setObject:self.stream.text forKey:@"stream"];
     [defaults setObject:self.app.text forKey:@"app"];
     [defaults setObject:self.server.text forKey:@"domain"];
     [defaults setObject:self.port.text forKey:@"port"];
@@ -205,7 +273,7 @@
 }
 
 - (BOOL)isHiddenKeyboardField:(UITextField *)field {
-    return field == self.stream || field == self.advancedStream;
+    return field == self.advancedStream;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -225,12 +293,6 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     if([self isHiddenKeyboardField:textField]) {
         [self animateTextField: textField up: NO];
-    }
-    
-    if (textField == self.stream) {
-        self.advancedStream.text = self.stream.text;
-    } else if (textField == self.advancedStream) {
-        self.stream.text = textField.text;
     }
 }
 

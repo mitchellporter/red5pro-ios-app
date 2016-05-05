@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="1pY-b2-Ywk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="1pY-b2-Ywk">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -520,27 +520,46 @@
                                         <rect key="frame" x="0.0" y="87" width="328" height="394"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I8k-a5-gBT" userLabel="StreamSettings">
-                                                <rect key="frame" x="8" y="0.0" width="312" height="80"/>
+                                                <rect key="frame" x="8" y="0.0" width="312" height="182"/>
                                                 <subviews>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="STREAM NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfp-7U-YdR">
                                                         <rect key="frame" x="0.0" y="8" width="93" height="34"/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
                                                         <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     </label>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="myStream" borderStyle="roundedRect" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="OMJ-2x-9HJ">
-                                                        <rect key="frame" x="0.0" y="42" width="312" height="30"/>
-                                                        <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
-                                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                                    </textField>
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="moF-qv-lrH">
+                                                        <rect key="frame" x="0.0" y="42" width="312" height="132"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <prototypes>
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="streamCell" id="68Q-vo-zyx" customClass="StreamTableViewCell">
+                                                                <rect key="frame" x="0.0" y="28" width="312" height="44"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="68Q-vo-zyx" id="DOr-G9-rEn">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="312" height="43"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Example Stream" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qt8-eT-k1p">
+                                                                            <rect key="frame" x="8" y="11" width="288" height="21"/>
+                                                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                                                            <color key="textColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </tableViewCellContentView>
+                                                                <connections>
+                                                                    <outlet property="streamNameLbl" destination="Qt8-eT-k1p" id="FMj-SE-Vpu"/>
+                                                                </connections>
+                                                            </tableViewCell>
+                                                        </prototypes>
+                                                    </tableView>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="312" id="PXO-ko-Ezo"/>
-                                                    <constraint firstAttribute="height" constant="80" id="SdQ-dz-owE"/>
+                                                    <constraint firstAttribute="height" constant="182" id="SdQ-dz-owE"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hH3-Hz-mxo" userLabel="Advanced Button (Subscribe)">
-                                                <rect key="frame" x="8" y="88" width="304" height="44"/>
+                                                <rect key="frame" x="8" y="190" width="304" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="304" id="cJW-FH-uMp"/>
                                                 </constraints>
@@ -550,7 +569,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADVANCED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1t6-Rk-ziK" userLabel="ADVANCED (Subscribe)">
-                                                <rect key="frame" x="60" y="99" width="260" height="21"/>
+                                                <rect key="frame" x="60" y="201" width="260" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="260" id="Y5D-YS-TkE"/>
                                                     <constraint firstAttribute="height" constant="21" id="pRe-kQ-JAz"/>
@@ -678,20 +697,20 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="1t6-Rk-ziK" firstAttribute="leading" secondItem="hH3-Hz-mxo" secondAttribute="trailing" constant="-252" id="71Y-24-OLB"/>
                                             <constraint firstItem="x9I-Qg-ZPZ" firstAttribute="top" secondItem="PTA-S7-cJg" secondAttribute="bottom" constant="8" id="AZf-DO-3ac"/>
-                                            <constraint firstItem="I8k-a5-gBT" firstAttribute="leading" secondItem="pUB-jn-nCH" secondAttribute="leading" constant="8" id="FW2-5W-p9z"/>
-                                            <constraint firstItem="hH3-Hz-mxo" firstAttribute="leading" secondItem="I8k-a5-gBT" secondAttribute="leading" id="Fvq-qE-IOW"/>
                                             <constraint firstItem="1t6-Rk-ziK" firstAttribute="centerY" secondItem="hH3-Hz-mxo" secondAttribute="centerY" id="Ogf-ZT-mnk"/>
+                                            <constraint firstItem="I8k-a5-gBT" firstAttribute="leading" secondItem="pUB-jn-nCH" secondAttribute="leading" constant="8" id="PWb-t6-qOw"/>
                                             <constraint firstItem="PTA-S7-cJg" firstAttribute="leading" secondItem="pUB-jn-nCH" secondAttribute="leading" constant="8" id="Q0G-LZ-qwC"/>
                                             <constraint firstAttribute="width" constant="328" id="Qqf-Eo-Ski"/>
-                                            <constraint firstItem="1t6-Rk-ziK" firstAttribute="leading" secondItem="hH3-Hz-mxo" secondAttribute="trailing" constant="-252" id="Stc-Ge-l7k"/>
                                             <constraint firstItem="xon-WJ-Dhw" firstAttribute="leading" secondItem="x9I-Qg-ZPZ" secondAttribute="trailing" constant="-252" id="X3u-Fa-VDs"/>
                                             <constraint firstItem="I8k-a5-gBT" firstAttribute="top" secondItem="pUB-jn-nCH" secondAttribute="top" id="eeM-4Z-QnK"/>
+                                            <constraint firstItem="hH3-Hz-mxo" firstAttribute="leading" secondItem="I8k-a5-gBT" secondAttribute="leading" id="enC-GW-i40"/>
                                             <constraint firstItem="x9I-Qg-ZPZ" firstAttribute="leading" secondItem="PTA-S7-cJg" secondAttribute="leading" id="lkT-xk-VzO"/>
-                                            <constraint firstItem="PTA-S7-cJg" firstAttribute="top" secondItem="I8k-a5-gBT" secondAttribute="bottom" constant="8" id="ntY-mq-4I9"/>
+                                            <constraint firstItem="PTA-S7-cJg" firstAttribute="top" secondItem="I8k-a5-gBT" secondAttribute="bottom" constant="-94" id="ntY-mq-4I9"/>
                                             <constraint firstAttribute="height" constant="394" id="oCG-zF-rUU"/>
+                                            <constraint firstItem="hH3-Hz-mxo" firstAttribute="top" secondItem="I8k-a5-gBT" secondAttribute="bottom" constant="8" id="oGP-p2-b4d"/>
                                             <constraint firstItem="xon-WJ-Dhw" firstAttribute="centerY" secondItem="x9I-Qg-ZPZ" secondAttribute="centerY" id="szi-oq-bi0"/>
-                                            <constraint firstItem="hH3-Hz-mxo" firstAttribute="top" secondItem="I8k-a5-gBT" secondAttribute="bottom" constant="8" id="tdt-Zl-FbU"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -986,7 +1005,7 @@
                         <outlet property="resolutionLbl" destination="yyD-1D-PiL" id="tjo-m2-HdI"/>
                         <outlet property="server" destination="5TM-E8-hf5" id="0Fy-8y-PzQ"/>
                         <outlet property="simpleSettingsView" destination="mKJ-9s-mdg" id="Jet-SX-qSE"/>
-                        <outlet property="stream" destination="OMJ-2x-9HJ" id="b8j-ZI-Vou"/>
+                        <outlet property="stream" destination="moF-qv-lrH" id="GOa-CU-8Qp"/>
                         <outlet property="streamSettingsForm" destination="I8k-a5-gBT" id="mLN-9V-8Lt"/>
                         <outlet property="videoCheck" destination="4E0-ul-Uis" id="aWa-YW-bfB"/>
                         <outlet property="videoCheckLbl" destination="WJM-Da-xkZ" id="4c3-Re-7qU"/>
@@ -1050,7 +1069,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="304" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="01w-PM-hx1" id="LQx-u5-xkn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Example Stream" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6U9-VD-x7L">
@@ -1305,8 +1324,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="W12-Sh-Lol"/>
+        <segue reference="2Mm-yP-xyJ"/>
         <segue reference="BLH-Pi-tfX"/>
-        <segue reference="3sB-dr-VxE"/>
         <segue reference="cx3-hF-LdY"/>
     </inferredMetricsTieBreakers>
 </document>
