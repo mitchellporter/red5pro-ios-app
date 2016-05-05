@@ -47,7 +47,6 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
-            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -565,26 +564,6 @@
                                                     <constraint firstAttribute="height" constant="182" id="SdQ-dz-owE"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hH3-Hz-mxo" userLabel="Advanced Button (Subscribe)">
-                                                <rect key="frame" x="8" y="190" width="304" height="44"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="304" id="cJW-FH-uMp"/>
-                                                </constraints>
-                                                <state key="normal" image="more.png"/>
-                                                <connections>
-                                                    <action selector="onAdvancedSettingsTouch:" destination="7JA-FM-NvD" eventType="touchUpInside" id="tXV-tS-7yi"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADVANCED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1t6-Rk-ziK" userLabel="ADVANCED (Subscribe)">
-                                                <rect key="frame" x="60" y="201" width="260" height="21"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="260" id="Y5D-YS-TkE"/>
-                                                    <constraint firstAttribute="height" constant="21" id="pRe-kQ-JAz"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
-                                                <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PTA-S7-cJg" userLabel="PublishSettings">
                                                 <rect key="frame" x="8" y="88" width="312" height="234"/>
                                                 <subviews>
@@ -704,19 +683,15 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="1t6-Rk-ziK" firstAttribute="leading" secondItem="hH3-Hz-mxo" secondAttribute="trailing" constant="-252" id="71Y-24-OLB"/>
                                             <constraint firstItem="x9I-Qg-ZPZ" firstAttribute="top" secondItem="PTA-S7-cJg" secondAttribute="bottom" constant="8" id="AZf-DO-3ac"/>
-                                            <constraint firstItem="1t6-Rk-ziK" firstAttribute="centerY" secondItem="hH3-Hz-mxo" secondAttribute="centerY" id="Ogf-ZT-mnk"/>
                                             <constraint firstItem="I8k-a5-gBT" firstAttribute="leading" secondItem="pUB-jn-nCH" secondAttribute="leading" constant="8" id="PWb-t6-qOw"/>
                                             <constraint firstItem="PTA-S7-cJg" firstAttribute="leading" secondItem="pUB-jn-nCH" secondAttribute="leading" constant="8" id="Q0G-LZ-qwC"/>
                                             <constraint firstAttribute="width" constant="328" id="Qqf-Eo-Ski"/>
                                             <constraint firstItem="xon-WJ-Dhw" firstAttribute="leading" secondItem="x9I-Qg-ZPZ" secondAttribute="trailing" constant="-252" id="X3u-Fa-VDs"/>
                                             <constraint firstItem="I8k-a5-gBT" firstAttribute="top" secondItem="pUB-jn-nCH" secondAttribute="top" id="eeM-4Z-QnK"/>
-                                            <constraint firstItem="hH3-Hz-mxo" firstAttribute="leading" secondItem="I8k-a5-gBT" secondAttribute="leading" id="enC-GW-i40"/>
                                             <constraint firstItem="x9I-Qg-ZPZ" firstAttribute="leading" secondItem="PTA-S7-cJg" secondAttribute="leading" id="lkT-xk-VzO"/>
                                             <constraint firstItem="PTA-S7-cJg" firstAttribute="top" secondItem="I8k-a5-gBT" secondAttribute="bottom" constant="-94" id="ntY-mq-4I9"/>
                                             <constraint firstAttribute="height" constant="394" id="oCG-zF-rUU"/>
-                                            <constraint firstItem="hH3-Hz-mxo" firstAttribute="top" secondItem="I8k-a5-gBT" secondAttribute="bottom" constant="8" id="oGP-p2-b4d"/>
                                             <constraint firstItem="xon-WJ-Dhw" firstAttribute="centerY" secondItem="x9I-Qg-ZPZ" secondAttribute="centerY" id="szi-oq-bi0"/>
                                         </constraints>
                                     </view>
@@ -991,8 +966,6 @@
                         <outlet property="adaptiveBitrateCheckLbl" destination="6dD-Ol-8Ju" id="pyY-3x-aAN"/>
                         <outlet property="advancedSettingsBtn" destination="x9I-Qg-ZPZ" id="HXl-nh-Nvv"/>
                         <outlet property="advancedSettingsLbl" destination="xon-WJ-Dhw" id="kQT-fd-bk0"/>
-                        <outlet property="advancedSettingsSubscribeBtn" destination="hH3-Hz-mxo" id="CTu-Bi-zrN"/>
-                        <outlet property="advancedSettingsSubscribeLbl" destination="1t6-Rk-ziK" id="Dyi-yC-RCc"/>
                         <outlet property="advancedSettingsView" destination="1Y8-Pk-Cmo" id="K50-6v-cEW"/>
                         <outlet property="advancedStream" destination="IiF-Xw-jsI" id="lXE-vm-PVl"/>
                         <outlet property="app" destination="AHc-Tg-cgE" id="dg6-Ua-X8k"/>
@@ -1340,9 +1313,9 @@
         <image name="twoway.png" width="52" height="52"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="BLH-Pi-tfX"/>
         <segue reference="W12-Sh-Lol"/>
         <segue reference="2Mm-yP-xyJ"/>
         <segue reference="EGF-dh-VAl"/>
-        <segue reference="n2E-ME-w5x"/>
     </inferredMetricsTieBreakers>
 </document>

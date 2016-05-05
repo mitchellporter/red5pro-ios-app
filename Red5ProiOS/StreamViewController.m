@@ -59,10 +59,15 @@
             PublishViewController *publisher = (PublishViewController *)[[self viewControllerMap] objectForKey:@"publishView"];
             
             [publisher updatePreview];
+            [self.launchButton setSelected:YES];
+            [self startOrStopTwoWay];
             break;
         }
         case r5_example_stream:
             [self loadStreamView:@"subscribeView"];
+            
+            [self.launchButton setSelected:YES];
+            [self startOrStartSubscribe];
             break;
     }
     

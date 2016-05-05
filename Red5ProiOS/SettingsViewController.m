@@ -81,9 +81,6 @@
     [self.streamSettingsForm setHidden:NO];
     [self.publishSettingsForm setHidden:NO];
     
-    [self.advancedSettingsSubscribeBtn setHidden:YES];
-    [self.advancedSettingsSubscribeLbl setHidden:YES];
-    
     switch(self.currentMode) {
         case r5_example_publish:
             [[self doneBtn] setTitle:@"PUBLISH" forState:UIControlStateNormal];
