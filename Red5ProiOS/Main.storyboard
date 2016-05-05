@@ -50,6 +50,7 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -583,7 +584,7 @@
                                                             <constraint firstAttribute="height" constant="16" id="NHv-ZE-4Wi"/>
                                                             <constraint firstAttribute="width" constant="224" id="zcC-ma-FPw"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
                                                         <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1384,7 +1385,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="BLH-Pi-tfX"/>
         <segue reference="W12-Sh-Lol"/>
-        <segue reference="2Mm-yP-xyJ"/>
+        <segue reference="3sB-dr-VxE"/>
         <segue reference="EGF-dh-VAl"/>
     </inferredMetricsTieBreakers>
 </document>
