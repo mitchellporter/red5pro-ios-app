@@ -25,6 +25,8 @@ enum StreamMode {
 @property (weak, nonatomic) IBOutlet UIView *publishSettingsForm;
 
 @property (weak, nonatomic) IBOutlet UITableView *stream;
+
+@property (weak, nonatomic) IBOutlet UITextField *simpleStream;
 @property (weak, nonatomic) IBOutlet UITextField *app;
 @property (weak, nonatomic) IBOutlet UITextField *advancedStream;
 @property (weak, nonatomic) IBOutlet UITextField *server;
