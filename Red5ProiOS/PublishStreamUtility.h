@@ -13,6 +13,7 @@
 
 @property BOOL isFrontSelected;
 
++ (PublishStreamUtility *) getInstance;
 - (R5Stream *) createNewStream;
 - (void) killStream;
 
