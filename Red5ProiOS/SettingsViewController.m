@@ -406,19 +406,16 @@
 }
 
 - (IBAction)onListRefreshTouch:(id)sender {
-    NSLog(@"Updating list of streams");
     self.liveStreams = [[StreamListUtility getInstance] callWithBlock:^(NSArray *streams) {
         self.liveStreams = streams;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.stream reloadData];
-            NSLog(@"List of streams updated 2");
         });
     }];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.stream reloadData];
-        NSLog(@"List of streams updated 1");
     });
 }
 

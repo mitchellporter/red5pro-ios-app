@@ -41,7 +41,6 @@
         NSMutableArray *onlyGoodStreams = [NSMutableArray arrayWithArray:streams];
         
         NSInteger idx = [onlyGoodStreams indexOfObject:self.stream.text];
-        NSLog(@"Found object %@ at idx %li", self.stream.text, (long)idx);
         [onlyGoodStreams removeObjectAtIndex:idx];
         
         self.liveStreams = onlyGoodStreams;
@@ -122,6 +121,25 @@
     [self connectTo:connectToStreamName withStreamName:streamName];
     
     [self performSegueWithIdentifier:@"twoWaySettingsToStreamView" sender:self];
+}
+
+- (IBAction)onListRefreshTouch:(id)sender {
+    self.liveStreams = [[StreamListUtility getInstance] callWithBlock:^(NSArray *streams) {
+        NSMutableArray *onlyGoodStreams = [NSMutableArray arrayWithArray:streams];
+        
+        NSInteger idx = [onlyGoodStreams indexOfObject:self.stream.text];
+        [onlyGoodStreams removeObjectAtIndex:idx];
+        
+        self.liveStreams = onlyGoodStreams;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.table reloadData];
+        });
+    }];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.table reloadData];
+    });
 }
 
 #pragma mark - Connections

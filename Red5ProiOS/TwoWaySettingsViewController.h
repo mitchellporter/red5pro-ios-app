@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *table;
 
 @property (weak, nonatomic) IBOutlet UIButton *subscribeBtn;
+@property (weak, nonatomic) IBOutlet UIButton *listRefreshBtn;
 
 @end

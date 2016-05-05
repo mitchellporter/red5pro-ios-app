@@ -17,6 +17,7 @@
             <string>Lato-Bold</string>
             <string>Lato-Bold</string>
             <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
         </mutableArray>
         <mutableArray key="Lato-Regular.ttf">
             <string>Lato-Regular</string>
@@ -544,7 +545,7 @@
                                                                 <rect key="frame" x="0.0" y="28" width="312" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="68Q-vo-zyx" id="DOr-G9-rEn">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="312" height="44"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="312" height="43.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Example Stream" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qt8-eT-k1p">
@@ -1042,7 +1043,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1A6-RH-qyp" userLabel="Center View">
-                                <rect key="frame" x="0.0" y="156" width="320" height="256"/>
+                                <rect key="frame" x="0.0" y="137" width="320" height="294"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STREAM NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCb-W5-LZN">
                                         <rect key="frame" x="8" y="8" width="304" height="21"/>
@@ -1080,7 +1081,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="304" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="01w-PM-hx1" id="LQx-u5-xkn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Example Stream" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6U9-VD-x7L">
@@ -1097,9 +1098,24 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBm-tV-zHl">
+                                        <rect key="frame" x="246" y="244" width="66" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="66" id="OU4-Mi-OJB"/>
+                                            <constraint firstAttribute="height" constant="34" id="XRx-C5-0Ey"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                        <state key="normal" title="REFRESH">
+                                            <color key="titleColor" red="0.89019607840000003" green="0.098039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onListRefreshTouch:" destination="9lB-ll-WrN" eventType="touchUpInside" id="qsi-d9-3o5"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="256" id="10t-Rt-q40"/>
+                                    <constraint firstAttribute="height" constant="294" id="10t-Rt-q40"/>
+                                    <constraint firstItem="MBm-tV-zHl" firstAttribute="top" secondItem="ao9-Ay-mvl" secondAttribute="bottom" constant="8" id="5E4-gk-KIZ"/>
                                     <constraint firstItem="ao9-Ay-mvl" firstAttribute="width" secondItem="82E-UT-Ijd" secondAttribute="width" id="Ec1-V1-FAN"/>
                                     <constraint firstItem="jt6-7i-ypF" firstAttribute="top" secondItem="GCb-W5-LZN" secondAttribute="bottom" constant="8" id="Gxp-Ug-gIv"/>
                                     <constraint firstItem="GCb-W5-LZN" firstAttribute="centerX" secondItem="1A6-RH-qyp" secondAttribute="centerX" id="NYg-9t-7a1"/>
@@ -1109,6 +1125,7 @@
                                     <constraint firstItem="ao9-Ay-mvl" firstAttribute="top" secondItem="82E-UT-Ijd" secondAttribute="bottom" constant="8" id="Zc5-oE-BCO"/>
                                     <constraint firstItem="82E-UT-Ijd" firstAttribute="top" secondItem="jt6-7i-ypF" secondAttribute="bottom" constant="8" id="isA-Oj-cBB"/>
                                     <constraint firstItem="ao9-Ay-mvl" firstAttribute="centerX" secondItem="1A6-RH-qyp" secondAttribute="centerX" id="jW2-RC-Ken"/>
+                                    <constraint firstItem="MBm-tV-zHl" firstAttribute="trailing" secondItem="ao9-Ay-mvl" secondAttribute="trailing" id="qfA-U1-QKH"/>
                                     <constraint firstItem="jt6-7i-ypF" firstAttribute="centerX" secondItem="1A6-RH-qyp" secondAttribute="centerX" id="tyS-cy-yee"/>
                                     <constraint firstItem="82E-UT-Ijd" firstAttribute="width" secondItem="jt6-7i-ypF" secondAttribute="width" id="vug-FV-Nk6"/>
                                 </constraints>
@@ -1155,6 +1172,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="uzD-0C-Mpx"/>
                     <connections>
+                        <outlet property="listRefreshBtn" destination="MBm-tV-zHl" id="1lK-j8-lrI"/>
                         <outlet property="stream" destination="jt6-7i-ypF" id="Smm-5c-dbO"/>
                         <outlet property="subscribeBtn" destination="2qL-4w-xDz" id="7xd-D1-g2F"/>
                         <outlet property="table" destination="ao9-Ay-mvl" id="Q1p-3Z-loN"/>
@@ -1345,7 +1363,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="BLH-Pi-tfX"/>
         <segue reference="W12-Sh-Lol"/>
-        <segue reference="2Mm-yP-xyJ"/>
+        <segue reference="3sB-dr-VxE"/>
         <segue reference="EGF-dh-VAl"/>
     </inferredMetricsTieBreakers>
 </document>
