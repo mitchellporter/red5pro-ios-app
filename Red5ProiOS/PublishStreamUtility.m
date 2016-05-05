@@ -18,7 +18,7 @@
 
 static PublishStreamUtility *instance;
 
-- (PublishStreamUtility *) getInstance {
++ (PublishStreamUtility *) getInstance {
     if (instance == nil) {
         instance = [[PublishStreamUtility alloc] init];
     }
