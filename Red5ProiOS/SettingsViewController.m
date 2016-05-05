@@ -10,7 +10,6 @@
 #import "TwoWaySettingsViewController.h"
 #import "StreamViewController.h"
 #import "PublishStreamUtility.h"
-#import "StreamListUtility.h"
 #import "StreamTableViewCell.h"
 
 @interface SettingsViewController ()
@@ -125,7 +124,15 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.stream reloadData];
         });
+        
+        [[StreamListUtility getInstance] callWithReturn:self];
     }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[StreamListUtility getInstance] clearAndDisconnect];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -407,6 +414,15 @@
         });
     }];
     
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.stream reloadData];
+    });
+}
+
+#pragma mark - List Listener
+
+- (void) listUpdated:(NSArray *)updatedList {
+    self.liveStreams = updatedList;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.stream reloadData];
     });

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StreamListUtility.h"
 
-@interface TwoWaySettingsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface TwoWaySettingsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, listListener>
 
 @property enum StreamMode currentMode;
 

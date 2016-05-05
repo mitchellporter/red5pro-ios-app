@@ -9,7 +9,6 @@
 #import "TwoWaySettingsViewController.h"
 #import "SettingsViewController.h"
 #import "StreamViewController.h"
-#import "StreamListUtility.h"
 #import "StreamTableViewCell.h"
 #import "PublishStreamUtility.h"
 
@@ -58,6 +57,15 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.table reloadData];
     });
+    
+    [[StreamListUtility getInstance] callWithReturn:self];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[PublishStreamUtility getInstance] killStream];
+    [[StreamListUtility getInstance] clearAndDisconnect];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -103,8 +111,6 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    [[PublishStreamUtility getInstance] killStream];
-    
     if ([segue.identifier isEqualToString:@"twoWaySettingsToSettings"]) {
         SettingsViewController *settingsController = (SettingsViewController *)segue.destinationViewController;
         
@@ -156,6 +162,21 @@
     [defaults setObject:streamName forKey:@"stream"];
     [defaults setObject:connectionStreamName forKey:@"connectToStream"];
     [defaults synchronize];
+}
+
+#pragma mark - List Listener
+
+- (void) listUpdated:(NSArray *)updatedList {
+    NSMutableArray *onlyGoodStreams = [NSMutableArray arrayWithArray:updatedList];
+    
+    NSInteger idx = [onlyGoodStreams indexOfObject:self.stream.text];
+    [onlyGoodStreams removeObjectAtIndex:idx];
+    
+    self.liveStreams = onlyGoodStreams;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.table reloadData];
+    });
 }
 
 @end

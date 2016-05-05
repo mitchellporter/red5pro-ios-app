@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StreamListUtility.h"
 
 enum StreamMode {
     r5_example_stream,
@@ -14,7 +15,7 @@ enum StreamMode {
     r5_example_twoway
 };
 
-@interface SettingsViewController : UIViewController<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface SettingsViewController : UIViewController<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, listListener>
 
 @property (weak, nonatomic) IBOutlet UIView *simpleSettingsView;
 @property (weak, nonatomic) IBOutlet UIView *advancedSettingsView;
