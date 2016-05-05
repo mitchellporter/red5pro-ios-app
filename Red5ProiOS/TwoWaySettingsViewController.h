@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TwoWaySettingsViewController : UIViewController
+@interface TwoWaySettingsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property enum StreamMode currentMode;
+
+@property (weak, nonatomic) IBOutlet UITextField *stream;
+
+@property (weak, nonatomic) IBOutlet UITableView *table;
+
+@property (weak, nonatomic) IBOutlet UIButton *subscribeBtn;
 
 @end

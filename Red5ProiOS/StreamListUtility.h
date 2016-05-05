@@ -29,6 +29,8 @@
 //set delegate and begin a loop to get the list of streams
 -(void) callWithReturn:(id<listListener>) listener;
 
+-(NSArray *) callWithBlock:(void (^)(NSArray *streams))block;
+
 -(void) callStreamsOnce;
 
 -(void) callInLoop;

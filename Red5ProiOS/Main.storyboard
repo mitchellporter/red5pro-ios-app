@@ -46,6 +46,7 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1024,7 +1025,8 @@
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jt6-7i-ypF">
                                         <rect key="frame" x="8" y="37" width="304" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONNECT TO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82E-UT-Ijd">
@@ -1043,21 +1045,24 @@
                                             <constraint firstAttribute="height" constant="132" id="u3y-XU-vFY"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="streamCell" id="01w-PM-hx1">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="streamCell" id="01w-PM-hx1" customClass="StreamTableViewCell">
                                                 <rect key="frame" x="0.0" y="28" width="304" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="01w-PM-hx1" id="LQx-u5-xkn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Example Stream" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6U9-VD-x7L">
                                                             <rect key="frame" x="8" y="11" width="288" height="21"/>
                                                             <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
-                                                            <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="streamNameLbl" destination="6U9-VD-x7L" id="SZZ-NW-UhY"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
@@ -1102,7 +1107,7 @@
                                     <color key="titleColor" red="0.89019607840000003" green="0.098039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="KBP-IA-DBo" kind="push" identifier="twoWaySettingsToStreamView" id="B33-yd-49a"/>
+                                    <action selector="onSubscribeTouch:" destination="9lB-ll-WrN" eventType="touchUpInside" id="COz-iA-uCk"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1118,6 +1123,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uzD-0C-Mpx"/>
+                    <connections>
+                        <outlet property="stream" destination="jt6-7i-ypF" id="Smm-5c-dbO"/>
+                        <outlet property="subscribeBtn" destination="2qL-4w-xDz" id="7xd-D1-g2F"/>
+                        <outlet property="table" destination="ao9-Ay-mvl" id="Q1p-3Z-loN"/>
+                        <segue destination="KBP-IA-DBo" kind="push" identifier="twoWaySettingsToStreamView" id="3sB-dr-VxE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Zy-CU-zNP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1292,9 +1303,9 @@
         <image name="twoway.png" width="52" height="52"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aaR-46-oN9"/>
-        <segue reference="2Mm-yP-xyJ"/>
+        <segue reference="W12-Sh-Lol"/>
+        <segue reference="BLH-Pi-tfX"/>
+        <segue reference="3sB-dr-VxE"/>
         <segue reference="EGF-dh-VAl"/>
-        <segue reference="n2E-ME-w5x"/>
     </inferredMetricsTieBreakers>
 </document>
