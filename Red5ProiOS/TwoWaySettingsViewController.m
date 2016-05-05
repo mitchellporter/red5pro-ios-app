@@ -50,11 +50,23 @@
         self.liveStreams = onlyGoodStreams;
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            if (self.liveStreams.count == 1) {
+                self.streamsAvailableLbl.text = @"1 STREAM";
+            } else {
+                self.streamsAvailableLbl.text = [NSString stringWithFormat:@"%lu STREAMS", (unsigned long)self.liveStreams.count];
+            }
+            
             [self.table reloadData];
         });
     }];
     
     dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.liveStreams.count == 1) {
+            self.streamsAvailableLbl.text = @"1 STREAM";
+        } else {
+            self.streamsAvailableLbl.text = [NSString stringWithFormat:@"%lu STREAMS", (unsigned long)self.liveStreams.count];
+        }
+        
         [self.table reloadData];
     });
     
@@ -146,11 +158,23 @@
         self.liveStreams = onlyGoodStreams;
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            if (self.liveStreams.count == 1) {
+                self.streamsAvailableLbl.text = @"1 STREAM";
+            } else {
+                self.streamsAvailableLbl.text = [NSString stringWithFormat:@"%lu STREAMS", (unsigned long)self.liveStreams.count];
+            }
+            
             [self.table reloadData];
         });
     }];
     
     dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.liveStreams.count == 1) {
+            self.streamsAvailableLbl.text = @"1 STREAM";
+        } else {
+            self.streamsAvailableLbl.text = [NSString stringWithFormat:@"%lu STREAMS", (unsigned long)self.liveStreams.count];
+        }
+        
         [self.table reloadData];
     });
 }
@@ -175,6 +199,12 @@
     self.liveStreams = onlyGoodStreams;
     
     dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.liveStreams.count == 1) {
+            self.streamsAvailableLbl.text = @"1 STREAM";
+        } else {
+            self.streamsAvailableLbl.text = [NSString stringWithFormat:@"%lu STREAMS", (unsigned long)self.liveStreams.count];
+        }
+        
         [self.table reloadData];
     });
 }

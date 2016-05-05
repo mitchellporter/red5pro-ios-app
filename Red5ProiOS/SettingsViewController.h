@@ -56,6 +56,8 @@ enum StreamMode {
 @property (weak, nonatomic) IBOutlet UILabel *videoCheckLbl;
 @property (weak, nonatomic) IBOutlet UILabel *adaptiveBitrateCheckLbl;
 
+@property (weak, nonatomic) IBOutlet UILabel *streamsAvailableLbl;
+
 @property enum StreamMode currentMode;
 
 @end

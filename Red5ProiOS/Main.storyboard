@@ -49,6 +49,7 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -576,6 +577,16 @@
                                                             <action selector="onListRefreshTouch:" destination="7JA-FM-NvD" eventType="touchUpInside" id="s7Y-Zm-h9m"/>
                                                         </connections>
                                                     </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 STREAMS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOH-c4-PvW">
+                                                        <rect key="frame" x="0.0" y="189" width="224" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="16" id="NHv-ZE-4Wi"/>
+                                                            <constraint firstAttribute="width" constant="224" id="zcC-ma-FPw"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i4a-ho-1o7" userLabel="Stream Input">
                                                         <rect key="frame" x="0.0" y="42" width="312" height="30"/>
                                                         <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -587,10 +598,12 @@
                                                     <constraint firstItem="bfp-7U-YdR" firstAttribute="leading" secondItem="I8k-a5-gBT" secondAttribute="leading" id="LJw-F1-Ihb"/>
                                                     <constraint firstItem="nHh-d7-X8U" firstAttribute="top" secondItem="moF-qv-lrH" secondAttribute="bottom" constant="8" id="Lgq-Xe-3f9"/>
                                                     <constraint firstAttribute="width" constant="312" id="PXO-ko-Ezo"/>
+                                                    <constraint firstItem="rOH-c4-PvW" firstAttribute="centerY" secondItem="nHh-d7-X8U" secondAttribute="centerY" id="RLb-OG-Dtb"/>
                                                     <constraint firstAttribute="height" constant="220" id="SdQ-dz-owE"/>
                                                     <constraint firstItem="bfp-7U-YdR" firstAttribute="top" secondItem="I8k-a5-gBT" secondAttribute="top" constant="8" id="fiP-Zx-35S"/>
                                                     <constraint firstAttribute="trailing" secondItem="nHh-d7-X8U" secondAttribute="trailing" id="gPq-Rw-pwF"/>
                                                     <constraint firstItem="moF-qv-lrH" firstAttribute="top" secondItem="bfp-7U-YdR" secondAttribute="bottom" id="gUk-sq-7Ys"/>
+                                                    <constraint firstItem="rOH-c4-PvW" firstAttribute="leading" secondItem="moF-qv-lrH" secondAttribute="leading" id="o8v-DN-6ti"/>
                                                     <constraint firstItem="moF-qv-lrH" firstAttribute="centerX" secondItem="I8k-a5-gBT" secondAttribute="centerX" id="vFt-xn-Dil"/>
                                                 </constraints>
                                             </view>
@@ -1019,6 +1032,7 @@
                         <outlet property="simpleStream" destination="i4a-ho-1o7" id="Sps-O5-z2o"/>
                         <outlet property="stream" destination="moF-qv-lrH" id="GOa-CU-8Qp"/>
                         <outlet property="streamSettingsForm" destination="I8k-a5-gBT" id="mLN-9V-8Lt"/>
+                        <outlet property="streamsAvailableLbl" destination="rOH-c4-PvW" id="WLx-zU-S85"/>
                         <outlet property="videoCheck" destination="4E0-ul-Uis" id="aWa-YW-bfB"/>
                         <outlet property="videoCheckLbl" destination="WJM-Da-xkZ" id="4c3-Re-7qU"/>
                         <segue destination="9lB-ll-WrN" kind="push" identifier="settingsToTwoWaySettings" id="bc6-QL-ujr"/>
@@ -1112,6 +1126,12 @@
                                             <action selector="onListRefreshTouch:" destination="9lB-ll-WrN" eventType="touchUpInside" id="qsi-d9-3o5"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0 STREAMS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSR-uR-tDY">
+                                        <rect key="frame" x="8" y="250" width="230" height="21"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                        <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="294" id="10t-Rt-q40"/>
@@ -1174,6 +1194,7 @@
                     <connections>
                         <outlet property="listRefreshBtn" destination="MBm-tV-zHl" id="1lK-j8-lrI"/>
                         <outlet property="stream" destination="jt6-7i-ypF" id="Smm-5c-dbO"/>
+                        <outlet property="streamsAvailableLbl" destination="lSR-uR-tDY" id="KDw-6D-7xn"/>
                         <outlet property="subscribeBtn" destination="2qL-4w-xDz" id="7xd-D1-g2F"/>
                         <outlet property="table" destination="ao9-Ay-mvl" id="Q1p-3Z-loN"/>
                         <segue destination="KBP-IA-DBo" kind="push" identifier="twoWaySettingsToStreamView" id="3sB-dr-VxE"/>
@@ -1363,7 +1384,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="BLH-Pi-tfX"/>
         <segue reference="W12-Sh-Lol"/>
-        <segue reference="3sB-dr-VxE"/>
+        <segue reference="2Mm-yP-xyJ"/>
         <segue reference="EGF-dh-VAl"/>
     </inferredMetricsTieBreakers>
 </document>
