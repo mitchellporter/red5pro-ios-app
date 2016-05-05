@@ -11,6 +11,7 @@
 #import "StreamViewController.h"
 #import "StreamListUtility.h"
 #import "StreamTableViewCell.h"
+#import "PublishStreamUtility.h"
 
 @interface TwoWaySettingsViewController ()
 
@@ -30,6 +31,10 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.stream.text = [defaults objectForKey:@"stream"];
+    
+    [[PublishStreamUtility getInstance] createNewStream];
+    R5Stream *stream = [[PublishStreamUtility getInstance] getOrCreateNewStream];
+    [stream publish:self.stream.text type:R5RecordTypeLive];
     
     [self setSubscribeBtnEnabled:NO];
 }
@@ -98,6 +103,8 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [[PublishStreamUtility getInstance] killStream];
+    
     if ([segue.identifier isEqualToString:@"twoWaySettingsToSettings"]) {
         SettingsViewController *settingsController = (SettingsViewController *)segue.destinationViewController;
         
@@ -149,9 +156,6 @@
     [defaults setObject:streamName forKey:@"stream"];
     [defaults setObject:connectionStreamName forKey:@"connectToStream"];
     [defaults synchronize];
-    
-    NSLog(@"Selected %@ and publishing %@", connectionStreamName, streamName);
-    //  TODO: Connect to connectionStreamName and publish streamName
 }
 
 @end

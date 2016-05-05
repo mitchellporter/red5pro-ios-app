@@ -250,9 +250,6 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:connectionStreamName forKey:@"connectToStream"];
     [defaults synchronize];
-    
-    NSLog(@"Selected %@", connectionStreamName);
-    //  TODO: Connect to connectionStreamName
 }
 
 #pragma mark - Navigation
@@ -284,10 +281,6 @@
             [self performSegueWithIdentifier:@"settingsToStreamView" sender:self];
             break;
         case r5_example_twoway:
-            [[PublishStreamUtility getInstance] createNewStream];
-            R5Stream *stream = [[PublishStreamUtility getInstance] getOrCreateNewStream];
-            [stream publish:self.simpleStream.text type:R5RecordTypeLive];
-            
             [self performSegueWithIdentifier:@"settingsToTwoWaySettings" sender:self];
             break;
     }
