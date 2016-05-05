@@ -77,9 +77,12 @@
     
     [self.simpleStream setHidden:NO];
     [self.stream setHidden:YES];
+    [self.listRefreshBtn setHidden:YES];
     
     [self.streamSettingsForm setHidden:NO];
     [self.publishSettingsForm setHidden:NO];
+    
+    [self.advancedSettingsView setHidden:YES];
     
     switch(self.currentMode) {
         case r5_example_publish:
@@ -88,9 +91,13 @@
         case r5_example_stream:
             [self.simpleStream setHidden:YES];
             [self.stream setHidden:NO];
+            [self.listRefreshBtn setHidden:NO];
             [self.advancedSettingsBtn setHidden:YES];
             [self.advancedSettingsLbl setHidden:YES];
             [self.publishSettingsForm setHidden:YES];
+            
+            [self.view bringSubviewToFront:self.listRefreshBtn];
+            
             [[self doneBtn] setTitle:@"SUBSCRIBE" forState:UIControlStateNormal];
             
             [self.doneBtn setAlpha:0.5f];
@@ -396,6 +403,23 @@
     } else {
         [self hideAdvancedSettings];
     }
+}
+
+- (IBAction)onListRefreshTouch:(id)sender {
+    NSLog(@"Updating list of streams");
+    self.liveStreams = [[StreamListUtility getInstance] callWithBlock:^(NSArray *streams) {
+        self.liveStreams = streams;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.stream reloadData];
+            NSLog(@"List of streams updated 2");
+        });
+    }];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.stream reloadData];
+        NSLog(@"List of streams updated 1");
+    });
 }
 
 @end

@@ -44,6 +44,8 @@ enum StreamMode {
 @property (weak, nonatomic) IBOutlet UIButton *highQualityBtn;
 @property (weak, nonatomic) IBOutlet UIButton *otherQualityBtn;
 
+@property (weak, nonatomic) IBOutlet UIButton *listRefreshBtn;
+
 @property (weak, nonatomic) IBOutlet UIButton *advancedSettingsBtn;
 @property (weak, nonatomic) IBOutlet UILabel *advancedSettingsLbl;
 

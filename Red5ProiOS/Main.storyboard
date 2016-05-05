@@ -16,6 +16,7 @@
             <string>Lato-Bold</string>
             <string>Lato-Bold</string>
             <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
         </mutableArray>
         <mutableArray key="Lato-Regular.ttf">
             <string>Lato-Regular</string>
@@ -520,22 +521,30 @@
                                         <rect key="frame" x="0.0" y="87" width="328" height="394"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I8k-a5-gBT" userLabel="StreamSettings">
-                                                <rect key="frame" x="8" y="0.0" width="312" height="182"/>
+                                                <rect key="frame" x="8" y="0.0" width="312" height="220"/>
                                                 <subviews>
-                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="STREAM NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfp-7U-YdR">
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STREAM NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfp-7U-YdR">
                                                         <rect key="frame" x="0.0" y="8" width="93" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="93" id="tw2-7j-0d0"/>
+                                                            <constraint firstAttribute="height" constant="34" id="ulm-1z-jBY"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
                                                         <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     </label>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="moF-qv-lrH">
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="moF-qv-lrH">
                                                         <rect key="frame" x="0.0" y="42" width="312" height="132"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="132" id="bkR-j8-aCl"/>
+                                                            <constraint firstAttribute="width" constant="312" id="eHz-21-lxG"/>
+                                                        </constraints>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="streamCell" id="68Q-vo-zyx" customClass="StreamTableViewCell">
                                                                 <rect key="frame" x="0.0" y="28" width="312" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="68Q-vo-zyx" id="DOr-G9-rEn">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="312" height="43.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="312" height="44"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Example Stream" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qt8-eT-k1p">
@@ -552,6 +561,20 @@
                                                             </tableViewCell>
                                                         </prototypes>
                                                     </tableView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHh-d7-X8U">
+                                                        <rect key="frame" x="232" y="182" width="80" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="80" id="e6K-kn-B4M"/>
+                                                            <constraint firstAttribute="height" constant="30" id="oxt-8a-XUe"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                                        <state key="normal" title="REFRESH">
+                                                            <color key="titleColor" red="0.89019607840000003" green="0.098039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="onListRefreshTouch:" destination="7JA-FM-NvD" eventType="touchUpInside" id="s7Y-Zm-h9m"/>
+                                                        </connections>
+                                                    </button>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i4a-ho-1o7" userLabel="Stream Input">
                                                         <rect key="frame" x="0.0" y="42" width="312" height="30"/>
                                                         <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -560,8 +583,14 @@
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstItem="bfp-7U-YdR" firstAttribute="leading" secondItem="I8k-a5-gBT" secondAttribute="leading" id="LJw-F1-Ihb"/>
+                                                    <constraint firstItem="nHh-d7-X8U" firstAttribute="top" secondItem="moF-qv-lrH" secondAttribute="bottom" constant="8" id="Lgq-Xe-3f9"/>
                                                     <constraint firstAttribute="width" constant="312" id="PXO-ko-Ezo"/>
-                                                    <constraint firstAttribute="height" constant="182" id="SdQ-dz-owE"/>
+                                                    <constraint firstAttribute="height" constant="220" id="SdQ-dz-owE"/>
+                                                    <constraint firstItem="bfp-7U-YdR" firstAttribute="top" secondItem="I8k-a5-gBT" secondAttribute="top" constant="8" id="fiP-Zx-35S"/>
+                                                    <constraint firstAttribute="trailing" secondItem="nHh-d7-X8U" secondAttribute="trailing" id="gPq-Rw-pwF"/>
+                                                    <constraint firstItem="moF-qv-lrH" firstAttribute="top" secondItem="bfp-7U-YdR" secondAttribute="bottom" id="gUk-sq-7Ys"/>
+                                                    <constraint firstItem="moF-qv-lrH" firstAttribute="centerX" secondItem="I8k-a5-gBT" secondAttribute="centerX" id="vFt-xn-Dil"/>
                                                 </constraints>
                                             </view>
                                             <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PTA-S7-cJg" userLabel="PublishSettings">
@@ -690,7 +719,7 @@
                                             <constraint firstItem="xon-WJ-Dhw" firstAttribute="leading" secondItem="x9I-Qg-ZPZ" secondAttribute="trailing" constant="-252" id="X3u-Fa-VDs"/>
                                             <constraint firstItem="I8k-a5-gBT" firstAttribute="top" secondItem="pUB-jn-nCH" secondAttribute="top" id="eeM-4Z-QnK"/>
                                             <constraint firstItem="x9I-Qg-ZPZ" firstAttribute="leading" secondItem="PTA-S7-cJg" secondAttribute="leading" id="lkT-xk-VzO"/>
-                                            <constraint firstItem="PTA-S7-cJg" firstAttribute="top" secondItem="I8k-a5-gBT" secondAttribute="bottom" constant="-94" id="ntY-mq-4I9"/>
+                                            <constraint firstItem="PTA-S7-cJg" firstAttribute="top" secondItem="I8k-a5-gBT" secondAttribute="bottom" constant="-132" id="ntY-mq-4I9"/>
                                             <constraint firstAttribute="height" constant="394" id="oCG-zF-rUU"/>
                                             <constraint firstItem="xon-WJ-Dhw" firstAttribute="centerY" secondItem="x9I-Qg-ZPZ" secondAttribute="centerY" id="szi-oq-bi0"/>
                                         </constraints>
@@ -975,6 +1004,7 @@
                         <outlet property="bitrateLbl" destination="tLq-A5-zGe" id="PUy-bb-ppf"/>
                         <outlet property="doneBtn" destination="f18-Fx-2Gx" id="T7t-LK-J3r"/>
                         <outlet property="highQualityBtn" destination="Bzk-cF-jqI" id="cer-zg-fwp"/>
+                        <outlet property="listRefreshBtn" destination="nHh-d7-X8U" id="xto-Jn-Kth"/>
                         <outlet property="lowQualityBtn" destination="ad8-wx-wnn" id="Mcu-kI-WiA"/>
                         <outlet property="mediumQualityBtn" destination="edM-JJ-RwX" id="62T-qj-3zM"/>
                         <outlet property="otherQualityBtn" destination="fxM-OJ-GPf" id="8d5-vt-Aha"/>
@@ -1050,7 +1080,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="304" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="01w-PM-hx1" id="LQx-u5-xkn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Example Stream" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6U9-VD-x7L">
