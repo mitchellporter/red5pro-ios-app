@@ -10,6 +10,7 @@
 #import "PublishViewController.h"
 #import "VideoViewController.h"
 #import "SettingsViewController.h"
+#import "PublishStreamUtility.h"
 
 @interface StreamViewController ()
 
@@ -50,7 +51,7 @@
             [self loadStreamView:@"publishView"];
             PublishViewController *publisher = (PublishViewController *)[[self viewControllerMap] objectForKey:@"publishView"];
             
-            [publisher updatePreview];
+            [publisher stop:YES];
             break;
         }
         case r5_example_twoway: {

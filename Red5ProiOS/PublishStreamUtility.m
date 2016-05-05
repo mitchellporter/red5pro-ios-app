@@ -21,6 +21,7 @@ static PublishStreamUtility *instance;
 + (PublishStreamUtility *) getInstance {
     if (instance == nil) {
         instance = [[PublishStreamUtility alloc] init];
+        instance.isFrontSelected = YES;
     }
     
     return instance;
@@ -73,6 +74,14 @@ static PublishStreamUtility *instance;
     }
     
     return self.stream;
+}
+
+- (R5Stream *) getOrCreateNewStream {
+    if (self.stream != nil) {
+        return self.stream;
+    }
+    
+    return [self createNewStream];
 }
 
 - (void) killStream {
