@@ -9,7 +9,7 @@
 
 #import "PublishViewController.h"
 #import "ALToastView.h"
-
+#import "PublishStreamUtility.h"
 #import "StreamViewController.h"
 
 @interface PublishViewController() {
@@ -78,7 +78,8 @@
 
 -(void)establishPreview {
     if(stream == nil) {
-         stream = [self setUpNewStream];
+        [[PublishStreamUtility getInstance] setIsFrontSelected:isFrontSelected];
+        stream = [[PublishStreamUtility getInstance] createNewStream];
     }
 
     [stream setDelegate:self];
@@ -91,47 +92,6 @@
 -(AVCaptureDevice *)getSelectedDevice {
     NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
     return isFrontSelected ? [devices lastObject] : [devices firstObject];
-}
-
--(R5Stream *)setUpNewStream {
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *domain = (NSString*)[defaults objectForKey:@"domain"];
-    NSString *app = (NSString*)[defaults objectForKey:@"app"];
-    NSString *port = (NSString *)[defaults objectForKey:@"port"];
-    BOOL includeAudio = [defaults boolForKey:@"includeAudio"];
-    BOOL includeVideo = [defaults boolForKey:@"includeVideo"];
-    BOOL adaptiveBitrate = [defaults boolForKey:@"adaptiveBitrate"];
-    
-    R5Configuration * config = [R5Configuration new];
-    
-    config.host = domain;
-    config.contextName = app;
-    config.port = [port intValue];
-    
-    R5Connection *connection = [[R5Connection new] initWithConfig:config];
-    R5Camera *camera = [[R5Camera alloc] initWithDevice:[self getSelectedDevice] andBitRate:128];
-    camera.orientation = 90;
-    
-    AVCaptureDevice *audioDevice = [AVCaptureDevice defaultDeviceWithMediaType: AVMediaTypeAudio];
-    R5Microphone *microphone = [[R5Microphone new] initWithDevice:audioDevice];
-    
-    R5Stream *r5Stream = [[R5Stream new] initWithConnection:connection];
-    
-    if(includeVideo)
-        [r5Stream attachVideo:camera];
-    if(includeAudio)
-        [r5Stream attachAudio:microphone];
-    
-    if (adaptiveBitrate) {
-        R5AdaptiveBitrateController *adaptiveController = [R5AdaptiveBitrateController new];
-        [adaptiveController attachToStream:r5Stream];
-        if (includeVideo) {
-            [adaptiveController setRequiresVideo:YES];
-        }
-    }
-    
-    return r5Stream;
 }
 
 -(void)killStream {
