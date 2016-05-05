@@ -42,7 +42,7 @@
 
 -(void)start {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *streamName = (NSString*)[defaults objectForKey:@"stream"];
+    NSString *streamName = (NSString*)[defaults objectForKey:@"connectToStream"];
     stream = [self setUpNewStream];
     [self attachStream:stream];
     [stream play:streamName];

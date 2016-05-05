@@ -35,19 +35,20 @@
     [super viewDidLoad];
 
     self.app.delegate = self;
-    
-    self.stream.delegate = self;
-    self.stream.dataSource = self;
-    self.liveStreams = @[];
-    
     self.advancedStream.delegate = self;
+    self.simpleStream.delegate = self;
     self.port.delegate = self;
     self.server.delegate = self;
     self.bitrate.delegate = self;
     self.resolution.delegate = self;
     
+    self.stream.delegate = self;
+    self.stream.dataSource = self;
+    self.liveStreams = @[];
+    
     self.qualityButtons = [NSArray arrayWithObjects:self.lowQualityBtn, self.mediumQualityBtn, self.highQualityBtn, self.otherQualityBtn, nil];
     
+    self.simpleStream.text = [self getUserSetting:@"stream" withDefault:self.advancedStream.text];
     self.advancedStream.text = [self getUserSetting:@"stream" withDefault:self.advancedStream.text];
     
     self.audioCheck.selected = [[self getUserSetting:@"includeAudio" withDefault:@"1"] boolValue];
@@ -71,6 +72,9 @@
         [self showAdvancedSettings];
     }
     
+    [self.simpleStream setHidden:NO];
+    [self.stream setHidden:YES];
+    
     switch(self.currentMode) {
         case r5_example_publish:
             [self.streamSettingsForm setHidden:NO];
@@ -81,6 +85,8 @@
             break;
         case r5_example_stream:
             [self.streamSettingsForm setHidden:NO];
+            [self.simpleStream setHidden:YES];
+            [self.stream setHidden:NO];
             [self.advancedSettingsBtn setHidden:YES];
             [self.advancedSettingsLbl setHidden:YES];
             [self.publishSettingsForm setHidden:YES];
@@ -99,6 +105,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    NSLog(@"On stream mode? %@", (self.currentMode == r5_example_stream ? @"YES" : @"NO"));
     if( self.currentMode == r5_example_stream ){
         self.liveStreams = [[StreamListUtility getInstance] callWithBlock:^(NSArray *streams) {
             self.liveStreams = streams;
@@ -231,7 +238,7 @@
 
 - (void) connectTo:(NSString *)connectionStreamName {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:connectionStreamName forKey:@"stream"];
+    [defaults setObject:connectionStreamName forKey:@"connectToStream"];
     [defaults synchronize];
     
     NSLog(@"Selected %@", connectionStreamName);
@@ -241,11 +248,14 @@
 #pragma mark - Navigation
 
 - (IBAction)onDoneClicked:(id)sender {
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     int selected = [self getSelectedQualityIndex];
     [self setQualityWithIndex:selected];
+    
+    if (self.stream.isHidden) {
+        [defaults setObject:self.simpleStream.text forKey:@"stream"];
+    }
     
     [defaults setBool:self.audioCheck.selected forKey:@"includeAudio"];
     [defaults setBool:self.videoCheck.selected forKey:@"includeVideo"];
@@ -264,8 +274,9 @@
             [self performSegueWithIdentifier:@"settingsToStreamView" sender:self];
             break;
         case r5_example_twoway:
-            
             [[PublishStreamUtility getInstance] createNewStream];
+            R5Stream *stream = [[PublishStreamUtility getInstance] getOrCreateNewStream];
+            [stream publish:self.simpleStream.text type:R5RecordTypeLive];
             
             [self performSegueWithIdentifier:@"settingsToTwoWaySettings" sender:self];
             break;

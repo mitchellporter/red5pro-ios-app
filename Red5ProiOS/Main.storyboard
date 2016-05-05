@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="1pY-b2-Ywk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="1pY-b2-Ywk">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -18,6 +18,7 @@
             <string>Lato-Bold</string>
         </mutableArray>
         <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
@@ -535,7 +536,7 @@
                                                                 <rect key="frame" x="0.0" y="28" width="312" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="68Q-vo-zyx" id="DOr-G9-rEn">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="312" height="43"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="312" height="43.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Example Stream" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qt8-eT-k1p">
@@ -552,6 +553,12 @@
                                                             </tableViewCell>
                                                         </prototypes>
                                                     </tableView>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i4a-ho-1o7" userLabel="Stream Input">
+                                                        <rect key="frame" x="0.0" y="42" width="312" height="30"/>
+                                                        <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="312" id="PXO-ko-Ezo"/>
@@ -1005,6 +1012,7 @@
                         <outlet property="resolutionLbl" destination="yyD-1D-PiL" id="tjo-m2-HdI"/>
                         <outlet property="server" destination="5TM-E8-hf5" id="0Fy-8y-PzQ"/>
                         <outlet property="simpleSettingsView" destination="mKJ-9s-mdg" id="Jet-SX-qSE"/>
+                        <outlet property="simpleStream" destination="i4a-ho-1o7" id="Sps-O5-z2o"/>
                         <outlet property="stream" destination="moF-qv-lrH" id="GOa-CU-8Qp"/>
                         <outlet property="streamSettingsForm" destination="I8k-a5-gBT" id="mLN-9V-8Lt"/>
                         <outlet property="videoCheck" destination="4E0-ul-Uis" id="aWa-YW-bfB"/>
@@ -1069,7 +1077,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="304" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="01w-PM-hx1" id="LQx-u5-xkn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Example Stream" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6U9-VD-x7L">
@@ -1228,7 +1236,7 @@
                                         <accessibility key="accessibilityConfiguration" hint="Port" identifier="portTextField" label="Port"/>
                                         <color key="textColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You must enter both fields" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0q6-UD-U80">
                                         <rect key="frame" x="8" y="221" width="304" height="21"/>
@@ -1280,6 +1288,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="2ey-nr-wAk" secondAttribute="trailing" constant="-20" id="Ivq-24-nuV"/>
                             <constraint firstItem="ql9-Ps-UC8" firstAttribute="centerX" secondItem="dme-WU-dfK" secondAttribute="centerX" id="VCH-p3-XXw"/>
@@ -1287,6 +1296,9 @@
                             <constraint firstItem="ql9-Ps-UC8" firstAttribute="centerY" secondItem="dme-WU-dfK" secondAttribute="centerY" id="X24-zW-ydZ"/>
                             <constraint firstItem="2ey-nr-wAk" firstAttribute="leading" secondItem="dme-WU-dfK" secondAttribute="leadingMargin" constant="-20" id="xUw-oB-5ir"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="T73-8z-Mjh" appends="YES" id="tVb-dK-TL6"/>
+                        </connections>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="ahf-dm-qbQ">
@@ -1301,6 +1313,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mod-4i-amj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="T73-8z-Mjh">
+                    <connections>
+                        <action selector="onTapOutside:" destination="WAj-6L-lyl" id="SKv-Ad-Qzg"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="652" y="-971"/>
         </scene>
@@ -1325,7 +1342,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="W12-Sh-Lol"/>
         <segue reference="2Mm-yP-xyJ"/>
-        <segue reference="BLH-Pi-tfX"/>
-        <segue reference="cx3-hF-LdY"/>
+        <segue reference="EGF-dh-VAl"/>
+        <segue reference="n2E-ME-w5x"/>
     </inferredMetricsTieBreakers>
 </document>

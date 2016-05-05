@@ -27,11 +27,26 @@
     
     [[self serverTextField] setDelegate:self];
     [[self portTextField] setDelegate:self];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidHideNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)onTapOutside:(id)sender {
+    [self.serverTextField resignFirstResponder];
+    [self.portTextField resignFirstResponder];
 }
 
 #pragma mark - Helpers
@@ -48,6 +63,27 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     [defaults setValue:value forKey:key];
+}
+
+- (void) keyboardDidShow:(NSNotification *)notification {
+    /*NSDictionary* info = [notification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    CGRect currentFrame = self.view.frame;
+    
+    currentFrame.origin.y -= kbSize.height;
+    
+    self.view.layer.frame = currentFrame;
+    self.view.frame = currentFrame;*/
+}
+
+- (void) keyboardDidHide:(NSNotification *)notification {
+    /*CGRect currentFrame = self.view.frame;
+    
+    currentFrame.origin.y = 0;
+    
+    self.view.layer.frame = currentFrame;
+    self.view.frame = currentFrame;*/
 }
 
 #pragma mark - Navigation
