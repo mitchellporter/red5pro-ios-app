@@ -83,6 +83,8 @@
     
     [self.advancedSettingsView setHidden:YES];
     
+    [self.streamsAvailableLbl setHidden:YES];
+    
     switch(self.currentMode) {
         case r5_example_publish:
             [[self doneBtn] setTitle:@"PUBLISH" forState:UIControlStateNormal];
@@ -91,6 +93,8 @@
             [self.simpleStream setHidden:YES];
             [self.stream setHidden:NO];
             [self.listRefreshBtn setHidden:NO];
+            [self.streamsAvailableLbl setHidden:NO];
+            
             [self.advancedSettingsBtn setHidden:YES];
             [self.advancedSettingsLbl setHidden:YES];
             [self.publishSettingsForm setHidden:YES];
