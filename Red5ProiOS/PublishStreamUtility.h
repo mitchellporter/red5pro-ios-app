@@ -15,6 +15,7 @@
 
 + (PublishStreamUtility *) getInstance;
 - (R5Stream *) createNewStream;
+- (R5Stream *) getOrCreateNewStream;
 - (void) killStream;
 
 @end

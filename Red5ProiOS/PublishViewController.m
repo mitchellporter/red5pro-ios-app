@@ -25,6 +25,7 @@
 //    r5_set_log_level(r5_log_level_debug);
     [super viewDidLoad];
     isFrontSelected = YES;
+    [[PublishStreamUtility getInstance] setIsFrontSelected:isFrontSelected];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -78,8 +79,7 @@
 
 -(void)establishPreview {
     if(stream == nil) {
-        [[PublishStreamUtility getInstance] setIsFrontSelected:isFrontSelected];
-        stream = [[PublishStreamUtility getInstance] createNewStream];
+         stream = [[PublishStreamUtility getInstance] getOrCreateNewStream];
     }
 
     [stream setDelegate:self];
@@ -95,15 +95,8 @@
 }
 
 -(void)killStream {
-    @try {
-        [stream stop];
-        [stream setDelegate:nil];
-        stream = nil;
-       
-    }
-    @catch(NSException *exception) {
-        NSLog(@"Could not stop: %@", exception);
-    }
+    [[PublishStreamUtility getInstance] killStream];
+    stream = nil;
 }
 
 -(void)start {
@@ -121,12 +114,10 @@
 }
 
 -(void)stop:(BOOL)reset {
-    
     [self killStream];
     
     if(reset == YES)
         [self establishPreview];
-    
 }
 
 -(void)updatePreview {
@@ -136,6 +127,7 @@
 -(void)toggleCamera {
     if(isTogglable) {
         isFrontSelected = !isFrontSelected;
+        [[PublishStreamUtility getInstance] setIsFrontSelected:isFrontSelected];
         if(stream != nil){
             R5Camera *cam2 = (R5Camera *)[stream getVideoSource];
             [cam2 setDevice:[self getSelectedDevice]];
