@@ -126,12 +126,32 @@
 #pragma mark UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    
     if (textField == [self serverTextField]) {
         [[self portTextField] becomeFirstResponder];
     } else if (textField == [self portTextField]) {
         [self performSegueWithIdentifier:@"goToMain" sender:nil];
     }
+    
     return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    [self animateTextFieldUp:YES];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self animateTextFieldUp:NO];
+}
+
+- (void) animateTextFieldUp:(BOOL)up {
+    const int movementDistance = 90;
+    int movement = (up ? -movementDistance : movementDistance);
+    
+    [UIView animateWithDuration:0.3f animations:^{
+        self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    }];
 }
 
 @end

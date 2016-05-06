@@ -309,6 +309,8 @@
     }
 }
 
+#pragma mark - Textfields
+
 - (BOOL)isHiddenKeyboardField:(UITextField *)field {
     return field == self.advancedStream;
 }
@@ -316,24 +318,45 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     self.focusedField = nil;
+    
+    if (textField == self.simpleStream) {
+        // Nothing
+    } else {
+        if (textField == self.server) {
+            [self.port becomeFirstResponder];
+        } else if (textField == self.port) {
+            [self.app becomeFirstResponder];
+        } else if (textField == self.app) {
+            [self.advancedStream becomeFirstResponder];
+        } else if (textField == self.advancedStream) {
+            [self.bitrate becomeFirstResponder];
+        } else if (textField == self.bitrate) {
+            [self.resolution becomeFirstResponder];
+        }
+    }
+    
     return YES;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    if([self isHiddenKeyboardField:textField]) {
-        [self animateTextField: textField up: YES];
-    }
+    [self animateTextFieldUp:YES];
     self.focusedField = textField;
+    
+    textField.returnKeyType = (textField == self.simpleStream || textField == self.resolution) ? UIReturnKeyDone : UIReturnKeyNext;
 }
 
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    if([self isHiddenKeyboardField:textField]) {
-        [self animateTextField: textField up: NO];
+    [self animateTextFieldUp:NO];
+    
+    if (textField == self.simpleStream) {
+        self.advancedStream.text = self.simpleStream.text;
+    } else if (textField == self.advancedStream) {
+        self.simpleStream.text = self.advancedStream.text;
     }
 }
 
-- (void) animateTextField: (UITextField*) textField up: (BOOL) up {
+- (void) animateTextFieldUp:(BOOL)up {
     const int movementDistance = 90;
     int movement = (up ? -movementDistance : movementDistance);
     
@@ -341,6 +364,8 @@
         self.view.frame = CGRectOffset(self.view.frame, 0, movement);
     }];
 }
+
+#pragma mark - IBActions
 
 - (void) showAdvancedSettings {
     [self.advancedSettingsView setAlpha:0.0f];

@@ -66,6 +66,7 @@ static PublishStreamUtility *instance;
         [self.stream attachAudio:microphone];
     
     if (adaptiveBitrate) {
+        config.buffer_time = 0.25f;
         R5AdaptiveBitrateController *adaptiveController = [R5AdaptiveBitrateController new];
         [adaptiveController attachToStream:self.stream];
         if (includeVideo) {
