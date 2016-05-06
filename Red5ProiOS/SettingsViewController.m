@@ -472,6 +472,16 @@
     });
 }
 
+- (IBAction)onTapOutside:(id)sender {
+    [self.simpleStream resignFirstResponder];
+    [self.server resignFirstResponder];
+    [self.port resignFirstResponder];
+    [self.app resignFirstResponder];
+    [self.advancedStream resignFirstResponder];
+    [self.bitrate resignFirstResponder];
+    [self.resolution resignFirstResponder];
+}
+
 #pragma mark - List Listener
 
 - (void) listUpdated:(NSArray *)updatedList {

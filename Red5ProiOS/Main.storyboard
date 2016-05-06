@@ -547,7 +547,7 @@
                                                                 <rect key="frame" x="0.0" y="28" width="312" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="68Q-vo-zyx" id="DOr-G9-rEn">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="312" height="44"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="312" height="43.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Example Stream" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qt8-eT-k1p">
@@ -740,6 +740,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="pUB-jn-nCH" firstAttribute="centerX" secondItem="mKJ-9s-mdg" secondAttribute="centerX" id="Bki-Jj-9n3"/>
                                     <constraint firstItem="Uns-Lf-0cK" firstAttribute="centerX" secondItem="mKJ-9s-mdg" secondAttribute="centerX" id="bKo-US-gzX"/>
@@ -747,6 +748,9 @@
                                     <constraint firstItem="pUB-jn-nCH" firstAttribute="top" secondItem="Uns-Lf-0cK" secondAttribute="bottom" constant="11" id="l05-h3-jcS"/>
                                     <constraint firstItem="pUB-jn-nCH" firstAttribute="centerY" secondItem="mKJ-9s-mdg" secondAttribute="centerY" id="uZV-G8-iNr"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="rg6-aX-oua" appends="YES" id="HuG-WV-KBz"/>
+                                </connections>
                             </view>
                             <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Y8-Pk-Cmo" userLabel="Advanced View">
                                 <rect key="frame" x="0.0" y="71" width="320" height="426"/>
@@ -1042,6 +1046,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bg8-z6-3M2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="rg6-aX-oua">
+                    <connections>
+                        <action selector="onTapOutside:" destination="7JA-FM-NvD" id="Gih-3Y-GTv"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1538" y="-185"/>
         </scene>
@@ -1096,7 +1105,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="304" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="01w-PM-hx1" id="LQx-u5-xkn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Example Stream" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6U9-VD-x7L">
@@ -1127,8 +1136,12 @@
                                             <action selector="onListRefreshTouch:" destination="9lB-ll-WrN" eventType="touchUpInside" id="qsi-d9-3o5"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0 STREAMS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSR-uR-tDY">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 STREAMS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSR-uR-tDY">
                                         <rect key="frame" x="8" y="250" width="230" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="2WY-75-ba8"/>
+                                            <constraint firstAttribute="width" constant="230" id="Em9-as-Jpu"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
                                         <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1144,8 +1157,10 @@
                                     <constraint firstItem="jt6-7i-ypF" firstAttribute="width" secondItem="GCb-W5-LZN" secondAttribute="width" id="RUC-hz-PtE"/>
                                     <constraint firstItem="82E-UT-Ijd" firstAttribute="centerX" secondItem="1A6-RH-qyp" secondAttribute="centerX" id="Rvc-QC-nA4"/>
                                     <constraint firstItem="ao9-Ay-mvl" firstAttribute="top" secondItem="82E-UT-Ijd" secondAttribute="bottom" constant="8" id="Zc5-oE-BCO"/>
+                                    <constraint firstItem="lSR-uR-tDY" firstAttribute="leading" secondItem="ao9-Ay-mvl" secondAttribute="leading" id="d8k-np-sQI"/>
                                     <constraint firstItem="82E-UT-Ijd" firstAttribute="top" secondItem="jt6-7i-ypF" secondAttribute="bottom" constant="8" id="isA-Oj-cBB"/>
                                     <constraint firstItem="ao9-Ay-mvl" firstAttribute="centerX" secondItem="1A6-RH-qyp" secondAttribute="centerX" id="jW2-RC-Ken"/>
+                                    <constraint firstItem="lSR-uR-tDY" firstAttribute="top" secondItem="ao9-Ay-mvl" secondAttribute="bottom" constant="14" id="oIT-9m-mxy"/>
                                     <constraint firstItem="MBm-tV-zHl" firstAttribute="trailing" secondItem="ao9-Ay-mvl" secondAttribute="trailing" id="qfA-U1-QKH"/>
                                     <constraint firstItem="jt6-7i-ypF" firstAttribute="centerX" secondItem="1A6-RH-qyp" secondAttribute="centerX" id="tyS-cy-yee"/>
                                     <constraint firstItem="82E-UT-Ijd" firstAttribute="width" secondItem="jt6-7i-ypF" secondAttribute="width" id="vug-FV-Nk6"/>
@@ -1383,9 +1398,9 @@
         <image name="twoway.png" width="52" height="52"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="EGF-dh-VAl"/>
         <segue reference="BLH-Pi-tfX"/>
         <segue reference="W12-Sh-Lol"/>
         <segue reference="3sB-dr-VxE"/>
-        <segue reference="EGF-dh-VAl"/>
     </inferredMetricsTieBreakers>
 </document>
