@@ -50,6 +50,7 @@ static PublishStreamUtility *instance;
     config.host = domain;
     config.contextName = app;
     config.port = [port intValue];
+    config.buffer_time = 0.25f;
     
     R5Connection *connection = [[R5Connection new] initWithConfig:config];
     R5Camera *camera = [[R5Camera alloc] initWithDevice:[self getSelectedDevice] andBitRate:128];
@@ -66,7 +67,6 @@ static PublishStreamUtility *instance;
         [self.stream attachAudio:microphone];
     
     if (adaptiveBitrate) {
-        config.buffer_time = 0.25f;
         R5AdaptiveBitrateController *adaptiveController = [R5AdaptiveBitrateController new];
         [adaptiveController attachToStream:self.stream];
         if (includeVideo) {
