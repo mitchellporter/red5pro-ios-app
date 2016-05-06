@@ -53,7 +53,6 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    [[PublishStreamUtility getInstance] killStream];
     [[StreamListUtility getInstance] clearAndDisconnect];
 }
 
@@ -101,6 +100,8 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"twoWaySettingsToSettings"]) {
+        [[PublishStreamUtility getInstance] killStream];
+        
         SettingsViewController *settingsController = (SettingsViewController *)segue.destinationViewController;
         
         if(settingsController != nil && [settingsController respondsToSelector:@selector(setCurrentMode:)]) {
