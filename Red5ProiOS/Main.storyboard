@@ -748,9 +748,6 @@
                                     <constraint firstItem="pUB-jn-nCH" firstAttribute="top" secondItem="Uns-Lf-0cK" secondAttribute="bottom" constant="11" id="l05-h3-jcS"/>
                                     <constraint firstItem="pUB-jn-nCH" firstAttribute="centerY" secondItem="mKJ-9s-mdg" secondAttribute="centerY" id="uZV-G8-iNr"/>
                                 </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="rg6-aX-oua" appends="YES" id="HuG-WV-KBz"/>
-                                </connections>
                             </view>
                             <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Y8-Pk-Cmo" userLabel="Advanced View">
                                 <rect key="frame" x="0.0" y="71" width="320" height="426"/>
@@ -1029,7 +1026,6 @@
                         <outlet property="otherQualityBtn" destination="fxM-OJ-GPf" id="8d5-vt-Aha"/>
                         <outlet property="port" destination="91a-La-aZa" id="9co-jh-4PZ"/>
                         <outlet property="publishSettingsForm" destination="PTA-S7-cJg" id="USJ-g3-JQf"/>
-                        <outlet property="publishSettingsView" destination="PTA-S7-cJg" id="ARg-sK-w7m"/>
                         <outlet property="resolution" destination="nwg-A7-1qJ" id="al6-DD-XWe"/>
                         <outlet property="resolutionLbl" destination="yyD-1D-PiL" id="tjo-m2-HdI"/>
                         <outlet property="server" destination="5TM-E8-hf5" id="0Fy-8y-PzQ"/>
@@ -1046,11 +1042,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bg8-z6-3M2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="rg6-aX-oua">
-                    <connections>
-                        <action selector="onTapOutside:" destination="7JA-FM-NvD" id="Gih-3Y-GTv"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1538" y="-185"/>
         </scene>
@@ -1401,6 +1392,6 @@
         <segue reference="EGF-dh-VAl"/>
         <segue reference="BLH-Pi-tfX"/>
         <segue reference="W12-Sh-Lol"/>
-        <segue reference="3sB-dr-VxE"/>
+        <segue reference="2Mm-yP-xyJ"/>
     </inferredMetricsTieBreakers>
 </document>

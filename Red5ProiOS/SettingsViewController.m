@@ -115,31 +115,10 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    NSLog(@"On stream mode? %@", (self.currentMode == r5_example_stream ? @"YES" : @"NO"));
-    if( self.currentMode == r5_example_stream ){
-        self.liveStreams = [[StreamListUtility getInstance] callWithBlock:^(NSArray *streams) {
-            self.liveStreams = streams;
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (self.liveStreams.count == 1) {
-                    self.streamsAvailableLbl.text = @"1 STREAM";
-                } else {
-                    self.streamsAvailableLbl.text = [NSString stringWithFormat:@"%lu STREAMS", (unsigned long)self.liveStreams.count];
-                }
-                
-                [self.stream reloadData];
-            });
+    if (self.currentMode == r5_example_stream) {
+        [[StreamListUtility getInstance] callWithBlock:^(NSArray *streams) {
+            [self updateTableDataWithArray:streams];
         }];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (self.liveStreams.count == 1) {
-                self.streamsAvailableLbl.text = @"1 STREAM";
-            } else {
-                self.streamsAvailableLbl.text = [NSString stringWithFormat:@"%lu STREAMS", (unsigned long)self.liveStreams.count];
-            }
-            
-            [self.stream reloadData];
-        });
         
         [[StreamListUtility getInstance] callWithReturn:self];
     }
@@ -243,7 +222,8 @@
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     StreamTableViewCell *cell = (StreamTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"streamCell"];
     
-    cell.streamNameLbl.text = [[self liveStreams] objectAtIndex:indexPath.row];
+    NSInteger idx = indexPath.row;
+    cell.streamNameLbl.text = (idx != NSNotFound && idx < self.liveStreams.count) ? [self.liveStreams objectAtIndex:idx] : @"Whoops! Hold on...";
     
     return cell;
 }
@@ -447,19 +427,21 @@
 }
 
 - (IBAction)onListRefreshTouch:(id)sender {
-    self.liveStreams = [[StreamListUtility getInstance] callWithBlock:^(NSArray *streams) {
-        self.liveStreams = streams;
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (self.liveStreams.count == 1) {
-                self.streamsAvailableLbl.text = @"1 STREAM";
-            } else {
-                self.streamsAvailableLbl.text = [NSString stringWithFormat:@"%lu STREAMS", (unsigned long)self.liveStreams.count];
-            }
-            
-            [self.stream reloadData];
-        });
+    [[StreamListUtility getInstance] callWithBlock:^(NSArray *streams) {
+        [self updateTableDataWithArray:streams];
     }];
+}
+
+#pragma mark - List Listener
+
+- (void) updateTableDataWithArray:(NSArray *)array {
+    NSIndexPath *selected = [self.stream indexPathForSelectedRow];
+    StreamTableViewCell *cell = selected ? [self.stream cellForRowAtIndexPath:selected] : nil;
+    NSString *selectedLabel = cell ? cell.streamNameLbl.text : nil;
+    
+    self.liveStreams = array;
+    
+    NSInteger selectedIdx = selectedLabel ? [array indexOfObject:selectedLabel] : NSNotFound;
     
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.liveStreams.count == 1) {
@@ -469,32 +451,16 @@
         }
         
         [self.stream reloadData];
+        
+        if (selectedIdx != NSNotFound) {
+            NSIndexPath *newSelectedIndexPath = [NSIndexPath indexPathForRow:selectedIdx inSection:0];
+            [self.stream selectRowAtIndexPath:newSelectedIndexPath animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+        }
     });
 }
-
-- (IBAction)onTapOutside:(id)sender {
-    [self.simpleStream resignFirstResponder];
-    [self.server resignFirstResponder];
-    [self.port resignFirstResponder];
-    [self.app resignFirstResponder];
-    [self.advancedStream resignFirstResponder];
-    [self.bitrate resignFirstResponder];
-    [self.resolution resignFirstResponder];
-}
-
-#pragma mark - List Listener
 
 - (void) listUpdated:(NSArray *)updatedList {
-    self.liveStreams = updatedList;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (self.liveStreams.count == 1) {
-            self.streamsAvailableLbl.text = @"1 STREAM";
-        } else {
-            self.streamsAvailableLbl.text = [NSString stringWithFormat:@"%lu STREAMS", (unsigned long)self.liveStreams.count];
-        }
-        
-        [self.stream reloadData];
-    });
+    [self updateTableDataWithArray:updatedList];
 }
 
 @end

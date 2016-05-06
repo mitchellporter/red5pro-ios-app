@@ -20,8 +20,6 @@ enum StreamMode {
 @property (weak, nonatomic) IBOutlet UIView *simpleSettingsView;
 @property (weak, nonatomic) IBOutlet UIView *advancedSettingsView;
 
-@property (weak, nonatomic) IBOutlet UIView *publishSettingsView;
-
 @property (weak, nonatomic) IBOutlet UIView *streamSettingsForm;
 @property (weak, nonatomic) IBOutlet UIView *publishSettingsForm;
 

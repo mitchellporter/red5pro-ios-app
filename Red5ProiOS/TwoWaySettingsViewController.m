@@ -41,34 +41,11 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    self.liveStreams = [[StreamListUtility getInstance] callWithBlock:^(NSArray *streams) {
-        NSMutableArray *onlyGoodStreams = [NSMutableArray arrayWithArray:streams];
-        
-        NSInteger idx = [onlyGoodStreams indexOfObject:self.stream.text];
-        [onlyGoodStreams removeObjectAtIndex:idx];
-        
-        self.liveStreams = onlyGoodStreams;
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (self.liveStreams.count == 1) {
-                self.streamsAvailableLbl.text = @"1 STREAM";
-            } else {
-                self.streamsAvailableLbl.text = [NSString stringWithFormat:@"%lu STREAMS", (unsigned long)self.liveStreams.count];
-            }
-            
-            [self.table reloadData];
-        });
+    NSArray *cachedStreams = [[StreamListUtility getInstance] callWithBlock:^(NSArray *streams) {
+        [self updateTableDataWithArray:streams];
     }];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (self.liveStreams.count == 1) {
-            self.streamsAvailableLbl.text = @"1 STREAM";
-        } else {
-            self.streamsAvailableLbl.text = [NSString stringWithFormat:@"%lu STREAMS", (unsigned long)self.liveStreams.count];
-        }
-        
-        [self.table reloadData];
-    });
+    [self updateTableDataWithArray:cachedStreams];
     
     [[StreamListUtility getInstance] callWithReturn:self];
 }
@@ -149,34 +126,11 @@
 }
 
 - (IBAction)onListRefreshTouch:(id)sender {
-    self.liveStreams = [[StreamListUtility getInstance] callWithBlock:^(NSArray *streams) {
-        NSMutableArray *onlyGoodStreams = [NSMutableArray arrayWithArray:streams];
-        
-        NSInteger idx = [onlyGoodStreams indexOfObject:self.stream.text];
-        [onlyGoodStreams removeObjectAtIndex:idx];
-        
-        self.liveStreams = onlyGoodStreams;
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (self.liveStreams.count == 1) {
-                self.streamsAvailableLbl.text = @"1 STREAM";
-            } else {
-                self.streamsAvailableLbl.text = [NSString stringWithFormat:@"%lu STREAMS", (unsigned long)self.liveStreams.count];
-            }
-            
-            [self.table reloadData];
-        });
+    NSArray *cachedStreams = [[StreamListUtility getInstance] callWithBlock:^(NSArray *streams) {
+        [self updateTableDataWithArray:streams];
     }];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (self.liveStreams.count == 1) {
-            self.streamsAvailableLbl.text = @"1 STREAM";
-        } else {
-            self.streamsAvailableLbl.text = [NSString stringWithFormat:@"%lu STREAMS", (unsigned long)self.liveStreams.count];
-        }
-        
-        [self.table reloadData];
-    });
+    [self updateTableDataWithArray:cachedStreams];
 }
 
 #pragma mark - Connections
@@ -190,13 +144,20 @@
 
 #pragma mark - List Listener
 
-- (void) listUpdated:(NSArray *)updatedList {
-    NSMutableArray *onlyGoodStreams = [NSMutableArray arrayWithArray:updatedList];
+- (void) updateTableDataWithArray:(NSArray *)array {
+    NSMutableArray *onlyGoodStreams = [NSMutableArray arrayWithArray:array];
+    NSIndexPath *selected = [self.table indexPathForSelectedRow];
+    StreamTableViewCell *cell = selected ? [self.table cellForRowAtIndexPath:selected] : nil;
+    NSString *selectedLabel = cell ? cell.streamNameLbl.text : nil;
     
     NSInteger idx = [onlyGoodStreams indexOfObject:self.stream.text];
-    [onlyGoodStreams removeObjectAtIndex:idx];
+    if (idx != NSNotFound) {
+        [onlyGoodStreams removeObjectAtIndex:idx];
+    }
     
     self.liveStreams = onlyGoodStreams;
+    
+    NSInteger selectedIdx = selectedLabel ? [onlyGoodStreams indexOfObject:selectedLabel] : NSNotFound;
     
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.liveStreams.count == 1) {
@@ -206,7 +167,16 @@
         }
         
         [self.table reloadData];
+        
+        if (selectedIdx != NSNotFound) {
+            NSIndexPath *newSelectedIndexPath = [NSIndexPath indexPathForRow:selectedIdx inSection:0];
+            [self.table selectRowAtIndexPath:newSelectedIndexPath animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+        }
     });
+}
+
+- (void) listUpdated:(NSArray *)updatedList {
+    [self updateTableDataWithArray:updatedList];
 }
 
 @end
