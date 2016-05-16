@@ -319,6 +319,14 @@
     }
 }
 
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu {
+    return NO;
+}
+
+- (BOOL)slideNavigationControllerShouldDisplayRightMenu {
+    return NO;
+}
+
 -(void)updateControllersOnSettings:(BOOL)shown {
     PublishViewController *publisher = (PublishViewController *)[[self viewControllerMap] objectForKey:@"publishView"];
     

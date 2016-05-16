@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "StreamListUtility.h"
+#import "SlideNavigationController.h"
 
-@interface TwoWaySettingsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, listListener>
+@interface TwoWaySettingsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, listListener, SlideNavigationControllerDelegate>
 
 @property enum StreamMode currentMode;
 

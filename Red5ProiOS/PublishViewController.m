@@ -39,6 +39,14 @@
     [self showPreview:false];
 }
 
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu {
+    return YES;
+}
+
+- (BOOL)slideNavigationControllerShouldDisplayRightMenu {
+    return NO;
+}
+
 -(void)onR5StreamStatus:(R5Stream *)stream withStatus:(int)statusCode withMessage:(NSString *)msg {
     if (msg && ![msg isEqualToString:@"null"]) {
         [ALToastView toastInView:self.view withText:[NSString stringWithFormat:@"Stream: %s - %@", r5_string_for_status(statusCode), msg]];

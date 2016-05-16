@@ -61,6 +61,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu {
+    return YES;
+}
+
+- (BOOL)slideNavigationControllerShouldDisplayRightMenu {
+    return NO;
+}
+
 #pragma mark - Helpers
 
 - (void) setSubscribeBtnEnabled:(BOOL)isEnabled {

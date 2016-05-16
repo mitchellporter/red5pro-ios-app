@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "StreamListUtility.h"
+#import "SlideNavigationController.h"
 
 enum StreamMode {
     r5_example_stream,
@@ -15,7 +16,7 @@ enum StreamMode {
     r5_example_twoway
 };
 
-@interface SettingsViewController : UIViewController<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, listListener>
+@interface SettingsViewController : UIViewController<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, listListener, SlideNavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *simpleSettingsView;
 @property (weak, nonatomic) IBOutlet UIView *advancedSettingsView;
@@ -37,6 +38,8 @@ enum StreamMode {
 @property (weak, nonatomic) IBOutlet UIButton *videoCheck;
 @property (weak, nonatomic) IBOutlet UIButton *adaptiveBitrateCheck;
 @property (weak, nonatomic) IBOutlet UIButton *doneBtn;
+
+@property (weak, nonatomic) IBOutlet UIButton *backBtn;
 
 @property (weak, nonatomic) IBOutlet UIButton *lowQualityBtn;
 @property (weak, nonatomic) IBOutlet UIButton *mediumQualityBtn;

@@ -18,6 +18,16 @@
             <string>Lato-Bold</string>
             <string>Lato-Bold</string>
             <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
         </mutableArray>
         <mutableArray key="Lato-Regular.ttf">
             <string>Lato-Regular</string>
@@ -351,7 +361,9 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="bIy-e0-24D"/>
+                    <navigationItem key="navigationItem" id="bIy-e0-24D">
+                        <barButtonItem key="backBarButtonItem" image="menu-button.png" style="plain" id="7MB-HG-3PS"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="camera" destination="Pew-mw-I2Q" id="HGv-Bq-pTX"/>
                         <outlet property="launchButton" destination="NBt-ul-jM0" id="W9o-i9-z3t"/>
@@ -400,10 +412,166 @@
             </objects>
             <point key="canvasLocation" x="2443" y="-971"/>
         </scene>
+        <!--Side Navigation View Controller-->
+        <scene sceneID="sZv-HP-r9N">
+            <objects>
+                <viewController storyboardIdentifier="sideNav" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ysf-JR-1rD" customClass="SideNavigationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cWD-MB-5Pf"/>
+                        <viewControllerLayoutGuide type="bottom" id="62j-7D-0jT"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="Tiy-31-DIL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Jc-rm-1Pv" userLabel="Server Settings Button">
+                                <rect key="frame" x="34" y="20" width="52" height="52"/>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                <size key="titleShadowOffset" width="2.2250738585072014e-308" height="0.0"/>
+                                <state key="normal" image="publish.png">
+                                    <color key="titleColor" red="0.89019607840000003" green="0.098039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onServerSettingsTap:" destination="ysf-JR-1rD" eventType="touchUpInside" id="Xzr-oC-h4V"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8rA-pa-fZ9">
+                                <rect key="frame" x="33" y="80" width="55" height="30"/>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                <state key="normal" title="SERVER">
+                                    <color key="titleColor" red="0.89019607840000003" green="0.098039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onServerSettingsTap:" destination="ysf-JR-1rD" eventType="touchUpInside" id="hRL-zL-Ry5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwV-cP-ybP" userLabel="Publish Button">
+                                <rect key="frame" x="34" y="112" width="52" height="52"/>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                <size key="titleShadowOffset" width="2.2250738585072014e-308" height="0.0"/>
+                                <state key="normal" image="publish.png">
+                                    <color key="titleColor" red="0.89019607840000003" green="0.098039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onPublishTap:" destination="ysf-JR-1rD" eventType="touchUpInside" id="eIc-HJ-ojW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9UP-eI-1al">
+                                <rect key="frame" x="29" y="172" width="63" height="30"/>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                <state key="normal" title="PUBLISH">
+                                    <color key="titleColor" red="0.89019607840000003" green="0.098039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onPublishTap:" destination="ysf-JR-1rD" eventType="touchUpInside" id="Vjh-KA-OPc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGj-6v-D1Q" userLabel="Subscribe Button">
+                                <rect key="frame" x="34" y="204" width="52" height="52"/>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                <state key="normal" image="subscribe.png">
+                                    <color key="titleColor" red="0.89019607840000003" green="0.098039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSubscribeTap:" destination="ysf-JR-1rD" eventType="touchUpInside" id="VfR-Lq-RL9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="koK-Xr-Qcl">
+                                <rect key="frame" x="20" y="264" width="80" height="30"/>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                <state key="normal" title="SUBSCRIBE">
+                                    <color key="titleColor" red="0.89019607840000003" green="0.098039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSubscribeTap:" destination="ysf-JR-1rD" eventType="touchUpInside" id="Zno-EC-gO7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frj-Sy-kOC" userLabel="Two Way Button">
+                                <rect key="frame" x="34" y="296" width="52" height="52"/>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                <state key="normal" image="twoway.png">
+                                    <color key="titleColor" red="0.89019607840000003" green="0.098039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTwoWayTap:" destination="ysf-JR-1rD" eventType="touchUpInside" id="8tI-j4-EDq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S1a-Ba-7LT">
+                                <rect key="frame" x="37" y="356" width="47" height="30"/>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                <state key="normal" title="2 WAY">
+                                    <color key="titleColor" red="0.89019607840000003" green="0.098039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTwoWayTap:" destination="ysf-JR-1rD" eventType="touchUpInside" id="6ag-UI-2Lb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJ2-bA-bvq" userLabel="Help Button">
+                                <rect key="frame" x="34" y="480" width="52" height="52"/>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                <state key="normal" image="twoway.png">
+                                    <color key="titleColor" red="0.89019607840000003" green="0.098039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onHelpTap:" destination="ysf-JR-1rD" eventType="touchUpInside" id="QcC-JQ-5eN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dh9-dd-GQe">
+                                <rect key="frame" x="41" y="540" width="38" height="30"/>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                <state key="normal" title="HELP">
+                                    <color key="titleColor" red="0.89019607840000003" green="0.098039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onHelpTap:" destination="ysf-JR-1rD" eventType="touchUpInside" id="pHZ-Ec-zOW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="dh9-dd-GQe" firstAttribute="top" secondItem="AJ2-bA-bvq" secondAttribute="bottom" constant="8" id="0mQ-P7-YSu"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="fGj-6v-D1Q" secondAttribute="leading" constant="-18" id="7mm-C2-JtE"/>
+                            <constraint firstItem="koK-Xr-Qcl" firstAttribute="top" secondItem="fGj-6v-D1Q" secondAttribute="bottom" constant="8" id="CWD-xl-W5s"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="AJ2-bA-bvq" secondAttribute="leading" constant="-18" id="DaQ-wc-vhq"/>
+                            <constraint firstItem="8rA-pa-fZ9" firstAttribute="top" secondItem="4Jc-rm-1Pv" secondAttribute="bottom" constant="8" id="HIv-vm-Q4E"/>
+                            <constraint firstItem="9UP-eI-1al" firstAttribute="centerX" secondItem="qwV-cP-ybP" secondAttribute="centerX" id="MZQ-fm-Zxy"/>
+                            <constraint firstItem="S1a-Ba-7LT" firstAttribute="centerX" secondItem="frj-Sy-kOC" secondAttribute="centerX" id="MpM-Zu-SGA"/>
+                            <constraint firstItem="8rA-pa-fZ9" firstAttribute="centerX" secondItem="4Jc-rm-1Pv" secondAttribute="centerX" id="TT8-M6-Nyp"/>
+                            <constraint firstItem="qwV-cP-ybP" firstAttribute="top" secondItem="4Jc-rm-1Pv" secondAttribute="bottom" constant="40" id="TmH-JN-80a"/>
+                            <constraint firstItem="koK-Xr-Qcl" firstAttribute="centerX" secondItem="fGj-6v-D1Q" secondAttribute="centerX" id="Uo5-qO-UwA"/>
+                            <constraint firstItem="S1a-Ba-7LT" firstAttribute="top" secondItem="frj-Sy-kOC" secondAttribute="bottom" constant="8" id="YNH-5m-gBj"/>
+                            <constraint firstItem="9UP-eI-1al" firstAttribute="top" secondItem="qwV-cP-ybP" secondAttribute="bottom" constant="8" id="b19-JW-8fG"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="4Jc-rm-1Pv" secondAttribute="leading" constant="-18" id="edm-Bm-wv4"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="qwV-cP-ybP" secondAttribute="leading" constant="-18" id="jOT-hU-zkG"/>
+                            <constraint firstItem="dh9-dd-GQe" firstAttribute="centerX" secondItem="AJ2-bA-bvq" secondAttribute="centerX" id="jhO-dO-LqL"/>
+                            <constraint firstItem="fGj-6v-D1Q" firstAttribute="top" secondItem="qwV-cP-ybP" secondAttribute="bottom" constant="40" id="lZZ-in-Iaq"/>
+                            <constraint firstItem="4Jc-rm-1Pv" firstAttribute="top" secondItem="cWD-MB-5Pf" secondAttribute="bottom" id="nfz-wX-eH4"/>
+                            <constraint firstItem="frj-Sy-kOC" firstAttribute="top" secondItem="fGj-6v-D1Q" secondAttribute="bottom" constant="40" id="p9U-5k-slW"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="frj-Sy-kOC" secondAttribute="leading" constant="-18" id="tPZ-gb-OXT"/>
+                            <constraint firstItem="62j-7D-0jT" firstAttribute="top" secondItem="AJ2-bA-bvq" secondAttribute="bottom" constant="36" id="zcb-GB-EXl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="helpBtn" destination="AJ2-bA-bvq" id="52F-LI-zmQ"/>
+                        <outlet property="publishBtn" destination="qwV-cP-ybP" id="nK3-Dw-741"/>
+                        <outlet property="serverBtn" destination="4Jc-rm-1Pv" id="sUU-7F-waT"/>
+                        <outlet property="subscribeBtn" destination="fGj-6v-D1Q" id="7cq-ve-XOy"/>
+                        <outlet property="twoWayBtn" destination="frj-Sy-kOC" id="Xji-UC-mGW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="24l-yr-hxc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="652" y="-190"/>
+        </scene>
         <!--Help View Controller-->
         <scene sceneID="8rJ-gW-GoE">
             <objects>
-                <viewController storyboardIdentifier="helpView" id="x2H-PF-QbZ" userLabel="Help View Controller" customClass="HelpDialogViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="helpView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="x2H-PF-QbZ" userLabel="Help View Controller" customClass="HelpDialogViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wzp-HF-kZv"/>
                         <viewControllerLayoutGuide type="bottom" id="Kaf-hF-MQa"/>
@@ -483,12 +651,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UMx-G1-kKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1092" y="-185"/>
+            <point key="canvasLocation" x="1092" y="411"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="h4D-Is-ptp">
             <objects>
-                <viewController id="7JA-FM-NvD" customClass="SettingsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settings" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7JA-FM-NvD" customClass="SettingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VQj-Zq-bta"/>
                         <viewControllerLayoutGuide type="bottom" id="gZF-zl-e5l"/>
@@ -547,7 +715,7 @@
                                                                 <rect key="frame" x="0.0" y="28" width="312" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="68Q-vo-zyx" id="DOr-G9-rEn">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="312" height="43.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="312" height="44"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Example Stream" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qt8-eT-k1p">
@@ -973,7 +1141,7 @@
                                     <action selector="onDoneClicked:" destination="7JA-FM-NvD" eventType="touchUpInside" id="l1U-YI-6xb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VI7-SL-B4X">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VI7-SL-B4X">
                                 <rect key="frame" x="16" y="530" width="46" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="dwe-U0-PRB"/>
@@ -1003,7 +1171,9 @@
                             <constraint firstItem="1Y8-Pk-Cmo" firstAttribute="centerY" secondItem="4n5-93-OhN" secondAttribute="centerY" id="yWp-Sx-bsS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="LJ9-Sp-hUf"/>
+                    <navigationItem key="navigationItem" id="LJ9-Sp-hUf">
+                        <barButtonItem key="leftBarButtonItem" image="menu-button.png" style="plain" id="wYR-FB-eWN"/>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
@@ -1016,6 +1186,7 @@
                         <outlet property="app" destination="AHc-Tg-cgE" id="dg6-Ua-X8k"/>
                         <outlet property="audioCheck" destination="jqn-RC-A0W" id="MI6-nK-OED"/>
                         <outlet property="audioCheckLbl" destination="5gn-2E-PNh" id="pcc-Jq-uE6"/>
+                        <outlet property="backBtn" destination="VI7-SL-B4X" id="mwF-fq-fsX"/>
                         <outlet property="bitrate" destination="qTe-Yg-nYj" id="97U-Ic-0MT"/>
                         <outlet property="bitrateLbl" destination="tLq-A5-zGe" id="PUy-bb-ppf"/>
                         <outlet property="doneBtn" destination="f18-Fx-2Gx" id="T7t-LK-J3r"/>
@@ -1096,7 +1267,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="304" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="01w-PM-hx1" id="LQx-u5-xkn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Example Stream" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6U9-VD-x7L">
@@ -1197,7 +1368,9 @@
                             <constraint firstItem="1A6-RH-qyp" firstAttribute="width" secondItem="RaB-Il-HJd" secondAttribute="width" id="v1k-Yz-qfT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="uzD-0C-Mpx"/>
+                    <navigationItem key="navigationItem" id="uzD-0C-Mpx">
+                        <barButtonItem key="backBarButtonItem" image="menu-button.png" style="plain" id="LFD-QW-bt8"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="listRefreshBtn" destination="MBm-tV-zHl" id="1lK-j8-lrI"/>
                         <outlet property="stream" destination="jt6-7i-ypF" id="Smm-5c-dbO"/>
@@ -1211,10 +1384,10 @@
             </objects>
             <point key="canvasLocation" x="1992" y="-185"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Slide Navigation Controller-->
         <scene sceneID="suU-vE-dDP">
             <objects>
-                <navigationController storyboardIdentifier="initView" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="1pY-b2-Ywk" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="initView" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="1pY-b2-Ywk" customClass="SlideNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" id="18t-Ib-cVa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1301,7 +1474,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ey-nr-wAk" userLabel="View Header Bar">
-                                <rect key="frame" x="-4" y="64" width="328" height="75"/>
+                                <rect key="frame" x="-4" y="20" width="328" height="75"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2t-ut-06o">
                                         <rect key="frame" x="275" y="17" width="44" height="44"/>
@@ -1379,6 +1552,7 @@
         <image name="boxChecked.png" width="34" height="34"/>
         <image name="empty.png" width="142" height="142"/>
         <image name="help.png" width="44" height="44"/>
+        <image name="menu-button.png" width="22" height="17"/>
         <image name="more.png" width="44" height="44"/>
         <image name="publish.png" width="52" height="52"/>
         <image name="radial.png" width="44" height="44"/>
@@ -1389,9 +1563,9 @@
         <image name="twoway.png" width="52" height="52"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EGF-dh-VAl"/>
-        <segue reference="BLH-Pi-tfX"/>
-        <segue reference="W12-Sh-Lol"/>
         <segue reference="2Mm-yP-xyJ"/>
+        <segue reference="mTL-IN-3uX"/>
+        <segue reference="BLH-Pi-tfX"/>
+        <segue reference="use-TN-22a"/>
     </inferredMetricsTieBreakers>
 </document>

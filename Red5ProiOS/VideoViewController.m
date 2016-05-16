@@ -22,6 +22,13 @@
     [super viewDidAppear:animated];
 }
 
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu {
+    return NO;
+}
+
+- (BOOL)slideNavigationControllerShouldDisplayRightMenu {
+    return NO;
+}
 
 -(R5Stream *)setUpNewStream {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

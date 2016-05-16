@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SlideNavigationController.h"
 
-@interface HelpDialogViewController : UIViewController<UIWebViewDelegate>
+@interface HelpDialogViewController : UIViewController<UIWebViewDelegate, SlideNavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIView *helpTextView;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @end

@@ -8,18 +8,31 @@
 
 #import "AppDelegate.h"
 #import <R5Streaming/R5Streaming.h>
+#import "SideNavigationViewController.h"
+#import "SlideNavigationController.h"
+#import "SlideNavigationContorllerAnimatorScaleAndFade.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *myController = [storyboard instantiateViewControllerWithIdentifier:@"initView"];
-    
-    self.window.rootViewController = myController;
-    [self.window makeKeyAndVisible];
     
     [UIApplication sharedApplication].idleTimerDisabled = YES;
+    
+    [SlideNavigationController sharedInstance].leftMenu = [storyboard instantiateViewControllerWithIdentifier:@"sideNav"];
+    
+    [SlideNavigationController sharedInstance].avoidSwitchingToSameClassViewController = YES;
+    [SlideNavigationController sharedInstance].enableShadow = YES;
+    [SlideNavigationController sharedInstance].enableSwipeGesture = YES;
+    [SlideNavigationController sharedInstance].menuRevealAnimator = [[SlideNavigationContorllerAnimatorScaleAndFade alloc] initWithMaximumFadeAlpha:1.0f fadeColor:[UIColor darkGrayColor] andMinimumScale:0.85f];
+    [SlideNavigationController sharedInstance].panGestureSideOffset = 44;
+    
+    CGRect rect = [UIScreen mainScreen].bounds;
+    
+    float offset = 1.0f - 0.4f;
+    [SlideNavigationController sharedInstance].portraitSlideOffset = rect.size.width * offset;
+    [SlideNavigationController sharedInstance].landscapeSlideOffset = rect.size.height * offset;
     
 //    r5_set_log_level(r5_log_level_debug);
     

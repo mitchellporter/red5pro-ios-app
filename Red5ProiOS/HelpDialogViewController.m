@@ -36,6 +36,14 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:html]];
 }
 
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu {
+    return NO;
+}
+
+- (BOOL)slideNavigationControllerShouldDisplayRightMenu {
+    return NO;
+}
+
 - (IBAction)dismiss:(id)sender {
     [UIView animateWithDuration:0.3f animations:^{
         self.view.alpha = 0.0f;

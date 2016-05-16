@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SlideNavigationController.h"
 
-@interface ServerSettingsViewController : UIViewController<UITextFieldDelegate>
+@interface ServerSettingsViewController : UIViewController<UITextFieldDelegate, SlideNavigationControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UIButton *submitBtn;
 @property (nonatomic, weak) IBOutlet UITextField *serverTextField;

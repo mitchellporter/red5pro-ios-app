@@ -103,6 +103,15 @@
 		C3904A201CCFDC3B00B5AC55 /* homeGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = C3904A1D1CCFDC3B00B5AC55 /* homeGrey.png */; settings = {ASSET_TAGS = (); }; };
 		C3904A211CCFDC3B00B5AC55 /* homeRed.png in Resources */ = {isa = PBXBuildFile; fileRef = C3904A1E1CCFDC3B00B5AC55 /* homeRed.png */; settings = {ASSET_TAGS = (); }; };
 		C3A161EA1CC828E500542367 /* ServerSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A161E91CC828E500542367 /* ServerSettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C3A1F0301CE665620062E1E0 /* menu-button.png in Resources */ = {isa = PBXBuildFile; fileRef = C3A1F0271CE665620062E1E0 /* menu-button.png */; settings = {ASSET_TAGS = (); }; };
+		C3A1F0311CE665620062E1E0 /* menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3A1F0281CE665620062E1E0 /* menu-button@2x.png */; settings = {ASSET_TAGS = (); }; };
+		C3A1F03C1CE666F40062E1E0 /* SlideNavigationContorllerAnimatorFade.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A1F01D1CE665620062E1E0 /* SlideNavigationContorllerAnimatorFade.m */; };
+		C3A1F03D1CE666F40062E1E0 /* SlideNavigationContorllerAnimatorScale.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A1F01F1CE665620062E1E0 /* SlideNavigationContorllerAnimatorScale.m */; };
+		C3A1F03E1CE666F40062E1E0 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A1F0211CE665620062E1E0 /* SlideNavigationContorllerAnimatorScaleAndFade.m */; };
+		C3A1F03F1CE666F40062E1E0 /* SlideNavigationContorllerAnimatorSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A1F0231CE665620062E1E0 /* SlideNavigationContorllerAnimatorSlide.m */; };
+		C3A1F0401CE666F40062E1E0 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A1F0251CE665620062E1E0 /* SlideNavigationContorllerAnimatorSlideAndFade.m */; };
+		C3A1F0411CE666F40062E1E0 /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A1F02A1CE665620062E1E0 /* SlideNavigationController.m */; };
+		C3A1F0441CE668710062E1E0 /* SideNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A1F0431CE668710062E1E0 /* SideNavigationViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C3CA6DEB1CDB813E00FE7C5A /* StreamTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CA6DEA1CDB813E00FE7C5A /* StreamTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		C3CA6DEE1CDB971400FE7C5A /* PublishStreamUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CA6DED1CDB971400FE7C5A /* PublishStreamUtility.m */; settings = {ASSET_TAGS = (); }; };
 		C3F1444D1CD8F72200753EC6 /* TwoWaySettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F1444C1CD8F72200753EC6 /* TwoWaySettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -233,6 +242,23 @@
 		C3904A1E1CCFDC3B00B5AC55 /* homeRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homeRed.png; path = images/homeRed.png; sourceTree = SOURCE_ROOT; };
 		C3A161E81CC828E500542367 /* ServerSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerSettingsViewController.h; sourceTree = "<group>"; };
 		C3A161E91CC828E500542367 /* ServerSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerSettingsViewController.m; sourceTree = "<group>"; };
+		C3A1F01B1CE665620062E1E0 /* SlideNavigationContorllerAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimator.h; sourceTree = "<group>"; };
+		C3A1F01C1CE665620062E1E0 /* SlideNavigationContorllerAnimatorFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorFade.h; sourceTree = "<group>"; };
+		C3A1F01D1CE665620062E1E0 /* SlideNavigationContorllerAnimatorFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorFade.m; sourceTree = "<group>"; };
+		C3A1F01E1CE665620062E1E0 /* SlideNavigationContorllerAnimatorScale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorScale.h; sourceTree = "<group>"; };
+		C3A1F01F1CE665620062E1E0 /* SlideNavigationContorllerAnimatorScale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorScale.m; sourceTree = "<group>"; };
+		C3A1F0201CE665620062E1E0 /* SlideNavigationContorllerAnimatorScaleAndFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorScaleAndFade.h; sourceTree = "<group>"; };
+		C3A1F0211CE665620062E1E0 /* SlideNavigationContorllerAnimatorScaleAndFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorScaleAndFade.m; sourceTree = "<group>"; };
+		C3A1F0221CE665620062E1E0 /* SlideNavigationContorllerAnimatorSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorSlide.h; sourceTree = "<group>"; };
+		C3A1F0231CE665620062E1E0 /* SlideNavigationContorllerAnimatorSlide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorSlide.m; sourceTree = "<group>"; };
+		C3A1F0241CE665620062E1E0 /* SlideNavigationContorllerAnimatorSlideAndFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorSlideAndFade.h; sourceTree = "<group>"; };
+		C3A1F0251CE665620062E1E0 /* SlideNavigationContorllerAnimatorSlideAndFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorSlideAndFade.m; sourceTree = "<group>"; };
+		C3A1F0271CE665620062E1E0 /* menu-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button.png"; sourceTree = "<group>"; };
+		C3A1F0281CE665620062E1E0 /* menu-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button@2x.png"; sourceTree = "<group>"; };
+		C3A1F0291CE665620062E1E0 /* SlideNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationController.h; sourceTree = "<group>"; };
+		C3A1F02A1CE665620062E1E0 /* SlideNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationController.m; sourceTree = "<group>"; };
+		C3A1F0421CE668710062E1E0 /* SideNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideNavigationViewController.h; sourceTree = "<group>"; };
+		C3A1F0431CE668710062E1E0 /* SideNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideNavigationViewController.m; sourceTree = "<group>"; };
 		C3CA6DE91CDB813E00FE7C5A /* StreamTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamTableViewCell.h; sourceTree = "<group>"; };
 		C3CA6DEA1CDB813E00FE7C5A /* StreamTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamTableViewCell.m; sourceTree = "<group>"; };
 		C3CA6DEC1CDB971400FE7C5A /* PublishStreamUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishStreamUtility.h; sourceTree = "<group>"; };
@@ -281,6 +307,7 @@
 		48350B941A11188E0053A6FD /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				C3A1F0191CE665620062E1E0 /* SlideNav */,
 				48350B991A1131B40053A6FD /* ALToastView */,
 				48350B951A11188E0053A6FD /* Reachability */,
 			);
@@ -319,6 +346,8 @@
 		48DD8D5519CB55CD004A3652 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C3A1F0421CE668710062E1E0 /* SideNavigationViewController.h */,
+				C3A1F0431CE668710062E1E0 /* SideNavigationViewController.m */,
 				48DD8D5019CB4EDF004A3652 /* StreamViewController.h */,
 				48DD8D5119CB4EDF004A3652 /* StreamViewController.m */,
 				48DD8D5919CB5652004A3652 /* VideoViewController.h */,
@@ -500,6 +529,44 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		C3A1F0191CE665620062E1E0 /* SlideNav */ = {
+			isa = PBXGroup;
+			children = (
+				C3A1F01A1CE665620062E1E0 /* Animations */,
+				C3A1F0261CE665620062E1E0 /* Assets */,
+				C3A1F0291CE665620062E1E0 /* SlideNavigationController.h */,
+				C3A1F02A1CE665620062E1E0 /* SlideNavigationController.m */,
+			);
+			path = SlideNav;
+			sourceTree = "<group>";
+		};
+		C3A1F01A1CE665620062E1E0 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				C3A1F01B1CE665620062E1E0 /* SlideNavigationContorllerAnimator.h */,
+				C3A1F01C1CE665620062E1E0 /* SlideNavigationContorllerAnimatorFade.h */,
+				C3A1F01D1CE665620062E1E0 /* SlideNavigationContorllerAnimatorFade.m */,
+				C3A1F01E1CE665620062E1E0 /* SlideNavigationContorllerAnimatorScale.h */,
+				C3A1F01F1CE665620062E1E0 /* SlideNavigationContorllerAnimatorScale.m */,
+				C3A1F0201CE665620062E1E0 /* SlideNavigationContorllerAnimatorScaleAndFade.h */,
+				C3A1F0211CE665620062E1E0 /* SlideNavigationContorllerAnimatorScaleAndFade.m */,
+				C3A1F0221CE665620062E1E0 /* SlideNavigationContorllerAnimatorSlide.h */,
+				C3A1F0231CE665620062E1E0 /* SlideNavigationContorllerAnimatorSlide.m */,
+				C3A1F0241CE665620062E1E0 /* SlideNavigationContorllerAnimatorSlideAndFade.h */,
+				C3A1F0251CE665620062E1E0 /* SlideNavigationContorllerAnimatorSlideAndFade.m */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		C3A1F0261CE665620062E1E0 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				C3A1F0271CE665620062E1E0 /* menu-button.png */,
+				C3A1F0281CE665620062E1E0 /* menu-button@2x.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -595,6 +662,7 @@
 				C3335E871CD7D13000CA0C11 /* radialselect@2x.png in Resources */,
 				C3335E9B1CD7D13000CA0C11 /* Settings.png in Resources */,
 				C3335E941CD7D13000CA0C11 /* subscribe@2x.png in Resources */,
+				C3A1F0311CE665620062E1E0 /* menu-button@2x.png in Resources */,
 				C3335E9F1CD7D13000CA0C11 /* Record@2x.png in Resources */,
 				92C187CF19ABE50200007336 /* emptyRed.png in Resources */,
 				92C187D419ABE50200007336 /* secondRed.png in Resources */,
@@ -602,6 +670,7 @@
 				92C187CE19ABE50200007336 /* empty.png in Resources */,
 				C3335E891CD7D13000CA0C11 /* radial@2x.png in Resources */,
 				C3335E971CD7D13000CA0C11 /* publish@3x.png in Resources */,
+				C3A1F0301CE665620062E1E0 /* menu-button.png in Resources */,
 				92101F9719ABB7D400879D55 /* publish.png in Resources */,
 				92101F9919ABB7D400879D55 /* subscribe.png in Resources */,
 				92C187D119ABE50200007336 /* help.png in Resources */,
@@ -656,6 +725,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3A1F03C1CE666F40062E1E0 /* SlideNavigationContorllerAnimatorFade.m in Sources */,
+				C3A1F03D1CE666F40062E1E0 /* SlideNavigationContorllerAnimatorScale.m in Sources */,
+				C3A1F03E1CE666F40062E1E0 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
+				C3A1F03F1CE666F40062E1E0 /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
+				C3A1F0401CE666F40062E1E0 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
+				C3A1F0411CE666F40062E1E0 /* SlideNavigationController.m in Sources */,
 				C3F1444D1CD8F72200753EC6 /* TwoWaySettingsViewController.m in Sources */,
 				48DD8D5B19CB5652004A3652 /* VideoViewController.m in Sources */,
 				48DD8D5219CB4EDF004A3652 /* StreamViewController.m in Sources */,
@@ -670,6 +745,7 @@
 				48350B981A11188E0053A6FD /* Reachability.m in Sources */,
 				C3A161EA1CC828E500542367 /* ServerSettingsViewController.m in Sources */,
 				48DD8D6019CB56DE004A3652 /* SettingsViewController.m in Sources */,
+				C3A1F0441CE668710062E1E0 /* SideNavigationViewController.m in Sources */,
 				92C6BF5719AD2AAB00244A2F /* CALayer+XibConfiguration.m in Sources */,
 				92E753A51CD7C0C10044A9FA /* StreamListUtility.m in Sources */,
 				48350B8E1A0BFB8F0053A6FD /* HelpDialogViewController.m in Sources */,

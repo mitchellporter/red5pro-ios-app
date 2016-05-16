@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <R5Streaming/R5Streaming.h>
 #import "StreamViewController.h"
+#import "SlideNavigationController.h"
 
-@interface VideoViewController : R5VideoViewController
+@interface VideoViewController : R5VideoViewController<SlideNavigationControllerDelegate>
 @property (nonatomic, strong) StreamViewController *streamViewController;
 
 -(void)start;

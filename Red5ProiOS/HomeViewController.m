@@ -33,4 +33,12 @@
     }
 }
 
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu {
+    return NO;
+}
+
+- (BOOL)slideNavigationControllerShouldDisplayRightMenu {
+    return NO;
+}
+
 @end

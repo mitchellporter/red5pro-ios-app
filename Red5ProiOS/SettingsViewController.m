@@ -146,6 +146,14 @@
     }
 }
 
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu {
+    return YES;
+}
+
+- (BOOL)slideNavigationControllerShouldDisplayRightMenu {
+    return NO;
+}
+
 - (int)getSelectedQualityIndex {
     __block int index = -1;
     [self.qualityButtons enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -366,6 +374,8 @@
     
     [UIView animateWithDuration:0.16f animations:^{
         [self.advancedSettingsView setAlpha:1.0f];
+    } completion:^(BOOL finished) {
+        self.backBtn.hidden = NO;
     }];
 }
 
@@ -385,6 +395,8 @@
         [self.videoCheckLbl setHidden:NO];
         [self.adaptiveBitrateCheck setHidden:NO];
         [self.adaptiveBitrateCheckLbl setHidden:NO];
+        
+        self.backBtn.hidden = YES;
     }];
 }
 

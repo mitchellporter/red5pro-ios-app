@@ -44,6 +44,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu {
+    return NO;
+}
+
+- (BOOL)slideNavigationControllerShouldDisplayRightMenu {
+    return NO;
+}
+
 - (IBAction)onTapOutside:(id)sender {
     [self.serverTextField resignFirstResponder];
     [self.portTextField resignFirstResponder];
