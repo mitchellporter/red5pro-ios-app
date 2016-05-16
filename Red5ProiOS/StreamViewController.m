@@ -298,10 +298,24 @@
     self.viewControllerMap = [NSMutableDictionary dictionary];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [[SlideNavigationController sharedInstance] setNavigationBarHidden:YES animated:YES];
+}
+
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
     [self launchCurrentView];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    if ([[SlideNavigationController sharedInstance] respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        [SlideNavigationController sharedInstance].interactivePopGestureRecognizer.enabled = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -14,6 +14,7 @@
 @end
 
 @implementation HomeViewController
+
 - (IBAction)onPublishTouch:(id)sender {
     self.selectedMode = r5_example_publish;
 }
@@ -24,6 +25,20 @@
 
 - (IBAction)onTwoWayTouch:(id)sender {
     self.selectedMode = r5_example_twoway;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [[SlideNavigationController sharedInstance] setNavigationBarHidden:YES animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    if ([[SlideNavigationController sharedInstance] respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        [SlideNavigationController sharedInstance].interactivePopGestureRecognizer.enabled = NO;
+    }
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

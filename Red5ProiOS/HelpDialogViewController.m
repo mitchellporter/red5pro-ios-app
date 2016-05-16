@@ -8,9 +8,13 @@
 
 #import "HelpDialogViewController.h"
 #import <R5Streaming/R5Streaming.h>
+#import "SlideNavigationController.h"
 
 @interface HelpDialogViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
+
+@property BOOL wasNavBarHidden;
 
 @end
 
@@ -34,6 +38,15 @@
     NSURL *html = [[NSBundle mainBundle] URLForResource: @"help" withExtension:@"html"];
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:html]];
+    
+    self.wasNavBarHidden = [SlideNavigationController sharedInstance].navigationBarHidden;
+    [[SlideNavigationController sharedInstance] setNavigationBarHidden:YES animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[SlideNavigationController sharedInstance] setNavigationBarHidden:self.wasNavBarHidden animated:YES];
 }
 
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu {

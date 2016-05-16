@@ -34,6 +34,20 @@
     [SlideNavigationController sharedInstance].portraitSlideOffset = rect.size.width * offset;
     [SlideNavigationController sharedInstance].landscapeSlideOffset = rect.size.height * offset;
     
+    [[SlideNavigationController sharedInstance] setNavigationBarHidden:NO animated:YES];
+    
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-button.png"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackTap:)];
+    [leftItem setTintColor:[UIColor colorWithRed:0.8901960784f green:0.09803921569f blue:0.0f alpha:1.0f]];
+    
+    [SlideNavigationController sharedInstance].leftBarButtonItem = leftItem;
+    
+    if ([[SlideNavigationController sharedInstance] respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        [SlideNavigationController sharedInstance].interactivePopGestureRecognizer.enabled = NO;
+    }
+    
+    [[SlideNavigationController sharedInstance].navigationBar setBackgroundImage:[UIImage new] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    [[SlideNavigationController sharedInstance].navigationBar setShadowImage:[UIImage new]];
+    
 //    r5_set_log_level(r5_log_level_debug);
     
     return YES;
@@ -64,6 +78,10 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)onBackTap:(id)sender {
+    [[SlideNavigationController sharedInstance] toggleLeftMenu];
 }
 
 @end
