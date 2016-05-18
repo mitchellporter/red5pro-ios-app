@@ -99,6 +99,11 @@
 		C3335E9E1CD7D13000CA0C11 /* Record.png in Resources */ = {isa = PBXBuildFile; fileRef = C3335E831CD7D13000CA0C11 /* Record.png */; settings = {ASSET_TAGS = (); }; };
 		C3335E9F1CD7D13000CA0C11 /* Record@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3335E841CD7D13000CA0C11 /* Record@2x.png */; settings = {ASSET_TAGS = (); }; };
 		C3335EA01CD7D13000CA0C11 /* Record@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3335E851CD7D13000CA0C11 /* Record@3x.png */; settings = {ASSET_TAGS = (); }; };
+		C356F3761CECC1E800D75A7B /* EmbeddedPublishSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C356F3751CECC1E800D75A7B /* EmbeddedPublishSettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C356F3791CECC1FF00D75A7B /* EmbeddedSubscribeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C356F3781CECC1FF00D75A7B /* EmbeddedSubscribeSettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C356F37C1CECC22200D75A7B /* EmbeddedPublishAdvancedSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C356F37B1CECC22200D75A7B /* EmbeddedPublishAdvancedSettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C356F37F1CECC24000D75A7B /* EmbeddedSubscribeAdvancedSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C356F37E1CECC24000D75A7B /* EmbeddedSubscribeAdvancedSettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C356F3821CECEB3700D75A7B /* EmbeddedSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C356F3811CECEB3700D75A7B /* EmbeddedSettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C3904A1F1CCFDC3B00B5AC55 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = C3904A1C1CCFDC3B00B5AC55 /* home.png */; settings = {ASSET_TAGS = (); }; };
 		C3904A201CCFDC3B00B5AC55 /* homeGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = C3904A1D1CCFDC3B00B5AC55 /* homeGrey.png */; settings = {ASSET_TAGS = (); }; };
 		C3904A211CCFDC3B00B5AC55 /* homeRed.png in Resources */ = {isa = PBXBuildFile; fileRef = C3904A1E1CCFDC3B00B5AC55 /* homeRed.png */; settings = {ASSET_TAGS = (); }; };
@@ -237,6 +242,16 @@
 		C3335E831CD7D13000CA0C11 /* Record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Record.png; path = images/Record.png; sourceTree = SOURCE_ROOT; };
 		C3335E841CD7D13000CA0C11 /* Record@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Record@2x.png"; path = "images/Record@2x.png"; sourceTree = SOURCE_ROOT; };
 		C3335E851CD7D13000CA0C11 /* Record@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Record@3x.png"; path = "images/Record@3x.png"; sourceTree = SOURCE_ROOT; };
+		C356F3741CECC1E800D75A7B /* EmbeddedPublishSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmbeddedPublishSettingsViewController.h; sourceTree = "<group>"; };
+		C356F3751CECC1E800D75A7B /* EmbeddedPublishSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmbeddedPublishSettingsViewController.m; sourceTree = "<group>"; };
+		C356F3771CECC1FF00D75A7B /* EmbeddedSubscribeSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmbeddedSubscribeSettingsViewController.h; sourceTree = "<group>"; };
+		C356F3781CECC1FF00D75A7B /* EmbeddedSubscribeSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmbeddedSubscribeSettingsViewController.m; sourceTree = "<group>"; };
+		C356F37A1CECC22200D75A7B /* EmbeddedPublishAdvancedSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmbeddedPublishAdvancedSettingsViewController.h; sourceTree = "<group>"; };
+		C356F37B1CECC22200D75A7B /* EmbeddedPublishAdvancedSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmbeddedPublishAdvancedSettingsViewController.m; sourceTree = "<group>"; };
+		C356F37D1CECC24000D75A7B /* EmbeddedSubscribeAdvancedSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmbeddedSubscribeAdvancedSettingsViewController.h; sourceTree = "<group>"; };
+		C356F37E1CECC24000D75A7B /* EmbeddedSubscribeAdvancedSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmbeddedSubscribeAdvancedSettingsViewController.m; sourceTree = "<group>"; };
+		C356F3801CECEB3700D75A7B /* EmbeddedSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmbeddedSettingsViewController.h; sourceTree = "<group>"; };
+		C356F3811CECEB3700D75A7B /* EmbeddedSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmbeddedSettingsViewController.m; sourceTree = "<group>"; };
 		C3904A1C1CCFDC3B00B5AC55 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home.png; path = images/home.png; sourceTree = SOURCE_ROOT; };
 		C3904A1D1CCFDC3B00B5AC55 /* homeGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homeGrey.png; path = images/homeGrey.png; sourceTree = SOURCE_ROOT; };
 		C3904A1E1CCFDC3B00B5AC55 /* homeRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homeRed.png; path = images/homeRed.png; sourceTree = SOURCE_ROOT; };
@@ -366,6 +381,16 @@
 				C3F1444C1CD8F72200753EC6 /* TwoWaySettingsViewController.m */,
 				C3CA6DE91CDB813E00FE7C5A /* StreamTableViewCell.h */,
 				C3CA6DEA1CDB813E00FE7C5A /* StreamTableViewCell.m */,
+				C356F3741CECC1E800D75A7B /* EmbeddedPublishSettingsViewController.h */,
+				C356F3751CECC1E800D75A7B /* EmbeddedPublishSettingsViewController.m */,
+				C356F3771CECC1FF00D75A7B /* EmbeddedSubscribeSettingsViewController.h */,
+				C356F3781CECC1FF00D75A7B /* EmbeddedSubscribeSettingsViewController.m */,
+				C356F37A1CECC22200D75A7B /* EmbeddedPublishAdvancedSettingsViewController.h */,
+				C356F37B1CECC22200D75A7B /* EmbeddedPublishAdvancedSettingsViewController.m */,
+				C356F37D1CECC24000D75A7B /* EmbeddedSubscribeAdvancedSettingsViewController.h */,
+				C356F37E1CECC24000D75A7B /* EmbeddedSubscribeAdvancedSettingsViewController.m */,
+				C356F3801CECEB3700D75A7B /* EmbeddedSettingsViewController.h */,
+				C356F3811CECEB3700D75A7B /* EmbeddedSettingsViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -737,11 +762,15 @@
 				48350B911A0BFC900053A6FD /* HelpDialogSegue.m in Sources */,
 				92E1DC7419A78C0000F6131D /* AppDelegate.m in Sources */,
 				4836DC2B19E47C7200DEC2B8 /* PublishViewController.m in Sources */,
+				C356F37F1CECC24000D75A7B /* EmbeddedSubscribeAdvancedSettingsViewController.m in Sources */,
 				484BF38D19F0039D00F693A1 /* HomeScreenSegue.m in Sources */,
+				C356F37C1CECC22200D75A7B /* EmbeddedPublishAdvancedSettingsViewController.m in Sources */,
 				48350B9C1A1131CF0053A6FD /* ALToastView.m in Sources */,
 				C3CA6DEB1CDB813E00FE7C5A /* StreamTableViewCell.m in Sources */,
 				C3CA6DEE1CDB971400FE7C5A /* PublishStreamUtility.m in Sources */,
+				C356F3791CECC1FF00D75A7B /* EmbeddedSubscribeSettingsViewController.m in Sources */,
 				487B8B1C19E700C200A47A7E /* HomeViewController.m in Sources */,
+				C356F3761CECC1E800D75A7B /* EmbeddedPublishSettingsViewController.m in Sources */,
 				48350B981A11188E0053A6FD /* Reachability.m in Sources */,
 				C3A161EA1CC828E500542367 /* ServerSettingsViewController.m in Sources */,
 				48DD8D6019CB56DE004A3652 /* SettingsViewController.m in Sources */,
@@ -749,6 +778,7 @@
 				92C6BF5719AD2AAB00244A2F /* CALayer+XibConfiguration.m in Sources */,
 				92E753A51CD7C0C10044A9FA /* StreamListUtility.m in Sources */,
 				48350B8E1A0BFB8F0053A6FD /* HelpDialogViewController.m in Sources */,
+				C356F3821CECEB3700D75A7B /* EmbeddedSettingsViewController.m in Sources */,
 				92E1DC7019A78C0000F6131D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

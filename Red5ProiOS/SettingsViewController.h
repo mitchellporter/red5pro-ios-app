@@ -18,6 +18,9 @@ enum StreamMode {
 
 @interface SettingsViewController : UIViewController<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, listListener, SlideNavigationControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+
 @property (weak, nonatomic) IBOutlet UIView *simpleSettingsView;
 @property (weak, nonatomic) IBOutlet UIView *advancedSettingsView;
 
@@ -60,5 +63,20 @@ enum StreamMode {
 @property (weak, nonatomic) IBOutlet UILabel *streamsAvailableLbl;
 
 @property enum StreamMode currentMode;
+
+- (void) resetScrollView;
+- (void) goToAdvancedForCurrentMode;
+- (void) goToSimpleForCurrentMode;
+- (void) doneSettings;
+
+@end
+
+@protocol EmbeddedSettingsViewController <NSObject>
+
+@property (weak, nonatomic) SettingsViewController *settingsViewController;
+@property (weak, nonatomic) UITextField *activeField;
+
+- (void) keyboardWasShown:(NSNotification *)notification;
+- (void) keyboardWillBeHidden:(NSNotification *)notification;
 
 @end

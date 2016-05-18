@@ -12,11 +12,19 @@
 #import "PublishStreamUtility.h"
 #import "StreamTableViewCell.h"
 
+#import "EmbeddedPublishSettingsViewController.h"
+#import "EmbeddedSubscribeSettingsViewController.h"
+#import "EmbeddedPublishAdvancedSettingsViewController.h"
+#import "EmbeddedSubscribeAdvancedSettingsViewController.h"
+
 @interface SettingsViewController ()
 
 @property UITextField *focusedField;
-@property NSArray *qualityButtons;
 @property NSArray *liveStreams;
+
+@property UIViewController *loadedView;
+
+@property float offset;
 
 @end
 
@@ -32,7 +40,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.offset = self.containerView.frame.origin.y;
+    
+    [self goToSimpleForCurrentMode];
 
+    /*
     self.app.delegate = self;
     self.advancedStream.delegate = self;
     self.simpleStream.delegate = self;
@@ -110,6 +123,7 @@
             [[self doneBtn] setTitle:@"NEXT" forState:UIControlStateNormal];
             break;
     }
+     */
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -164,69 +178,99 @@
     return NO;
 }
 
-- (int)getSelectedQualityIndex {
-    __block int index = -1;
-    [self.qualityButtons enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        UIButton *btn = (UIButton *) obj;
-        if (btn.selected) {
-            index = (int) idx;
-            *stop = YES;
-        }
-    }];
-    return index;
+- (void) addToContainerView:(UIViewController *)vc {
+    [self removeLoadedView];
+    
+    [vc willMoveToParentViewController:self];
+    [self.containerView addSubview:vc.view];
+    [self addChildViewController:vc];
+    [vc didMoveToParentViewController:self];
+    
+    self.loadedView = vc;
 }
 
-- (void)setSelectedQualityIndex:(int)index {
-    [self.qualityButtons enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        UIButton *btn = (UIButton *) obj;
-        int intIdx = (int)idx;
-        
-        if (intIdx == index) {
-            [btn setSelected:YES];
+- (void) removeLoadedView {
+    if (self.loadedView != nil) {
+        [self.loadedView willMoveToParentViewController:nil];
+        [self.loadedView.view removeFromSuperview];
+        [self.loadedView removeFromParentViewController];
+        self.loadedView = nil;
+    }
+}
+
+- (void) resetScrollView {
+    UIEdgeInsets insets = UIEdgeInsetsMake(self.offset, 0.0f, 0.0f, 0.0f);
+    self.scrollView.contentInset = insets;
+    self.scrollView.scrollIndicatorInsets = insets;
+}
+
+- (void) goToAdvancedForCurrentMode {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    switch (self.currentMode) {
+        case r5_example_publish: {
+            EmbeddedPublishSettingsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedPublishAdvancedSettings"];
+            vc.settingsViewController = self;
             
-            [self setQualityWithIndex:intIdx];
-        } else {
-            [btn setSelected:NO];
+            [self addToContainerView:vc];
+            break;
         }
-    }];
+        case r5_example_stream: {
+            EmbeddedSubscribeSettingsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedSubscribeAdvancedSettings"];
+            vc.settingsViewController = self;
+            
+            [self addToContainerView:vc];
+            break;
+        }
+        case r5_example_twoway: {
+            EmbeddedPublishSettingsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedPublishAdvancedSettings"];
+            vc.settingsViewController = self;
+            
+            [self addToContainerView:vc];
+            break;
+        }
+    }
 }
 
-- (void)setQualityWithIndex:(int)index {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    [defaults setInteger:index forKey:@"quality"];
-    
-    switch (index) {
-        case 0:
-            [defaults setInteger:426 forKey:@"resolutionWidth"];
-            [defaults setInteger:240 forKey:@"resolutionHeight"];
-            [defaults setObject:@"400" forKey:@"bitrate"];
-            self.bitrate.text = @"400";
-            self.resolution.text = @"426x240";
+- (void) goToSimpleForCurrentMode {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    switch (self.currentMode) {
+        case r5_example_publish: {
+            EmbeddedPublishSettingsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedPublishSettings"];
+            vc.settingsViewController = self;
+            
+            [self addToContainerView:vc];
             break;
-        case 1:
-            [defaults setInteger:854 forKey:@"resolutionWidth"];
-            [defaults setInteger:480 forKey:@"resolutionHeight"];
-            [defaults setObject:@"1000" forKey:@"bitrate"];
-            self.bitrate.text = @"1000";
-            self.resolution.text = @"854x480";
+        }
+        case r5_example_stream: {
+            EmbeddedSubscribeSettingsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedSubscribeSettings"];
+            vc.settingsViewController = self;
+            
+            [self addToContainerView:vc];
             break;
-        case 2:
-            [defaults setInteger:1920 forKey:@"resolutionWidth"];
-            [defaults setInteger:1080 forKey:@"resolutionHeight"];
-            [defaults setObject:@"4500" forKey:@"bitrate"];
-            self.bitrate.text = @"4500";
-            self.resolution.text = @"1920x1080";
+        }
+        case r5_example_twoway: {
+            EmbeddedPublishSettingsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedPublishSettings"];
+            vc.settingsViewController = self;
+            
+            [self addToContainerView:vc];
             break;
-        default:
-            [defaults setInteger:854 forKey:@"resolutionWidth"];
-            [defaults setInteger:480 forKey:@"resolutionHeight"];
-            [defaults setObject:@"1000" forKey:@"bitrate"];
-            self.bitrate.text = @"1000";
-            self.resolution.text = @"854x480";
+        }
+    }
+}
+
+- (void) doneSettings {
+    switch (self.currentMode) {
+        case r5_example_publish:
+        case r5_example_stream:
+            [self performSegueWithIdentifier:@"settingsToStreamView" sender:self];
+            break;
+        case r5_example_twoway:
+            [self performSegueWithIdentifier:@"settingsToTwoWaySettings" sender:self];
             break;
     }
 }
+
+#pragma mark - Old code
 
 #pragma mark - Helpers
 
@@ -278,8 +322,8 @@
 - (IBAction)onDoneClicked:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    int selected = [self getSelectedQualityIndex];
-    [self setQualityWithIndex:selected];
+//    int selected = [self getSelectedQualityIndex];
+//    [self setQualityWithIndex:selected];
     
     if (self.stream.isHidden) {
         [defaults setObject:self.simpleStream.text forKey:@"stream"];
@@ -423,6 +467,7 @@
 }
 
 - (IBAction)onQualityTap:(id)sender {
+    /*
     UIButton *btn = (UIButton *)sender;
     int oldIndex = [self getSelectedQualityIndex];
     int index = (int)[self.qualityButtons indexOfObject:btn];
@@ -434,6 +479,7 @@
         [self setSelectedQualityIndex:oldIndex];
         [self showAdvancedSettings];
     }
+    */
 }
 
 - (IBAction)onAdvancedSettingsTouch:(id)sender {
