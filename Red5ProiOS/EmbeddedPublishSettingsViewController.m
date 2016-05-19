@@ -134,7 +134,9 @@
 }
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
-    [self.view endEditing:YES];
+    if (textField == self.streamTextfield) {
+        [self.view endEditing:YES];
+    }
     return YES;
 }
 

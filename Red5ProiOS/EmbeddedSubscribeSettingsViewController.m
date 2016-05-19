@@ -25,6 +25,9 @@
     self.stream.dataSource = self;
     
     self.liveStreams = @[];
+    
+    self.doneBtn.enabled = NO;
+    self.doneBtn.alpha = 0.5f;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -67,6 +70,15 @@
 - (IBAction) onAdvancedTouch:(id)sender {
     if (self.settingsViewController != nil) {
         [self.settingsViewController goToAdvancedForCurrentMode];
+    }
+}
+
+- (IBAction) onDoneTouch:(id)sender {
+    NSIndexPath *selected = [self.stream indexPathForSelectedRow];
+    if (selected != nil) {
+        if (self.settingsViewController != nil) {
+            [self.settingsViewController doneSettings];
+        }
     }
 }
 
