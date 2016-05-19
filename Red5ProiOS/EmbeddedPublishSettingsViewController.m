@@ -101,11 +101,6 @@
             [defaults setInteger:240 forKey:@"resolutionHeight"];
             [defaults setObject:@"400" forKey:@"bitrate"];
             break;
-        case 1:
-            [defaults setInteger:854 forKey:@"resolutionWidth"];
-            [defaults setInteger:480 forKey:@"resolutionHeight"];
-            [defaults setObject:@"1000" forKey:@"bitrate"];
-            break;
         case 2:
             [defaults setInteger:1920 forKey:@"resolutionWidth"];
             [defaults setInteger:1080 forKey:@"resolutionHeight"];
