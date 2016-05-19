@@ -84,6 +84,14 @@
     
     [vc willMoveToParentViewController:self];
     [self.containerView addSubview:vc.view];
+    CGRect container = self.containerView.frame;
+    CGRect child = vc.view.frame;
+    
+    child.origin.x = container.origin.x + (container.size.width * 0.5f) - (child.size.width * 0.5f);
+    child.origin.y = 8.0f;
+    
+    [vc.view setFrame:child];
+    
     [self addChildViewController:vc];
     [vc didMoveToParentViewController:self];
     

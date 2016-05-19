@@ -444,7 +444,7 @@
                                 <rect key="frame" x="34" y="20" width="52" height="52"/>
                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
                                 <size key="titleShadowOffset" width="2.2250738585072014e-308" height="0.0"/>
-                                <state key="normal" image="publish.png">
+                                <state key="normal" image="server.png">
                                     <color key="titleColor" red="0.89019607840000003" green="0.098039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -529,7 +529,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJ2-bA-bvq" userLabel="Help Button">
                                 <rect key="frame" x="34" y="480" width="52" height="52"/>
                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
-                                <state key="normal" image="twoway.png">
+                                <state key="normal" image="helpbutton.png">
                                     <color key="titleColor" red="0.89019607840000003" green="0.098039215690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -927,7 +927,7 @@
                                     <action selector="onCheckboxTouch:" destination="R2f-m0-kgv" eventType="touchUpInside" id="Q7N-hL-ib4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVB-a6-D7x">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVB-a6-D7x">
                                 <rect key="frame" x="20" y="426" width="46" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="Ary-8A-6N9"/>
@@ -1410,7 +1410,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="304" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="01w-PM-hx1" id="LQx-u5-xkn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="304" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Example Stream" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6U9-VD-x7L">
@@ -1571,7 +1571,7 @@
                                         <color key="textColor" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dna-tB-7gU">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dna-tB-7gU">
                                         <rect key="frame" x="274" y="183" width="30" height="30"/>
                                         <accessibility key="accessibilityConfiguration" hint="OK" identifier="okBtn" label="OK"/>
                                         <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
@@ -1764,7 +1764,7 @@
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYo-Ch-8Xd">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYo-Ch-8Xd">
                                 <rect key="frame" x="20" y="288" width="46" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="inI-ry-Q80"/>
@@ -1842,12 +1842,14 @@
         <image name="boxChecked.png" width="34" height="34"/>
         <image name="empty.png" width="142" height="142"/>
         <image name="help.png" width="44" height="44"/>
+        <image name="helpbutton.png" width="52" height="52"/>
         <image name="more.png" width="44" height="44"/>
         <image name="publish.png" width="52" height="52"/>
         <image name="radial.png" width="44" height="44"/>
         <image name="radialselect.png" width="44" height="44"/>
         <image name="red5pro_logo.png" width="350" height="42"/>
         <image name="second.png" width="142" height="142"/>
+        <image name="server.png" width="52" height="52"/>
         <image name="subscribe.png" width="52" height="52"/>
         <image name="twoway.png" width="52" height="52"/>
     </resources>
