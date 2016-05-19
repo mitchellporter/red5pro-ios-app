@@ -24,11 +24,47 @@
         self.serverTextField.text = server;
     }
     self.portTextField.text = [self getUserSetting:@"port" withDefault:self.portTextField.text];
+    
+    [[self serverTextField] setDelegate:self];
+    [[self portTextField] setDelegate:self];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [[SlideNavigationController sharedInstance] setNavigationBarHidden:YES animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidHideNotification object:nil];
+    
+    if ([[SlideNavigationController sharedInstance] respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        [SlideNavigationController sharedInstance].interactivePopGestureRecognizer.enabled = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu {
+    return NO;
+}
+
+- (BOOL)slideNavigationControllerShouldDisplayRightMenu {
+    return NO;
+}
+
+- (IBAction)onTapOutside:(id)sender {
+    [self.serverTextField resignFirstResponder];
+    [self.portTextField resignFirstResponder];
 }
 
 #pragma mark - Helpers
@@ -45,6 +81,27 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     [defaults setValue:value forKey:key];
+}
+
+- (void) keyboardDidShow:(NSNotification *)notification {
+    /*NSDictionary* info = [notification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    CGRect currentFrame = self.view.frame;
+    
+    currentFrame.origin.y -= kbSize.height;
+    
+    self.view.layer.frame = currentFrame;
+    self.view.frame = currentFrame;*/
+}
+
+- (void) keyboardDidHide:(NSNotification *)notification {
+    /*CGRect currentFrame = self.view.frame;
+    
+    currentFrame.origin.y = 0;
+    
+    self.view.layer.frame = currentFrame;
+    self.view.frame = currentFrame;*/
 }
 
 #pragma mark - Navigation
@@ -83,5 +140,36 @@
     // Pass the selected object to the new view controller.
 }
  */
+
+#pragma mark UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    
+    if (textField == [self serverTextField]) {
+        [[self portTextField] becomeFirstResponder];
+    } else if (textField == [self portTextField]) {
+        [self performSegueWithIdentifier:@"goToMain" sender:nil];
+    }
+    
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    [self animateTextFieldUp:YES];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self animateTextFieldUp:NO];
+}
+
+- (void) animateTextFieldUp:(BOOL)up {
+    const int movementDistance = 90;
+    int movement = (up ? -movementDistance : movementDistance);
+    
+    [UIView animateWithDuration:0.3f animations:^{
+        self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    }];
+}
 
 @end

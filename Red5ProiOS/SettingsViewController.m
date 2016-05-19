@@ -7,11 +7,20 @@
 //
 
 #import "SettingsViewController.h"
+#import "TwoWaySettingsViewController.h"
+#import "StreamViewController.h"
+
+#import "EmbeddedPublishSettingsViewController.h"
+#import "EmbeddedSubscribeSettingsViewController.h"
+#import "EmbeddedPublishAdvancedSettingsViewController.h"
+#import "EmbeddedSubscribeAdvancedSettingsViewController.h"
 
 @interface SettingsViewController ()
-@property enum StreamMode currentMode;
-@property UITextField *focusedField;
-@property ResolutionsPickerViewController *resolutionsPickerController;
+
+@property UIViewController *loadedView;
+
+@property float offset;
+
 @end
 
 @implementation SettingsViewController
@@ -26,174 +35,148 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.hidden = YES;
+    
+    self.offset = self.containerView.frame.origin.y;
+    
+    [self goToSimpleForCurrentMode];
+}
 
-    self.app.delegate = self;
-    self.stream.delegate = self;
-    self.bitrate.delegate = self;
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [[SlideNavigationController sharedInstance] setNavigationBarHidden:NO animated:YES];
+}
 
-    for(UIViewController *child in self.childViewControllers) {
-        if([child isKindOfClass:[ResolutionsPickerViewController class]]) {
-            self.resolutionsPickerController = (ResolutionsPickerViewController*)child;
-            [self.resolutionsPickerController setDelegate:self];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    if ([[SlideNavigationController sharedInstance] respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        [SlideNavigationController sharedInstance].interactivePopGestureRecognizer.enabled = NO;
+    }
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"settingsToTwoWaySettings"]) {
+        TwoWaySettingsViewController *twoWayController = (TwoWaySettingsViewController *)segue.destinationViewController;
+        
+        if (twoWayController != nil && [twoWayController respondsToSelector:@selector(setCurrentMode:)]) {
+            twoWayController.currentMode = self.currentMode;
+        }
+    } else if ([segue.identifier isEqualToString:@"settingsToStreamView"]) {
+        StreamViewController *streamController = (StreamViewController *)segue.destinationViewController;
+        
+        if (streamController != nil && [streamController respondsToSelector:@selector(setCurrentMode:)]) {
+            streamController.currentMode = self.currentMode;
         }
     }
-
 }
 
-- (void)setResolutionSelectText:(NSString *)label {
-    [self.resolutionSelect setTitle:label forState:UIControlStateNormal];
-    [self.resolutionSelect setTitle:label forState:UIControlStateHighlighted];
-    [self.resolutionSelect setTitle:label forState:UIControlStateDisabled];
-    [self.resolutionSelect setTitle:label forState:UIControlStateSelected];
-}
-
--(void)showSettingsForMode:(enum StreamMode) mode{
-    
-    self.currentMode = mode;
-    self.resPickerHeight.constant = 0;
-    [self.resPickerHeight.secondItem updateConstraintsIfNeeded];
-    [self.resPickerHeight.firstItem updateConstraintsIfNeeded];
-    
-    self.view.hidden = NO;
-    
-    int resWidth = [[self getUserSetting:@"resolutionWidth" withDefault:@"320"] intValue];
-    int resHeight = [[self getUserSetting:@"resolutionHeight" withDefault:@"240"] intValue];
-    NSString *resolution = [NSString stringWithFormat:@"%ldx%ld", (long)resWidth, (long)resHeight];
-    
-    self.stream.text = [self getUserSetting:@"stream" withDefault:self.stream.text];
-    self.bitrate.text = [self getUserSetting:@"bitrate" withDefault:@"128"];
-    self.audioCheck.selected = [[self getUserSetting:@"includeAudio" withDefault:@"1"] boolValue];
-    self.videoCheck.selected = [[self getUserSetting:@"includeVideo" withDefault:@"1"] boolValue];
-    [self setResolutionSelectText:resolution];
-    
-    switch(self.currentMode) {
-        case r5_example_publish:
-            [self.streamSettingsForm setHidden:NO];
-            [self.publishSettingsForm setHidden:NO];
-            self.app.text = [self getUserSetting:@"app" withDefault:@"live"];
-            break;
-        case r5_example_stream:
-            [self.streamSettingsForm setHidden:NO];
-            [self.publishSettingsForm setHidden:YES];
-            self.app.text = [self getUserSetting:@"app" withDefault:@"live"];
-            break;
-    }
-
-}
-
-- (IBAction)onDoneClicked:(id)sender {
-
-    NSArray *dims = [self.resolutionSelect.titleLabel.text componentsSeparatedByString:@"x"];
-    int resolutionWidth = [(NSString *)[dims objectAtIndex:0] intValue];
-    int resolutionHeight = [(NSString *)[dims objectAtIndex:1] intValue];
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.stream.text forKey:@"stream"];
-    [defaults setObject:self.bitrate.text forKey:@"bitrate"];
-    
-    [defaults setBool:self.audioCheck.selected forKey:@"includeAudio"];
-    [defaults setBool:self.videoCheck.selected forKey:@"includeVideo"];
-    [defaults setInteger:resolutionWidth forKey:@"resolutionWidth"];
-    [defaults setInteger:resolutionHeight forKey:@"resolutionHeight"];
-    
-    switch (self.currentMode) {
-        case r5_example_publish:
-        case r5_example_stream:
-            [defaults setObject:self.app.text forKey:@"app"];
-            break;
-    }
-    
-    [defaults synchronize];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"userDefaultsChange" object:nil];
-    
-    if(self.delegate)
-        [self.delegate closeSettings];
-}
-
-- (IBAction)openResolutionsPicker:(id)sender {
-    if(!self.resolutionsPickerController.isOpen) {
-        [self.resolutionsPickerController showResolutionsWithSelection:self.resolutionSelect.titleLabel.text];
-        
-        [UIView animateWithDuration:0.5 animations:^{
-        
-            [self.view layoutIfNeeded];
-            self.resPickerHeight.constant = 214;
-            [self.resPickerHeight.secondItem updateConstraintsIfNeeded];
-            [self.resPickerHeight.firstItem updateConstraintsIfNeeded];
-            //self.view.frame = CGRectOffset(self.view.frame, 0, -78);
-            [self.view layoutIfNeeded];
-        
-        } completion:^(BOOL finished) {
-            [self.resolutionsPickerController setIsOpen:YES];
-        }];
-    }
-    if(self.focusedField != nil) {
-        [self textFieldShouldReturn:self.focusedField];
-    }
-}
-
-- (void)closeResolutionsPicker {
-    if(self.resolutionsPickerController.isOpen) {
-        [self.resolutionsPickerController setIsOpen:NO];
-        [self setResolutionSelectText:[self.resolutionsPickerController getSelection]];
-        
-        [UIView animateWithDuration:0.5 animations:^{
-        
-            [self.view layoutIfNeeded];
-            self.resPickerHeight.constant = 0;
-            [self.resPickerHeight.secondItem updateConstraintsIfNeeded];
-            [self.resPickerHeight.firstItem updateConstraintsIfNeeded];
-            //self.view.frame = CGRectOffset(self.view.frame, 0, 78);
-            [self.view layoutIfNeeded];
-            
-        } completion:^(BOOL finished) {
-        }];
-    }
-}
-
-- (BOOL)isHiddenKeyboardField:(UITextField *)field {
-    return field == self.bitrate ||
-            
-            field == self.stream;
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    self.focusedField = nil;
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu {
     return YES;
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    if([self isHiddenKeyboardField:textField]) {
-        [self animateTextField: textField up: YES];
-    }
-    [self closeResolutionsPicker];
-    self.focusedField = textField;
+- (BOOL)slideNavigationControllerShouldDisplayRightMenu {
+    return NO;
 }
 
-
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    if([self isHiddenKeyboardField:textField]) {
-        [self animateTextField: textField up: NO];
-    }
-}
-
-- (void) animateTextField: (UITextField*) textField up: (BOOL) up {
-    const int movementDistance = 90;
-    int movement = (up ? -movementDistance : movementDistance);
+- (void) addToContainerView:(UIViewController *)vc {
+    [self removeLoadedView];
     
-    [UIView animateWithDuration:0.3f animations:^{
-        self.view.frame = CGRectOffset(self.view.frame, 0, movement);
-    }];
+    [vc willMoveToParentViewController:self];
+    [self.containerView addSubview:vc.view];
+    CGRect container = self.containerView.frame;
+    CGRect child = vc.view.frame;
+    
+    child.origin.x = container.origin.x + (container.size.width * 0.5f) - (child.size.width * 0.5f);
+    child.origin.y = 8.0f;
+    
+    [vc.view setFrame:child];
+    
+    [self addChildViewController:vc];
+    [vc didMoveToParentViewController:self];
+    
+    self.loadedView = vc;
 }
 
-- (IBAction)onAudioClick:(id)sender {
-    [[self audioCheck] setSelected:!self.audioCheck.selected];
+- (void) removeLoadedView {
+    if (self.loadedView != nil) {
+        [self.loadedView willMoveToParentViewController:nil];
+        [self.loadedView.view removeFromSuperview];
+        [self.loadedView removeFromParentViewController];
+        self.loadedView = nil;
+    }
 }
 
-- (IBAction)onVideoClick:(id)sender {
-    [[self videoCheck] setSelected:!self.videoCheck.selected];
+- (void) resetScrollView {
+    UIEdgeInsets insets = UIEdgeInsetsMake(self.offset, 0.0f, 0.0f, 0.0f);
+    self.scrollView.contentInset = insets;
+    self.scrollView.scrollIndicatorInsets = insets;
 }
+
+- (void) goToAdvancedForCurrentMode {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    switch (self.currentMode) {
+        case r5_example_publish: {
+            EmbeddedPublishSettingsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedPublishAdvancedSettings"];
+            vc.settingsViewController = self;
+            
+            [self addToContainerView:vc];
+            break;
+        }
+        case r5_example_stream: {
+            EmbeddedSubscribeSettingsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedSubscribeAdvancedSettings"];
+            vc.settingsViewController = self;
+            
+            [self addToContainerView:vc];
+            break;
+        }
+        case r5_example_twoway: {
+            EmbeddedPublishSettingsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedPublishAdvancedSettings"];
+            vc.settingsViewController = self;
+            
+            [self addToContainerView:vc];
+            break;
+        }
+    }
+}
+
+- (void) goToSimpleForCurrentMode {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    switch (self.currentMode) {
+        case r5_example_publish: {
+            EmbeddedPublishSettingsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedPublishSettings"];
+            vc.settingsViewController = self;
+            
+            [self addToContainerView:vc];
+            break;
+        }
+        case r5_example_stream: {
+            EmbeddedSubscribeSettingsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedSubscribeSettings"];
+            vc.settingsViewController = self;
+            
+            [self addToContainerView:vc];
+            break;
+        }
+        case r5_example_twoway: {
+            EmbeddedPublishSettingsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedPublishSettings"];
+            vc.settingsViewController = self;
+            
+            [self addToContainerView:vc];
+            break;
+        }
+    }
+}
+
+- (void) doneSettings {
+    switch (self.currentMode) {
+        case r5_example_publish:
+        case r5_example_stream:
+            [self performSegueWithIdentifier:@"settingsToStreamView" sender:self];
+            break;
+        case r5_example_twoway:
+            [self performSegueWithIdentifier:@"settingsToTwoWaySettings" sender:self];
+            break;
+    }
+}
+
 @end

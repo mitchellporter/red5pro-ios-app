@@ -7,36 +7,34 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ResolutionsPickerViewController.h"
+#import "SlideNavigationController.h"
 
 enum StreamMode {
     r5_example_stream,
-    r5_example_publish
+    r5_example_publish,
+    r5_example_twoway
 };
 
-@protocol SettingsDelegate <NSObject>
+@interface SettingsViewController : UIViewController<SlideNavigationControllerDelegate>
 
--(void) closeSettings;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+
+@property enum StreamMode currentMode;
+
+- (void) resetScrollView;
+- (void) goToAdvancedForCurrentMode;
+- (void) goToSimpleForCurrentMode;
+- (void) doneSettings;
 
 @end
 
-@interface SettingsViewController : UIViewController<UITextFieldDelegate, ResolutionsPickerDelegate>
-@property (weak, nonatomic) IBOutlet UIView *publishSettingsView;
-@property (weak, nonatomic) IBOutlet UITextField *app;
-@property (weak, nonatomic) IBOutlet UITextField *stream;
-@property (weak, nonatomic) IBOutlet UITextField *bitrate;
+@protocol EmbeddedSettingsViewController <NSObject>
 
-@property (weak, nonatomic) IBOutlet UIButton *audioCheck;
-@property (weak, nonatomic) IBOutlet UIButton *videoCheck;
-@property (weak, nonatomic) IBOutlet UIButton *resolutionSelect;
+@property (weak, nonatomic) SettingsViewController *settingsViewController;
+@property (weak, nonatomic) UITextField *activeField;
 
-@property (weak, nonatomic) IBOutlet UIView *streamSettingsForm;
-@property (weak, nonatomic) IBOutlet UIView *publishSettingsForm;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *resPickerHeight;
-
-@property NSObject<SettingsDelegate> *delegate;
-
--(void)showSettingsForMode:(enum StreamMode) mode;
+- (void) keyboardWasShown:(NSNotification *)notification;
+- (void) keyboardWillBeHidden:(NSNotification *)notification;
 
 @end

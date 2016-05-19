@@ -9,7 +9,7 @@
 
 #import "PublishViewController.h"
 #import "ALToastView.h"
-
+#import "PublishStreamUtility.h"
 #import "StreamViewController.h"
 
 @interface PublishViewController() {
@@ -22,9 +22,10 @@
 @implementation PublishViewController
 
 -(void)viewDidLoad {
-    r5_set_log_level(r5_log_level_debug);
+//    r5_set_log_level(r5_log_level_debug);
     [super viewDidLoad];
     isFrontSelected = YES;
+    [[PublishStreamUtility getInstance] setIsFrontSelected:isFrontSelected];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -36,6 +37,14 @@
 -(void)viewDidDisappear:(BOOL)animated {
     [self killStream];
     [self showPreview:false];
+}
+
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu {
+    return YES;
+}
+
+- (BOOL)slideNavigationControllerShouldDisplayRightMenu {
+    return NO;
 }
 
 -(void)onR5StreamStatus:(R5Stream *)stream withStatus:(int)statusCode withMessage:(NSString *)msg {
@@ -78,7 +87,7 @@
 
 -(void)establishPreview {
     if(stream == nil) {
-         stream = [self setUpNewStream];
+         stream = [[PublishStreamUtility getInstance] getOrCreateNewStream];
     }
 
     [stream setDelegate:self];
@@ -93,48 +102,9 @@
     return isFrontSelected ? [devices lastObject] : [devices firstObject];
 }
 
--(R5Stream *)setUpNewStream {
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *domain = (NSString*)[defaults objectForKey:@"domain"];
-    NSString *app = (NSString*)[defaults objectForKey:@"app"];
-    NSString *port = (NSString *)[defaults objectForKey:@"port"];
-    BOOL includeAudio = [defaults boolForKey:@"includeAudio"];
-    BOOL includeVideo = [defaults boolForKey:@"includeVideo"];
-    
-    R5Configuration * config = [R5Configuration new];
-    
-    config.host = domain;
-    config.contextName = app;
-    config.port = [port intValue];
-    
-    R5Connection *connection = [[R5Connection new] initWithConfig:config];
-    R5Camera *camera = [[R5Camera alloc] initWithDevice:[self getSelectedDevice] andBitRate:128];
-    camera.orientation = 90;
-    
-    AVCaptureDevice *audioDevice = [AVCaptureDevice defaultDeviceWithMediaType: AVMediaTypeAudio];
-    R5Microphone *microphone = [[R5Microphone new] initWithDevice:audioDevice];
-    
-    R5Stream *r5Stream = [[R5Stream new] initWithConnection:connection];
-    
-    if(includeVideo)
-        [r5Stream attachVideo:camera];
-    if(includeAudio)
-        [r5Stream attachAudio:microphone];
-    
-    return r5Stream;
-}
-
 -(void)killStream {
-    @try {
-        [stream stop];
-        [stream setDelegate:nil];
-        stream = nil;
-       
-    }
-    @catch(NSException *exception) {
-        NSLog(@"Could not stop: %@", exception);
-    }
+    [[PublishStreamUtility getInstance] killStream];
+    stream = nil;
 }
 
 -(void)start {
@@ -143,7 +113,7 @@
     NSString *streamName = (NSString*)[defaults objectForKey:@"stream"];
 
     
-    isTogglable = NO;
+//    isTogglable = NO;
     [stream publish:streamName type:R5RecordTypeLive];
 }
 
@@ -152,12 +122,10 @@
 }
 
 -(void)stop:(BOOL)reset {
-    
     [self killStream];
     
     if(reset == YES)
         [self establishPreview];
-    
 }
 
 -(void)updatePreview {
@@ -167,10 +135,10 @@
 -(void)toggleCamera {
     if(isTogglable) {
         isFrontSelected = !isFrontSelected;
+        [[PublishStreamUtility getInstance] setIsFrontSelected:isFrontSelected];
         if(stream != nil){
-            R5Camera *cam = [[R5Camera new] initWithDevice:[self getSelectedDevice] andBitRate:128];
-            cam.orientation = 90;
-            [stream attachVideo:cam];
+            R5Camera *cam2 = (R5Camera *)[stream getVideoSource];
+            [cam2 setDevice:[self getSelectedDevice]];
         }
         //[self updatePreview];
     }

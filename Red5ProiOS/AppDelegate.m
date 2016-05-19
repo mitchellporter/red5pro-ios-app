@@ -8,20 +8,47 @@
 
 #import "AppDelegate.h"
 #import <R5Streaming/R5Streaming.h>
+#import "SideNavigationViewController.h"
+#import "SlideNavigationController.h"
+#import "SlideNavigationContorllerAnimatorScaleAndFade.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *myController = [storyboard instantiateViewControllerWithIdentifier:@"initView"];
-    
-    self.window.rootViewController = myController;
-    [self.window makeKeyAndVisible];
     
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     
-    r5_set_log_level(r5_log_level_debug);
+    [SlideNavigationController sharedInstance].leftMenu = [storyboard instantiateViewControllerWithIdentifier:@"sideNav"];
+    
+    [SlideNavigationController sharedInstance].avoidSwitchingToSameClassViewController = YES;
+    [SlideNavigationController sharedInstance].enableShadow = YES;
+    [SlideNavigationController sharedInstance].enableSwipeGesture = YES;
+    [SlideNavigationController sharedInstance].menuRevealAnimator = [[SlideNavigationContorllerAnimatorScaleAndFade alloc] initWithMaximumFadeAlpha:1.0f fadeColor:[UIColor darkGrayColor] andMinimumScale:0.85f];
+    [SlideNavigationController sharedInstance].panGestureSideOffset = 44;
+    
+    CGRect rect = [UIScreen mainScreen].bounds;
+    
+    float offset = 1.0f - 0.4f;
+    [SlideNavigationController sharedInstance].portraitSlideOffset = rect.size.width * offset;
+    [SlideNavigationController sharedInstance].landscapeSlideOffset = rect.size.height * offset;
+    
+    [[SlideNavigationController sharedInstance] setNavigationBarHidden:NO animated:YES];
+    
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-button.png"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackTap:)];
+    [leftItem setTintColor:[UIColor colorWithRed:0.8901960784f green:0.09803921569f blue:0.0f alpha:1.0f]];
+    
+    [SlideNavigationController sharedInstance].leftBarButtonItem = leftItem;
+    
+    if ([[SlideNavigationController sharedInstance] respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        [SlideNavigationController sharedInstance].interactivePopGestureRecognizer.enabled = NO;
+    }
+    
+    [[SlideNavigationController sharedInstance].navigationBar setBackgroundImage:[UIImage new] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    [[SlideNavigationController sharedInstance].navigationBar setShadowImage:[UIImage new]];
+    
+//    r5_set_log_level(r5_log_level_debug);
     
     return YES;
 }
@@ -51,6 +78,10 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)onBackTap:(id)sender {
+    [[SlideNavigationController sharedInstance] toggleLeftMenu];
 }
 
 @end

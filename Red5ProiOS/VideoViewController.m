@@ -22,6 +22,13 @@
     [super viewDidAppear:animated];
 }
 
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu {
+    return NO;
+}
+
+- (BOOL)slideNavigationControllerShouldDisplayRightMenu {
+    return NO;
+}
 
 -(R5Stream *)setUpNewStream {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -42,7 +49,13 @@
 
 -(void)start {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *streamName = (NSString*)[defaults objectForKey:@"stream"];
+    NSString *streamName = (NSString*)[defaults objectForKey:@"connectToStream"];
+    stream = [self setUpNewStream];
+    [self attachStream:stream];
+    [stream play:streamName];
+}
+
+- (void)startWithStreamName:(NSString *)streamName {
     stream = [self setUpNewStream];
     [self attachStream:stream];
     [stream play:streamName];

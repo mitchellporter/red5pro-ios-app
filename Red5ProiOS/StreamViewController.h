@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "SettingsViewController.h"
+#import "SlideNavigationController.h"
 
-
-
-@interface StreamViewController : UIViewController<SettingsDelegate>
+@interface StreamViewController : UIViewController<SlideNavigationControllerDelegate>
 @property UIViewController *currentStreamView;
+@property UIViewController *altStreamView;
 @property enum StreamMode currentMode;
 @property (weak, nonatomic) IBOutlet UIView *viewHeaderBar;
 
