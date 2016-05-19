@@ -50,6 +50,34 @@
 }
  */
 
+#pragma mark - Validation
+
+- (BOOL) allFieldsValid {
+    if ([self allFieldsHaveContent]) {
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL) allFieldsHaveContent {
+    NSArray *validateTextfields = @[self.serverTextfield, self.portTextfield, self.appTextfield, self.streamTextfield];
+    __block BOOL isInvalid = NO;
+    [validateTextfields enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        UITextField *tf = (UITextField *)obj;
+        
+        if (tf.text.length == 0) {
+            [tf becomeFirstResponder];
+            isInvalid = YES;
+            *stop = YES;
+        }
+    }];
+    
+    if (isInvalid) {
+        return NO;
+    }
+    return YES;
+}
+
 #pragma mark - UITextFieldDelegate
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
@@ -77,7 +105,9 @@
 - (IBAction) onDoneTouch:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    //  TODO: Validate
+    if (![self allFieldsValid]) {
+        return;
+    }
     
     [defaults setObject:self.streamTextfield.text forKey:@"stream"];
     

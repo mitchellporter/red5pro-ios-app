@@ -64,6 +64,71 @@
 }
  */
 
+#pragma mark - Validation
+
+- (BOOL) allFieldsValid {
+    if ([self allFieldsHaveContent]) {
+        if ([self bitrateIsPositive]) {
+            if ([self resolutionIsValid]) {
+                return YES;
+            }
+        }
+    }
+    return NO;
+}
+
+- (BOOL) allFieldsHaveContent {
+    NSArray *validateTextfields = @[self.serverTextfield, self.portTextfield, self.appTextfield, self.streamTextfield, self.bitrateTextfield, self.resolutionTextfield];
+    __block BOOL isInvalid = NO;
+    [validateTextfields enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        UITextField *tf = (UITextField *)obj;
+        
+        if (tf.text.length == 0) {
+            [tf becomeFirstResponder];
+            isInvalid = YES;
+            *stop = YES;
+        }
+    }];
+    
+    if (isInvalid) {
+        return NO;
+    }
+    return YES;
+}
+
+- (BOOL) bitrateIsPositive {
+    NSInteger intValue = [self.bitrateTextfield.text integerValue];
+    
+    if (intValue <= 0) {
+        [self.bitrateTextfield becomeFirstResponder];
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (BOOL) resolutionIsValid {
+    NSString *str = self.resolutionTextfield.text;
+    NSRange rangeOfSeparator = [str rangeOfString:@"x"];
+    
+    if (rangeOfSeparator.location == NSNotFound) {
+        [self.resolutionTextfield becomeFirstResponder];
+        return NO;
+    }
+    
+    NSString *w = [str substringToIndex:rangeOfSeparator.location];
+    NSString *h = [str substringFromIndex:(rangeOfSeparator.location + rangeOfSeparator.length)];
+    NSInteger wInt = [w integerValue];
+    NSInteger hInt = [h integerValue];
+    
+    if (wInt <= 0 || hInt <= 0) {
+        [self.resolutionTextfield becomeFirstResponder];
+        return NO;
+    }
+    
+    return YES;
+}
+
 #pragma mark - UITextFieldDelegate
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
@@ -102,7 +167,9 @@
 - (IBAction) onDoneTouch:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    //  TODO: Validate
+    if (![self allFieldsValid]) {
+        return;
+    }
     
     [defaults setObject:self.streamTextfield.text forKey:@"stream"];
     

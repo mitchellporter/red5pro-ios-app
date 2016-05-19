@@ -166,6 +166,11 @@
 }
 
 - (IBAction) onDoneTouch:(id)sender {
+    if (self.streamTextfield.text.length == 0) {
+        [self.streamTextfield becomeFirstResponder];
+        return;
+    }
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     [defaults setObject:self.streamTextfield.text forKey:@"stream"];
