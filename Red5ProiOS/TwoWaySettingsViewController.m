@@ -144,14 +144,6 @@
     [self performSegueWithIdentifier:@"twoWaySettingsToStreamView" sender:self];
 }
 
-- (IBAction)onListRefreshTouch:(id)sender {
-    NSArray *cachedStreams = [[StreamListUtility getInstance] callWithBlock:^(NSArray *streams) {
-        [self updateTableDataWithArray:streams];
-    }];
-    
-    [self updateTableDataWithArray:cachedStreams];
-}
-
 #pragma mark - Connections
 
 - (void) connectTo:(NSString *)connectionStreamName withStreamName:(NSString *)streamName {
