@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>adaptiveBitrate</key>
+	<false/>
+	<key>app</key>
+	<string>live</string>
+	<key>bitrate</key>
+	<integer>1000</integer>
+	<key>connectToStream</key>
+	<string>stream</string>
+	<key>domain</key>
+	<string>127.0.0.1</string>
+	<key>includeAudio</key>
+	<true/>
+	<key>includeVideo</key>
+	<true/>
+	<key>port</key>
+	<integer>8554</integer>
+	<key>resolutionHeight</key>
+	<integer>480</integer>
+	<key>resolutionWidth</key>
+	<integer>854</integer>
+	<key>stream</key>
+	<string>stream</string>
+	<key>quality</key>
+	<integer>1</integer>
+</dict>
+</plist>

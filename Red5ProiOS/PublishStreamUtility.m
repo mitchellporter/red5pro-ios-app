@@ -40,7 +40,7 @@ static PublishStreamUtility *instance;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *domain = (NSString*)[defaults objectForKey:@"domain"];
     NSString *app = (NSString*)[defaults objectForKey:@"app"];
-    NSString *port = (NSString *)[defaults objectForKey:@"port"];
+    NSInteger port = [defaults integerForKey:@"port"];
     BOOL includeAudio = [defaults boolForKey:@"includeAudio"];
     BOOL includeVideo = [defaults boolForKey:@"includeVideo"];
     BOOL adaptiveBitrate = [defaults boolForKey:@"adaptiveBitrate"];
@@ -49,8 +49,8 @@ static PublishStreamUtility *instance;
     
     config.host = domain;
     config.contextName = app;
-    config.port = [port intValue];
-    config.buffer_time = 0.25f;
+    config.port = (int) port;
+    config.buffer_time = 0.5f;
     
     R5Connection *connection = [[R5Connection new] initWithConfig:config];
     R5Camera *camera = [[R5Camera alloc] initWithDevice:[self getSelectedDevice] andBitRate:128];

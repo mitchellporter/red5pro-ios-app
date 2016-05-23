@@ -50,6 +50,8 @@
     
 //    r5_set_log_level(r5_log_level_debug);
     
+    [self initiateDefaults];
+    
     return YES;
 }
 
@@ -82,6 +84,18 @@
 
 - (void)onBackTap:(id)sender {
     [[SlideNavigationController sharedInstance] toggleLeftMenu];
+}
+
+#pragma mark - Defaults initiation
+
+- (void) initiateDefaults {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *fp = [[NSBundle mainBundle] pathForResource:@"userDefaults" ofType:@"plist"];
+    NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:fp];
+    
+    NSLog(@"Initiation defaults: %@", dict);
+    
+    [defaults registerDefaults:dict];
 }
 
 @end

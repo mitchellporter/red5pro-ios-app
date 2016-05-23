@@ -34,13 +34,13 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *domain = (NSString*)[defaults objectForKey:@"domain"];
     NSString *app = (NSString*)[defaults objectForKey:@"app"];
-    NSString *port = (NSString *)[defaults objectForKey:@"port"];
+    NSInteger port = [defaults integerForKey:@"port"];
     
     R5Configuration * config = [R5Configuration new];
     
     config.host = domain;
     config.contextName = app;
-    config.port = [port intValue];
+    config.port = (int) port;
     
     R5Connection *connection = [[R5Connection new] initWithConfig:config];
     R5Stream *r5Stream = [[R5Stream new] initWithConnection:connection];

@@ -26,7 +26,7 @@
     
     self.qualityButtons = @[self.lQualityBtn, self.mQualityBtn, self.hQualityBtn, self.oQualityBtn];
     
-    int savedQuality = [[self getUserSetting:@"quality" withDefault:@"1"] intValue];
+    int savedQuality = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"quality"];
     
     if (savedQuality < 3) {
         [self setSelectedQualityIndex:savedQuality];
@@ -36,7 +36,7 @@
         }
     }
     
-    self.streamTextfield.text = [self getUserSetting:@"stream" withDefault:@""];
+    self.streamTextfield.text = [self getUserSetting:@"stream" withDefault:@"stream"];
     if (self.streamTextfield.text.length > 0) {
         self.doneBtn.alpha = 1.0f;
         self.doneBtn.enabled = YES;
@@ -99,17 +99,17 @@
         case 0:
             [defaults setInteger:426 forKey:@"resolutionWidth"];
             [defaults setInteger:240 forKey:@"resolutionHeight"];
-            [defaults setObject:@"400" forKey:@"bitrate"];
+            [defaults setInteger:400 forKey:@"bitrate"];
             break;
         case 2:
             [defaults setInteger:1920 forKey:@"resolutionWidth"];
             [defaults setInteger:1080 forKey:@"resolutionHeight"];
-            [defaults setObject:@"4500" forKey:@"bitrate"];
+            [defaults setInteger:4500 forKey:@"bitrate"];
             break;
         default:
             [defaults setInteger:854 forKey:@"resolutionWidth"];
             [defaults setInteger:480 forKey:@"resolutionHeight"];
-            [defaults setObject:@"1000" forKey:@"bitrate"];
+            [defaults setInteger:1000 forKey:@"bitrate"];
             break;
     }
 }

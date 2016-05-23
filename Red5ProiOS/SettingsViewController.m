@@ -25,14 +25,6 @@
 
 @implementation SettingsViewController
 
-- (NSString*) getUserSetting:(NSString *)key withDefault:(NSString *)defaultValue {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if([defaults objectForKey:key]) {
-        return [defaults stringForKey:key];
-    }
-    return defaultValue;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
