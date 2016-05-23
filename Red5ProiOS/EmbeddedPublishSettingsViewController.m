@@ -25,6 +25,10 @@
     [self.streamTextfield setReturnKeyType:UIReturnKeyDone];
     
     self.qualityButtons = @[self.lQualityBtn, self.mQualityBtn, self.hQualityBtn, self.oQualityBtn];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     int savedQuality = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"quality"];
     
@@ -43,6 +47,10 @@
     } else {
         self.doneBtn.alpha = 0.5f;
         self.doneBtn.enabled = NO;
+    }
+    
+    if (self.currentMode == r5_example_twoway) {
+        [self.doneBtn setTitle:@"NEXT" forState:UIControlStateNormal];
     }
 }
 

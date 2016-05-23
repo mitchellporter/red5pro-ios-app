@@ -107,56 +107,52 @@
 
 - (void) goToAdvancedForCurrentMode {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    EmbeddedSettingsViewController *vc;
+    
     switch (self.currentMode) {
         case r5_example_publish: {
-            EmbeddedPublishSettingsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedPublishAdvancedSettings"];
-            vc.settingsViewController = self;
-            
-            [self addToContainerView:vc];
+            vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedPublishAdvancedSettings"];
             break;
         }
         case r5_example_stream: {
-            EmbeddedSubscribeSettingsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedSubscribeAdvancedSettings"];
-            vc.settingsViewController = self;
-            
-            [self addToContainerView:vc];
+            vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedSubscribeAdvancedSettings"];
             break;
         }
         case r5_example_twoway: {
-            EmbeddedPublishSettingsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedPublishAdvancedSettings"];
-            vc.settingsViewController = self;
-            
-            [self addToContainerView:vc];
+            vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedPublishAdvancedSettings"];
             break;
         }
     }
+    
+    vc.settingsViewController = self;
+    vc.currentMode = self.currentMode;
+    
+    [self addToContainerView:vc];
 }
 
 - (void) goToSimpleForCurrentMode {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    EmbeddedSettingsViewController *vc;
+    
     switch (self.currentMode) {
         case r5_example_publish: {
-            EmbeddedPublishSettingsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedPublishSettings"];
-            vc.settingsViewController = self;
-            
-            [self addToContainerView:vc];
+            vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedPublishSettings"];
             break;
         }
         case r5_example_stream: {
-            EmbeddedSubscribeSettingsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedSubscribeSettings"];
-            vc.settingsViewController = self;
-            
-            [self addToContainerView:vc];
+            vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedSubscribeSettings"];
             break;
         }
         case r5_example_twoway: {
-            EmbeddedPublishSettingsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedPublishSettings"];
-            vc.settingsViewController = self;
-            
-            [self addToContainerView:vc];
+            vc = [storyboard instantiateViewControllerWithIdentifier:@"embeddedPublishSettings"];
             break;
         }
     }
+    
+    vc.settingsViewController = self;
+    vc.currentMode = self.currentMode;
+    
+    [self addToContainerView:vc];
 }
 
 - (void) doneSettings {
