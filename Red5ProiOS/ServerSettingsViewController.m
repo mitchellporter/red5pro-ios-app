@@ -109,19 +109,9 @@
         NSString *port = [self.portTextField text];
         NSString *server = [self.serverTextField text];
         
-        BOOL shouldPerformSegue = port.length > 0 && server.length > 0;
+        BOOL shouldPerformSegue = [self isValid];
         
-        if (!shouldPerformSegue) {
-            [UIView animateWithDuration:0.25f animations:^{
-                self.errorLabel.alpha = 1.0f;
-            } completion:^(BOOL finished) {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [UIView animateWithDuration:0.25f animations:^{
-                        self.errorLabel.alpha = 0.0f;
-                    }];
-                });
-            }];
-        } else {
+        if (shouldPerformSegue) {
             [self setUserSetting:@"domain" withValue:server];
             [self setUserSetting:@"port" withValue:port];
         }
@@ -139,7 +129,77 @@
 }
  */
 
-#pragma mark UITextFieldDelegate
+#pragma mark - Validation
+
+- (BOOL) isValid {
+    NSString *server = [self.serverTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *port = [self.portTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    //  e.g. 0-255.0-255.0-255.0-255, but must be done in two parts
+    NSString *ipRegexStr = @"^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$";
+    NSError *err;
+    
+    BOOL haveGoodLengths = server.length > 0 && port.length > 0;
+    BOOL portIsInt = [port integerValue] > 0;
+    NSRegularExpression *ipRegex = [NSRegularExpression regularExpressionWithPattern:ipRegexStr options:0 error:&err];
+    NSArray *ipMatches = [ipRegex matchesInString:server options:0 range:NSMakeRange(0, server.length)];
+    BOOL ipIsGood = ipMatches != nil && ipMatches.count == 1;
+    
+    NSRegularExpression *segmentRegex = [NSRegularExpression regularExpressionWithPattern:@"\\d{1,3}\\.?" options:0 error:&err];
+    __block BOOL allIPSegmentsAreInGoodRange = YES;
+    [segmentRegex enumerateMatchesInString:server options:0 range:NSMakeRange(0, server.length) usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
+        NSString *match = [server substringWithRange:result.range];
+        NSInteger value = -1;
+        
+        if ([match containsString:@"."]) {
+            value = [[match substringWithRange:NSMakeRange(0, match.length-1)] integerValue];
+        } else {
+            value = [match integerValue];
+        }
+        
+        if (result.range.location == 0) {
+            if (value <= 0 || value > 255) {
+                *stop = YES;
+                allIPSegmentsAreInGoodRange = NO;
+            }
+        } else {
+            if (value < 0 || value > 255) {
+                *stop = YES;
+                allIPSegmentsAreInGoodRange = NO;
+            }
+        }
+    }];
+    
+    NSString *errorMessage = nil;
+    
+    if (!haveGoodLengths) {
+        errorMessage = @"You must enter both fields";
+    } else if (!portIsInt) {
+        errorMessage = @"The port must be valid";
+    } else if (!ipIsGood) {
+        errorMessage = @"Server IP must have a valid format";
+    } else if (!allIPSegmentsAreInGoodRange) {
+        errorMessage = @"Server IP must have valid ranges";
+    }
+    
+    if (errorMessage) {
+        [self.errorLabel setText:errorMessage];
+        
+        [UIView animateWithDuration:0.25f animations:^{
+            self.errorLabel.alpha = 1.0f;
+        } completion:^(BOOL finished) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [UIView animateWithDuration:0.25f animations:^{
+                    self.errorLabel.alpha = 0.0f;
+                }];
+            });
+        }];
+    }
+    
+    return haveGoodLengths && portIsInt && ipIsGood && allIPSegmentsAreInGoodRange;
+}
+
+#pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
