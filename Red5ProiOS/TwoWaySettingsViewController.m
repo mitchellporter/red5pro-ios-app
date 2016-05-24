@@ -11,6 +11,7 @@
 #import "StreamViewController.h"
 #import "StreamTableViewCell.h"
 #import "PublishStreamUtility.h"
+#import "ALToastView.h"
 
 @interface TwoWaySettingsViewController ()
 
@@ -188,6 +189,12 @@
 
 - (void) listUpdated:(NSArray *)updatedList {
     [self updateTableDataWithArray:updatedList];
+}
+
+- (void) listError:(NSError *)error {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [ALToastView toastInView:self.view withText:error.localizedDescription];
+    });
 }
 
 @end

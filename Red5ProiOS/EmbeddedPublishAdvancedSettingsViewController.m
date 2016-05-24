@@ -7,6 +7,7 @@
 //
 
 #import "EmbeddedPublishAdvancedSettingsViewController.h"
+#import "ValidationUtility.h"
 
 @interface EmbeddedPublishAdvancedSettingsViewController ()
 
@@ -67,41 +68,163 @@
 
 #pragma mark - Validation
 
-- (BOOL) allFieldsValid {
-    if ([self allFieldsHaveContent]) {
-        if ([self bitrateIsPositive]) {
-            if ([self resolutionIsValid]) {
-                return YES;
-            }
-        }
+- (void) shouldEnableDoneButton:(BOOL)shouldEnable {
+    if (shouldEnable) {
+        [self.doneBtn setAlpha:1.0f];
+        [self.doneBtn setEnabled:YES];
+    } else {
+        [self.doneBtn setAlpha:0.5f];
+        [self.doneBtn setEnabled:YES];
     }
+}
+
+- (BOOL) validateServer {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *server = [ValidationUtility trimString:self.serverTextfield.text];
+    
+    enum ServerValidationCode isServerValid = [ValidationUtility isValidServer:server];
+    
+    BOOL serverHasGoodFormat = [ValidationUtility serverValidationCodeHasGoodFormat:isServerValid];
+    BOOL serverHasGoodLength = [ValidationUtility serverValidationCodeHasGoodLength:isServerValid];
+    BOOL serverHasGoodSegments = [ValidationUtility serverValidationCodeHasGoodSegments:isServerValid];
+    
+    if (serverHasGoodFormat && serverHasGoodLength && serverHasGoodSegments) {
+        [defaults setObject:server forKey:@"domain"];
+        [defaults synchronize];
+        return YES;
+    }
+    
+    [ValidationUtility flashRed:self.serverTextfield];
+    
     return NO;
 }
 
-- (BOOL) allFieldsHaveContent {
-    NSArray *validateTextfields = @[self.serverTextfield, self.portTextfield, self.appTextfield, self.streamTextfield, self.bitrateTextfield, self.resolutionTextfield];
-    __block BOOL isInvalid = NO;
-    [validateTextfields enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        UITextField *tf = (UITextField *)obj;
-        
-        if (tf.text.length == 0) {
-            [tf becomeFirstResponder];
-            isInvalid = YES;
-            *stop = YES;
-        }
-    }];
+- (BOOL) validatePort {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *port = [ValidationUtility trimString:self.portTextfield.text];
     
-    if (isInvalid) {
-        return NO;
+    enum PortValidationCode isPortValid = [ValidationUtility isValidPort:port];
+    
+    BOOL portHasGoodLength = [ValidationUtility portValidationCodeHasGoodLength:isPortValid];
+    BOOL portHasGoodFormat = [ValidationUtility portValidationCodeHasGoodFormat:isPortValid];
+    
+    if (portHasGoodFormat && portHasGoodLength) {
+        [defaults setInteger:[port integerValue] forKey:@"port"];
+        [defaults synchronize];
+        return YES;
     }
-    return YES;
+    
+    [ValidationUtility flashRed:self.portTextfield];
+    
+    return NO;
+}
+
+- (BOOL) validateApp {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *app = [ValidationUtility trimString:self.appTextfield.text];
+    
+    NSLog(@"Have app %@", app);
+    enum AppValidationCode isAppValid = [ValidationUtility isValidApp:app];
+    
+    NSLog(@"App validation code: %ld", (long)isAppValid);
+    
+    BOOL appHasGoodLength = [ValidationUtility appValidationCodeHasGoodLength:isAppValid];
+    BOOL appHasGoodFormat = [ValidationUtility appValidationCodeHasGoodFormat:isAppValid];
+    
+    if (!appHasGoodFormat) NSLog(@"App does not have good format");
+    if (!appHasGoodLength) NSLog(@"App does not have good length");
+    
+    if (appHasGoodFormat && appHasGoodLength) {
+        [defaults setObject:app forKey:@"app"];
+        [defaults synchronize];
+        return YES;
+    }
+    
+    [ValidationUtility flashRed:self.appTextfield];
+    
+    return NO;
+}
+
+- (BOOL) validateStream {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *stream = [ValidationUtility trimString:self.streamTextfield.text];
+    
+    enum StreamValidationCode isStreamValid = [ValidationUtility isValidStream:stream];
+    
+    BOOL streamHasGoodLength = [ValidationUtility streamValidationCodeHasGoodLength:isStreamValid];
+    BOOL streamHasGoodFormat = [ValidationUtility streamValidationCodeHasGoodFormat:isStreamValid];
+    
+    if (streamHasGoodFormat && streamHasGoodLength) {
+        [defaults setObject:stream forKey:@"stream"];
+        [defaults synchronize];
+        return YES;
+    }
+    
+    [ValidationUtility flashRed:self.streamTextfield];
+    
+    return NO;
+}
+
+- (BOOL) validateBitrate {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *bitrate = [ValidationUtility trimString:self.bitrateTextfield.text];
+    
+    enum LengthValidationCode bitrateLengthCode = [ValidationUtility isValidLength:bitrate];
+    
+    BOOL bitrateHasGoodLength = bitrateLengthCode != LengthValidationCode_BAD_LENGTH;
+    BOOL bitrateHasGoodFormat = [self bitrateIsPositive];
+    
+    if (bitrateHasGoodFormat && bitrateHasGoodLength) {
+        [defaults setInteger:[bitrate integerValue] forKey:@"bitrate"];
+        [defaults synchronize];
+        return YES;
+    }
+    
+    [ValidationUtility flashRed:self.bitrateTextfield];
+    
+    return NO;
+}
+
+- (BOOL) validateResolution {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *resolution = [ValidationUtility trimString:self.resolutionTextfield.text];
+    
+    enum LengthValidationCode resolutionLengthCode = [ValidationUtility isValidLength:resolution];
+    
+    BOOL resolutionHasGoodLength = resolutionLengthCode != LengthValidationCode_BAD_LENGTH;
+    BOOL resolutionHasGoodFormat = [self resolutionIsValid];
+    
+    if (resolutionHasGoodFormat && resolutionHasGoodLength) {
+        NSRange xRange = [resolution rangeOfString:@"x"];
+        NSString *resWidth = [resolution substringToIndex:xRange.location];
+        NSString *resHeight = [resolution substringFromIndex:(xRange.location + xRange.length)];
+        
+        [defaults setInteger:[resWidth integerValue] forKey:@"resolutionWidth"];
+        [defaults setInteger:[resHeight integerValue] forKey:@"resolutionHeight"];
+        [defaults synchronize];
+        return YES;
+    }
+    
+    [ValidationUtility flashRed:self.resolutionTextfield];
+    
+    return NO;
+}
+
+- (BOOL) allFieldsValid {
+    return  [self validateServer] &&
+            [self validatePort] &&
+            [self validateApp] &&
+            [self validateStream] &&
+            [self validateBitrate] &&
+            [self validateResolution];
 }
 
 - (BOOL) bitrateIsPositive {
-    NSInteger intValue = [self.bitrateTextfield.text integerValue];
+    NSInteger intValue = [[ValidationUtility trimString:self.bitrateTextfield.text] integerValue];
     
     if (intValue <= 0) {
-        [self.bitrateTextfield becomeFirstResponder];
+        [ValidationUtility flashRed:self.bitrateTextfield];
+        
         return NO;
     }
     
@@ -109,11 +232,12 @@
 }
 
 - (BOOL) resolutionIsValid {
-    NSString *str = self.resolutionTextfield.text;
+    NSString *str = [ValidationUtility trimString:self.resolutionTextfield.text];
     NSRange rangeOfSeparator = [str rangeOfString:@"x"];
     
     if (rangeOfSeparator.location == NSNotFound) {
-        [self.resolutionTextfield becomeFirstResponder];
+        [ValidationUtility flashRed:self.resolutionTextfield];
+        
         return NO;
     }
     
@@ -123,7 +247,8 @@
     NSInteger hInt = [h integerValue];
     
     if (wInt <= 0 || hInt <= 0) {
-        [self.resolutionTextfield becomeFirstResponder];
+        [ValidationUtility flashRed:self.resolutionTextfield];
+        
         return NO;
     }
     
@@ -150,12 +275,35 @@
     return YES;
 }
 
+- (void) textFieldDidEndEditing:(UITextField *)textField {
+    if (textField == self.serverTextfield) {
+        [self validateServer];
+    } else if (textField == self.portTextfield) {
+        [self validatePort];
+    } else if (textField == self.appTextfield) {
+        [self validateApp];
+    } else if (textField == self.streamTextfield) {
+        [self validateStream];
+    } else if (textField == self.bitrateTextfield) {
+        [self validateBitrate];
+    } else if (textField == self.resolutionTextfield) {
+        [self validateResolution];
+    }
+}
+
 #pragma mark - IBActions
 
 - (IBAction) onCheckboxTouch:(id)sender {
     if ([sender isKindOfClass:[UIButton class]]) {
         UIButton *btn = (UIButton *)sender;
         btn.selected = !btn.selected;
+        
+        NSString *key = btn == self.audioCheck ? @"includeAudio" : btn == self.videoCheck ? @"includeVideo" : @"adaptiveBitrate";
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        [defaults setBool:btn.selected forKey:key];
+        [defaults synchronize];
     }
 }
 
@@ -166,34 +314,9 @@
 }
 
 - (IBAction) onDoneTouch:(id)sender {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
     if (![self allFieldsValid]) {
         return;
     }
-    
-    [defaults setObject:self.streamTextfield.text forKey:@"stream"];
-    
-    [defaults setBool:self.audioCheck.selected forKey:@"includeAudio"];
-    [defaults setBool:self.videoCheck.selected forKey:@"includeVideo"];
-    [defaults setBool:self.adaptiveBitrateCheck.selected forKey:@"adaptiveBitrate"];
-    [defaults setObject:self.appTextfield.text forKey:@"app"];
-    [defaults setObject:self.serverTextfield.text forKey:@"domain"];
-    [defaults setInteger:[self.portTextfield.text integerValue] forKey:@"port"];
-    
-    NSString *res = self.resolutionTextfield.text;
-    NSRange xRange = [res rangeOfString:@"x"];
-    NSString *resWidth = [res substringToIndex:xRange.location];
-    NSString *resHeight = [res substringFromIndex:(xRange.location + xRange.length)];
-    
-    [defaults setInteger:[resWidth integerValue] forKey:@"resolutionWidth"];
-    [defaults setInteger:[resHeight integerValue] forKey:@"resolutionHeight"];
-    
-    [defaults setInteger:[self.bitrateTextfield.text integerValue] forKey:@"bitrate"];
-    
-    [defaults synchronize];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"userDefaultsChange" object:nil];
     
     if (self.settingsViewController != nil) {
         [self.settingsViewController doneSettings];

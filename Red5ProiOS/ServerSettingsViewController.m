@@ -7,6 +7,7 @@
 //
 
 #import "ServerSettingsViewController.h"
+#import "ValidationUtility.h"
 
 @interface ServerSettingsViewController ()
 
@@ -106,14 +107,15 @@
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
     if ([identifier isEqualToString:@"goToMain"]) {
-        NSString *port = [self.portTextField text];
-        NSString *server = [self.serverTextField text];
+        NSString *port = [ValidationUtility trimString:self.portTextField.text];
+        NSString *server = [ValidationUtility trimString:self.serverTextField.text];
         
         BOOL shouldPerformSegue = [self isValid];
         
         if (shouldPerformSegue) {
             [self setUserSetting:@"domain" withValue:server];
             [self setUserSetting:@"port" withValue:port];
+            [[NSUserDefaults standardUserDefaults] synchronize];
         }
         
         return shouldPerformSegue;
@@ -132,71 +134,55 @@
 #pragma mark - Validation
 
 - (BOOL) isValid {
-    NSString *server = [self.serverTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    NSString *port = [self.portTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSInteger serverValidation = [ValidationUtility isValidServer:self.serverTextField.text];
+    NSInteger portValidation = [ValidationUtility isValidPort:self.portTextField.text];
     
-    //  e.g. 0-255.0-255.0-255.0-255, but must be done in two parts
-    NSString *ipRegexStr = @"^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$";
-    NSError *err;
-    
-    BOOL haveGoodLengths = server.length > 0 && port.length > 0;
-    BOOL portIsInt = [port integerValue] > 0;
-    NSRegularExpression *ipRegex = [NSRegularExpression regularExpressionWithPattern:ipRegexStr options:0 error:&err];
-    NSArray *ipMatches = [ipRegex matchesInString:server options:0 range:NSMakeRange(0, server.length)];
-    BOOL ipIsGood = ipMatches != nil && ipMatches.count == 1;
-    
-    NSRegularExpression *segmentRegex = [NSRegularExpression regularExpressionWithPattern:@"\\d{1,3}\\.?" options:0 error:&err];
-    __block BOOL allIPSegmentsAreInGoodRange = YES;
-    [segmentRegex enumerateMatchesInString:server options:0 range:NSMakeRange(0, server.length) usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
-        NSString *match = [server substringWithRange:result.range];
-        NSInteger value = -1;
-        
-        if ([match containsString:@"."]) {
-            value = [[match substringWithRange:NSMakeRange(0, match.length-1)] integerValue];
-        } else {
-            value = [match integerValue];
-        }
-        
-        if (result.range.location == 0) {
-            if (value <= 0 || value > 255) {
-                *stop = YES;
-                allIPSegmentsAreInGoodRange = NO;
-            }
-        } else {
-            if (value < 0 || value > 255) {
-                *stop = YES;
-                allIPSegmentsAreInGoodRange = NO;
-            }
-        }
-    }];
+    BOOL goodServerLength = [ValidationUtility serverValidationCodeHasGoodLength:serverValidation];
+    BOOL goodPortLength = [ValidationUtility portValidationCodeHasGoodLength:portValidation];
+    BOOL haveGoodLengths =  goodServerLength && goodPortLength;
+    BOOL portIsInt = [ValidationUtility portValidationCodeHasGoodFormat:portValidation];
+    BOOL ipIsGood = [ValidationUtility serverValidationCodeHasGoodFormat:serverValidation];
+    BOOL allIPSegmentsAreInGoodRange = [ValidationUtility serverValidationCodeHasGoodSegments:serverValidation];
     
     NSString *errorMessage = nil;
     
     if (!haveGoodLengths) {
+        if (!goodServerLength) [ValidationUtility flashRed:self.serverTextField];
+        if (!goodPortLength) [ValidationUtility flashRed:self.portTextField];
         errorMessage = @"You must enter both fields";
     } else if (!portIsInt) {
+        [ValidationUtility flashRed:self.portTextField];
         errorMessage = @"The port must be valid";
     } else if (!ipIsGood) {
+        [ValidationUtility flashRed:self.serverTextField];
         errorMessage = @"Server IP must have a valid format";
     } else if (!allIPSegmentsAreInGoodRange) {
+        [ValidationUtility flashRed:self.serverTextField];
         errorMessage = @"Server IP must have valid ranges";
     }
     
-    if (errorMessage) {
+    if (errorMessage != nil) {
         [self.errorLabel setText:errorMessage];
         
-        [UIView animateWithDuration:0.25f animations:^{
-            self.errorLabel.alpha = 1.0f;
-        } completion:^(BOOL finished) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [UIView animateWithDuration:0.25f animations:^{
-                    self.errorLabel.alpha = 0.0f;
-                }];
-            });
-        }];
+        [UIView animateWithDuration:0.2f
+                         animations:^{
+                             self.errorLabel.alpha = 1.0f;
+                         }
+                         completion:^(BOOL finished) {
+                             [UIView animateWithDuration:0.2f
+                                                   delay:1.3f
+                                                 options:0
+                                              animations:^{
+                                                  self.errorLabel.alpha = 0.0f;
+                                              }
+                                              completion:^(BOOL finished) {}
+                              ];
+                         }];
+        
+        return NO;
     }
     
-    return haveGoodLengths && portIsInt && ipIsGood && allIPSegmentsAreInGoodRange;
+    return YES;
 }
 
 #pragma mark - UITextFieldDelegate
@@ -207,7 +193,9 @@
     if (textField == [self serverTextField]) {
         [[self portTextField] becomeFirstResponder];
     } else if (textField == [self portTextField]) {
-        [self performSegueWithIdentifier:@"goToMain" sender:nil];
+        if ([self isValid]) {
+            [self performSegueWithIdentifier:@"goToMain" sender:nil];
+        }
     }
     
     return YES;
