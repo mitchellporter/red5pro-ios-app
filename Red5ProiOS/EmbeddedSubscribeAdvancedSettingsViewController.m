@@ -32,7 +32,7 @@
     
     self.appTextfield.text = [self getUserSetting:@"app" withDefault:@"live"];
     self.serverTextfield.text = [self getUserSetting:@"domain" withDefault:@"127.0.0.1"];
-    self.portTextfield.text = [NSString stringWithFormat:@"%ld", [[NSUserDefaults standardUserDefaults] integerForKey:@"port"]];
+    self.portTextfield.text = [NSString stringWithFormat:@"%ld", (long)[[NSUserDefaults standardUserDefaults] integerForKey:@"port"]];
 }
 
 - (void)didReceiveMemoryWarning {
