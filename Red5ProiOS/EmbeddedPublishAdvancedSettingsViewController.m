@@ -32,20 +32,21 @@
     [self.bitrateTextfield setReturnKeyType:UIReturnKeyNext];
     [self.resolutionTextfield setReturnKeyType:UIReturnKeyDone];
     
-    self.streamTextfield.text = [self getUserSetting:@"stream" withDefault:@""];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    self.audioCheck.selected = [[self getUserSetting:@"includeAudio" withDefault:@"1"] boolValue];
-    self.videoCheck.selected = [[self getUserSetting:@"includeVideo" withDefault:@"1"] boolValue];
-    self.adaptiveBitrateCheck.selected = [[self getUserSetting:@"adaptiveBitrate" withDefault:@"1"] boolValue];
+    self.streamTextfield.text = [self getUserSetting:@"stream" withDefault:@"stream"];
+    
+    self.audioCheck.selected = [defaults boolForKey:@"includeAudio"];
+    self.videoCheck.selected = [defaults boolForKey:@"includeVideo"];
+    self.adaptiveBitrateCheck.selected = [[NSUserDefaults standardUserDefaults] boolForKey:@"adaptiveBitrate"];
     
     self.appTextfield.text = [self getUserSetting:@"app" withDefault:@"live"];
     self.serverTextfield.text = [self getUserSetting:@"domain" withDefault:@"127.0.0.1"];
     self.portTextfield.text = [self getUserSetting:@"port" withDefault:@"8554"];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.bitrateTextfield.text = (NSString *)[defaults objectForKey:@"bitrate"];
-    NSString *resWidth = (NSString *)[defaults objectForKey:@"resolutionWidth"];
-    NSString *resHeight = (NSString *)[defaults objectForKey:@"resolutionHeight"];
+    self.bitrateTextfield.text = [NSString stringWithFormat:@"%ld", (long)[defaults integerForKey:@"bitrate"]];
+    NSString *resWidth = [NSString stringWithFormat:@"%ld", (long)[defaults integerForKey:@"resolutionWidth"]];
+    NSString *resHeight = [NSString stringWithFormat:@"%ld", (long)[defaults integerForKey:@"resolutionHeight"]];
     self.resolutionTextfield.text = [NSString stringWithFormat:@"%@x%@", resWidth, resHeight];
 }
 
@@ -178,17 +179,17 @@
     [defaults setBool:self.adaptiveBitrateCheck.selected forKey:@"adaptiveBitrate"];
     [defaults setObject:self.appTextfield.text forKey:@"app"];
     [defaults setObject:self.serverTextfield.text forKey:@"domain"];
-    [defaults setObject:self.portTextfield.text forKey:@"port"];
+    [defaults setInteger:[self.portTextfield.text integerValue] forKey:@"port"];
     
     NSString *res = self.resolutionTextfield.text;
     NSRange xRange = [res rangeOfString:@"x"];
     NSString *resWidth = [res substringToIndex:xRange.location];
     NSString *resHeight = [res substringFromIndex:(xRange.location + xRange.length)];
     
-    [defaults setObject:resWidth forKey:@"resolutionWidth"];
-    [defaults setObject:resHeight forKey:@"resolutionHeight"];
+    [defaults setInteger:[resWidth integerValue] forKey:@"resolutionWidth"];
+    [defaults setInteger:[resHeight integerValue] forKey:@"resolutionHeight"];
     
-    [defaults setObject:self.bitrateTextfield.text forKey:@"bitrate"];
+    [defaults setInteger:[self.bitrateTextfield.text integerValue] forKey:@"bitrate"];
     
     [defaults synchronize];
     

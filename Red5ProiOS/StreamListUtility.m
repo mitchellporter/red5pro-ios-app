@@ -86,10 +86,10 @@ static StreamListUtility* instance;
 }
 
 -(void) makeCall {
-    NSString *domain = [self setting:@"domain" WithDefault:@"n/a"];
+    NSString *domain = [self setting:@"domain" WithDefault:@"127.0.0.1"];
     NSString *app = [self setting:@"app" WithDefault:@"live"];
     
-    if ([domain isEqualToString:@"n/a"]) {
+    if ([domain isEqualToString:@"127.0.0.1"]) {
         [self performSelector:@selector(callLoop:) withObject:self afterDelay:_loopDelay];
         return;
     }
@@ -125,10 +125,10 @@ static StreamListUtility* instance;
 }
 
 -(void) makeCallWithBlock:(void (^)(NSArray *streams))block {
-    NSString *domain = [self setting:@"domain" WithDefault:@"n/a"];
+    NSString *domain = [self setting:@"domain" WithDefault:@"127.0.0.1"];
     NSString *app = [self setting:@"app" WithDefault:@"live"];
     
-    if ([domain isEqualToString:@"n/a"]) {
+    if ([domain isEqualToString:@"127.0.0.1"]) {
         [self performSelector:@selector(callLoop:) withObject:self afterDelay:_loopDelay];
         return;
     }

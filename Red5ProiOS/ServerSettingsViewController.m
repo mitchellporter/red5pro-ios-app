@@ -18,12 +18,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSString *server = [self getUserSetting:@"domain" withDefault:@"0.0.0.0"];
+    NSString *server = [self getUserSetting:@"domain" withDefault:@"127.0.0.1"];
     
-    if (![server isEqualToString:@"0.0.0.0"]) {
-        self.serverTextField.text = server;
-    }
-    self.portTextField.text = [self getUserSetting:@"port" withDefault:self.portTextField.text];
+    self.serverTextField.text = server;
+    self.portTextField.text = [NSString stringWithFormat:@"%ld", (long)[[NSUserDefaults standardUserDefaults] integerForKey:@"port"]];
     
     [[self serverTextField] setDelegate:self];
     [[self portTextField] setDelegate:self];

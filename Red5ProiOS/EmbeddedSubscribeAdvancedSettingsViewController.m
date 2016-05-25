@@ -28,11 +28,11 @@
     [self.appTextfield setReturnKeyType:UIReturnKeyNext];
     [self.streamTextfield setReturnKeyType:UIReturnKeyDone];
     
-    self.streamTextfield.text = [self getUserSetting:@"stream" withDefault:@""];
+    self.streamTextfield.text = [self getUserSetting:@"stream" withDefault:@"stream"];
     
     self.appTextfield.text = [self getUserSetting:@"app" withDefault:@"live"];
     self.serverTextfield.text = [self getUserSetting:@"domain" withDefault:@"127.0.0.1"];
-    self.portTextfield.text = [self getUserSetting:@"port" withDefault:@"8554"];
+    self.portTextfield.text = [NSString stringWithFormat:@"%ld", [[NSUserDefaults standardUserDefaults] integerForKey:@"port"]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -113,7 +113,7 @@
     
     [defaults setObject:self.appTextfield.text forKey:@"app"];
     [defaults setObject:self.serverTextfield.text forKey:@"domain"];
-    [defaults setObject:self.portTextfield.text forKey:@"port"];
+    [defaults setInteger:[self.portTextfield.text integerValue] forKey:@"port"];
     
     [defaults synchronize];
     
