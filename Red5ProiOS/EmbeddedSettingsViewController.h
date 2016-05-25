@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "SettingsViewController.h"
+#import "StreamViewController.h"
 
 @interface EmbeddedSettingsViewController : UIViewController<UITextFieldDelegate, EmbeddedSettingsViewController>
+
+@property enum StreamMode currentMode;
 
 - (NSString*) getUserSetting:(NSString *)key withDefault:(NSString *)defaultValue;
 
