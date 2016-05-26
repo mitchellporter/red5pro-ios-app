@@ -48,7 +48,7 @@
     [[SlideNavigationController sharedInstance].navigationBar setBackgroundImage:[UIImage new] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     [[SlideNavigationController sharedInstance].navigationBar setShadowImage:[UIImage new]];
     
-//    r5_set_log_level(r5_log_level_debug);
+    r5_set_log_level(r5_log_level_debug);
     
     [self initiateDefaults];
     
