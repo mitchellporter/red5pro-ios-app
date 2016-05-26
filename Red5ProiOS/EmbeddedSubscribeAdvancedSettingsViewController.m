@@ -98,16 +98,10 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *app = [ValidationUtility trimString:self.appTextfield.text];
     
-    NSLog(@"Have app %@", app);
     enum AppValidationCode isAppValid = [ValidationUtility isValidApp:app];
     
-    NSLog(@"App validation code: %ld", (long)isAppValid);
-    
-    BOOL appHasGoodLength = [ValidationUtility appValidationCodeHasGoodLength:isAppValid];
     BOOL appHasGoodFormat = [ValidationUtility appValidationCodeHasGoodFormat:isAppValid];
-    
-    if (!appHasGoodFormat) NSLog(@"App does not have good format");
-    if (!appHasGoodLength) NSLog(@"App does not have good length");
+    BOOL appHasGoodLength = [ValidationUtility appValidationCodeHasGoodLength:isAppValid];
     
     if (appHasGoodFormat && appHasGoodLength) {
         [defaults setObject:app forKey:@"app"];
@@ -126,11 +120,11 @@
     
     enum StreamValidationCode isStreamValid = [ValidationUtility isValidStream:stream];
     
-    BOOL streamHasGoodLength = [ValidationUtility streamValidationCodeHasGoodLength:isStreamValid];
     BOOL streamHasGoodFormat = [ValidationUtility streamValidationCodeHasGoodFormat:isStreamValid];
+    BOOL streamHasGoodLength = [ValidationUtility streamValidationCodeHasGoodLength:isStreamValid];
     
     if (streamHasGoodFormat && streamHasGoodLength) {
-        [defaults setObject:stream forKey:@"connectTotream"];
+        [defaults setObject:stream forKey:@"connectToStream"];
         [defaults synchronize];
         return YES;
     }
@@ -142,9 +136,9 @@
 
 - (BOOL) allFieldsValid {
     return  [self validateServer] &&
-    [self validatePort] &&
-    [self validateApp] &&
-    [self validateStream];
+            [self validatePort] &&
+            [self validateApp] &&
+            [self validateStream];
 }
 
 #pragma mark - UITextFieldDelegate
