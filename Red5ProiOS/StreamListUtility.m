@@ -106,7 +106,10 @@ static StreamListUtility* instance;
                                }
                                
                                if (error) {
-                                   NSLog(@"Error,%@", [error localizedDescription]);
+                                   NSLog(@"Error, %@", [error localizedDescription]);
+                                   if (_delegate != nil) {
+                                       [_delegate listError:error];
+                                   }
                                } else {
                                    NSError *e = nil;
                                    NSArray *list = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&e];
@@ -139,7 +142,10 @@ static StreamListUtility* instance;
                                        queue:[[NSOperationQueue alloc] init]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
                                if (error) {
-                                   NSLog(@"Error,%@", [error localizedDescription]);
+                                   NSLog(@"Error, %@", [error localizedDescription]);
+                                   if (_delegate != nil) {
+                                       [_delegate listError:error];
+                                   }
                                } else {
                                    NSError *e = nil;
                                    NSArray *list = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&e];

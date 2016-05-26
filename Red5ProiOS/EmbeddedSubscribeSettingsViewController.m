@@ -8,6 +8,7 @@
 
 #import "EmbeddedSubscribeSettingsViewController.h"
 #import "StreamTableViewCell.h"
+#import "ALToastView.h"
 
 @interface EmbeddedSubscribeSettingsViewController ()
 
@@ -149,6 +150,14 @@
 
 - (void) listUpdated:(NSArray *)updatedList {
     [self updateTableDataWithArray:updatedList];
+}
+
+- (void) listError:(NSError *)error {
+    if (self.settingsViewController) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [ALToastView toastInView:self.settingsViewController.view withText:error.localizedDescription];
+        });
+    }
 }
 
 @end

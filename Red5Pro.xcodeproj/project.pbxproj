@@ -124,6 +124,7 @@
 		C3A834C51CEE380F00EEB2F1 /* helpbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = C3A834BF1CEE380F00EEB2F1 /* helpbutton.png */; settings = {ASSET_TAGS = (); }; };
 		C3A834C61CEE380F00EEB2F1 /* helpbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3A834C01CEE380F00EEB2F1 /* helpbutton@2x.png */; settings = {ASSET_TAGS = (); }; };
 		C3A834C71CEE380F00EEB2F1 /* helpbutton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3A834C11CEE380F00EEB2F1 /* helpbutton@3x.png */; settings = {ASSET_TAGS = (); }; };
+		C3AC68E11CF4B76B00B3AC35 /* ValidationUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C3AC68E01CF4B76B00B3AC35 /* ValidationUtility.m */; settings = {ASSET_TAGS = (); }; };
 		C3CA6DEB1CDB813E00FE7C5A /* StreamTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CA6DEA1CDB813E00FE7C5A /* StreamTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		C3CA6DEE1CDB971400FE7C5A /* PublishStreamUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CA6DED1CDB971400FE7C5A /* PublishStreamUtility.m */; settings = {ASSET_TAGS = (); }; };
 		C3F1444D1CD8F72200753EC6 /* TwoWaySettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F1444C1CD8F72200753EC6 /* TwoWaySettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -288,6 +289,8 @@
 		C3A834BF1CEE380F00EEB2F1 /* helpbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = helpbutton.png; path = images/helpbutton.png; sourceTree = SOURCE_ROOT; };
 		C3A834C01CEE380F00EEB2F1 /* helpbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "helpbutton@2x.png"; path = "images/helpbutton@2x.png"; sourceTree = SOURCE_ROOT; };
 		C3A834C11CEE380F00EEB2F1 /* helpbutton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "helpbutton@3x.png"; path = "images/helpbutton@3x.png"; sourceTree = SOURCE_ROOT; };
+		C3AC68DF1CF4B76B00B3AC35 /* ValidationUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidationUtility.h; sourceTree = "<group>"; };
+		C3AC68E01CF4B76B00B3AC35 /* ValidationUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidationUtility.m; sourceTree = "<group>"; };
 		C3CA6DE91CDB813E00FE7C5A /* StreamTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamTableViewCell.h; sourceTree = "<group>"; };
 		C3CA6DEA1CDB813E00FE7C5A /* StreamTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamTableViewCell.m; sourceTree = "<group>"; };
 		C3CA6DEC1CDB971400FE7C5A /* PublishStreamUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishStreamUtility.h; sourceTree = "<group>"; };
@@ -571,6 +574,8 @@
 				92E753A41CD7C0C10044A9FA /* StreamListUtility.m */,
 				C3CA6DEC1CDB971400FE7C5A /* PublishStreamUtility.h */,
 				C3CA6DED1CDB971400FE7C5A /* PublishStreamUtility.m */,
+				C3AC68DF1CF4B76B00B3AC35 /* ValidationUtility.h */,
+				C3AC68E01CF4B76B00B3AC35 /* ValidationUtility.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -792,6 +797,7 @@
 				4836DC2B19E47C7200DEC2B8 /* PublishViewController.m in Sources */,
 				C356F37F1CECC24000D75A7B /* EmbeddedSubscribeAdvancedSettingsViewController.m in Sources */,
 				484BF38D19F0039D00F693A1 /* HomeScreenSegue.m in Sources */,
+				C3AC68E11CF4B76B00B3AC35 /* ValidationUtility.m in Sources */,
 				C356F37C1CECC22200D75A7B /* EmbeddedPublishAdvancedSettingsViewController.m in Sources */,
 				48350B9C1A1131CF0053A6FD /* ALToastView.m in Sources */,
 				C3CA6DEB1CDB813E00FE7C5A /* StreamTableViewCell.m in Sources */,

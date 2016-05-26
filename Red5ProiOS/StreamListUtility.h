@@ -10,7 +10,8 @@
 //delegate interface to receive updates to the liveStreams array
 @protocol listListener <NSObject>
 
--(void)listUpdated:(NSArray*)updatedList;
+- (void) listUpdated:(NSArray*)updatedList;
+- (void) listError:(NSError *)error;
 
 @end
 

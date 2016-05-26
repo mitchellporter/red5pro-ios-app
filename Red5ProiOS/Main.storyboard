@@ -319,7 +319,7 @@
                                 <rect key="frame" x="0.0" y="496" width="320" height="72"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAi-t0-3Z2">
-                                        <rect key="frame" x="85" y="14" width="45" height="45"/>
+                                        <rect key="frame" x="77" y="14" width="45" height="45"/>
                                         <state key="normal" image="Settings.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -342,7 +342,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pew-mw-I2Q" userLabel="Camera Switch">
-                                        <rect key="frame" x="191" y="14" width="45" height="45"/>
+                                        <rect key="frame" x="199" y="14" width="45" height="45"/>
                                         <state key="normal" image="Flip.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -354,12 +354,12 @@
                                 <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="NBt-ul-jM0" firstAttribute="centerX" secondItem="JfZ-oD-Kfb" secondAttribute="centerX" id="Ng3-bG-x6n"/>
-                                    <constraint firstItem="NBt-ul-jM0" firstAttribute="leading" secondItem="gAi-t0-3Z2" secondAttribute="trailing" constant="8" id="Sk2-aP-Ufj"/>
+                                    <constraint firstItem="NBt-ul-jM0" firstAttribute="leading" secondItem="gAi-t0-3Z2" secondAttribute="trailing" constant="16" id="Sk2-aP-Ufj"/>
                                     <constraint firstItem="gAi-t0-3Z2" firstAttribute="centerY" secondItem="NBt-ul-jM0" secondAttribute="centerY" id="VUB-nB-iff"/>
                                     <constraint firstAttribute="height" constant="72" id="W4P-9C-CSS"/>
                                     <constraint firstItem="Pew-mw-I2Q" firstAttribute="centerY" secondItem="NBt-ul-jM0" secondAttribute="centerY" id="awz-ba-fV2"/>
                                     <constraint firstItem="NBt-ul-jM0" firstAttribute="centerY" secondItem="JfZ-oD-Kfb" secondAttribute="centerY" id="cml-ox-6b7"/>
-                                    <constraint firstItem="Pew-mw-I2Q" firstAttribute="leading" secondItem="NBt-ul-jM0" secondAttribute="trailing" constant="8" id="oDq-mA-FLo"/>
+                                    <constraint firstItem="Pew-mw-I2Q" firstAttribute="leading" secondItem="NBt-ul-jM0" secondAttribute="trailing" constant="16" id="oDq-mA-FLo"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="alpha">
@@ -1854,9 +1854,9 @@
         <image name="twoway.png" width="52" height="52"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="n2E-ME-w5x"/>
-        <segue reference="EGF-dh-VAl"/>
         <segue reference="3sB-dr-VxE"/>
-        <segue reference="W12-Sh-Lol"/>
+        <segue reference="mTL-IN-3uX"/>
+        <segue reference="n2E-ME-w5x"/>
+        <segue reference="use-TN-22a"/>
     </inferredMetricsTieBreakers>
 </document>

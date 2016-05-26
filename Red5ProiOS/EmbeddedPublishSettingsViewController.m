@@ -7,6 +7,7 @@
 //
 
 #import "EmbeddedPublishSettingsViewController.h"
+#import "ValidationUtility.h"
 
 @interface EmbeddedPublishSettingsViewController ()
 
@@ -59,15 +60,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
 #pragma mark - Navigation
 
+/*
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
 */
+ 
+- (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    return [self isValid];
+}
 
 #pragma mark - Helpers
 
@@ -122,22 +127,43 @@
     }
 }
 
+#pragma mark - Validation
+
+- (BOOL) isValid {
+    NSString *stream = [ValidationUtility trimString:self.streamTextfield.text];
+    enum StreamValidationCode streamValidationCode = [ValidationUtility isValidStream:stream];
+    
+    BOOL isValidStream = [ValidationUtility streamValidationCodeHasGoodFormat:streamValidationCode] && [ValidationUtility streamValidationCodeHasGoodLength:streamValidationCode];
+    
+    if (!isValidStream) {
+        [self.streamTextfield becomeFirstResponder];
+        [ValidationUtility flashRed:self.streamTextfield];
+        
+        self.doneBtn.alpha = 0.5f;
+        self.doneBtn.enabled = NO;
+        return NO;
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:stream forKey:@"stream"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    self.doneBtn.alpha = 1.0f;
+    self.doneBtn.enabled = YES;
+    
+    return YES;
+}
+
 #pragma mark - UITextFieldDelegate
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     if (textField == self.streamTextfield) {
-        if (textField.text.length > 0) {
-            self.doneBtn.alpha = 1.0f;
-            self.doneBtn.enabled = YES;
-        } else {
-            self.doneBtn.alpha = 0.5f;
-            self.doneBtn.enabled = NO;
-        }
+        [self isValid];
     }
 }
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
     if (textField == self.streamTextfield) {
+        [self isValid];
         [self.view endEditing:YES];
     }
     return YES;
@@ -169,14 +195,9 @@
 }
 
 - (IBAction) onDoneTouch:(id)sender {
-    if (self.streamTextfield.text.length == 0) {
-        [self.streamTextfield becomeFirstResponder];
+    if (![self isValid]) {
         return;
     }
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    [defaults setObject:self.streamTextfield.text forKey:@"stream"];
     
     if (self.settingsViewController != nil) {
         [self.settingsViewController doneSettings];
