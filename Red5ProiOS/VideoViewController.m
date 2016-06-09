@@ -58,6 +58,7 @@
 - (void)startWithStreamName:(NSString *)streamName {
     stream = [self setUpNewStream];
     [self attachStream:stream];
+    [self showDebugInfo:[[NSUserDefaults standardUserDefaults] boolForKey:@"debugOn"]];
     [stream play:streamName];
 }
 
