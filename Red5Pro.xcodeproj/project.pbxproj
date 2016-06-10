@@ -37,6 +37,7 @@
 		92101F9719ABB7D400879D55 /* publish.png in Resources */ = {isa = PBXBuildFile; fileRef = 92101F9419ABB7D400879D55 /* publish.png */; };
 		92101F9819ABB7D400879D55 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 92101F9519ABB7D400879D55 /* second.png */; };
 		92101F9919ABB7D400879D55 /* subscribe.png in Resources */ = {isa = PBXBuildFile; fileRef = 92101F9619ABB7D400879D55 /* subscribe.png */; };
+		9264D90B1D0B084D00A69B31 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9264D90A1D0B084D00A69B31 /* Launch Screen.storyboard */; };
 		92A16D9919A7B0C900FBD3E5 /* red5pro_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A16D9819A7B0C900FBD3E5 /* red5pro_logo.png */; };
 		92C187CC19ABE50200007336 /* box.png in Resources */ = {isa = PBXBuildFile; fileRef = 92C187C219ABE50200007336 /* box.png */; };
 		92C187CD19ABE50200007336 /* boxChecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 92C187C319ABE50200007336 /* boxChecked.png */; };
@@ -180,6 +181,7 @@
 		92101F9419ABB7D400879D55 /* publish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = publish.png; path = ../images/publish.png; sourceTree = "<group>"; };
 		92101F9519ABB7D400879D55 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = second.png; path = ../images/second.png; sourceTree = "<group>"; };
 		92101F9619ABB7D400879D55 /* subscribe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = subscribe.png; path = ../images/subscribe.png; sourceTree = "<group>"; };
+		9264D90A1D0B084D00A69B31 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		92A16D9819A7B0C900FBD3E5 /* red5pro_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = red5pro_logo.png; path = ../images/red5pro_logo.png; sourceTree = "<group>"; };
 		92C187C219ABE50200007336 /* box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = box.png; path = ../images/box.png; sourceTree = "<group>"; };
 		92C187C319ABE50200007336 /* boxChecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = boxChecked.png; path = ../images/boxChecked.png; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 				92E1DC9619A79C8200F6131D /* Main.storyboard */,
 				92C6BF5519AD2A1E00244A2F /* CALayer+XibConfiguration.h */,
 				92C6BF5619AD2AAB00244A2F /* CALayer+XibConfiguration.m */,
+				9264D90A1D0B084D00A69B31 /* Launch Screen.storyboard */,
 			);
 			path = Red5ProiOS;
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 				C3335E871CD7D13000CA0C11 /* radialselect@2x.png in Resources */,
 				C3335E9B1CD7D13000CA0C11 /* Settings.png in Resources */,
 				C3335E941CD7D13000CA0C11 /* subscribe@2x.png in Resources */,
+				9264D90B1D0B084D00A69B31 /* Launch Screen.storyboard in Resources */,
 				C3A1F0311CE665620062E1E0 /* menu-button@2x.png in Resources */,
 				C3A834C61CEE380F00EEB2F1 /* helpbutton@2x.png in Resources */,
 				C3335E9F1CD7D13000CA0C11 /* Record@2x.png in Resources */,
