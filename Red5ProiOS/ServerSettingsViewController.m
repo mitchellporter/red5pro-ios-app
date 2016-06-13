@@ -116,6 +116,8 @@
             [self setUserSetting:@"domain" withValue:server];
             [self setUserSetting:@"port" withValue:port];
             [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            [self onTapOutside:nil];
         }
         
         return shouldPerformSegue;
