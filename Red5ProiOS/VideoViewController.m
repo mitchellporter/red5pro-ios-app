@@ -44,6 +44,7 @@
     
     R5Connection *connection = [[R5Connection new] initWithConfig:config];
     R5Stream *r5Stream = [[R5Stream new] initWithConnection:connection];
+    r5Stream.delegate = self;
     return r5Stream;
 }
 
@@ -65,6 +66,7 @@
 -(void)stop {
     @try {
         [stream stop];
+        stream.delegate = nil;
     }
     @catch(NSException *exception) {
         NSLog(@"Could not stop subscription: %@", exception);
@@ -74,6 +76,13 @@
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     [self stop];
+}
+
+-(void)onR5StreamStatus:(R5Stream *)stream withStatus:(int)statusCode withMessage:(NSString *)msg{
+    
+    if(statusCode == (int)r5_status_connection_close || [msg isEqual:@"NetStream.Play.UnpublishNotify"]){
+        [_streamViewController onCameraTouch:nil];
+    }
 }
 
 @end
