@@ -36,6 +36,8 @@
 		<string>Lato-Italic.ttf</string>
 		<string>Lato-Regular.ttf</string>
 	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>Launch Screen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

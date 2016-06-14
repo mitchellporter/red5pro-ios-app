@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *audioCheck;
 @property (weak, nonatomic) IBOutlet UIButton *videoCheck;
 @property (weak, nonatomic) IBOutlet UIButton *adaptiveBitrateCheck;
+@property (weak, nonatomic) IBOutlet UIButton *debugCheck;
 
 @property (weak, nonatomic) IBOutlet UIButton *doneBtn;
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;

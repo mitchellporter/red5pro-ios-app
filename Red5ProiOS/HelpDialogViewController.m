@@ -12,7 +12,7 @@
 
 @interface HelpDialogViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *versionLabel;
+@property UILabel *versionLabel;
 
 @property BOOL wasNavBarHidden;
 
@@ -31,6 +31,9 @@
     
     NSString *bundleVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey];
     NSString *formattedStr = [NSString stringWithFormat:@"v%@ - SDK %s", bundleVersion, R5PRO_VERSION ];
+    
+    self.versionLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 15, 400, 20)];
+    [self.view addSubview:self.versionLabel];
     
     [self.versionLabel setText:formattedStr];
     

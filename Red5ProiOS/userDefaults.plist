@@ -10,6 +10,8 @@
 	<integer>1000</integer>
 	<key>connectToStream</key>
 	<string>stream</string>
+	<key>debugOn</key>
+	<false/>
 	<key>domain</key>
 	<string>127.0.0.1</string>
 	<key>includeAudio</key>

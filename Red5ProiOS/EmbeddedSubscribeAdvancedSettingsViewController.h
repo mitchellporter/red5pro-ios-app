@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *serverTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *portTextfield;
 
+@property (weak, nonatomic) IBOutlet UIButton *debugCheck;
+
 @property (weak, nonatomic) IBOutlet UIButton *doneBtn;
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
 
