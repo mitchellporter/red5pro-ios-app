@@ -24,7 +24,7 @@ extern "C" {
 #define R5PRO_MAJOR_VERSION         1
 #define R5PRO_MINOR_VERSION         2
 #define R5PRO_REVISION              0
-#define R5PRO_BUILD                 0
+#define R5PRO_BUILD                 21
     
 #define R5PRO_VERSION               STRINGIFY(R5PRO_MAJOR_VERSION.R5PRO_MINOR_VERSION.R5PRO_REVISION.R5PRO_BUILD)
 #define R5PRO_VERSION_ISRELEASE     0
