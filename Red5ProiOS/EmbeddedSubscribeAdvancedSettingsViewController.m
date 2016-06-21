@@ -29,6 +29,8 @@
     [self.appTextfield setReturnKeyType:UIReturnKeyNext];
     [self.streamTextfield setReturnKeyType:UIReturnKeyDone];
     
+    self.debugCheck.selected = [[NSUserDefaults standardUserDefaults] boolForKey:@"debugOn"];
+    
     self.streamTextfield.text = [self getUserSetting:@"connectToStream" withDefault:@"stream"];
     
     self.appTextfield.text = [self getUserSetting:@"app" withDefault:@"live"];
@@ -170,6 +172,20 @@
 }
 
 #pragma mark - IBActions
+
+- (IBAction) onCheckboxTouch:(id)sender {
+    if ([sender isKindOfClass:[UIButton class]]) {
+        UIButton *btn = (UIButton *)sender;
+        btn.selected = !btn.selected;
+        
+        NSString *key = @"debugOn";
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        [defaults setBool:btn.selected forKey:key];
+        [defaults synchronize];
+    }
+}
 
 - (IBAction) onBackTouch:(id)sender {
     if (self.settingsViewController != nil) {

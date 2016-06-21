@@ -53,7 +53,9 @@ static PublishStreamUtility *instance;
     config.buffer_time = 0.5f;
     
     R5Connection *connection = [[R5Connection new] initWithConfig:config];
-    R5Camera *camera = [[R5Camera alloc] initWithDevice:[self getSelectedDevice] andBitRate:128];
+    R5Camera *camera = [[R5Camera alloc] initWithDevice:[self getSelectedDevice] andBitRate:(int)[defaults integerForKey:@"bitrate"]];
+    camera.width = (int)[defaults integerForKey:@"resolutionWidth"];
+    camera.height = (int)[defaults integerForKey:@"resolutionHeight"];
     camera.orientation = 90;
     
     AVCaptureDevice *audioDevice = [AVCaptureDevice defaultDeviceWithMediaType: AVMediaTypeAudio];

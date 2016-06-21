@@ -39,7 +39,8 @@
     
     self.audioCheck.selected = [defaults boolForKey:@"includeAudio"];
     self.videoCheck.selected = [defaults boolForKey:@"includeVideo"];
-    self.adaptiveBitrateCheck.selected = [[NSUserDefaults standardUserDefaults] boolForKey:@"adaptiveBitrate"];
+    self.adaptiveBitrateCheck.selected = [defaults boolForKey:@"adaptiveBitrate"];
+    self.debugCheck.selected = [defaults boolForKey:@"debugOn"];
     
     self.appTextfield.text = [self getUserSetting:@"app" withDefault:@"live"];
     self.serverTextfield.text = [self getUserSetting:@"domain" withDefault:@"127.0.0.1"];
@@ -298,7 +299,7 @@
         UIButton *btn = (UIButton *)sender;
         btn.selected = !btn.selected;
         
-        NSString *key = btn == self.audioCheck ? @"includeAudio" : btn == self.videoCheck ? @"includeVideo" : @"adaptiveBitrate";
+        NSString *key = btn == self.audioCheck ? @"includeAudio" : btn == self.videoCheck ? @"includeVideo" : btn == self.adaptiveBitrateCheck ? @"adaptiveBitrate" : @"debugOn";
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         

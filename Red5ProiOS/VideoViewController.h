@@ -11,10 +11,10 @@
 #import "StreamViewController.h"
 #import "SlideNavigationController.h"
 
-@interface VideoViewController : R5VideoViewController<SlideNavigationControllerDelegate>
+@interface VideoViewController : R5VideoViewController<SlideNavigationControllerDelegate, R5StreamDelegate>
 @property (nonatomic, strong) StreamViewController *streamViewController;
 
 -(void)start;
-- (void)startWithStreamName:(NSString *)streamName;
+-(void)startWithStreamName:(NSString *)streamName;
 -(void)stop;
 @end

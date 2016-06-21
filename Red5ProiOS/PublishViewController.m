@@ -94,6 +94,7 @@
     
     [self attachStream:stream];
     [self showPreview:true];
+    [self showDebugInfo:[[NSUserDefaults standardUserDefaults] boolForKey:@"debugOn"]];
     isTogglable = YES;
 }
 
