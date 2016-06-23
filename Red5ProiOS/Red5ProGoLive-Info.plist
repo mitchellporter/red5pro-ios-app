@@ -45,6 +45,8 @@
 		<string>armv7</string>
 		<string>wifi</string>
 	</array>
+	<key>UIRequiresFullScreen</key>
+	<true/>
 	<key>UIRequiresPersistentWiFi</key>
 	<true/>
 	<key>UIStatusBarHidden</key>

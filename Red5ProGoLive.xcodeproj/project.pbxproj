@@ -198,20 +198,20 @@
 		92C6BF5119AD1C2E00244A2F /* settings_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings_red.png; path = ../images/settings_red.png; sourceTree = "<group>"; };
 		92C6BF5519AD2A1E00244A2F /* CALayer+XibConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+XibConfiguration.h"; sourceTree = "<group>"; };
 		92C6BF5619AD2AAB00244A2F /* CALayer+XibConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+XibConfiguration.m"; sourceTree = "<group>"; };
-		92E1DC6019A78C0000F6131D /* Red5ProiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Red5ProiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		92E1DC6019A78C0000F6131D /* Red5ProGoLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Red5ProGoLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92E1DC6319A78C0000F6131D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		92E1DC6519A78C0000F6131D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		92E1DC6719A78C0000F6131D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		92E1DC6B19A78C0000F6131D /* Red5ProiOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Red5ProiOS-Info.plist"; sourceTree = "<group>"; };
+		92E1DC6B19A78C0000F6131D /* Red5ProGoLive-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Red5ProGoLive-Info.plist"; sourceTree = "<group>"; };
 		92E1DC6D19A78C0000F6131D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		92E1DC6F19A78C0000F6131D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		92E1DC7119A78C0000F6131D /* Red5ProiOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Red5ProiOS-Prefix.pch"; sourceTree = "<group>"; };
+		92E1DC7119A78C0000F6131D /* Red5ProGoLive-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Red5ProGoLive-Prefix.pch"; sourceTree = "<group>"; };
 		92E1DC7219A78C0000F6131D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		92E1DC7319A78C0000F6131D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		92E1DC7519A78C0000F6131D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		92E1DC7B19A78C0000F6131D /* Red5ProiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Red5ProiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		92E1DC7B19A78C0000F6131D /* Red5ProGoLive.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Red5ProGoLive.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92E1DC7C19A78C0000F6131D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		92E1DC8419A78C0000F6131D /* Red5ProiOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Red5ProiOSTests-Info.plist"; sourceTree = "<group>"; };
+		92E1DC8419A78C0000F6131D /* Red5ProGoLiveTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Red5ProGoLiveTests-Info.plist"; sourceTree = "<group>"; };
 		92E1DC8619A78C0000F6131D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		92E1DC8819A78C0000F6131D /* Red5ProiOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Red5ProiOSTests.m; sourceTree = "<group>"; };
 		92E1DC9619A79C8200F6131D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -423,8 +423,8 @@
 		92E1DC6119A78C0000F6131D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				92E1DC6019A78C0000F6131D /* Red5ProiOS.app */,
-				92E1DC7B19A78C0000F6131D /* Red5ProiOSTests.xctest */,
+				92E1DC6019A78C0000F6131D /* Red5ProGoLive.app */,
+				92E1DC7B19A78C0000F6131D /* Red5ProGoLive.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -536,10 +536,10 @@
 				92101F9519ABB7D400879D55 /* second.png */,
 				92101F9619ABB7D400879D55 /* subscribe.png */,
 				92A16D9819A7B0C900FBD3E5 /* red5pro_logo.png */,
-				92E1DC6B19A78C0000F6131D /* Red5ProiOS-Info.plist */,
+				92E1DC6B19A78C0000F6131D /* Red5ProGoLive-Info.plist */,
 				92E1DC6C19A78C0000F6131D /* InfoPlist.strings */,
 				92E1DC6F19A78C0000F6131D /* main.m */,
-				92E1DC7119A78C0000F6131D /* Red5ProiOS-Prefix.pch */,
+				92E1DC7119A78C0000F6131D /* Red5ProGoLive-Prefix.pch */,
 				C30E4AD51CF37FAC00F4FD76 /* userDefaults.plist */,
 			);
 			name = "Supporting Files";
@@ -557,7 +557,7 @@
 		92E1DC8319A78C0000F6131D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				92E1DC8419A78C0000F6131D /* Red5ProiOSTests-Info.plist */,
+				92E1DC8419A78C0000F6131D /* Red5ProGoLiveTests-Info.plist */,
 				92E1DC8519A78C0000F6131D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -617,9 +617,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		92E1DC5F19A78C0000F6131D /* Red5ProiOS */ = {
+		92E1DC5F19A78C0000F6131D /* Red5ProGoLive */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 92E1DC8C19A78C0000F6131D /* Build configuration list for PBXNativeTarget "Red5ProiOS" */;
+			buildConfigurationList = 92E1DC8C19A78C0000F6131D /* Build configuration list for PBXNativeTarget "Red5ProGoLive" */;
 			buildPhases = (
 				92E1DC5C19A78C0000F6131D /* Sources */,
 				92E1DC5D19A78C0000F6131D /* Frameworks */,
@@ -629,14 +629,14 @@
 			);
 			dependencies = (
 			);
-			name = Red5ProiOS;
+			name = Red5ProGoLive;
 			productName = Red5ProiOS;
-			productReference = 92E1DC6019A78C0000F6131D /* Red5ProiOS.app */;
+			productReference = 92E1DC6019A78C0000F6131D /* Red5ProGoLive.app */;
 			productType = "com.apple.product-type.application";
 		};
-		92E1DC7A19A78C0000F6131D /* Red5ProiOSTests */ = {
+		92E1DC7A19A78C0000F6131D /* Red5ProGoLiveTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 92E1DC8F19A78C0000F6131D /* Build configuration list for PBXNativeTarget "Red5ProiOSTests" */;
+			buildConfigurationList = 92E1DC8F19A78C0000F6131D /* Build configuration list for PBXNativeTarget "Red5ProGoLiveTests" */;
 			buildPhases = (
 				92E1DC7719A78C0000F6131D /* Sources */,
 				92E1DC7819A78C0000F6131D /* Frameworks */,
@@ -647,9 +647,9 @@
 			dependencies = (
 				92E1DC8119A78C0000F6131D /* PBXTargetDependency */,
 			);
-			name = Red5ProiOSTests;
+			name = Red5ProGoLiveTests;
 			productName = Red5ProiOSTests;
-			productReference = 92E1DC7B19A78C0000F6131D /* Red5ProiOSTests.xctest */;
+			productReference = 92E1DC7B19A78C0000F6131D /* Red5ProGoLive.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -669,7 +669,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 92E1DC5B19A78C0000F6131D /* Build configuration list for PBXProject "Red5Pro" */;
+			buildConfigurationList = 92E1DC5B19A78C0000F6131D /* Build configuration list for PBXProject "Red5ProGoLive" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -681,8 +681,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				92E1DC5F19A78C0000F6131D /* Red5ProiOS */,
-				92E1DC7A19A78C0000F6131D /* Red5ProiOSTests */,
+				92E1DC5F19A78C0000F6131D /* Red5ProGoLive */,
+				92E1DC7A19A78C0000F6131D /* Red5ProGoLiveTests */,
 			);
 		};
 /* End PBXProject section */
@@ -826,7 +826,7 @@
 /* Begin PBXTargetDependency section */
 		92E1DC8119A78C0000F6131D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 92E1DC5F19A78C0000F6131D /* Red5ProiOS */;
+			target = 92E1DC5F19A78C0000F6131D /* Red5ProGoLive */;
 			targetProxy = 92E1DC8019A78C0000F6131D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -937,19 +937,19 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Red5ProiOS/Red5ProiOS-Prefix.pch";
+				GCC_PREFIX_HEADER = "Red5ProiOS/Red5ProGoLive-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
-				INFOPLIST_FILE = "Red5ProiOS/Red5ProiOS-Info.plist";
+				INFOPLIST_FILE = "Red5ProiOS/Red5ProGoLive-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-lstdc++";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.infrared5.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.infrared5.Red5ProGoLive;
+				PRODUCT_NAME = Red5ProGoLive;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -971,19 +971,19 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Red5ProiOS/Red5ProiOS-Prefix.pch";
+				GCC_PREFIX_HEADER = "Red5ProiOS/Red5ProGoLive-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
-				INFOPLIST_FILE = "Red5ProiOS/Red5ProiOS-Info.plist";
+				INFOPLIST_FILE = "Red5ProiOS/Red5ProGoLive-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-lstdc++";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.infrared5.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.infrared5.Red5ProGoLive;
+				PRODUCT_NAME = Red5ProGoLive;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1002,15 +1002,15 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Red5ProiOS/Red5ProiOS-Prefix.pch";
+				GCC_PREFIX_HEADER = "Red5ProiOS/Red5ProGoLive-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Red5ProiOSTests/Red5ProiOSTests-Info.plist";
+				INFOPLIST_FILE = "Red5ProiOSTests/Red5ProGoLiveTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.infrared5.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Red5ProGoLive;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1026,11 +1026,11 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Red5ProiOS/Red5ProiOS-Prefix.pch";
-				INFOPLIST_FILE = "Red5ProiOSTests/Red5ProiOSTests-Info.plist";
+				GCC_PREFIX_HEADER = "Red5ProiOS/Red5ProGoLive-Prefix.pch";
+				INFOPLIST_FILE = "Red5ProiOSTests/Red5ProGoLiveTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.infrared5.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Red5ProGoLive;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1039,7 +1039,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		92E1DC5B19A78C0000F6131D /* Build configuration list for PBXProject "Red5Pro" */ = {
+		92E1DC5B19A78C0000F6131D /* Build configuration list for PBXProject "Red5ProGoLive" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				92E1DC8A19A78C0000F6131D /* Debug */,
@@ -1048,7 +1048,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		92E1DC8C19A78C0000F6131D /* Build configuration list for PBXNativeTarget "Red5ProiOS" */ = {
+		92E1DC8C19A78C0000F6131D /* Build configuration list for PBXNativeTarget "Red5ProGoLive" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				92E1DC8D19A78C0000F6131D /* Debug */,
@@ -1057,7 +1057,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		92E1DC8F19A78C0000F6131D /* Build configuration list for PBXNativeTarget "Red5ProiOSTests" */ = {
+		92E1DC8F19A78C0000F6131D /* Build configuration list for PBXNativeTarget "Red5ProGoLiveTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				92E1DC9019A78C0000F6131D /* Debug */,
