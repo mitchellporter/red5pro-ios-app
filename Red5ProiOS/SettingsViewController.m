@@ -87,6 +87,8 @@
     [self addChildViewController:vc];
     [vc didMoveToParentViewController:self];
     
+    _scrollView.contentSize = child.size;
+    
     self.loadedView = vc;
 }
 
