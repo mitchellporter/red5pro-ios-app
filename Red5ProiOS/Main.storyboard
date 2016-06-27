@@ -453,7 +453,7 @@
                                     <action selector="onServerSettingsTap:" destination="ysf-JR-1rD" eventType="touchUpInside" id="Xzr-oC-h4V"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8rA-pa-fZ9">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8rA-pa-fZ9">
                                 <rect key="frame" x="33" y="80" width="55" height="30"/>
                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
                                 <state key="normal" title="SERVER">
@@ -475,7 +475,7 @@
                                     <action selector="onPublishTap:" destination="ysf-JR-1rD" eventType="touchUpInside" id="eIc-HJ-ojW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9UP-eI-1al">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9UP-eI-1al">
                                 <rect key="frame" x="29" y="172" width="63" height="30"/>
                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
                                 <state key="normal" title="PUBLISH">
@@ -496,7 +496,7 @@
                                     <action selector="onSubscribeTap:" destination="ysf-JR-1rD" eventType="touchUpInside" id="VfR-Lq-RL9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="koK-Xr-Qcl">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="koK-Xr-Qcl">
                                 <rect key="frame" x="20" y="264" width="80" height="30"/>
                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
                                 <state key="normal" title="SUBSCRIBE">
@@ -517,7 +517,7 @@
                                     <action selector="onTwoWayTap:" destination="ysf-JR-1rD" eventType="touchUpInside" id="8tI-j4-EDq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S1a-Ba-7LT">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S1a-Ba-7LT">
                                 <rect key="frame" x="37" y="356" width="47" height="30"/>
                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
                                 <state key="normal" title="2 WAY">
@@ -538,7 +538,7 @@
                                     <action selector="onHelpTap:" destination="ysf-JR-1rD" eventType="touchUpInside" id="QcC-JQ-5eN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dh9-dd-GQe">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dh9-dd-GQe">
                                 <rect key="frame" x="41" y="540" width="38" height="30"/>
                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
                                 <state key="normal" title="HELP">
@@ -669,7 +669,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qzC-vj-qhI">
+                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qzC-vj-qhI">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s8v-mt-bDL">
@@ -737,7 +737,7 @@
                         <viewControllerLayoutGuide type="top" id="Tc9-z5-DuQ"/>
                         <viewControllerLayoutGuide type="bottom" id="qDP-gV-8Yv"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="rcr-VN-Agi">
+                    <view key="view" contentMode="scaleAspectFit" id="rcr-VN-Agi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1888,9 +1888,9 @@
         <image name="twoway.png" width="52" height="52"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3sB-dr-VxE"/>
+        <segue reference="2Mm-yP-xyJ"/>
         <segue reference="aaR-46-oN9"/>
-        <segue reference="3sl-ad-aZi"/>
+        <segue reference="BLH-Pi-tfX"/>
         <segue reference="cx3-hF-LdY"/>
     </inferredMetricsTieBreakers>
 </document>
