@@ -22,7 +22,6 @@ enum StreamMode {
 
 @property enum StreamMode currentMode;
 
-- (void) resetScrollView;
 - (void) goToAdvancedForCurrentMode;
 - (void) goToSimpleForCurrentMode;
 - (void) doneSettings;

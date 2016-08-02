@@ -29,18 +29,12 @@
     [super viewDidLoad];
     
     self.offset = self.containerView.frame.origin.y;
-    
-    [self goToSimpleForCurrentMode];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     [[SlideNavigationController sharedInstance] setNavigationBarHidden:NO animated:YES];
-    
-    
-    CGRect viewBase = _scrollView.frame;
-    [_scrollView setFrame:CGRectMake(viewBase.origin.x, viewBase.origin.y , viewBase.size.width, [[UIScreen mainScreen] bounds].size.height)];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -49,6 +43,12 @@
     if ([[SlideNavigationController sharedInstance] respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         [SlideNavigationController sharedInstance].interactivePopGestureRecognizer.enabled = NO;
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self goToSimpleForCurrentMode];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -76,43 +76,30 @@
 }
 
 - (void) addToContainerView:(UIViewController *)vc {
+    [self.scrollView setContentInset:UIEdgeInsetsZero];
+    
     [self removeLoadedView];
     
-//    vc.view.translatesAutoresizingMaskIntoConstraints = NO;
+    CGRect rect = CGRectZero;
+    rect.origin = self.containerView.frame.origin;
+    rect.size = vc.view.frame.size;
     
-    CGRect container = self.containerView.frame;
-    CGRect child = vc.view.frame;
+//    [self.containerView addSubview:vc.view];
+    
+    [vc.view setFrame:rect];
+    [self.containerView.superview addSubview:vc.view];
     
     [vc willMoveToParentViewController:self];
-    [self.containerView addSubview:vc.view];
-    
-    child.origin.x = container.origin.x + (container.size.width * 0.5f) - (child.size.width * 0.5f);
-    child.origin.y = 8.0f;
-    
-    [vc.view setFrame:child];
-    
     [self addChildViewController:vc];
     [vc didMoveToParentViewController:self];
-    __block CGSize scrollSize = vc.view.bounds.size;
-    __block float largestY = [[UIScreen mainScreen] bounds].size.height - self.containerView.frame.origin.y;
     
-    [vc.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        float y = obj.frame.origin.y + obj.frame.size.height;
-        if (y >= largestY) {
-            largestY = y;
-            scrollSize.height = largestY + 20.0f;
-        }
-    }];
+    CGSize scrollSize = vc.view.bounds.size;
+    scrollSize.height += [SlideNavigationController sharedInstance].navigationBar.bounds.size.height;
+//    scrollSize.height += self.containerView.frame.origin.y;
+    scrollSize.height += vc.view.frame.origin.y;
+    [self.scrollView setContentSize:scrollSize];
     
-    scrollSize.height += self.containerView.frame.origin.y;
-    
-    [_scrollView setContentSize:scrollSize];
-    [_scrollView setNeedsLayout];
-    [_scrollView layoutIfNeeded];
-    
-    [_containerView.superview setBounds:CGRectMake(_containerView.superview.bounds.origin.x, _containerView.superview.bounds.origin.y, _containerView.superview.bounds.size.width, scrollSize.height)];
-    [_containerView setBounds:CGRectMake(_containerView.bounds.origin.x, _containerView.bounds.origin.y, _containerView.bounds.size.width, scrollSize.height - self.containerView.frame.origin.y)];
-    [vc.view setBounds:CGRectMake(vc.view.bounds.origin.x, vc.view.bounds.origin.y, vc.view.bounds.size.width, scrollSize.height - self.containerView.frame.origin.y)];
+    [self.scrollView scrollRectToVisible:CGRectMake(0, 0, scrollSize.width, 1) animated:NO];
     
     self.loadedView = vc;
 }
@@ -121,15 +108,9 @@
     if (self.loadedView != nil) {
         [self.loadedView willMoveToParentViewController:nil];
         [self.loadedView.view removeFromSuperview];
-        [self.loadedView removeFromParentViewController];
+        [self.loadedView didMoveToParentViewController:nil];
         self.loadedView = nil;
     }
-}
-
-- (void) resetScrollView {
-    UIEdgeInsets insets = UIEdgeInsetsMake(self.offset, 0.0f, 0.0f, 0.0f);
-    self.scrollView.contentInset = insets;
-    self.scrollView.scrollIndicatorInsets = insets;
 }
 
 - (void) goToAdvancedForCurrentMode {

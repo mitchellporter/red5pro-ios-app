@@ -89,9 +89,6 @@
 }
 
 - (void) keyboardWillBeHidden:(NSNotification *)notification {
-    if (self.settingsViewController != nil) {
-        [self.settingsViewController resetScrollView];
-    }
 }
 
 #pragma mark - Tap Gesture Recognizer
@@ -99,10 +96,6 @@
 - (void) onTapOutsideTextfields {
     [self.view endEditing:YES];
     self.activeField = nil;
-    
-    if (self.settingsViewController != nil) {
-        [self.settingsViewController resetScrollView];
-    }
 }
 
 #pragma mark - UITextFieldDelegate
