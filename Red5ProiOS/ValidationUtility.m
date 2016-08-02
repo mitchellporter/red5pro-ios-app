@@ -55,7 +55,7 @@
         NSString *match = [trimmed substringWithRange:result.range];
         NSInteger value = -1;
         
-        if ([match containsString:@"."]) {
+        if ([match rangeOfString:@"."].location != NSNotFound) {
             value = [[match substringWithRange:NSMakeRange(0, match.length-1)] integerValue];
         } else {
             value = [match integerValue];
@@ -159,7 +159,7 @@
     NSString *trimmed = [self trimString:stream];
     
     BOOL hasValidLength = trimmed.length > 0;
-    BOOL hasNoSpaces = ![trimmed containsString:@" "];
+    BOOL hasNoSpaces = [trimmed rangeOfString:@" "].location != NSNotFound;
     
     if (!hasValidLength && !hasNoSpaces) {
         return StreamValidationCode_ALL_BAD;
@@ -188,7 +188,7 @@
     NSString *trimmed = [self trimString:app];
     
     BOOL hasValidLength = trimmed.length > 0;
-    BOOL hasNoSpaces = ![trimmed containsString:@" "];
+    BOOL hasNoSpaces = [trimmed rangeOfString:@" "].location != NSNotFound;
     
     if (!hasValidLength && !hasNoSpaces) {
         return AppValidationCode_ALL_BAD;

@@ -45,8 +45,11 @@
         [SlideNavigationController sharedInstance].interactivePopGestureRecognizer.enabled = NO;
     }
     
-    [[SlideNavigationController sharedInstance].navigationBar setBackgroundImage:[UIImage new] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
-    [[SlideNavigationController sharedInstance].navigationBar setShadowImage:[UIImage new]];
+    UINavigationBar *navbar = [SlideNavigationController sharedInstance].navigationBar;
+    if ([navbar respondsToSelector:@selector(setBackgroundImage:forBarPosition:barMetrics:)]) {
+        [navbar setBackgroundImage:[UIImage new] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    }
+    [navbar setShadowImage:[UIImage new]];
     
     r5_set_log_level(r5_log_level_debug);
     
